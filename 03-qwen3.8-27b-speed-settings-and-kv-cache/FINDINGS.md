@@ -189,15 +189,19 @@ prompt-dependent.
 |---|---|---|---|---|---|---|
 | f16 | none | 73.6 | 17.54 | - | 100% | all pass |
 | f16 | MTP n=2 | 125.5 | 18.36 | - | 100% | all pass |
-| q8_0 | none | 77.1 | 16.69 | 0.85 | 100% | all pass |
+| q8_0 | none | 71.8 | 16.69 | 0.85 | 100% | all pass |
 | q8_0 | MTP n=2 | 128.3 | 17.50 | 0.85 | 100% | all pass |
 | q4_0 | none | 77.1 | 16.19 | 1.35 | 100% | all pass |
 | **q4_0** | **MTP n=2** | **136.7** | **17.00** | **1.35** | **100%** | **all pass** |
 
-**Quantising the cache makes it faster, not slower.** Decoding is memory-bandwidth
-bound, so a smaller KV cache means less data read per token. `q4_0` + `n=2`
-(136.7 tok/s) beats `f16` + `n=3` (133.6), the best result from the whole spec
-sweep, while using 1.4 GB less memory.
+**Quantising the cache to `q4_0` makes it faster, not slower.** Decoding is
+memory-bandwidth bound, so a smaller KV cache means less data read per token.
+`q4_0` + `n=2` (136.7 tok/s) beats `f16` + `n=3` (133.6), the best result from
+the whole spec sweep, while using 1.35 GB less memory.
+
+The effect is not uniform across precisions. `q8_0` without a draft head
+decodes at 71.8 tok/s, *slower* than `f16` at 73.6, and only overtakes it once
+MTP is on (128.3 against 125.5). Only `q4_0` is faster at both.
 
 **No quality cost at any precision**, including needle retrieval at three depths.
 

@@ -26,7 +26,7 @@ up to a draft depth of 3, after which deeper drafts cost more than they save.*
 |---|---|---|
 | `--draft-max` gives free speedup | **TRUE** | Up to **1.81x faster** decoding without quality degradation |
 | Model context is 1M tokens | **FALSE** | Model metadata specifies **262,144 tokens** (`qwen35.context_length`) |
-| $n=2$ is the optimal draft depth | **PARTLY** | $n=3$ wins on `f16` KV cache (1.81x vs 1.70x); $n=2$ wins on `q4_0` |
+| $n=2$ is the optimal draft depth | **PARTLY** | $n=3$ wins on `f16` KV cache (1.81x vs 1.70x); with `q4_0` the two tie on speed (136.75 vs 136.72 tok/s) and $n=2$ wins on memory, costing 150 MB less |
 | $n=4$ crashes or emits garbage | **FALSE** | Runs stably with 100% answer accuracy; acceptance simply drops to 59.2% |
 | Use `q8_0` KV cache | **FALSE** | `q4_0` beats `q8_0` on both memory savings AND decode speed |
 | Reasoning defaults to high; set `medium` | **TRUE** | `--reasoning-effort medium` eliminates unnecessary thinking latency |
@@ -56,15 +56,28 @@ cost of the rejected ones.*
 
 Evaluating KV cache formats at 32K context:
 
-| KV Cache Type | Total VRAM (GB) | Cache VRAM (GB) | Decode Speed ($n=0$) | Decode Speed ($n=3$) | Quality Score |
+| KV Cache Type | VRAM, no MTP | VRAM, MTP $n=2$ | Decode, no MTP | Decode, MTP $n=2$ | Quality Score |
 |---|---|---|---|---|---|
-| **`f16` (Default)** | 17.54 | 2.00 | 73.6 tok/s | 133.6 tok/s | 100% |
-| **`q8_0`** | 16.54 | 1.00 | 74.8 tok/s | 131.2 tok/s | 100% |
-| **`q4_0` (Winner)** | **16.04** | **0.50** | **78.2 tok/s** | **133.4 tok/s** | 100% |
+| **`f16` (Default)** | 17.54 GB | 18.36 GB | 73.6 tok/s | 125.5 tok/s | 100% |
+| **`q8_0`** | 16.69 GB | 17.50 GB | 71.8 tok/s | 128.3 tok/s | 100% |
+| **`q4_0` (Winner)** | **16.19 GB** | **17.00 GB** | **77.1 tok/s** | **136.7 tok/s** | 100% |
 
-> **Recommendation**: `--cache-type-k q4_0 --cache-type-v q4_0` provides 75% KV cache memory reduction with **zero loss in answer quality** while actually increasing single-token decode throughput.
+Against `f16`, `q4_0` saves 1.35 GB without a draft head and 1.36 GB with
+$n=2$. Draft depth 2 is shown because it is the only depth measured for all
+three cache types. The best single result in the whole sweep is `q4_0` at
+$n=3$: **136.8 tok/s** at 17.15 GB, which beats `f16` at its own best depth
+(133.6 tok/s at 18.50 GB) while using 1.35 GB less.
+
+> **Recommendation**: `--cache-type-k q4_0 --cache-type-v q4_0` takes **1.35 GB**
+> off the process footprint at 32K context with **zero loss in answer quality**,
+> including needle retrieval at three depths, and is the fastest of the three
+> cache types at every draft depth measured. `q8_0` is the one to skip: it saves
+> less memory and, without MTP, decodes slower than plain `f16`.
 
 ![KV cache VRAM by cache type](figures/chart-kv-vram.png)
+
+*Peak VRAM for the three cache types, all at MTP $n=2$, which is the middle
+column of the table above.*
 
 ![Answer quality by cache type](figures/chart-kv-quality.png)
 
