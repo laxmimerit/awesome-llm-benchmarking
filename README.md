@@ -1,6 +1,31 @@
+<div align="center">
+
 # LLM Benchmarking
 
-> **Section 16: Latest LLM Benchmarking and Architecture Teardown 2026 (Lectures 184–197)**
+**Benchmark harnesses, raw measurements and architecture teardowns for local LLMs on a single RTX 5090**
+
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue?style=flat-square)](LICENSE)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-blue?style=flat-square)](https://creativecommons.org/licenses/by/4.0/)
+[![Projects](https://img.shields.io/badge/projects-14-blue?style=flat-square)](#the-projects)
+[![Last commit](https://img.shields.io/github/last-commit/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking/commits/main)
+[![Repo size](https://img.shields.io/github/repo-size/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking)
+[![Stars](https://img.shields.io/github/stars/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking/stargazers)
+
+[![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![llama.cpp](https://img.shields.io/badge/llama.cpp-server%20%26%20bench-333333?style=flat-square)](https://github.com/ggml-org/llama.cpp)
+[![Ollama](https://img.shields.io/badge/Ollama-runtime-333333?style=flat-square&logo=ollama&logoColor=white)](https://ollama.com/)
+[![RTX 5090](https://img.shields.io/badge/NVIDIA-RTX%205090%2032GB-76B900?style=flat-square&logo=nvidia&logoColor=white)](https://www.nvidia.com/)
+[![Windows 11](https://img.shields.io/badge/Windows%2011-0078D4?style=flat-square&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
+[![Articles](https://img.shields.io/badge/articles-kgptalkie.com-FF6B35?style=flat-square)](https://kgptalkie.com/tutorials/llm-benchmarking/)
+
+[**The rig**](#the-rig) &nbsp;&middot;&nbsp;
+[**The projects**](#the-projects) &nbsp;&middot;&nbsp;
+[**How a project is laid out**](#how-a-project-is-laid-out) &nbsp;&middot;&nbsp;
+[**Reproducing a run**](#reproducing-a-run)
+
+</div>
+
+> **Section 16: Latest LLM Benchmarking and Architecture Teardown 2026 (Lectures 184 to 197)**
 
 Benchmark harnesses, raw measurements and architecture teardowns behind the
 local LLM lectures on the KGP Talkie course and the articles on
