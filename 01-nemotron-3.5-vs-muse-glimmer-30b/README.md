@@ -2,6 +2,11 @@
 
 This project provides the complete benchmark harness, raw logs, measurements, and figures comparing **NVIDIA Nemotron 3.5 Lightning** (30B A3B MoE + Mamba-2 hybrid) against **Meta Muse Glimmer 30B** (dense transformer with native vision) on a single **NVIDIA RTX 5090 (32GB VRAM)** rig.
 
+![Generation speed on simple tasks](figures/chart-gen-speed.png)
+
+*Nemotron's 3B active parameters decode roughly 1.6x faster than Muse Glimmer's
+29.6B on every short task, while both answer correctly.*
+
 ---
 
 ## Model Comparison at a Glance
@@ -40,19 +45,31 @@ This project provides the complete benchmark harness, raw logs, measurements, an
   - Nemotron's Mamba-2 hybrid state avoids transformer KV cache scaling penalties, maintaining **138 tok/s**.
   - Muse Glimmer's dense attention KV cache overhead caused decode speed to drop to **20 tok/s**.
 
+![Decode speed under a 40K context load](figures/chart-context-speed.png)
+
+*The gap at 40K loaded tokens is the whole argument for the hybrid: one model
+barely notices the context, the other loses most of its speed to it.*
+
 ### 3. VRAM Consumption & Headroom (at 64K context)
 - **Nemotron 3.5**: Model weights take 25 GB. With 64K context loaded, total GPU VRAM utilized reached **30.9 GB / 32 GB** (barely fits on a 32GB card).
 - **Muse Glimmer 30B**: Model weights take 18 GB. Total GPU VRAM utilized was **~17 GB**, leaving over **15 GB of headroom**.
 
+![VRAM used and headroom left on a 32 GB card](figures/chart-vram.png)
+
+*Speed is not free. Nemotron spends almost the whole card to get it, which
+decides what else you can keep loaded beside it.*
+
 ---
 
-## Visualizations
+## Thinking budget
 
-All charts are located in [`figures/`](figures/):
-- [`chart-gen-speed.png`](figures/chart-gen-speed.png): Generation speed per task (Nemotron ~125 t/s vs Glimmer ~76 t/s).
-- [`chart-context-speed.png`](figures/chart-context-speed.png): Decode throughput drop under 40K context load (138 t/s vs 20 t/s).
-- [`chart-vram.png`](figures/chart-vram.png): VRAM usage comparison and remaining card headroom.
-- [`chart-thinking.png`](figures/chart-thinking.png): Thinking token allocation across tasks.
+![Thinking tokens spent per task](figures/chart-thinking.png)
+
+*How much each model thinks before answering, task by task. Two models can
+reach the same answer and still spend very different budgets getting there.*
+
+All four charts live in [`figures/`](figures/) and are redrawn from
+`research/results.json` by `research/charts.py`.
 
 ---
 
