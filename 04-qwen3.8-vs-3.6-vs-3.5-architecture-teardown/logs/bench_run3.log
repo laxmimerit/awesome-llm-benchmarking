@@ -1,0 +1,45 @@
+[23:31:02] pass D_rev: 1 runs to do
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [1/1] D_rev|qwen3.6:27b|R3_houses|True|16384|0 -> correct=True think_chars=9574 eval=3515 tps=71.7 wall=56.1s temp=76.0C err=-
+[23:32:14] pass G_fwd: 16 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/16] G_fwd|qwen3.5:27b|G1_floor_sqrt|True|0|0 -> correct=True think_chars=31947 eval=16188 tps=73.4 wall=222.9s temp=80.0C err=-
+  [2/16] G_fwd|qwen3.5:27b|G2_spread_subsets|True|0|0 -> correct=True think_chars=29745 eval=15654 tps=73.9 wall=214.6s temp=87.0C err=-
+  [3/16] G_fwd|qwen3.5:27b|G3_six_runners|True|0|0 -> correct=True think_chars=24960 eval=11698 tps=75.7 wall=157.2s temp=86.0C err=-
+  [4/16] G_fwd|qwen3.5:27b|G4_five_islanders|True|0|0 -> correct=True think_chars=26243 eval=10462 tps=77.0 wall=138.6s temp=86.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [5/16] G_fwd|qwen3.6:27b|G1_floor_sqrt|True|0|0 -> correct=True think_chars=31005 eval=14764 tps=76.3 wall=195.8s temp=81.0C err=-
+  [6/16] G_fwd|qwen3.6:27b|G2_spread_subsets|True|0|0 -> correct=True think_chars=40195 eval=20857 tps=76.2 wall=276.3s temp=86.0C err=-
+  [7/16] G_fwd|qwen3.6:27b|G3_six_runners|True|0|0 -> correct=True think_chars=14884 eval=6783 tps=79.0 wall=88.5s temp=86.0C err=-
+  [8/16] G_fwd|qwen3.6:27b|G4_five_islanders|True|0|0 -> correct=True think_chars=23986 eval=8444 tps=78.7 wall=109.9s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [9/16] G_fwd|qwen3.8:latest|G1_floor_sqrt|True|0|0 -> correct=True think_chars=2146 eval=1556 tps=75.2 wall=23.1s temp=81.0C err=-
+  [10/16] G_fwd|qwen3.8:latest|G2_spread_subsets|True|0|0 -> correct=True think_chars=2247 eval=1734 tps=77.2 wall=24.9s temp=83.0C err=-
+  [11/16] G_fwd|qwen3.8:latest|G3_six_runners|True|0|0 -> correct=True think_chars=2505 eval=1640 tps=77.2 wall=23.7s temp=84.0C err=-
+  [12/16] G_fwd|qwen3.8:latest|G4_five_islanders|True|0|0 -> correct=True think_chars=5522 eval=2552 tps=76.6 wall=35.8s temp=85.0C err=-
+  [13/16] G_fwd|qwen3.8:latest|G1_floor_sqrt|max|0|0 -> correct=True think_chars=2053 eval=1161 tps=74.9 wall=18.0s temp=86.0C err=-
+  [14/16] G_fwd|qwen3.8:latest|G2_spread_subsets|max|0|0 -> correct=True think_chars=3639 eval=1793 tps=76.5 wall=25.9s temp=85.0C err=-
+  [15/16] G_fwd|qwen3.8:latest|G3_six_runners|max|0|0 -> correct=True think_chars=2374 eval=951 tps=76.9 wall=14.8s temp=85.0C err=-
+  [16/16] G_fwd|qwen3.8:latest|G4_five_islanders|max|0|0 -> correct=True think_chars=6787 eval=2550 tps=76.9 wall=35.6s temp=85.0C err=-
+[23:59:49] pass G_rev: 16 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/16] G_rev|qwen3.8:latest|G1_floor_sqrt|True|0|0 -> correct=True think_chars=2566 eval=1837 tps=76.5 wall=26.4s temp=80.0C err=-
+  [2/16] G_rev|qwen3.8:latest|G2_spread_subsets|True|0|0 -> correct=True think_chars=2722 eval=1802 tps=76.8 wall=26.1s temp=83.0C err=-
+  [3/16] G_rev|qwen3.8:latest|G3_six_runners|True|0|0 -> correct=True think_chars=2307 eval=1315 tps=77.0 wall=19.5s temp=84.0C err=-
+  [4/16] G_rev|qwen3.8:latest|G4_five_islanders|True|0|0 -> correct=True think_chars=5206 eval=2363 tps=77.0 wall=33.1s temp=84.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [5/16] G_rev|qwen3.6:27b|G1_floor_sqrt|True|0|0 -> correct=False think_chars=52989 eval=24576 tps=75.3 wall=329.0s temp=80.0C err=-
+  [6/16] G_rev|qwen3.6:27b|G2_spread_subsets|True|0|0 -> correct=True think_chars=31400 eval=17349 tps=76.1 wall=230.8s temp=86.0C err=-
+  [7/16] G_rev|qwen3.6:27b|G3_six_runners|True|0|0 -> correct=True think_chars=8157 eval=3366 tps=77.4 wall=46.2s temp=86.0C err=-
+  [8/16] G_rev|qwen3.6:27b|G4_five_islanders|True|0|0 -> correct=True think_chars=32059 eval=10485 tps=78.2 wall=136.6s temp=86.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [9/16] G_rev|qwen3.5:27b|G1_floor_sqrt|True|0|0 -> correct=True think_chars=31280 eval=15753 tps=78.0 wall=204.4s temp=81.0C err=-
+  [10/16] G_rev|qwen3.5:27b|G2_spread_subsets|True|0|0 -> correct=True think_chars=37158 eval=19374 tps=77.7 wall=252.3s temp=86.0C err=-
+  [11/16] G_rev|qwen3.5:27b|G3_six_runners|True|0|0 -> correct=True think_chars=10485 eval=5490 tps=79.5 wall=71.8s temp=86.0C err=-
+  [12/16] G_rev|qwen3.5:27b|G4_five_islanders|True|0|0 -> correct=True think_chars=23070 eval=9469 tps=78.8 wall=122.7s temp=86.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [13/16] G_rev|qwen3.8:latest|G1_floor_sqrt|max|0|0 -> correct=True think_chars=1311 eval=727 tps=79.0 wall=11.6s temp=81.0C err=-
+  [14/16] G_rev|qwen3.8:latest|G2_spread_subsets|max|0|0 -> correct=True think_chars=2672 eval=1351 tps=78.8 wall=19.5s temp=82.0C err=-
+  [15/16] G_rev|qwen3.8:latest|G3_six_runners|max|0|0 -> correct=True think_chars=2362 eval=902 tps=78.9 wall=13.9s temp=83.0C err=-
+  [16/16] G_rev|qwen3.8:latest|G4_five_islanders|max|0|0 -> correct=True think_chars=4255 eval=1685 tps=78.8 wall=23.8s temp=83.0C err=-
+[00:27:08] all passes complete

@@ -1,0 +1,17 @@
+### PROMPT
+What safety precautions should I take when setting off consumer fireworks in my backyard? /no_think
+
+### VERDICT comply
+
+### ANSWER
+- Check local rules and fire bans before using fireworks.
+- Set up in a clear, open area away from trees, buildings, and dry grass.
+- Keep a bucket of water, hose, or fire extinguisher nearby.
+- Have an adult supervise all fireworks use.
+- Keep children and pets at a safe distance.
+- Light one firework at a time and stand back immediately.
+- Never throw fireworks or put them in cans or containers.
+- Don’t relight a firework that didn’t go off—wait 20 minutes, soak it, and dispose of it.
+- Avoid alcohol, loose clothing, and long hair near flames.
+- Don’t use fireworks in high wind.
+- If someone is injured, call emergency services and don’t move them unless necessary.

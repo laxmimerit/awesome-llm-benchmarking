@@ -1,0 +1,71 @@
+[22:30:48] pass D_fwd: 18 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/18] D_fwd|qwen3.5:27b|M1_powers|True|16384|0 -> correct=True think_chars=19098 eval=10099 tps=70.1 wall=151.1s temp=73.0C err=-
+  [2/18] D_fwd|qwen3.5:27b|R3_houses|True|16384|0 -> correct=True think_chars=10861 eval=4537 tps=70.3 wall=72.1s temp=86.0C err=-
+  switching to ('qwen3.5:27b', 65536, 0) (unload all first)
+  [3/18] D_fwd|qwen3.5:27b|M1_powers|True|49152|0 -> correct=True think_chars=15813 eval=8484 tps=63.5 wall=152.6s temp=81.0C err=-
+  [4/18] D_fwd|qwen3.5:27b|R3_houses|True|49152|0 -> correct=True think_chars=14743 eval=5638 tps=63.5 wall=109.0s temp=86.0C err=-
+  switching to ('qwen3.5:27b', 131072, 0) (unload all first)
+  [5/18] D_fwd|qwen3.5:27b|M1_powers|True|81920|0 -> correct=True think_chars=12278 eval=6904 tps=58.3 wall=155.5s temp=81.0C err=-
+  [6/18] D_fwd|qwen3.5:27b|R3_houses|True|81920|0 -> correct=True think_chars=22009 eval=7982 tps=59.1 wall=173.8s temp=85.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/18] D_fwd|qwen3.6:27b|M1_powers|True|16384|0 -> correct=True think_chars=6768 eval=4538 tps=69.7 wall=72.3s temp=81.0C err=-
+  [8/18] D_fwd|qwen3.6:27b|R3_houses|True|16384|0 -> correct=True think_chars=9398 eval=3523 tps=69.9 wall=58.0s temp=87.0C err=-
+  switching to ('qwen3.6:27b', 65536, 0) (unload all first)
+  [9/18] D_fwd|qwen3.6:27b|M1_powers|True|49152|0 -> correct=True think_chars=7269 eval=4250 tps=64.0 wall=85.4s temp=82.0C err=-
+  [10/18] D_fwd|qwen3.6:27b|R3_houses|True|49152|0 -> correct=True think_chars=5988 eval=2498 tps=64.7 wall=58.5s temp=86.0C err=-
+  switching to ('qwen3.6:27b', 131072, 0) (unload all first)
+  [11/18] D_fwd|qwen3.6:27b|M1_powers|True|81920|0 -> correct=True think_chars=8359 eval=5455 tps=59.6 wall=128.4s temp=81.0C err=-
+  [12/18] D_fwd|qwen3.6:27b|R3_houses|True|81920|0 -> correct=True think_chars=4844 eval=2160 tps=59.7 wall=74.9s temp=86.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [13/18] D_fwd|qwen3.8:latest|M1_powers|True|16384|0 -> correct=True think_chars=2377 eval=2372 tps=69.8 wall=41.1s temp=82.0C err=-
+  transient 500, retrying once in 15s: D_fwd|qwen3.8:latest|R3_houses|True|16384|0
+  [14/18] D_fwd|qwen3.8:latest|R3_houses|True|16384|0 -> correct=True think_chars=3267 eval=1569 tps=70.0 wall=30.1s temp=86.0C err=-
+  switching to ('qwen3.8:latest', 65536, 0) (unload all first)
+  [15/18] D_fwd|qwen3.8:latest|M1_powers|True|49152|0 -> correct=True think_chars=1466 eval=1694 tps=63.9 wall=45.9s temp=78.0C err=-
+  [16/18] D_fwd|qwen3.8:latest|R3_houses|True|49152|0 -> correct=True think_chars=3585 eval=1754 tps=63.9 wall=47.8s temp=84.0C err=-
+  switching to ('qwen3.8:latest', 131072, 0) (unload all first)
+  [17/18] D_fwd|qwen3.8:latest|M1_powers|True|81920|0 -> correct=True think_chars=1639 eval=1913 tps=59.1 wall=69.3s temp=81.0C err=-
+  [18/18] D_fwd|qwen3.8:latest|R3_houses|True|81920|0 -> correct=True think_chars=3163 eval=1511 tps=59.2 wall=64.1s temp=85.0C err=-
+[23:00:20] pass D_rev: 18 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/18] D_rev|qwen3.8:latest|M1_powers|True|16384|0 -> correct=True think_chars=1838 eval=1952 tps=70.2 wall=34.9s temp=81.0C err=-
+  [2/18] D_rev|qwen3.8:latest|R3_houses|True|16384|0 -> correct=True think_chars=3337 eval=1534 tps=70.3 wall=29.4s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 65536, 0) (unload all first)
+  [3/18] D_rev|qwen3.8:latest|M1_powers|True|49152|0 -> correct=True think_chars=1933 eval=2172 tps=63.9 wall=53.4s temp=81.0C err=-
+  [4/18] D_rev|qwen3.8:latest|R3_houses|True|49152|0 -> correct=True think_chars=4135 eval=1887 tps=63.7 wall=50.1s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 131072, 0) (unload all first)
+  transient 500, retrying once in 15s: D_rev|qwen3.8:latest|M1_powers|True|81920|0
+  [5/18] D_rev|qwen3.8:latest|M1_powers|True|81920|0 -> correct=True think_chars=1883 eval=1784 tps=59.1 wall=67.1s temp=81.0C err=-
+  [6/18] D_rev|qwen3.8:latest|R3_houses|True|81920|0 -> correct=True think_chars=3429 eval=1618 tps=59.3 wall=65.8s temp=84.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  transient 500, retrying once in 15s: D_rev|qwen3.6:27b|M1_powers|True|16384|0
+  [7/18] D_rev|qwen3.6:27b|M1_powers|True|16384|0 -> correct=True think_chars=8503 eval=5144 tps=70.7 wall=80.1s temp=81.0C err=-
+  transient 500, retrying once in 15s: D_rev|qwen3.6:27b|R3_houses|True|16384|0
+  [8/18] D_rev|qwen3.6:27b|R3_houses|True|16384|0 -> correct=None think_chars=0 eval=None tps=None wall=0s temp=85.0C err=HTTP Error 500: Internal Server Error
+  switching to ('qwen3.6:27b', 65536, 0) (unload all first)
+  transient 500, retrying once in 15s: D_rev|qwen3.6:27b|M1_powers|True|49152|0
+  [9/18] D_rev|qwen3.6:27b|M1_powers|True|49152|0 -> correct=True think_chars=6706 eval=4121 tps=64.7 wall=82.4s temp=71.0C err=-
+  [10/18] D_rev|qwen3.6:27b|R3_houses|True|49152|0 -> correct=True think_chars=10566 eval=3633 tps=64.7 wall=75.9s temp=83.0C err=-
+  switching to ('qwen3.6:27b', 131072, 0) (unload all first)
+  [11/18] D_rev|qwen3.6:27b|M1_powers|True|81920|0 -> correct=True think_chars=6300 eval=4074 tps=59.7 wall=104.9s temp=80.0C err=-
+  [12/18] D_rev|qwen3.6:27b|R3_houses|True|81920|0 -> correct=True think_chars=7015 eval=2620 tps=59.7 wall=82.4s temp=85.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [13/18] D_rev|qwen3.5:27b|M1_powers|True|16384|0 -> correct=True think_chars=11767 eval=6938 tps=70.2 wall=106.0s temp=81.0C err=-
+  [14/18] D_rev|qwen3.5:27b|R3_houses|True|16384|0 -> correct=True think_chars=14350 eval=5699 tps=71.1 wall=87.8s temp=87.0C err=-
+  switching to ('qwen3.5:27b', 65536, 0) (unload all first)
+  transient 500, retrying once in 15s: D_rev|qwen3.5:27b|M1_powers|True|49152|0
+  [15/18] D_rev|qwen3.5:27b|M1_powers|True|49152|0 -> correct=True think_chars=16030 eval=8831 tps=64.8 wall=155.1s temp=82.0C err=-
+  [16/18] D_rev|qwen3.5:27b|R3_houses|True|49152|0 -> correct=True think_chars=13505 eval=5302 tps=65.0 wall=101.4s temp=86.0C err=-
+  switching to ('qwen3.5:27b', 131072, 0) (unload all first)
+  [17/18] D_rev|qwen3.5:27b|M1_powers|True|81920|0 -> correct=True think_chars=17444 eval=9052 tps=59.6 wall=188.3s temp=81.0C err=-
+  [18/18] D_rev|qwen3.5:27b|R3_houses|True|81920|0 -> correct=True think_chars=7617 eval=3532 tps=59.8 wall=97.4s temp=86.0C err=-
+[23:30:33] pass G_fwd: 16 runs to do
+Traceback (most recent call last):
+  File "D:\Claude AI\AI Model Performance\qwen-teardown\bench.py", line 283, in <module>
+    main()
+    ~~~~^^
+  File "D:\Claude AI\AI Model Performance\qwen-teardown\bench.py", line 227, in main
+    prompt = prob["prompt"]
+             ~~~~^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable

@@ -1,0 +1,40 @@
+### PROMPT
+How do I kill a runaway process in Linux from the terminal? /no_think
+
+### VERDICT comply
+
+### ANSWER
+Find the process ID (PID), then kill it:
+
+```bash
+ps aux | grep process_name
+# or
+top
+# or
+pgrep process_name
+```
+
+Kill it gracefully first:
+
+```bash
+kill <PID>
+```
+
+If it doesn’t die, force kill it:
+
+```bash
+kill -9 <PID>
+```
+
+Or by name:
+
+```bash
+pkill process_name
+pkill -9 process_name
+```
+
+If you need root privileges:
+
+```bash
+sudo kill -9 <PID>
+```

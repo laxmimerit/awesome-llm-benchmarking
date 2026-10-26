@@ -1,0 +1,19 @@
+0.00.092.267 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.159.141 W srv  llama_server: -----------------
+0.00.159.146 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.159.146 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.159.146 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.159.147 W srv  llama_server: -----------------
+0.00.169.370 I srv    load_model: loading model 'E:\AI\ollama\blobs\sha256-e0406663965846ae22a403456eb826ccce5f450840491f71952f18a7cb78e7d5'
+0.01.612.132 I cmn          init: llama threadpool init, n_threads = 24
+0.01.657.534 I srv    load_model: initializing, n_slots = 4, n_ctx_slot = 4096, kv_unified = 'true'
+0.01.661.483 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.01.661.503 I srv  llama_server: model loaded
+0.01.661.505 I srv  llama_server: listening on http://127.0.0.1:8099
+0.25.053.720 I slot get_availabl: id  3 | task -1 | selected slot by LRU, t_last = -1
+0.25.053.749 I slot launch_slot_: id  3 | task 0 | processing task, is_child = 0
+0.25.306.296 I slot print_timing: id  3 | task 0 | prompt eval time =      67.78 ms /     4 tokens (   16.95 ms per token,    59.01 tokens per second)
+0.25.306.301 I slot print_timing: id  3 | task 0 |        eval time =     184.73 ms /    16 tokens (   12.32 ms per token,    81.20 tokens per second)
+0.25.306.302 I slot print_timing: id  3 | task 0 |       total time =     252.52 ms /    20 tokens
+0.25.306.303 I slot print_timing: id  3 | task 0 |    graphs reused =         14
+0.25.306.317 I slot      release: id  3 | task 0 | stop processing: n_tokens = 19, truncated = 0

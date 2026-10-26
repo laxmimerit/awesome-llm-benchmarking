@@ -1,0 +1,11 @@
+already recorded: 36 cells
+
+########## dsv4-gpu  (1 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\deepseek-v4-vs-flash-next-1bit\models\UD-IQ1_S\DeepSeek-V4-Flash-0731-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 65536 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 34
+   loaded in 16s
+   multihop_needle_64k    s1  PASS answer='649'                          256s   0.3 t/s out=86
+
+########## flashnext-gpu  (1 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 65536 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 22 -ot per_layer_token_embd=CPU
+   loaded in 25s
+   multihop_needle_64k    s1  PASS answer='649'                          119s   1.8 t/s out=209

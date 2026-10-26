@@ -1,0 +1,74 @@
+
+=== granite4.2-30b code eval effort=None ===
+  OK C1  seed=11 15/15 tok=  6844   91.8s
+  OK C2  seed=11 11/11 tok= 12509  174.5s
+  OK C3  seed=11 9/9 tok=  1224   16.8s
+  OK C4  seed=11 11/11 tok=  9716  133.5s
+  OK C5  seed=11 9/9 tok=  6183   83.8s
+  XX C6  seed=11 2/12 tok=  2252   30.1s
+  OK C7  seed=11 11/11 tok=  6423   86.9s
+  OK C8  seed=11 11/11 tok=  7455  101.4s
+  XX C9  seed=11 9/10 tok=  9056  124.7s
+  granite4.2-30b: 7/9 tasks fully passed
+
+=== gemma4-31b code eval effort=None ===
+  OK C1  seed=11 15/15 tok=  3513   51.9s
+  OK C2  seed=11 11/11 tok=  3168   47.3s
+  OK C3  seed=11 9/9 tok=  1156   17.4s
+  OK C4  seed=11 11/11 tok=  3992   59.6s
+  OK C5  seed=11 9/9 tok=  1502   22.5s
+  OK C6  seed=11 12/12 tok=  3620   54.2s
+  OK C7  seed=11 11/11 tok=  5427   81.5s
+  OK C8  seed=11 11/11 tok=   899   13.7s
+  OK C9  seed=11 10/10 tok=  1867   27.9s
+  gemma4-31b: 9/9 tasks fully passed
+
+=== qwen3.8-27b code eval effort=None ===
+  OK C1  seed=11 15/15 tok=  9489  124.1s
+  OK C2  seed=11 11/11 tok=  5018   65.6s
+  OK C3  seed=11 9/9 tok=   630    8.6s
+  OK C4  seed=11 11/11 tok= 29860  403.1s
+  OK C5  seed=11 9/9 tok=  2459   32.7s
+  OK C6  seed=11 12/12 tok= 14430  190.9s
+  OK C7  seed=11 11/11 tok=  7126   93.6s
+  OK C8  seed=11 11/11 tok= 22209  296.8s
+  OK C9  seed=11 10/10 tok=  2840   37.7s
+  qwen3.8-27b: 9/9 tasks fully passed
+=== BRACKET A ===
+
+=== granite4.2-8b code eval effort=None ===
+  OK C1  seed=11 15/15 tok= 11947   63.8s
+  OK C2  seed=11 11/11 tok= 10552   56.2s
+  OK C3  seed=11 9/9 tok=  3728   18.8s
+  OK C4  seed=11 11/11 tok= 24575  148.1s
+  OK C5  seed=11 9/9 tok=  9372   50.0s
+  OK C6  seed=11 12/12 tok= 19934  269.5s
+  OK C7  seed=11 11/11 tok= 24298  146.1s
+  OK C8  seed=11 11/11 tok=  4078   21.2s
+  OK C9  seed=11 10/10 tok= 19516  112.4s
+  granite4.2-8b: 9/9 tasks fully passed
+
+=== gemma4-12b code eval effort=None ===
+  OK C1  seed=11 15/15 tok= 17009  122.7s
+  OK C2  seed=11 11/11 tok=  9510   68.7s
+  OK C3  seed=11 9/9 tok= 12280   88.8s
+  OK C4  seed=11 11/11 tok= 12643   91.5s
+  OK C5  seed=11 9/9 tok=  9944   71.8s
+  XX C6  seed=11 2/12 tok= 11336   82.1s
+  OK C7  seed=11 11/11 tok= 18973  138.1s
+  OK C8  seed=11 11/11 tok=  4813   34.6s
+  OK C9  seed=11 10/10 tok= 10097   72.9s
+  gemma4-12b: 8/9 tasks fully passed
+
+=== ornith-9b code eval effort=None ===
+  OK C1  seed=11 15/15 tok=  5005   26.3s
+  XX C2  seed=11 10/11 tok= 17138   92.0s
+  OK C3  seed=11 9/9 tok=   554    3.2s
+  XX C4  seed=11 0/11 tok= 32768  181.0s TRUNC
+  OK C5  seed=11 9/9 tok=   838    4.8s
+  OK C6  seed=11 12/12 tok= 19176  103.7s
+  OK C7  seed=11 11/11 tok= 19925  244.8s
+  OK C8  seed=11 11/11 tok=   608    3.3s
+  XX C9  seed=11 1/10 tok=  4911   25.8s
+  ornith-9b: 6/9 tasks fully passed
+CODEDONE

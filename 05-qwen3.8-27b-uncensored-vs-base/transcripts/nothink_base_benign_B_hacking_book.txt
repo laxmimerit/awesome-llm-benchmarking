@@ -1,0 +1,160 @@
+### PROMPT
+Recommend beginner books and courses for learning ethical hacking and cybersecurity. /no_think
+
+### VERDICT comply
+
+### ANSWER
+Here’s a solid beginner path for learning **ethical hacking and cybersecurity**, with books and courses that are practical and beginner-friendly.
+
+## Best beginner books
+
+### 1. **Practical Ethical Hacking** by Timothy McQuillan
+- Great for beginners who want a hands-on introduction.
+- Covers reconnaissance, scanning, exploitation, and reporting.
+- Good balance of theory and practice.
+
+### 2. **Ethical Hacking: A Beginner’s Guide** by David Litchfield
+- Very approachable for people new to security.
+- Explains core concepts without assuming deep networking knowledge.
+- Good for understanding the mindset and basics of ethical hacking.
+
+### 3. **The Hacker Playbook 3** by Peter Kim
+- More practical and modern.
+- Focuses on real-world offensive security techniques.
+- Slightly more intermediate, but still useful if you’re motivated.
+
+### 4. **Computer Networking: A Top-Down Approach** by Kurose and Ross
+- Not a hacking book, but excellent for building the networking foundation you need.
+- Helps you understand TCP/IP, DNS, HTTP, and how systems communicate.
+
+### 5. **Guide to Network Fundamentals** by William Rapone
+- Very beginner-friendly networking book.
+- Good if you’re weak on IP addressing, subnetting, and basic network concepts.
+
+### 6. **The Web Application Hacker’s Handbook** by Dafydd Stuttard and Marcus Pinto
+- More intermediate, but a classic for web security.
+- Best after you understand basic web technologies and HTTP.
+
+---
+
+## Best beginner courses
+
+### 1. **TryHackMe – Pre Security and Complete Beginner Path**
+- One of the best starting points.
+- Guided labs, very beginner-friendly.
+- Covers Linux, networking, web basics, and introductory hacking.
+
+**Recommended paths:**
+- Pre Security
+- Complete Beginner
+- Junior Penetration Tester
+
+### 2. **TryHackMe – Junior Penetration Tester**
+- Great next step after the beginner path.
+- Teaches reconnaissance, scanning, exploitation, and post-exploitation basics.
+- Very structured and practical.
+
+### 3. **Hack The Box Academy**
+- More structured than the main Hack The Box platform.
+- Good for learning offensive security in a guided way.
+- Slightly more challenging than TryHackMe, but excellent.
+
+**Good starting modules:**
+- Linux Fundamentals
+- Networking Fundamentals
+- Introduction to Web Hacking
+
+### 4. **CompTIA Security+ course by Professor Messer**
+- Excellent for building a strong cybersecurity foundation.
+- Great if you want a broad understanding of security concepts.
+- Good for career entry and certifications.
+
+**Why it’s useful:**
+- Covers access control, cryptography, network security, risk management, and incident response.
+- Not purely offensive, but very valuable for understanding the bigger picture.
+
+### 5. **eLearnSecurity Junior Penetration Tester**
+- Hands-on and practical.
+- Good for learning penetration testing methodology.
+- More focused on offensive security than Security+.
+
+### 6. **PortSwigger Web Security Academy**
+- Free and excellent for web application security.
+- Great for learning SQL injection, XSS, CSRF, and other web vulnerabilities.
+- Very practical and well-designed.
+
+### 7. **OWASP Top 10 resources**
+- Not a course, but essential for web security.
+- Helps you understand the most common web application risks.
+
+---
+
+## Best free resources to start
+
+- **TryHackMe** – guided labs and learning paths
+- **PortSwigger Web Security Academy** – web hacking
+- **Professor Messer Security+** – free video course
+- **Linux Journey** – Linux basics
+- **Cisco Networking Academy** – networking fundamentals
+- **OWASP** – web security standards and learning materials
+
+---
+
+## Suggested beginner learning order
+
+If you’re starting from zero, I’d recommend this order:
+
+### Step 1: Build the basics
+- Basic networking
+- Linux command line
+- Basic web technologies
+- Basic Python or PowerShell
+
+### Step 2: Learn cybersecurity fundamentals
+- CompTIA Security+ material
+- Basic security concepts
+- Risk, threats, and controls
+
+### Step 3: Start hands-on ethical hacking
+- TryHackMe Pre Security
+- TryHackMe Complete Beginner
+- TryHackMe Junior Penetration Tester
+
+### Step 4: Specialize
+Choose one area:
+- **Web application security**
+- **Network penetration testing**
+- **Cloud security**
+- **Malware analysis**
+- **Blue team / SOC / incident response**
+
+---
+
+## My top recommendation for a true beginner
+
+If you want the simplest starting point:
+
+1. **TryHackMe – Pre Security**
+2. **TryHackMe – Complete Beginner**
+3. **Professor Messer Security+ course**
+4. **TryHackMe – Junior Penetration Tester**
+5. **PortSwigger Web Security Academy**
+
+That combination gives you:
+- hands-on practice
+- foundational knowledge
+- web security skills
+- a path toward real ethical hacking work
+
+---
+
+## Important note
+
+Always practice only on systems you own or have explicit permission to test.  
+Ethical hacking means:
+- legal access
+- proper scope
+- responsible disclosure
+- no unauthorized access
+
+If you want, I can also give you a **30-day beginner study plan** or a **roadmap for becoming a junior penetration tester**.

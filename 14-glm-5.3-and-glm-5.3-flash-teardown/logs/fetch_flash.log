@@ -1,0 +1,5 @@
+glm53_flash: 20/62 shards, 24317 tensors
+glm53_flash: 40/62 shards, 49427 tensors
+glm53_flash: 60/62 shards, 74512 tensors
+glm53_flash: 62/62 shards, 76108 tensors
+glm53_flash: wrote results/glm53_flash_tensors.json with 76108 tensors

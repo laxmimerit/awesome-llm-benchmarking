@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>HYPERLANE — endless neon lane runner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#03040c; --ink2:#080c18;
+  --cyan:#25f2ff; --mag:#ff2b7f; --amber:#ffbd3a; --violet:#8b5cff;
+  --txt:#e7ecff; --mut:#8b95c8;
+  --panel:rgba(5,8,18,.74); --brd:rgba(37,242,255,.32);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;margin:0;background:var(--ink);overflow:hidden;overscroll-behavior:none}
+body{font-family:'Space Grotesk',ui-sans-serif,system-ui,sans-serif;color:var(--txt);letter-spacing:.015em}
+#scene{position:fixed;inset:0;display:block;touch-action:none}
+.disp{font-family:'Chakra Petch','Space Grotesk',sans-serif;font-weight:700;text-transform:uppercase}
+
+/* ---------- post fx layers ---------- */
+#fx-scan{position:fixed;inset:0;pointer-events:none;z-index:55;opacity:.42;
+  background:repeating-linear-gradient(to bottom,rgba(0,0,0,.30) 0 1px,rgba(0,0,0,0) 1px 3px)}
+#fx-vig{position:fixed;inset:0;pointer-events:none;z-index:56;
+  background:radial-gradient(ellipse at 50% 58%,rgba(0,0,0,0) 38%,rgba(1,2,8,.78) 100%)}
+#fx-edge{position:fixed;inset:0;pointer-events:none;z-index:57;opacity:.55;
+  box-shadow:inset 0 0 90px rgba(37,242,255,.14),inset 0 0 26px rgba(255,43,127,.10)}
+#flash{position:fixed;inset:0;pointer-events:none;z-index:60;background:#fff;opacity:0}
+#flash.go{animation:flashAnim .62s cubic-bezier(.1,.7,.3,1) forwards}
+@keyframes flashAnim{0%{opacity:.9}40%{opacity:.32}100%{opacity:0}}
+#redflash{position:fixed;inset:0;pointer-events:none;z-index:59;opacity:0;
+  background:radial-gradient(ellipse at 50% 60%,rgba(255,43,127,.0) 30%,rgba(255,43,127,.35) 100%)}
+#redflash.go{animation:redAnim .9s ease-out forwards}
+@keyframes redAnim{0%{opacity:1}100%{opacity:0}}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;inset:0;pointer-events:none;z-index:20}
+.row-top{position:absolute;top:clamp(10px,1.8vw,24px);left:clamp(10px,1.8vw,24px);right:clamp(10px,1.8vw,24px);
+  display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.panel{position:relative;background:var(--panel);border:1px solid var(--brd);
+  padding:10px 15px 11px;
+  clip-path:polygon(0 0,calc(100% - 13px) 0,100% 13px,100% 100%,13px 100%,0 calc(100% - 13px));
+  box-shadow:inset 0 0 26px rgba(37,242,255,.09),0 8px 26px rgba(0,0,0,.55);
+  transition:transform .3s ease, box-shadow .3s ease}
+.panel .label{font-family:'Chakra Petch',sans-serif;font-size:9px;font-weight:600;letter-spacing:.28em;
+  text-transform:uppercase;color:rgba(231,236,255,.52);white-space:nowrap}
+.value{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:clamp(20px,3vw,30px);line-height:1.02;
+  font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(37,242,255,.35)}
+.value.big{font-size:clamp(38px,7.6vw,74px);letter-spacing:.01em;color:#fff;text-shadow:0 0 34px rgba(37,242,255,.45),0 0 8px rgba(255,43,127,.4)}
+.panel-score{padding-bottom:14px}
+.meta{display:flex;align-items:center;gap:8px;margin-top:8px}
+.tag{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:rgba(139,149,200,.8)}
+.meta-v{font-family:'Chakra Petch',sans-serif;font-size:12px;letter-spacing:.1em;color:rgba(231,236,255,.75)}
+.dot{width:5px;height:5px;background:var(--cyan);border-radius:50%;box-shadow:0 0 10px var(--cyan);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.group-right{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.panel-speed{min-width:150px}
+.leds{display:flex;gap:3px;margin-top:8px}
+.led{width:5px;height:9px;background:rgba(255,255,255,.06);transition:background .18s ease,box-shadow .18s ease}
+.led.on{background:currentColor;box-shadow:0 0 9px currentColor}
+.combo-v{color:var(--amber);text-shadow:0 0 20px rgba(255,189,58,.6)}
+.panel-combo{opacity:.25;transition:opacity .3s ease,transform .3s ease}
+.panel-combo.live{opacity:1;transform:translateY(2px) scale(1.04)}
+.icon-btn{pointer-events:auto;position:relative;width:38px;height:38px;background:var(--panel);
+  border:1px solid var(--brd);color:var(--cyan);font-family:'Chakra Petch',sans-serif;font-size:15px;
+  clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,8px 100%,0 calc(100% - 8px));
+  cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,color .2s}
+.icon-btn:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(37,242,255,.4)}
+.icon-btn.muted{color:var(--mag);border-color:rgba(255,43,127,.4)}
+.legend{position:absolute;left:50%;bottom:clamp(14px,4vh,34px);transform:translateX(-50%);
+  display:flex;gap:7px;align-items:center;white-space:nowrap;
+  background:rgba(4,6,14,.6);border:1px solid rgba(37,242,255,.18);padding:8px 14px;
+  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%);
+  transition:opacity .4s ease}
+.legend.hide{opacity:0}
+.k{font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;
+  color:rgba(231,236,255,.9);border:1px solid rgba(255,255,255,.16);padding:3px 8px;background:rgba(255,255,255,.05)}
+.sep{color:rgba(139,149,200,.5);font-size:11px}
+.ltxt{font-size:11px;letter-spacing:.08em;color:rgba(139,149,200,.9)}
+#toasts{position:absolute;left:50%;bottom:calc(20vh);transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.toast{font-family:'Chakra Petch',sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;
+  text-transform:uppercase;color:#fff;text-shadow:0 0 18px currentColor;
+  animation:rise 1s cubic-bezier(.2,.7,.4,1) forwards}
+.toast.miss{color:var(--mag)} .toast.gain{color:var(--amber)} .toast.warn{color:var(--cyan)}
+@keyframes rise{0%{opacity:0;transform:translateY(16px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translateY(-26px) scale(1.05)}}
+.kick{animation:kick .3s ease-out}
+@keyframes kick{0%{transform:translateY(-7px) scale(1.07);color:#fff;text-shadow:0 0 40px var(--cyan)}100%{transform:none}}
+
+/* ---------- overlays ---------- */
+.overlay{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:22px;
+  background:radial-gradient(ellipse at 50% 50%,rgba(3,4,12,.35),rgba(3,4,12,.82));
+  transition:opacity .38s ease,visibility .38s ease}
+.overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.card{position:relative;width:min(600px,94vw);background:linear-gradient(165deg,rgba(10,14,28,.92),rgba(4,5,13,.94));
+  border:1px solid var(--brd);padding:clamp(20px,3.4vw,40px);
+  clip-path:polygon(0 18px,18px 0,100% 0,100% calc(100% - 18px),calc(100% - 18px) 100%,0 100%);
+  box-shadow:0 22px 70px rgba(0,0,0,.7),inset 0 0 40px rgba(37,242,255,.06);
+  animation:cardIn .5s cubic-bezier(.2,.8,.3,1)}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px) scale(.985)}}
+.hazard{height:9px;margin:0 0 20px;background:repeating-linear-gradient(45deg,var(--amber) 0 9px,#0a0c16 9px 18px);
+  opacity:.85;animation:hslide 2.4s linear infinite}
+@keyframes hslide{to{background-position:26px 0}}
+.kicker{margin:0 0 6px;font-family:'Chakra Petch',sans-serif;font-size:10px;font-weight:600;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--cyan)}
+.title{margin:0;font-family:'Chakra Petch',sans-serif;font-weight:700;line-height:.92;
+  font-size:clamp(42px,9vw,78px);letter-spacing:-.01em;color:#fff;
+  text-shadow:2px 0 0 rgba(255,43,127,.75),-2px 0 0 rgba(37,242,255,.75),0 0 44px rgba(37,242,255,.28)}
+.title span{color:var(--mag);text-shadow:none}
+.title.dead{font-size:clamp(30px,6vw,52px)}
+.blurb{margin:16px 0 22px;font-size:14px;line-height:1.55;color:rgba(231,236,255,.7);max-width:46ch}
+.blurb b{color:#fff;font-weight:700}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.badge{font-family:'Chakra Petch',sans-serif;font-size:9.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(255,255,255,.16);padding:5px 9px;color:rgba(231,236,255,.8)}
+.badge.hot{border-color:var(--mag);color:var(--mag);animation:pulseB 1.6s infinite}
+@keyframes pulseB{50%{box-shadow:0 0 18px rgba(255,43,127,.5)}}
+.keys{display:grid;gap:8px;margin:0 0 26px;padding:0;list-style:none}
+.keys li{display:flex;align-items:center;gap:12px;font-size:12.5px;color:rgba(231,236,255,.78)}
+.keys li span:first-child{font-family:'Chakra Petch',sans-serif;font-size:11px;letter-spacing:.08em;
+  color:#fff;border:1px solid rgba(37,242,255,.35);background:rgba(37,242,255,.07);padding:5px 10px;min-width:114px;text-align:center}
+kbd{font-family:'Chakra Petch',sans-serif;font-size:11px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.2);
+  padding:2px 6px;color:#fff}
+.btn{pointer-events:auto;display:inline-flex;align-items:center;gap:10px;position:relative;
+  font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;text-transform:uppercase;
+  color:#03040c;background:var(--cyan);border:0;padding:15px 26px;cursor:pointer;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));
+  box-shadow:0 0 30px rgba(37,242,255,.4);transition:transform .2s ease,box-shadow .2s ease,background .2s}
+.btn:hover{transform:translateY(-3px);background:#fff;box-shadow:0 0 46px rgba(37,242,255,.75)}
+.btn:active{transform:translateY(0)}
+.btn.dead-btn{background:var(--mag);box-shadow:0 0 30px rgba(255,43,127,.45)}
+.btn.dead-btn:hover{background:#fff;box-shadow:0 0 46px rgba(255,43,127,.7)}
+.tip{margin:18px 0 0;font-size:12px;color:rgba(139,149,200,.85)}
+.final{display:flex;flex-direction:column;gap:2px;margin:0 0 18px}
+.final .value{font-size:clamp(52px,11vw,92px);color:#fff;text-shadow:0 0 40px rgba(255,43,127,.45)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:1px;background:rgba(255,255,255,.07);margin:0 0 26px}
+.stat{padding:14px 16px;background:rgba(4,6,14,.6)}
+.stat .sl{font-family:'Chakra Petch',sans-serif;font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:rgba(139,149,200,.8)}
+.stat .sv{display:block;margin-top:6px;font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:20px;font-variant-numeric:tabular-nums}
+.stat .sv.hot{color:var(--amber)}
+.record{margin:0 0 18px;font-family:'Chakra Petch',sans-serif;font-size:11px;font-weight:700;letter-spacing:.28em;
+  text-transform:uppercase;color:#03040c;background:var(--amber);padding:6px 12px;align-self:flex-start;
+  clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%);animation:pulseR .8s ease-out 2}
+@keyframes pulseR{50%{opacity:.35}}
+.record.hidden{display:none}
+.nogl{position:fixed;inset:0;z-index:70;display:grid;place-items:center;padding:30px;text-align:center}
+.nogl.hidden{display:none}
+
+@media (max-width:560px){
+  .panel-speed{min-width:118px}
+  .legend{display:none}
+  .card{padding:22px}
+  .keys li span:first-child{min-width:96px}
+}
+@media (max-height:520px){
+  .blurb,.keys{display:none}
+}
+</style>
+</head>
+<body>
+<canvas id="scene"></canvas>
+
+<div id="hud">
+  <div class="row-top">
+    <div class="panel panel-score">
+      <div class="label">score</div>
+      <div class="value big" id="scoreVal">0</div>
+      <div class="meta"><i class="dot"></i><span class="tag">distance</span><span class="meta-v" id="distVal">0 m</span></div>
+    </div>
+    <div class="group-right">
+      <div class="panel"><div class="label">best</div><div class="value" id="bestVal">0</div></div>
+      <div class="panel panel-speed">
+        <div class="label">velocity</div>
+        <div class="value" id="speedVal">0</div>
+        <div class="leds" id="leds"></div>
+      </div>
+      <div class="panel panel-combo" id="comboPanel"><div class="label">combo</div><div class="value combo-v" id="comboVal">×1</div></div>
+      <button class="icon-btn" id="muteBtn" aria-label="Toggle sound" title="Sound (M)">♪</button>
+    </div>
+  </div>
+  <div class="legend" id="legend">
+    <span class="k">←</span><span class="k">A</span><span class="sep">/</span><span class="k">→</span><span class="k">D</span>
+    <span class="ltxt">steer · tap left / right side</span>
+  </div>
+  <div id="toasts"></div>
+</div>
+
+<div id="menu" class="overlay">
+  <div class="card">
+    <div class="hazard"></div>
+    <p class="kicker">endless lane runner · no brakes</p>
+    <h1 class="title">HYPER<span>LANE</span></h1>
+    <p class="blurb">Three lanes. One cube. The road accelerates until it stops being reasonable.
+      Thread the <b>hazard blocks</b>, sweep up the <b>amber shards</b>, and keep the velocity meter pinned.</p>
+    <ul class="keys">
+      <li><span>← / A</span> shift one lane left</li>
+      <li><span>→ / D</span> shift one lane right</li>
+      <li><span>tap halves</span> touch or click left / right</li>
+    </ul>
+    <div class="badges">
+      <div class="badge">perspective chase cam</div>
+      <div class="badge hot">shards × combo</div>
+      <div class="badge">near miss bonus</div>
+    </div>
+    <button class="btn" id="startBtn">launch <span>▸</span></button>
+    <p class="tip">or press <kbd>Space</kbd></p>
+  </div>
+</div>
+
+<div id="over" class="overlay hidden">
+  <div class="card">
+    <div class="hazard"></div>
+    <p class="kicker">signal lost · impact registered</p>
+    <h2 class="title dead">RUN <span>TERMINATED</span></h2>
+    <div class="final"><span class="label">final score</span><div class="value" id="finalScore">0</div></div>
+    <div class="record hidden" id="recordBadge">new record</div>
+    <div class="stats">
+      <div class="stat"><span class="sl">distance</span><span class="sv" id="finalDist">0</span></div>
+      <div class="stat"><span class="sl">top speed</span><span class="sv" id="finalSpeed">0</span></div>
+      <div class="stat"><span class="sl">shards</span><span class="sv hot" id="finalShards">0</span></div

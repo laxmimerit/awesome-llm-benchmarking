@@ -1,0 +1,550 @@
+{
+  "nemotron": {
+    "vram_gb": 25.4,
+    "tasks": [
+      {
+        "task": "aime_digit_sum",
+        "correct": false,
+        "response": "",
+        "thinking_words": 8379,
+        "gen_tokens": 16384,
+        "gen_tps": 167.3,
+        "prompt_tokens": 72,
+        "prompt_tps": 301.7,
+        "wall_seconds": 105.4
+      },
+      {
+        "task": "modular_arithmetic",
+        "correct": true,
+        "response": "To find the last two digits of \\(3^{27}\\), we compute \\(3^{27} \\bmod 100\\).\n\nFirst, observe that:\n\\[\n3^{10} = 59049 \\equiv 49 \\pmod{100}\n\\]\nSquaring this gives:\n\\[\n3^{20} = (3^{10})^2 \\equiv 49^2 = 2401 \\equiv 1 \\pmod{100}\n\\]\n\nNow write the exponent as \\(27 = 20 + 7\\):\n\\[\n3^{27} = 3^{20} \\cdot 3^7 \\equiv 1 \\cdot 3^7 \\equiv 3^7 \\pmod{100}\n\\]\n\nCompute \\(3^7\\):\n\\[\n3^1 = 3,\\; 3^2 = 9,\\; 3^3 = 27,\\; 3^4 = 81,\\; 3^5 = 243 \\equiv 43,\\; 3^6 \\equiv 43 \\cdot 3 = 129 \\equiv 29,\\; 3^7 \\equiv 29 \\cdot 3 = 87\n\\]\n\nThus, the last two digits of \\(3^{27}\\) are **87**.\n\nAnswer: 87",
+        "thinking_words": 810,
+        "gen_tokens": 2441,
+        "gen_tps": 209.4,
+        "prompt_tokens": 40,
+        "prompt_tps": 802.8,
+        "wall_seconds": 11.9
+      },
+      {
+        "task": "expected_value",
+        "correct": true,
+        "response": "The expected number of rolls until two consecutive sixes appear can be found by setting up states based on the outcome of the previous roll. Let \\(E_0\\) be the expected additional rolls from a state where no six has just been rolled, and \\(E_1\\) be the expected additional rolls after one six has already appeared.\n\nFrom state 0:\n- With probability \\(\\frac{1}{6}\\), we roll a six and move to state 1 (using 1 roll).\n- With probability \\(\\frac{5}{6}\\), we roll something else and stay in state 0.\n\\[E_0 = \\frac{1}{6}(1 + E_1) + \\frac{5}{6}(1 + E_0)\\]\nSimplifying: \\(E_0 = 1 + \\frac{1}{6}E_1 + \\frac{5}{6}E_0\\) → \\(\\frac{1}{6}E_0 = 1 + \\frac{1}{6}E_1\\) → \\(E_0 = 6 + E_1\\).\n\nFrom state 1:\n- With probability \\(\\frac{1}{6}\\), we roll a six and finish (using 1 roll).\n- With probability \\(\\frac{5}{6}\\), we roll something else and return to state 0.\n\\[E_1 = \\frac{1}{6}(1) + \\frac{5}{6}(1 + E_0)\\]\nSimplifying: \\(E_1 = 1 + \\frac{5}{6}E_0\\).\n\nSubstitute \\(E_0 = 6 + E_1\\) into the second equation:\n\\[E_1 = 1 + \\frac{5}{6}(6 + E_1) = 1 + 5 + \\frac{5}{6}E_1 = 6 + \\frac{5}{6}E_1\\]\n\\[\\frac{1}{6}E_1 = 6 \\implies E_1 = 36\\]\nThen \\(E_0 = 6 + 36 = 42\\).\n\nThus, the expected number of rolls is 42.\n\nAnswer: 42",
+        "thinking_words": 444,
+        "gen_tokens": 1210,
+        "gen_tps": 188.4,
+        "prompt_tokens": 54,
+        "prompt_tps": 1129.4,
+        "wall_seconds": 6.7
+      },
+      {
+        "task": "combinatorics",
+        "correct": true,
+        "response": "The number of ways to tile a \\(2 \\times n\\) board with \\(1 \\times 2\\) dominoes follows the Fibonacci recurrence: if you place one vertical domino first, you reduce the problem to a \\(2 \\times (n-1)\\) board; if you place two horizontal dominoes stacked, it reduces to a \\(2 \\times (n-2)\\) board. With base cases \\(f(0)=1\\), \\(f(1)=1\\), we get:\n\n\\[\n\\begin{aligned}\nf(2) &= 2 \\\\\nf(3) &= 3 \\\\\nf(4) &= 5 \\\\\nf(5) &= 8 \\\\\nf(6) &= 13 \\\\\nf(7) &= 21 \\\\\nf(8) &= 34 \\\\\nf(9) &= 55 \\\\\nf(10) &= 89 \\\\\nf(11) &= 144 \\\\\nf(12) &= 233\n\\end{aligned}\n\\]\n\nEquivalently, \\(f(n) = F_{n+1}\\) (the \\((n+1)\\)-th Fibonacci number), so \\(f(12) = F_{13} = 233\\).\n\nAnswer: 233",
+        "thinking_words": 433,
+        "gen_tokens": 1319,
+        "gen_tps": 193.7,
+        "prompt_tokens": 54,
+        "prompt_tps": 1154.3,
+        "wall_seconds": 7.0
+      },
+      {
+        "task": "logic_grid",
+        "correct": true,
+        "response": "**Step-by-step deduction:**\n\n1. **Rahul owns the parrot** (Clue 3).  \n2. **Meera lives in Chennai** (Clue 4).  \n3. **Cat owner lives in Delhi** (Clue 5). Since Rahul has the parrot and Meera is in Chennai, the cat owner must be either Priya or Arjun. But Priya does not live in Delhi (Clue 1), so **Arjun owns the cat and lives in Delhi**.  \n4. **Dog owner lives in Mumbai** (Clue 2). Rahul has the parrot, Meera is in Chennai, so the dog owner must be **Priya**, who therefore lives in Mumbai.  \n5. The only person left without a pet assignment is **Meera**, and the only pet left is the **fish**.  \n6. The only city left unassigned is **Kolkata**, so **Rahul lives in Kolkata**.\n\nAll clues are satisfied:\n- Priya ≠ Delhi ✓ (she's in Mumbai)\n- Dog owner = Mumbai ✓ (Priya)\n- Rahul owns parrot ✓\n- Meera = Chennai ✓\n- Cat owner = Delhi ✓ (Arjun)\n- Arjun does not own the dog ✓\n\nAnswer: **Meera, Kolkata**",
+        "thinking_words": 655,
+        "gen_tokens": 1446,
+        "gen_tps": 190.2,
+        "prompt_tokens": 149,
+        "prompt_tps": 1309.8,
+        "wall_seconds": 7.9
+      },
+      {
+        "task": "code_expression_eval",
+        "correct": true,
+        "response": "```python\ndef calc(expr: str) -> float:\n    tokens = tokenize(expr)\n    parser = Parser(tokens)\n    return parser.parse()\n\n\ndef tokenize(s: str):\n    tokens = []\n    i, n = 0, len(s)\n    while i < n:\n        c = s[i]\n        if c.isspace():\n            i += 1\n            continue\n        if c in '+-*/()':\n            tokens.append(c)\n            i += 1\n        elif c.isdigit() or c == '.':\n            j = i\n            dot_cnt = 0\n            while j < n and (s[j].isdigit() or s[j] == '.'):\n                if s[j] == '.':\n                    dot_cnt += 1\n                j += 1\n            num_str = s[i:j]\n            if dot_cnt > 1:\n                raise ValueError(\"Invalid number format\")\n            tokens.append(float(num_str))\n            i = j\n        else:\n            raise ValueError(f\"Unexpected character: {c}\")\n    return tokens\n\n\nclass Parser:\n    def __init__(self, tokens):\n        self.tokens = tokens\n        self.pos = 0\n\n    def peek(self):\n        if self.pos < len(self.tokens):\n            return self.tokens[self.pos]\n        return None\n\n    def advance(self):\n        tok = self.tokens[self.pos]\n        self.pos += 1\n        return tok\n\n    def parse(self) -> float:\n        result = self._expr()\n        if self.pos != len(self.tokens):\n            raise ValueError(\"Unexpected remaining tokens\")\n        return result\n\n    def _expr(self) -> float:\n        left = self._term()\n        while self.peek() in ('+', '-'):\n            op = self.advance()\n            right = self._term()\n            if op == '+':\n                left += right\n            else:\n                left -= right\n        return left\n\n    def _term(self) -> float:\n        left = self._factor()\n        while self.peek() in ('*', '/'):\n            op = self.advance()\n            right = self._factor()\n            if op == '*':\n                left *= right\n            else:\n                left /= right  # float division\n        return left\n\n    def _factor(self) -> float:\n        if self.peek() == '-':\n            self.advance()\n            return -self._factor()\n        tok = self.advance()\n        if isinstance(tok, float):\n            return tok\n        elif tok == '(':\n            val = self._expr()\n            if self.peek() != ')':\n                raise ValueError(\"Missing ')'\")\n            self.advance()  # consume ')'\n            return val\n        else:\n            raise ValueError(f\"Unexpected token in factor: {tok}\")\n```",
+        "thinking_words": 1508,
+        "gen_tokens": 3447,
+        "gen_tps": 174.8,
+        "prompt_tokens": 74,
+        "prompt_tps": 1260.1,
+        "wall_seconds": 20.0
+      },
+      {
+        "task": "code_lis_nlogn",
+        "correct": true,
+        "response": "from bisect import bisect_left\n\ndef lis_length(nums):\n    tails = []\n    for x in nums:\n        idx = bisect_left(tails, x)\n        if idx == len(tails):\n            tails.append(x)\n        else:\n            tails[idx] = x\n    return len(tails)",
+        "thinking_words": 308,
+        "gen_tokens": 645,
+        "gen_tps": 171.2,
+        "prompt_tokens": 70,
+        "prompt_tps": 1143.1,
+        "wall_seconds": 4.0
+      },
+      {
+        "task": "code_output_prediction",
+        "correct": false,
+        "response": "The program prints exactly the following three lines:\n\n```\n[2, 2, 2]\n[1] [1, 2]\nTrue\n```\n\n**Why:**\n\n1. `[g() for g in funcs]` — The lambdas `lambda: i` capture the *variable* `i`, not its value at creation time. After `for i in range(3)` finishes, `i` is permanently `2`. All three lambdas return `2`, so the list comprehension yields `[2, 2, 2]`.\n\n2. `print(f(1), f(2))` — The function `f` uses a mutable default argument `acc=[]`, which is created once when `f` is defined.  \n   - `f(1)` appends `1` to that shared list → returns `[1]`.  \n   - `f(2)` appends `2` to the *same* list (now `[1, 2]`) → returns `[1, 2]`.  \n   Python's `print` with a comma separator outputs them as `[1] [1, 2]`.\n\n3. `print(a is f(4))` — Since `a = f(3)` returns the exact same list object that the default `acc` refers to, and `f(4)` also uses and modifies that identical list, `a is f(4)` compares the same object with itself → `True`.",
+        "thinking_words": 1501,
+        "gen_tokens": 3263,
+        "gen_tps": 166.8,
+        "prompt_tokens": 102,
+        "prompt_tps": 1771.6,
+        "wall_seconds": 19.8
+      },
+      {
+        "task": "code_subtle_bugfix",
+        "correct": true,
+        "response": "```python\ndef add_item(item, inventory=None):\n    if inventory is None:\n        inventory = {}\n    if item in inventory:\n        inventory[item] += 1\n    else:\n        inventory[item] = 1\n    return inventory\n```",
+        "thinking_words": 304,
+        "gen_tokens": 569,
+        "gen_tps": 198.6,
+        "prompt_tokens": 95,
+        "prompt_tps": 1582.8,
+        "wall_seconds": 3.1
+      },
+      {
+        "task": "instruction_brutal",
+        "correct": true,
+        "response": "A vast tide rolls mighty ocean waves gently. Blue whales chant haunting songs in midnight depths. Coastal currents carry countless sea creatures daily now. Deep darkness hides mysterious coral ocean floors below. Endless blue expanse soothes weary sailors nightly now.",
+        "thinking_words": 1964,
+        "gen_tokens": 3803,
+        "gen_tps": 184.3,
+        "prompt_tokens": 79,
+        "prompt_tps": 1492.9,
+        "wall_seconds": 20.9
+      },
+      {
+        "task": "json_hard",
+        "correct": true,
+        "response": "{\n  \"order_id\": 4821,\n  \"date\": \"2026-03-05\",\n  \"customer\": {\n    \"name\": \"Rohan Sharma\",\n    \"email\": \"rohan.s@example.com\"\n  },\n  \"items\": [\n    {\n      \"name\": \"Falcon X1 drone\",\n      \"quantity\": 2,\n      \"unit_price\": 45000\n    },\n    {\n      \"name\": \"spare battery\",\n      \"quantity\": 1,\n      \"unit_price\": 3500\n    }\n  ],\n  \"shipping_city\": \"Bengaluru\",\n  \"total\": 93500\n}",
+        "thinking_words": 405,
+        "gen_tokens": 1180,
+        "gen_tps": 203.2,
+        "prompt_tokens": 180,
+        "prompt_tps": 2839.5,
+        "wall_seconds": 6.1
+      },
+      {
+        "task": "multihop_needle_64k",
+        "correct": true,
+        "response": "To calculate the storage room code, I need to use two specific notes from the list:\n\nNote A states: \"Ravi's locker number at the club is 214.\"\n\nNote B states: \"The storage room code equals Ravi's locker number multiplied by 3, plus 7.\"\n\nFollowing these instructions:\n- Start with Ravi's locker number: 214\n- Multiply by 3: 214 × 3 = 642\n- Add 7: 642 + 7 = 649\n\nAnswer: 649",
+        "thinking_words": 154,
+        "gen_tokens": 376,
+        "gen_tps": 184.7,
+        "prompt_tokens": 43669,
+        "prompt_tps": 8748.3,
+        "wall_seconds": 7.3
+      }
+    ]
+  },
+  "glimmer": {
+    "vram_gb": 16.9,
+    "tasks": [
+      {
+        "task": "aime_digit_sum",
+        "correct": true,
+        "response": "The number is  \n\n\\[\nN=\\sum_{k=1}^{321}(10^{k}-1)=\\frac{10^{322}-10}{9}-321\n   =111\\ldots110-321 .\n\\]\n\nFor \\(n\\ge 4\\)\n\n\\[\n10\\,R_{n}=A\\cdot10^{4}+1110,\\qquad \nA=R_{\\,n-3}=11\\ldots1\\;(n-3\\text{ ones}),\n\\]\n\nso with \\(b=1110-n>0\\)\n\n\\[\nN=A\\cdot10^{4}+b .\n\\]\n\nHere \\(n=321\\),\n\n\\[\nb=1110-321=789,\\qquad A=R_{318}\n\\]\n\nhence \\(N\\) is \\(318\\) ones followed by the four-digit block \\(0789\\).\nThe digit sum is therefore\n\n\\[\n318\\cdot1+0+7+8+9 = 318+24 = 342 .\n\\]\n\nAnswer: 342",
+        "thinking_words": 3035,
+        "gen_tokens": 5698,
+        "gen_tps": 62.7,
+        "prompt_tokens": 104,
+        "prompt_tps": 801.4,
+        "wall_seconds": 101.2
+      },
+      {
+        "task": "modular_arithmetic",
+        "correct": true,
+        "response": "3^20 ≡ 1 (mod 100), so\n3^27 = 3^20 · 3^7 ≡ 1 · 3^7 (mod 100)\n3^7 = 2187 ≡ 87 (mod 100)\n\nAnswer: 87",
+        "thinking_words": 202,
+        "gen_tokens": 607,
+        "gen_tps": 20.6,
+        "prompt_tokens": 78,
+        "prompt_tps": 258.3,
+        "wall_seconds": 30.1
+      },
+      {
+        "task": "expected_value",
+        "correct": true,
+        "response": "For a pattern of two consecutive successes with success probability $p$\n\nLet $E_0$ be the expected remaining rolls from no current streak and $E_1$ from a current streak of one six.\n\n$E_1 = 1 + (1-p)E_0 + p\\cdot 0$\n$E_0 = 1 + pE_1 + (1-p)E_0$\n\nHence $pE_0 = 1 + pE_1$ and $E_0 = 1/p + E_1$.\n\nSo $E_0 = 1/p + 1 + (1-p)E_0$, i.e. $pE_0 = 1 + 1/p$\n\n$E_0 = \\frac{1}{p^{2}}+\\frac{1}{p}= \\frac{1+p}{p^{2}}$.\n\nFor a six $p=1/6$,\n\n$E_0 = 36 + 6 = 42$ rolls.\n\nAnswer: 42",
+        "thinking_words": 600,
+        "gen_tokens": 1181,
+        "gen_tps": 26.8,
+        "prompt_tokens": 93,
+        "prompt_tps": 313.4,
+        "wall_seconds": 44.7
+      },
+      {
+        "task": "combinatorics",
+        "correct": true,
+        "response": "The number of tilings $a_n$ of a $2\\times n$ board satisfies\n$a_n = a_{n-1}+a_{n-2}$ with $a_0=1,\\;a_1=1$.\n\n$a_2=2,\\;a_3=3,\\;a_4=5,\\;a_5=8,\\;a_6=13,\\;a_7=21,\\;a_8=34,\\;a_9=55,\\;a_{10}=89,\\;a_{11}=144,\\;a_{12}=233$.\n\nAnswer: 233",
+        "thinking_words": 179,
+        "gen_tokens": 505,
+        "gen_tps": 59.8,
+        "prompt_tokens": 91,
+        "prompt_tps": 396.3,
+        "wall_seconds": 9.0
+      },
+      {
+        "task": "logic_grid",
+        "correct": true,
+        "response": "Priya ≠ Delhi, Rahul = parrot, Meera = Chennai\nCat owner = Delhi, Dog owner = Mumbai\n\nMeera lives in Chennai so she cannot be cat (Delhi) or dog (Mumbai) or parrot (Rahul).  \n→ Meera owns fish.\n\nArjun does not own the dog and the parrot is Rahul’s, the fish is Meera’s.  \n→ Arjun owns cat. Cat owner lives in Delhi → Arjun lives in Delhi.\n\nDog owner lives in Mumbai. The remaining pet for Priya is dog.  \n→ Priya owns dog and lives in Mumbai.\n\nCities used: Meera Chennai, Arjun Delhi, Priya Mumbai → Rahul lives in Kolkata.\n\nAnswer: Meera, Kolkata",
+        "thinking_words": 556,
+        "gen_tokens": 1040,
+        "gen_tps": 72.6,
+        "prompt_tokens": 184,
+        "prompt_tps": 2414.6,
+        "wall_seconds": 14.7
+      },
+      {
+        "task": "code_expression_eval",
+        "correct": true,
+        "response": "```python\ndef calc(expr):\n    s = expr.replace(' ', '')\n    n = len(s)\n    i = 0\n\n    def parse_expr():\n        nonlocal i\n        val = parse_term()\n        while i < n and s[i] in '+-':\n            op = s[i]\n            i += 1\n            rhs = parse_term()\n            val = val + rhs if op == '+' else val - rhs\n        return val\n\n    def parse_term():\n        nonlocal i\n        val = parse_factor()\n        while i < n and s[i] in '*/':\n            op = s[i]\n            i += 1\n            rhs = parse_factor()\n            val = val * rhs if op == '*' else val / rhs\n        return val\n\n    def parse_factor():\n        nonlocal i\n        if i < n and s[i] == '-':\n            i += 1\n            return -parse_factor()\n        if i < n and s[i] == '+':\n            i += 1\n            return parse_factor()\n        if i < n and s[i] == '(':\n            i += 1\n            val = parse_expr()\n            if i < n and s[i] == ')':\n                i += 1\n            return val\n        start = i\n        dot = False\n        while i < n and (s[i].isdigit() or s[i] == '.'):\n            if s[i] == '.':\n                if dot:\n                    break\n                dot = True\n            i += 1\n        return float(s[start:i])\n\n    return parse_expr()\n```",
+        "thinking_words": 725,
+        "gen_tokens": 1547,
+        "gen_tps": 70.5,
+        "prompt_tokens": 110,
+        "prompt_tps": 1835.3,
+        "wall_seconds": 22.3
+      },
+      {
+        "task": "code_lis_nlogn",
+        "correct": true,
+        "response": "import bisect\n\ndef lis_length(nums):\n    tails = []\n    bl = bisect.bisect_left\n    for x in nums:\n        i = bl(tails, x)\n        if i == len(tails):\n            tails.append(x)\n        else:\n            tails[i] = x\n    return len(tails)\n",
+        "thinking_words": 270,
+        "gen_tokens": 502,
+        "gen_tps": 58.2,
+        "prompt_tokens": 105,
+        "prompt_tps": 1218.6,
+        "wall_seconds": 9.0
+      },
+      {
+        "task": "code_output_prediction",
+        "correct": true,
+        "response": "The three `print` calls produce\n\n```\n[2, 2, 2]\n[1, 2] [1, 2]\nTrue\n```\n\n* `[g() for g in funcs]` is `[2, 2, 2]` – the lambdas close over `i` late, so after the loop `i == 2` for all of them.\n* `f` uses a mutable default argument. The same list object is reused, and because the arguments to `print` are evaluated left-to-right the first call mutates the list that the second call then sees:\n\n```\nf(1) → [1]   # acc becomes [1]\nf(2) → [1, 2] # acc is mutated in place\n```\n\nso both arguments printed are the same final object `[1, 2]`.\n\n* `a = f(3)` and `f(4)` both operate on that one default list, so `a is f(4)` is `True`.",
+        "thinking_words": 947,
+        "gen_tokens": 1907,
+        "gen_tps": 27.0,
+        "prompt_tokens": 141,
+        "prompt_tps": 1449.2,
+        "wall_seconds": 71.0
+      },
+      {
+        "task": "code_subtle_bugfix",
+        "correct": true,
+        "response": "```python\ndef add_item(item, inventory=None):\n    if inventory is None:\n        inventory = {}\n    if item in inventory:\n        inventory[item] += 1\n    else:\n        inventory[item] = 1\n    return inventory\n```",
+        "thinking_words": 191,
+        "gen_tokens": 317,
+        "gen_tps": 27.0,
+        "prompt_tokens": 135,
+        "prompt_tps": 466.1,
+        "wall_seconds": 12.3
+      },
+      {
+        "task": "instruction_brutal",
+        "correct": true,
+        "response": "A vast blue ocean holds countless hidden mysteries.\nBeneath waves, silent creatures drift endlessly through currents.\nCurrents carry nutrients across the deep ocean floor.\nDeep trenches swallow light, preserving ancient secrets below.\nEndless tides shape coastlines, reminding us of time.",
+        "thinking_words": 446,
+        "gen_tokens": 853,
+        "gen_tps": 28.6,
+        "prompt_tokens": 119,
+        "prompt_tps": 416.1,
+        "wall_seconds": 30.4
+      },
+      {
+        "task": "json_hard",
+        "correct": true,
+        "response": "{\"order_id\": 4821, \"date\": \"2026-03-05\", \"customer\": {\"name\": \"Rohan Sharma\", \"email\": \"rohan.s@example.com\"}, \"items\": [{\"name\": \"Falcon X1 drone\", \"quantity\": 2, \"unit_price\": 45000}, {\"name\": \"spare battery\", \"quantity\": 1, \"unit_price\": 3500}], \"shipping_city\": \"Bengaluru\", \"total\": 93500}\n",
+        "thinking_words": 285,
+        "gen_tokens": 733,
+        "gen_tps": 28.2,
+        "prompt_tokens": 200,
+        "prompt_tps": 731.3,
+        "wall_seconds": 26.5
+      },
+      {
+        "task": "multihop_needle_64k",
+        "correct": true,
+        "response": "Answer: 649",
+        "thinking_words": 262,
+        "gen_tokens": 379,
+        "gen_tps": 26.7,
+        "prompt_tokens": 38922,
+        "prompt_tps": 1757.4,
+        "wall_seconds": 36.9
+      }
+    ]
+  },
+  "qwen": {
+    "vram_gb": 20.6,
+    "tasks": [
+      {
+        "task": "aime_digit_sum",
+        "correct": false,
+        "response": "",
+        "thinking_words": 6755,
+        "gen_tokens": 16384,
+        "gen_tps": 38.1,
+        "prompt_tokens": 65,
+        "prompt_tps": 147.5,
+        "wall_seconds": 450.5
+      },
+      {
+        "task": "modular_arithmetic",
+        "correct": true,
+        "response": "To find the last two digits of $3^{27}$, we need to calculate $3^{27} \\pmod{100}$. We can do this by computing powers of 3 modulo 100 until we find a pattern or a convenient power that simplifies the calculation.\n\n1.  **Calculate small powers of 3 modulo 100:**\n    *   $3^1 = 3$\n    *   $3^2 = 9$\n    *   $3^3 = 27$\n    *   $3^4 = 81$\n    *   $3^5 = 243 \\equiv 43 \\pmod{100}$\n\n2.  **Use these powers to find higher powers:**\n    We can square the result of $3^5$ to get $3^{10}$:\n    *   $3^{10} = (3^5)^2 \\equiv 43^2 \\pmod{100}$\n    *   $43^2 = 1849$\n    *   $1849 \\equiv 49 \\pmod{100}$\n\n    Now, square the result of $3^{10}$ to get $3^{20}$:\n    *   $3^{20} = (3^{10})^2 \\equiv 49^2 \\pmod{100}$\n    *   $49^2 = 2401$\n    *   $2401 \\equiv 1 \\pmod{100}$\n\n3.  **Simplify the original expression:**\n    We have found that $3^{20} \\equiv 1 \\pmod{100}$. We can now break down $3^{27}$ as follows:\n    $$3^{27} = 3^{20} \\cdot 3^7$$\n    Substituting the modular equivalence we found:\n    $$3^{27} \\equiv 1 \\cdot 3^7 \\pmod{100}$$\n    $$3^{27} \\equiv 3^7 \\pmod{100}$$\n\n4.  **Calculate $3^7 \\pmod{100}$:**\n    We can compute $3^7$ by multiplying $3^5$ (which we know is congruent to 43) by $3^2$ (which is 9), or by continuing the sequence from step 1.\n    Using $3^5 \\equiv 43$:\n    *   $3^6 = 3^5 \\cdot 3 \\equiv 43 \\cdot 3 = 129 \\equiv 29 \\pmod{100}$\n    *   $3^7 = 3^6 \\cdot 3 \\equiv 29 \\cdot 3 = 87 \\pmod{100}$\n\n    Alternatively, calculating $3^7$ directly:\n    $3^7 = 2187$. The last two digits are 87.\n\nTherefore, the last two digits of $3^{27}$ are 87.\n\nAnswer: 87",
+        "thinking_words": 1643,
+        "gen_tokens": 5624,
+        "gen_tps": 75.9,
+        "prompt_tokens": 33,
+        "prompt_tps": 284.2,
+        "wall_seconds": 74.8
+      },
+      {
+        "task": "expected_value",
+        "correct": true,
+        "response": "To find the expected number of rolls to see two sixes in a row, we can use a system of equations based on the current progress toward the goal.\n\nLet $x$ be the expected number of additional rolls needed to reach two consecutive sixes starting from scratch (or after rolling a non-six).\nLet $y$ be the expected number of additional rolls needed given that we have just rolled one six.\n\n**Step 1: Set up the equations**\n\n1.  **From state $x$ (no progress):**\n    We roll the die once.\n    *   With probability $\\frac{1}{6}$, we roll a 6. We now have one consecutive six, so we move to state $y$.\n    *   With probability $\\frac{5}{6}$, we roll a number other than 6. We remain in state $x$ (no progress).\n    \n    The equation for the expected value is:\n    $$x = 1 + \\frac{1}{6}y + \\frac{5}{6}x$$\n\n2.  **From state $y$ (one consecutive six):**\n    We roll the die once.\n    *   With probability $\\frac{1}{6}$, we roll a 6. We have achieved two consecutive sixes, so we are done (0 additional rolls needed).\n    *   With probability $\\frac{5}{6}$, we roll a number other than 6. The streak is broken, and we go back to state $x$.\n    \n    The equation for the expected value is:\n    $$y = 1 + \\frac{1}{6}(0) + \\frac{5}{6}x$$\n    $$y = 1 + \\frac{5}{6}x$$\n\n**Step 2: Solve the system of equations**\n\nFirst, simplify the equation for $x$:\n$$x - \\frac{5}{6}x = 1 + \\frac{1}{6}y$$\n$$\\frac{1}{6}x = 1 + \\frac{1}{6}y$$\nMultiply by 6:\n$$x = 6 + y$$\n\nNow, substitute this expression for $x$ into the equation for $y$:\n$$y = 1 + \\frac{5}{6}(6 + y)$$\n$$y = 1 + 5 + \\frac{5}{6}y$$\n$$y = 6 + \\frac{5}{6}y$$\n\nSubtract $\\frac{5}{6}y$ from both sides:\n$$\\frac{1}{6}y = 6$$\n$$y = 36$$\n\nFinally, substitute $y$ back into the equation for $x$:\n$$x = 6 + 36$$\n$$x = 42$$\n\nThe expected number of rolls starting from scratch is 42.\n\nAnswer: 42",
+        "thinking_words": 3375,
+        "gen_tokens": 7864,
+        "gen_tps": 74.4,
+        "prompt_tokens": 47,
+        "prompt_tps": 465.7,
+        "wall_seconds": 106.2
+      },
+      {
+        "task": "combinatorics",
+        "correct": true,
+        "response": "To find the number of ways to tile a $2 \\times 12$ board with $1 \\times 2$ dominoes, we can use a recursive approach. Let $f(n)$ be the number of ways to tile a $2 \\times n$ board.\n\nConsider the rightmost end of the board (column $n$). There are two possible ways to cover this area:\n1.  **Vertical Domino:** Place one vertical domino in the last column. This leaves a $2 \\times (n-1)$ board to be tiled. The number of ways to do this is $f(n-1)$.\n2.  **Horizontal Dominoes:** Place two horizontal dominoes stacked on top of each other to cover the last two columns (columns $n-1$ and $n$). This leaves a $2 \\times (n-2)$ board to be tiled. The number of ways to do this is $f(n-2)$.\n\nThus, we have the recurrence relation:\n$$f(n) = f(n-1) + f(n-2)$$\n\nNow, let's determine the base cases:\n*   **$n=1$:** A $2 \\times 1$ board can only be tiled by one vertical domino. So, $f(1) = 1$.\n*   **$n=2$:** A $2 \\times 2$ board can be tiled by two vertical dominoes or two horizontal dominoes stacked. So, $f(2) = 2$.\n\nThis sequence follows the Fibonacci numbers (shifted by one index). We can calculate the values up to $n=12$:\n\n*   $f(1) = 1$\n*   $f(2) = 2$\n*   $f(3) = f(2) + f(1) = 2 + 1 = 3$\n*   $f(4) = f(3) + f(2) = 3 + 2 = 5$\n*   $f(5) = f(4) + f(3) = 5 + 3 = 8$\n*   $f(6) = f(5) + f(4) = 8 + 5 = 13$\n*   $f(7) = f(6) + f(5) = 13 + 8 = 21$\n*   $f(8) = f(7) + f(6) = 21 + 13 = 34$\n*   $f(9) = f(8) + f(7) = 34 + 21 = 55$\n*   $f(10) = f(9) + f(8) = 55 + 34 = 89$\n*   $f(11) = f(10) + f(9) = 89 + 55 = 144$\n*   $f(12) = f(11) + f(10) = 144 + 89 = 233$\n\nTherefore, there are 233 different ways to tile the board.\n\nAnswer: 233",
+        "thinking_words": 4173,
+        "gen_tokens": 11418,
+        "gen_tps": 41.2,
+        "prompt_tokens": 46,
+        "prompt_tps": 382.1,
+        "wall_seconds": 277.7
+      },
+      {
+        "task": "logic_grid",
+        "correct": true,
+        "response": "Let's solve this step-by-step using a logical grid:\n\n**Given:**\n- People: Priya, Rahul, Meera, Arjun\n- Pets: Cat, Dog, Parrot, Fish\n- Cities: Delhi, Mumbai, Chennai, Kolkata\n\n**Clues & Deductions:**\n1. **Meera lives in Chennai.** (Clue 4)\n2. **Dog owner = Mumbai** & **Cat owner = Delhi** (Clues 2 & 5)\n   - This means the person in Mumbai owns the dog, and the person in Delhi owns the cat.\n3. **Rahul owns the parrot.** (Clue 3)\n   - Since Delhi has the cat and Mumbai has the dog, Rahul cannot live in Delhi or Mumbai.\n   - Meera already lives in Chennai, so Rahul must live in the remaining city: **Kolkata**.\n4. **Priya does not live in Delhi.** (Clue 1)\n   - The only cities left for Priya and Arjun are Delhi and Mumbai.\n   - Since Priya isn't in Delhi, she must be in **Mumbai**. Therefore, Priya owns the **dog** (from Clue 2).\n5. This leaves **Arjun** for **Delhi**, meaning he owns the **cat** (from Clue 5). This also satisfies Clue 6 (Arjun does not own the dog).\n6. The only person left without a pet is **Meera**, so she must own the **fish**.\n\n**Final Assignments:**\n- Priya: Mumbai, Dog\n- Rahul: Kolkata, Parrot\n- Meera: Chennai, Fish\n- Arjun: Delhi, Cat\n\nAnswer: Meera, Kolkata",
+        "thinking_words": 724,
+        "gen_tokens": 1686,
+        "gen_tps": 73.0,
+        "prompt_tokens": 145,
+        "prompt_tps": 1235.3,
+        "wall_seconds": 23.8
+      },
+      {
+        "task": "code_expression_eval",
+        "correct": false,
+        "response": "```python\ndef calc(expr):\n    pos = 0\n    n = len(expr)\n\n    def skip_spaces():\n        nonlocal pos\n        while pos < n and expr[pos] == ' ':\n            pos += 1\n\n    def parse_expr():\n        res = parse_term()\n        while pos < n and expr[pos] in ('+', '-'):\n            op = expr[pos]\n            pos += 1\n            skip_spaces()\n            right = parse_term()\n            res = res + right if op == '+' else res - right\n        return res\n\n    def parse_term():\n        res = parse_factor()\n        while pos < n and expr[pos] in ('*', '/'):\n            op = expr[pos]\n            pos += 1\n            skip_spaces()\n            right = parse_factor()\n            res = res * right if op == '*' else res / right\n        return res\n\n    def parse_factor():\n        if pos < n and expr[pos] in ('+', '-'):\n            op = expr[pos]\n            pos += 1\n            skip_spaces()\n            val = parse_factor()\n            return val if op == '+' else -val\n        return parse_atom()\n\n    def parse_atom():\n        nonlocal pos\n        skip_spaces()\n        if pos >= n:\n            raise ValueError(\"Unexpected end of expression\")\n        if expr[pos] == '(':\n            pos += 1\n            res = parse_expr()\n            skip_spaces()\n            if pos < n and expr[pos] == ')':\n                pos += 1\n            else:\n                raise ValueError(\"Missing closing parenthesis\")\n            return res\n        start = pos\n        while pos < n and (expr[pos].isdigit() or expr[pos] == '.'):\n            pos += 1\n        if pos == start:\n            raise ValueError(f\"Unexpected character at position {pos}: {expr[pos]}\")\n        return float(expr[start:pos])\n\n    res = parse_expr()\n    skip_spaces()\n    if pos < n:\n        raise ValueError(f\"Unexpected character at position {pos}: {expr[pos]}\")\n    return res\n```",
+        "thinking_words": 2770,
+        "gen_tokens": 5902,
+        "gen_tps": 73.0,
+        "prompt_tokens": 66,
+        "prompt_tps": 688.1,
+        "wall_seconds": 81.4
+      },
+      {
+        "task": "code_lis_nlogn",
+        "correct": true,
+        "response": "```python\nimport bisect\n\ndef lis_length(nums):\n    tails = []\n    for num in nums:\n        idx = bisect.bisect_left(tails, num)\n        if idx < len(tails):\n            tails[idx] = num\n        else:\n            tails.append(num)\n    return len(tails)\n```",
+        "thinking_words": 656,
+        "gen_tokens": 1392,
+        "gen_tps": 69.1,
+        "prompt_tokens": 64,
+        "prompt_tps": 621.1,
+        "wall_seconds": 20.7
+      },
+      {
+        "task": "code_output_prediction",
+        "correct": false,
+        "response": "Here is the exact output of the program (assuming Python 3):\n\n```text\n[2, 2, 2]\n[1] [1, 2]\nTrue\n```\n\n### Explanation of the behavior:\n\n1.  **`[2, 2, 2]`**: This is caused by **late binding** in closures. The lambda functions inside the loop do not capture the *value* of `i` at the time they are created; instead, they capture a reference to the variable `i`. By the time the lambdas are called (in the list comprehension), the loop has finished, and `i` holds its final value, which is `2`.\n2.  **`[1] [1, 2]`**: This is caused by **mutable default arguments**. The list `acc` in `def f(x, acc=[])` is created only once when the function is defined. It persists across calls.\n    *   `f(1)` appends `1` to the shared list (making it `[1]`) and returns it.\n    *   `f(2)` appends `2` to that *same* existing list (making it `[1, 2]`) and returns it.\n3.  **`True`**: This checks object identity (`is`). Since `acc` is a shared mutable default argument, every call to `f()` (without passing an explicit list) modifies and returns the exact same list object in memory. Therefore, `a` (which holds the reference returned by `f(3)`) is the same object as the one returned by `f(4)`.",
+        "thinking_words": 2598,
+        "gen_tokens": 5773,
+        "gen_tps": 72.2,
+        "prompt_tokens": 102,
+        "prompt_tps": 893.3,
+        "wall_seconds": 80.5
+      },
+      {
+        "task": "code_subtle_bugfix",
+        "correct": false,
+        "response": "",
+        "thinking_words": 8367,
+        "gen_tokens": 16384,
+        "gen_tps": 69.2,
+        "prompt_tokens": 92,
+        "prompt_tps": 834.2,
+        "wall_seconds": 237.4
+      },
+      {
+        "task": "instruction_brutal",
+        "correct": true,
+        "response": "A vast blue expanse covers most of Earth. Big waves crash against the rocky shore daily. Colorful coral reefs teem with diverse marine life. Deep currents flow silently beneath the surface layers. Endless tides rhythmically pull water toward the land.",
+        "thinking_words": 574,
+        "gen_tokens": 1235,
+        "gen_tps": 71.6,
+        "prompt_tokens": 73,
+        "prompt_tps": 612.8,
+        "wall_seconds": 18.2
+      },
+      {
+        "task": "json_hard",
+        "correct": true,
+        "response": "{\n  \"order_id\": 4821,\n  \"date\": \"2026-03-05\",\n  \"customer\": {\n    \"name\": \"Rohan Sharma\",\n    \"email\": \"rohan.s@example.com\"\n  },\n  \"items\": [\n    {\n      \"name\": \"Falcon X1 drone\",\n      \"quantity\": 2,\n      \"unit_price\": 45000\n    },\n    {\n      \"name\": \"spare battery\",\n      \"quantity\": 1,\n      \"unit_price\": 3500\n    }\n  ],\n  \"shipping_city\": \"Bengaluru\",\n  \"total\": 93500\n}",
+        "thinking_words": 749,
+        "gen_tokens": 2110,
+        "gen_tps": 66.3,
+        "prompt_tokens": 172,
+        "prompt_tps": 1296.6,
+        "wall_seconds": 32.4
+      },
+      {
+        "task": "multihop_needle_64k",
+        "correct": true,
+        "response": "To find the storage room code, we need to locate the two specific notes hidden among the repetitive community updates:\n\n1. **Note A** states: `Ravi's locker number at the club is 214.`\n2. **Note B** states: `The storage room code equals Ravi's locker number multiplied by 3, plus 7.`\n\nNow, perform the calculation:\n- Multiply Ravi's locker number by 3: `214 × 3 = 642`\n- Add 7 to the result: `642 + 7 = 649`\n\nAnswer: 649",
+        "thinking_words": 288,
+        "gen_tokens": 649,
+        "gen_tps": 59.6,
+        "prompt_tokens": 45443,
+        "prompt_tps": 2849.1,
+        "wall_seconds": 27.4
+      }
+    ]
+  },
+  "gemma": {
+    "vram_gb": 17.7,
+    "tasks": [
+      {
+        "task": "aime_digit_sum",
+        "correct": true,
+        "response": "To find the sum of the digits of $N$, we first express each term in the series as a power of 10 minus 1:\n$N = (10^1 - 1) + (10^2 - 1) + (10^3 - 1) + \\dots + (10^{321} - 1)$\n\nWe can rewrite this sum as:\n$N = \\left( \\sum_{k=1}^{321} 10^k \\right) - \\left( \\sum_{k=1}^{321} 1 \\right)$\nThe first part of the expression is a geometric series:\n$\\sum_{k=1}^{321} 10^k = 10 + 100 + 1000 + \\dots + 10^{321}$\nThis sum results in a number consisting of 321 ones followed by one zero:\n$S_{321} = \\underbrace{11\\dots1}_{321}0$\nThe second part of the expression is simply the count of terms:\n$\\sum_{k=1}^{321} 1 = 321$\n\nNow, we subtract 321 from $S_{321}$:\n$N = \\underbrace{11\\dots1}_{321}0 - 321$\nTo find the digits of $N$, let's perform the subtraction carefully. The digits of $S_{321}$ are $d_{321}, d_{320}, \\dots, d_1, d_0$, where $d_i = 1$ for $i=1, \\dots, 321$ and $d_0 = 0$.\nSubtracting 321:\n- For the units digit ($d_0$): $0 - 1 = 9$, with a borrow from $d_1$.\n- For the tens digit ($d_1$): $(1 - 1) - 2 = 8$, with a borrow from $d_2$.\n- For the hundreds digit ($d_2$): $(1 - 1) - 3 = 7$, with a borrow from $d_3$.\n- For the thousands digit ($d_3$): $(1 - 1) = 0$.\n- For all other digits ($d_i$ where $i \\ge 4$): The digits remain 1.\n\nThe resulting digits of $N$ are:\n- A sequence of ones from $d_{321}$ down to $d_4$. The number of these digits is $321 - 4 + 1 = 318$.\n- The digit $d_3 = 0$.\n- The digit $d_2 = 7$.\n- The digit $d_1 = 8$.\n- The digit $d_0 = 9$.\n\nThe sum of the digits of $N$ is:\nSum $= (318 \\times 1) + 0 + 7 + 8 + 9$\nSum $= 318 + 24$\nSum $= 342$\n\nAnswer: 342",
+        "thinking_words": 4790,
+        "gen_tokens": 14753,
+        "gen_tps": 187.2,
+        "prompt_tokens": 72,
+        "prompt_tps": 16.5,
+        "wall_seconds": 96.6
+      },
+      {
+        "task": "modular_arithmetic",
+        "correct": true,
+        "response": "To find the last two digits of $3^{27}$, we need to calculate $3^{27} \\pmod{100}$.\n\nFirst, let's use Euler's Totient Theorem. The totient function $\\phi(100)$ is calculated as:\n$$\\phi(100) = 100 \\left(1 - \\frac{1}{2}\\right) \\left(1 - \\frac{1}{5}\\right) = 100 \\cdot \\frac{1}{2} \\cdot \\frac{4}{5} = 40$$\nEuler's Theorem states that if $\\gcd(a, m) = 1$, then $a^{\\phi(m)} \\equiv 1 \\pmod{m}$. Since $\\gcd(3, 100) = 1$, we have:\n$$3^{40} \\equiv 1 \\pmod{100}$$\n\nHowever, the exponent 27 is less than 40. Let's look for a smaller period by calculating powers of 3 modulo 100:\n$3^1 = 3$\n$3^2 = 9$\n$3^3 = 27$\n$3^4 = 81$\n$3^5 = 243 \\equiv 43 \\pmod{100}$\n$3^{10} = (3^5)^2 \\equiv 43^2 = 1849 \\equiv 49 \\pmod{100}$\n$3^{20} = (3^{10})^2 \\equiv 49^2 = 2401 \\equiv 1 \\pmod{100}$\n\nSince $3^{20} \\equiv 1 \\pmod{100}$, the powers of 3 modulo 100 repeat every 20. We can simplify the exponent:\n$$3^{27} = 3^{20} \\cdot 3^7 \\equiv 1 \\cdot 3^7 \\pmod{100}$$\n\nNow, we calculate $3^7 \\pmod{100}$:\n$3^1 = 3$\n$3^2 = 9$\n$3^3 = 27$\n$3^4 = 81$\n$3^5 = 243 \\equiv 43 \\pmod{100}$\n$3^6 = 43 \\cdot 3 = 129 \\equiv 29 \\pmod{100}$\n$3^7 = 29 \\cdot 3 = 87 \\pmod{100}$\n\nAlternatively, we can calculate $3^7$ as:\n$3^7 = 3^4 \\cdot 3^3 = 81 \\cdot 27$\n$81 \\cdot 27 = (80 + 1)(20 + 7) = 1600 + 560 + 20 + 7 = 2187$\n$2187 \\equiv 87 \\pmod{100}$\n\nThe last two digits of $3^{27}$ are 87.\n\nAnswer: 87",
+        "thinking_words": 1544,
+        "gen_tokens": 5703,
+        "gen_tps": 211.7,
+        "prompt_tokens": 40,
+        "prompt_tps": 1120.5,
+        "wall_seconds": 27.5
+      },
+      {
+        "task": "expected_value",
+        "correct": true,
+        "response": "To find the expected number of rolls until we see two sixes in a row, we can use the method of conditional expectation or a Markov chain approach. Let $p$ be the probability of rolling a six, so $p = \\frac{1}{6}$, and let $q = 1 - p = \\frac{5}{6}$ be the probability of not rolling a six.\n\nWe define the following states:\n- State 0: We have not just rolled a six (this includes the starting state).\n- State 1: We have just rolled one six.\n- State 2: We have just rolled two sixes in a row (the terminal state).\n\nLet $E_0$ be the expected number of additional rolls needed to reach State 2, starting from State 0.\nLet $E_1$ be the expected number of additional rolls needed to reach State 2, starting from State 1.\n\nFrom State 0:\n- With probability $p$, we roll a six and move to State 1. The number of rolls increases by 1.\n- With probability $q$, we roll something other than a six and stay in State 0. The number of rolls increases by 1.\nSo, the equation for $E_0$ is:\n$$E_0 = 1 + p E_1 + q E_0$$\n\nFrom State 1:\n- With probability $p$, we roll a six and move to State 2 (the process ends). The number of rolls increases by 1.\n- With probability $q$, we roll something other than a six and return to State 0. The number of rolls increases by 1.\nSo, the equation for $E_1$ is:\n$$E_1 = 1 + p(0) + q E_0 = 1 + q E_0$$\n\nNow we have a system of two linear equations:\n1) $E_0 = 1 + \\frac{1}{6} E_1 + \\frac{5}{6} E_0$\n2) $E_1 = 1 + \\frac{5}{6} E_0$\n\nFrom equation (1), we can simplify:\n$$\\frac{1}{6} E_0 = 1 + \\frac{1}{6} E_1$$\nMultiplying by 6, we get:\n$$E_0 = 6 + E_1$$\n\nSubstitute $E_1$ from equation (2) into this result:\n$$E_0 = 6 + (1 + \\frac{5}{6} E_0)$$\n$$E_0 = 7 + \\frac{5}{6} E_0$$\n$$\\frac{1}{6} E_0 = 7$$\n$$E_0 = 42$$\n\nAlternatively, using the general formula for a pattern of $k$ identical outcomes with probability $p$:\n$$E = \\sum_{i=1}^k \\left(\\frac{1}{p}\\right)^i = \\frac{1}{p} + \\frac{1}{p^2} + \\dots + \\frac{1}{p^k}$$\nFor $k=2$ and $p=\\frac{1}{6}$:\n$$E = 6^1 + 6^2 = 6 + 36 = 42$$\n\nAnswer: 42",
+        "thinking_words": 3376,
+        "gen_tokens": 8943,
+        "gen_tps": 208.6,
+        "prompt_tokens": 55,
+        "prompt_tps": 1437.7,
+        "wall_seconds": 43.3
+      },
+      {
+        "task": "combinatorics",
+        "correct": true,
+        "response": "To find the number of different ways to completely tile a $2 \\times 12$ board using $1 \\times 2$ dominoes, we can use a recurrence relation. Let $f(n)$ be the number of ways to tile a $2 \\times n$ board.\n\nConsider the rightmost edge of the $2 \\times n$ board:\n1.  If the last column is covered by one vertical $1 \\times 2$ domino, we are left with a $2 \\times (n-1)$ board, which can be tiled in $f(n-1)$ ways.\n2.  If the last two columns are covered by two horizontal $1 \\times 2$ dominoes (one on top of the other), we are left with a $2 \\times (n-2)$ board, which can be tiled in $f(n-2)$ ways.\n\nThus, the recurrence relation is:\n$$f(n) = f(n-1) + f(n-2)$$\nWe also need the base cases:\n-   For a $2 \\times 1$ board, there is only 1 way (one vertical domino): $f(1) = 1$.\n-   For a $2 \\times 2$ board, there are 2 ways (two vertical or two horizontal dominoes): $f(2) = 2$.\n\nNow we can compute the values of $f(n)$ for $n=3$ up to $n=12$:\n-   $f(1) = 1$\n-   $f(2) = 2$\n-   $f(3) = f(2) + f(1) = 2 + 1 = 3$\n-   $f(4) = f(3) + f(2) = 3 + 2 = 5$\n-   $f(5) = f(4) + f(3) = 5 + 3 = 8$\n-   $f(6) = f(5) + f(4) = 8 + 5 = 13$\n-   $f(7) = f(6) + f(5) = 13 + 8 = 21$\n-   $f(8) = f(7) + f(6) = 21 + 13 = 34$\n-   $f(9) = f(8) + f(7) = 34 + 21 = 55$\n-   $f(10) = f(9) + f(8) = 55 + 34 = 89$\n-   $f(11) = f(10) + f(9) = 89 + 55 = 144$\n-   $f(12) = f(11) + f(10) = 144 + 89 = 233$\n\nThe number of ways to tile a $2 \\times 12$ board is 233.\n\nAnswer: 233",
+        "thinking_words": 3601,
+        "gen_tokens": 12040,
+        "gen_tps": 210.3,
+        "prompt_tokens": 53,
+        "prompt_tps": 1425.2,
+        "wall_seconds": 57.7
+      },
+      {
+        "task": "logic_grid",
+        "correct": true,
+        "response": "To find the solution, let's organize the information step-by-step:\n\n1.  **Identify known connections:**\n    *   Rahul owns the **Parrot** (Clue 3).\n    *   Meera lives in **Chennai** (Clue 4).\n    *   The Dog owner lives in **Mumbai** (Clue 2).\n    *   The Cat owner lives in **Delhi** (Clue 5).\n\n2.  **Determine Meera's pet:**\n    *   Meera lives in Chennai, so she cannot be the dog owner (Mumbai) or the cat owner (Delhi).\n    *   Rahul owns the parrot, so Meera cannot own the parrot.\n    *   Therefore, **Meera must own the Fish**.\n\n3.  **Determine Arjun's pet and city:**\n    *   The remaining pets are the Cat and the Dog.\n    *   Arjun does not own the dog (Clue 6), so **Arjun must own the Cat**.\n    *   Since the cat owner lives in Delhi (Clue 5), **Arjun lives in Delhi**.\n\n4.  **Determine Priya's pet and city:**\n    *   The only remaining pet is the Dog. So, **Priya owns the Dog**.\n    *   Since the dog owner lives in Mumbai (Clue 2), **Priya lives in Mumbai**.\n    *   (This also satisfies Clue 1: Priya does not live in Delhi).\n\n5.  **Determine Rahul's city:**\n    *   The cities used are Chennai (Meera), Delhi (Arjun), and Mumbai (Priya).\n    *   The only remaining city is Kolkata. Therefore, **Rahul lives in Kolkata**.\n\n**Summary Table:**\n| Name | Pet | City |\n| :--- | :--- | :--- |\n| Priya | Dog | Mumbai |\n| Rahul | Parrot | Kolkata |\n| Meera | Fish | Chennai |\n| Arjun | Cat | Delhi |\n\nAnswer: Meera, Kolkata",
+        "thinking_words": 327,
+        "gen_tokens": 1031,
+        "gen_tps": 217.1,
+        "prompt_tokens": 146,
+        "prompt_tps": 2757.9,
+        "wall_seconds": 5.3
+      },
+      {
+        "task": "code_expression_eval",
+        "correct": true,
+        "response": "```python\nimport re\n\ndef calc(expr):\n    # Tokenize the expression into numbers, operators, and parentheses\n    tokens = re.findall(r'\\d*\\.\\d+|\\d+|[+*/()-]', expr)\n    pos = 0\n\n    def parse_expression():\n        nonlocal pos\n        result = parse_term()\n        while pos < len(tokens) and tokens[pos] in ('+', '-'):\n            op = tokens[pos]\n            pos += 1\n            right = parse_term()\n            if op == '+':\n                result += right\n            else:\n                result -= right\n        return result\n\n    def parse_term():\n        nonlocal pos\n        result = parse_factor()\n        while pos < len(tokens) and tokens[pos] in ('*', '/'):\n            op = tokens[pos]\n            pos += 1\n            right = parse_factor()\n            if op == '*':\n                result *= right\n            else:\n                result /= right\n        return result\n\n    def parse_factor():\n        nonlocal pos\n        if pos >= len(tokens):\n            return 0.0\n        \n        token = tokens[pos]\n        \n        # Handle unary operators\n        if token == '-':\n            pos += 1\n            return -parse_factor()\n        elif token == '+':\n            pos += 1\n            return parse_factor()\n        \n        # Handle parentheses\n        elif token == '(':\n            pos += 1\n            result = parse_expression()\n            if pos < len(tokens) and tokens[pos] == ')':\n                pos += 1\n            return result\n        \n        # Handle numbers\n        else:\n            pos += 1\n            return float(token)\n\n    return parse_expression()\n```",
+        "thinking_words": 1425,
+        "gen_tokens": 3593,
+        "gen_tps": 213.0,
+        "prompt_tokens": 71,
+        "prompt_tps": 1791.0,
+        "wall_seconds": 17.3
+      },
+      {
+        "task": "code_lis_nlogn",
+        "correct": true,
+        "response": "```python\nimport bisect\n\ndef lis_length(nums):\n    if not nums:\n        return 0\n    \n    tails = []\n    for x in nums:\n        idx = bisect.bisect_left(tails, x)\n        if idx == len(tails):\n            tails.append(x)\n        else:\n            tails[idx] = x\n            \n    return len(tails)\n```",
+        "thinking_words": 268,
+        "gen_tokens": 662,
+        "gen_tps": 216.6,
+        "prompt_tokens": 72,
+        "prompt_tps": 1803.1,
+        "wall_seconds": 3.5
+      },
+      {
+        "task": "code_output_prediction",
+        "correct": false,
+        "response": "The program prints the following three lines:\n\n```text\n[2, 2, 2]\n[1] [1, 2]\nTrue\n```\n\n### Explanation:\n\n**1. The Lambda Late Binding (`[2, 2, 2]`)**\nIn Python, closures (like the `lambda` functions in your loop) use **late binding**. This means the value of the variable `i` is looked up at the time the function is *called*, not when it is defined. By the time the loop finishes, the value of `i` is `2`. Therefore, all three functions in the `funcs` list return `2`.\n\n**2. Mutable Default Arguments (`[1] [1, 2]`)**\nIn Python, default arguments are evaluated only **once** at the time the function is defined. The list `acc=[]` is created once and persists across every call to `f`.\n*   `f(1)`: Appends `1` to the persistent list. Returns `[1]`.\n*   `f(2)`: Appends `2` to the same persistent list (which already contains `1`). Returns `[1, 2]`.\n\n**3. Object Identity (`True`)**\n*   `a = f(3)`: Appends `3` to the persistent list. Now `a` points to the list object `[1, 2, 3]`.\n*   `f(4)`: Appends `4` to that same list object. The list is now `[1, 2, 3, 4]`.\n*   The `is` operator checks if two variables point to the **same object in memory**. Since `a` and the result of `f(4)` both refer to the exact same list instance (the one stored in the function's default argument), the result is `True`.",
+        "thinking_words": 365,
+        "gen_tokens": 1179,
+        "gen_tps": 215.6,
+        "prompt_tokens": 116,
+        "prompt_tps": 2635.6,
+        "wall_seconds": 5.9
+      },
+      {
+        "task": "code_subtle_bugfix",
+        "correct": true,
+        "response": "```python\ndef add_item(item, inventory=None):\n    if inventory is None:\n        inventory = {}\n    if item in inventory:\n        inventory[item] += 1\n    else:\n        inventory[item] = 1\n    return inventory\n```",
+        "thinking_words": 203,
+        "gen_tokens": 435,
+        "gen_tps": 216.8,
+        "prompt_tokens": 102,
+        "prompt_tps": 2201.1,
+        "wall_seconds": 2.5
+      },
+      {
+        "task": "instruction_brutal",
+        "correct": true,
+        "response": "Ancient seas cover most of our large planet.\nBig whales swim through the vast blue ocean.\nCoral reefs provide homes for many small fish.\nDeep waters hold secrets from a distant past.\nEndless tides roll onto the warm sandy beach.",
+        "thinking_words": 4518,
+        "gen_tokens": 10535,
+        "gen_tps": 202.0,
+        "prompt_tokens": 79,
+        "prompt_tps": 1991.6,
+        "wall_seconds": 52.6
+      },
+      {
+        "task": "json_hard",
+        "correct": true,
+        "response": "```json\n{\n  \"order_id\": 4821,\n  \"date\": \"2026-03-05\",\n  \"customer\": {\n    \"name\": \"Rohan Sharma\",\n    \"email\": \"rohan.s@example.com\"\n  },\n  \"items\": [\n    {\n      \"name\": \"Falcon X1 drone\",\n      \"quantity\": 2,\n      \"unit_price\": 45000\n    },\n    {\n      \"name\": \"spare battery\",\n      \"quantity\": 1,\n      \"unit_price\": 3500\n    }\n  ],\n  \"shipping_city\": \"Bengaluru\",\n  \"total\": 93500\n}\n```",
+        "thinking_words": 223,
+        "gen_tokens": 879,
+        "gen_tps": 211.0,
+        "prompt_tokens": 182,
+        "prompt_tps": 3620.4,
+        "wall_seconds": 4.7
+      },
+      {
+        "task": "multihop_needle_64k",
+        "correct": true,
+        "response": "To find the storage room code, we need to combine the information from Note A and Note B:\n\n1.  **Note A** states that Ravi's locker number is **214**.\n2.  **Note B** provides the formula for the storage room code: (Ravi's locker number * 3) + 7.\n\nNow, perform the calculation:\n(214 * 3) + 7 = 642 + 7 = 649\n\nAnswer: 649",
+        "thinking_words": 175,
+        "gen_tokens": 449,
+        "gen_tps": 182.2,
+        "prompt_tokens": 45227,
+        "prompt_tps": 10722.4,
+        "wall_seconds": 7.2
+      }
+    ]
+  }
+}

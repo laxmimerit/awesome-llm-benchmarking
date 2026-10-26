@@ -1,0 +1,1 @@
+Now read workout-log.csv in the Data folder. Total my minutes for each activity, and save a short report called report.md in the Documents folder, with a table and the activity I did most.

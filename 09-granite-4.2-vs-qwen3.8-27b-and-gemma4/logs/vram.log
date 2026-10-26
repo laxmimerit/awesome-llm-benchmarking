@@ -1,0 +1,39 @@
+
+
+===== D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_vram.py granite4.2-8b gemma4-12b ornith-9b granite4.2-30b gemma4-31b qwen3.8-27b --out vram.jsonl =====
+
+=== granite4.2-8b :: probe ===
+  ctx=   4096 weights=5096.8 MiB kv=640.0 MiB compute=123.0 MiB smi_delta=6115 MiB
+  ctx=  32768 weights=5096.8 MiB kv=5120.0 MiB compute=179.0 MiB smi_delta=10623 MiB
+  -> KV 163840.0 bytes/token (156.2 KiB per 1k)
+  wrote 3 rows
+
+=== gemma4-12b :: probe ===
+  ctx=   4096 weights=7811.9 MiB kv=544.0 MiB compute=147.0 MiB smi_delta=8191 MiB
+  ctx=  32768 weights=7811.9 MiB kv=992.0 MiB compute=203.0 MiB smi_delta=8667 MiB
+  -> KV 16384.0 bytes/token (15.6 KiB per 1k)
+  wrote 3 rows
+
+=== ornith-9b :: probe ===
+  ctx=   4096 weights=5357.9 MiB kv=128.0 MiB compute=112.0 MiB smi_delta=5581 MiB
+  ctx=  32768 weights=5357.9 MiB kv=1024.0 MiB compute=168.0 MiB smi_delta=6505 MiB
+  -> KV 32768.0 bytes/token (31.2 KiB per 1k)
+  wrote 3 rows
+
+=== granite4.2-30b :: probe ===
+  ctx=   4096 weights=16897.1 MiB kv=1024.0 MiB compute=240.0 MiB smi_delta=18418 MiB
+  ctx=  32768 weights=16897.1 MiB kv=8192.0 MiB compute=296.0 MiB smi_delta=25613 MiB
+  -> KV 262144.0 bytes/token (250.0 KiB per 1k)
+  wrote 3 rows
+
+=== gemma4-31b :: probe ===
+  ctx=   4096 weights=18215.8 MiB kv=1520.0 MiB compute=211.0 MiB smi_delta=19659 MiB
+  ctx=  32768 weights=18215.8 MiB kv=3760.0 MiB compute=267.0 MiB smi_delta=21927 MiB
+  -> KV 81920.0 bytes/token (78.1 KiB per 1k)
+  wrote 3 rows
+
+=== qwen3.8-27b :: probe ===
+  ctx=   4096 weights=15770.4 MiB kv=256.0 MiB compute=150.0 MiB smi_delta=16117 MiB
+  ctx=  32768 weights=15770.4 MiB kv=2048.0 MiB compute=206.0 MiB smi_delta=17937 MiB
+  -> KV 65536.0 bytes/token (62.5 KiB per 1k)
+  wrote 3 rows

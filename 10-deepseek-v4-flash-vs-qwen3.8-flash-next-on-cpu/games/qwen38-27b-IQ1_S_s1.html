@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Lane Runner</title>
+<style>
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+  background-color: #c0c0c0;
+}
+a {
+  border: 1px solid;
+  text-decoration: underline;
+}
+a:hover {
+  text-decoration: underline;
+}
+</style>
+</head>
+<script type="module">
+const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+
+  const scene = new THREE.Scene();
+  const player = new THREE.Object3D();
+  const cube = new THREE.Object3D();
+  const ground = new THREE.Object3D();
+  const obstacle = new THREE.Object3D();
+  const speed = new THREE.Object3D();
+  const score = new THREE.Object3D();
+  const time = new THREE.Object3D();
+  const distance = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D();
+  const finalScore = new THREE.Object3D();
+  const finalDistance = new THREE.Object3D();
+  const overlay = new THREE.Object3D().length.
+</html>

@@ -1,0 +1,106 @@
+
+
+===== 2026-08-25 17:29:32 check_mtp.py ornith-35b-a3b qwen3.8-27b --n-predict 512 --out mtp_check.json =====
+
+=== ornith-35b-a3b: MTP off ===
+  counting   275.68 tok/s
+  code       275.18 tok/s
+  json       275.05 tok/s
+  essay      274.39 tok/s
+  fiction    274.53 tok/s
+  unused nextn tensors reported: 4
+=== ornith-35b-a3b: MTP on (--spec-type draft-mtp) ===
+  counting   356.41 tok/s  accept 0.7639
+  code       303.08 tok/s  accept 0.6293
+  json       318.05 tok/s  accept 0.6282
+  essay      210.98 tok/s  accept 0.3135
+  fiction    204.97 tok/s  accept 0.2966
+  counting  identical=True  speedup= 1.29x accept=0.7639
+  code      identical=False speedup= 1.10x accept=0.6293
+  json      identical=False speedup= 1.16x accept=0.6282
+  essay     identical=False speedup= 0.77x accept=0.3135
+  fiction   identical=False speedup= 0.75x accept=0.2966
+  wrote D:\Claude AI\AI Model Performance\ornith-benchmark\results\mtp_check.json
+
+=== qwen3.8-27b: MTP off ===
+  counting    77.67 tok/s
+  code        77.47 tok/s
+  json        77.44 tok/s
+  essay       77.45 tok/s
+  fiction     77.44 tok/s
+  unused nextn tensors reported: 4
+=== qwen3.8-27b: MTP on (--spec-type draft-mtp) ===
+  counting   181.99 tok/s  accept 0.8419
+  code       154.89 tok/s  accept 0.6782
+  json       182.59 tok/s  accept 0.8568
+  essay       95.17 tok/s  accept 0.3131
+  fiction    107.20 tok/s  accept 0.3897
+  counting  identical=False speedup= 2.34x accept=0.8419
+  code      identical=False speedup= 2.00x accept=0.6782
+  json      identical=False speedup= 2.36x accept=0.8568
+  essay     identical=False speedup= 1.23x accept=0.3131
+  fiction   identical=False speedup= 1.38x accept=0.3897
+  wrote D:\Claude AI\AI Model Performance\ornith-benchmark\results\mtp_check.json
+
+
+===== 2026-08-26 17:28:52 check_mtp.py ornith-9b ornith-35b-a3b qwen3.8-27b --n-predict 512 --out mtp_check.json =====
+
+=== ornith-9b: MTP off ===
+  counting   209.35 tok/s
+  code       208.55 tok/s
+  json       208.94 tok/s
+  essay      208.77 tok/s
+  fiction    209.54 tok/s
+  unused nextn tensors reported: 4
+=== ornith-9b: MTP on (--spec-type draft-mtp) ===
+  counting   350.35 tok/s  accept 0.8075
+  code       281.51 tok/s  accept 0.5795
+  json       232.64 tok/s  accept 0.4299
+  essay      176.08 tok/s  accept 0.2608
+  fiction    214.86 tok/s  accept 0.3781
+  counting  identical=False speedup= 1.67x accept=0.8075
+  code      identical=False speedup= 1.35x accept=0.5795
+  json      identical=False speedup= 1.11x accept=0.4299
+  essay     identical=False speedup= 0.84x accept=0.2608
+  fiction   identical=False speedup= 1.03x accept=0.3781
+  wrote D:\Claude AI\AI Model Performance\ornith-benchmark\results\mtp_check.json
+
+=== ornith-35b-a3b: MTP off ===
+  counting   273.73 tok/s
+  code       273.32 tok/s
+  json       273.03 tok/s
+  essay      271.08 tok/s
+  fiction    272.47 tok/s
+  unused nextn tensors reported: 4
+=== ornith-35b-a3b: MTP on (--spec-type draft-mtp) ===
+  counting   351.31 tok/s  accept 0.7639
+  code       303.27 tok/s  accept 0.6293
+  json       301.37 tok/s  accept 0.6282
+  essay      201.11 tok/s  accept 0.3135
+  fiction    196.11 tok/s  accept 0.2966
+  counting  identical=True  speedup= 1.28x accept=0.7639
+  code      identical=False speedup= 1.11x accept=0.6293
+  json      identical=False speedup= 1.10x accept=0.6282
+  essay     identical=False speedup= 0.74x accept=0.3135
+  fiction   identical=False speedup= 0.72x accept=0.2966
+  wrote D:\Claude AI\AI Model Performance\ornith-benchmark\results\mtp_check.json
+
+=== qwen3.8-27b: MTP off ===
+  counting    77.34 tok/s
+  code        77.36 tok/s
+  json        77.50 tok/s
+  essay       77.33 tok/s
+  fiction     77.29 tok/s
+  unused nextn tensors reported: 4
+=== qwen3.8-27b: MTP on (--spec-type draft-mtp) ===
+  counting   180.56 tok/s  accept 0.8419
+  code       154.01 tok/s  accept 0.6782
+  json       181.45 tok/s  accept 0.8568
+  essay       94.70 tok/s  accept 0.3131
+  fiction    107.14 tok/s  accept 0.3897
+  counting  identical=False speedup= 2.33x accept=0.8419
+  code      identical=False speedup= 1.99x accept=0.6782
+  json      identical=False speedup= 2.34x accept=0.8568
+  essay     identical=False speedup= 1.22x accept=0.3131
+  fiction   identical=False speedup= 1.39x accept=0.3897
+  wrote D:\Claude AI\AI Model Performance\ornith-benchmark\results\mtp_check.json

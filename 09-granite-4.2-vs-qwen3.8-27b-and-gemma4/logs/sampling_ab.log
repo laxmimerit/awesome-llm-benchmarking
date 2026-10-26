@@ -1,0 +1,28 @@
+### PROFILE {"temperature":1.0,"top_p":0.95}
+
+=== granite4.2-8b effort=None sampling={'temperature': 1.0, 'top_p': 0.95} ===
+  XX math   M1   seed=11 tok= 16384 think=1.0   90.8s TRUNC
+  XX math   M5   seed=11 tok= 16384 think=1.0   91.8s TRUNC
+  OK math   M7   seed=11 tok= 13715 think=1.0   75.0s
+  XX math   M10  seed=11 tok= 16384 think=1.0   91.4s TRUNC
+  XX math   M12  seed=11 tok= 16384 think=1.0   91.5s TRUNC
+  granite4.2-8b: solvable 1/5, traps caught 0/0
+### PROFILE {"temperature":0.0}
+
+=== granite4.2-8b effort=None sampling={'temperature': 0.0} ===
+  XX math   M1   seed=11 tok= 16384 think=1.0   90.7s TRUNC
+  XX math   M5   seed=11 tok= 16384 think=1.0   91.3s TRUNC
+  XX math   M7   seed=11 tok= 16384 think=1.0   91.4s TRUNC
+  XX math   M10  seed=11 tok= 16384 think=1.0   91.4s TRUNC
+  XX math   M12  seed=11 tok= 16384 think=1.0   91.4s TRUNC
+  granite4.2-8b: solvable 0/5, traps caught 0/0
+### PROFILE {"temperature":0.7,"top_p":0.9,"top_k":50}
+
+=== granite4.2-8b effort=None sampling={'temperature': 0.7, 'top_p': 0.9, 'top_k': 50} ===
+  XX math   M1   seed=11 tok= 16384 think=1.0   90.8s TRUNC
+  XX math   M5   seed=11 tok= 16384 think=1.0   91.4s TRUNC
+  OK math   M7   seed=11 tok= 13908 think=1.0   76.0s
+  XX math   M10  seed=11 tok= 16384 think=1.0   91.5s TRUNC
+  XX math   M12  seed=11 tok= 16384 think=1.0   91.8s TRUNC
+  granite4.2-8b: solvable 1/5, traps caught 0/0
+ABDONE

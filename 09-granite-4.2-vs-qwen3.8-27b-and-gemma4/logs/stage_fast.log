@@ -1,0 +1,14 @@
+
+########## STAGE vram ##########
+
+>>> D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_vram.py granite4.2-8b gemma4-12b ornith-9b granite4.2-30b gemma4-31b qwen3.8-27b --out vram.jsonl
+<<< rc=0 in 127s
+
+########## STAGE speed ##########
+
+>>> D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_speed.py granite4.2-8b gemma4-12b ornith-9b granite4.2-30b gemma4-31b qwen3.8-27b --out speed_fwd.jsonl
+<<< rc=0 in 371s
+
+>>> D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_speed.py qwen3.8-27b gemma4-31b granite4.2-30b ornith-9b gemma4-12b granite4.2-8b --out speed_rev.jsonl
+<<< rc=0 in 369s
+STAGEDONE

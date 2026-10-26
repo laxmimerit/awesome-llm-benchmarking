@@ -1,0 +1,251 @@
+[
+ {
+  "id": "math1",
+  "cat": "math",
+  "prompt": "A tank holds 4800 litres. Pipe A fills it in 40 minutes, pipe B fills it in 60 minutes, and drain C empties a full tank in 80 minutes. All three open at once on an empty tank. How many minutes until the tank is full? Give the exact answer as a fraction in lowest terms, then a decimal to 2 places.",
+  "check": {
+   "type": "numeric",
+   "expect": 34.29,
+   "tol": 0.02
+  }
+ },
+ {
+  "id": "math2",
+  "cat": "math",
+  "prompt": "Find the number of ordered pairs of integers (x, y) with 1 <= x <= 100 and 1 <= y <= 100 such that x*y is divisible by 12. Show your reasoning, then state the final count on its own line.",
+  "check": {
+   "type": "numeric",
+   "expect": 2722,
+   "tol": 0
+  }
+ },
+ {
+  "id": "math3",
+  "cat": "math",
+  "prompt": "Let f(x) = x^3 - 6x^2 + 11x - 6. Find all real roots, then compute the exact area enclosed between the curve y=f(x) and the x-axis over the interval where the curve lies below the axis, between its smallest and largest real roots. Give the exact fraction.",
+  "check": {
+   "type": "numeric",
+   "expect": 0.25,
+   "tol": 0.001
+  }
+ },
+ {
+  "id": "code1",
+  "cat": "code",
+  "prompt": "Write a Python function `solve(nums: list[int], k: int) -> int` that returns the length of the longest subarray whose sum is exactly divisible by k. Return 0 if none exists. Handle negative numbers and k>0. Output ONLY a single fenced python code block, no explanation.",
+  "check": {
+   "type": "python",
+   "fn": "solve",
+   "tests": [
+    [
+     [
+      [
+       4,
+       5,
+       0,
+       -2,
+       -3,
+       1
+      ],
+      5
+     ],
+     6
+    ],
+    [
+     [
+      [
+       1,
+       2,
+       3
+      ],
+      7
+     ],
+     0
+    ],
+    [
+     [
+      [
+       5
+      ],
+      5
+     ],
+     1
+    ],
+    [
+     [
+      [
+       -1,
+       2,
+       9
+      ],
+      2
+     ],
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "id": "code2",
+  "cat": "code",
+  "prompt": "Write a Python function `roman(n: int) -> str` converting 1..3999 to a Roman numeral. Output ONLY a single fenced python code block, no explanation.",
+  "check": {
+   "type": "python",
+   "fn": "roman",
+   "tests": [
+    [
+     [
+      1994
+     ],
+     "MCMXCIV"
+    ],
+    [
+     [
+      3999
+     ],
+     "MMMCMXCIX"
+    ],
+    [
+     [
+      4
+     ],
+     "IV"
+    ],
+    [
+     [
+      40
+     ],
+     "XL"
+    ],
+    [
+     [
+      2024
+     ],
+     "MMXXIV"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "code3",
+  "cat": "code",
+  "prompt": "Write a Python function `balance(s: str) -> int` returning the minimum number of bracket insertions to make s a valid sequence of (), [], {} in correct nesting order. Output ONLY a single fenced python code block, no explanation.",
+  "check": {
+   "type": "python",
+   "fn": "balance",
+   "tests": [
+    [
+     [
+      "(("
+     ],
+     2
+    ],
+    [
+     [
+      "()"
+     ],
+     0
+    ],
+    [
+     [
+      "([)]"
+     ],
+     2
+    ],
+    [
+     [
+      "{[()]}"
+     ],
+     0
+    ],
+    [
+     [
+      ""
+     ],
+     0
+    ]
+   ]
+  }
+ },
+ {
+  "id": "if1",
+  "cat": "instruct",
+  "prompt": "Write exactly 4 sentences about the water cycle. Every sentence must start with the letter S. Do not use the letter z anywhere. Do not add any preamble, title, or closing remark.",
+  "check": {
+   "type": "instruct_s4"
+  }
+ },
+ {
+  "id": "if2",
+  "cat": "instruct",
+  "prompt": "List exactly 6 programming languages, one per line, formatted as `N. Name - Year` where Year is the year it first appeared. No other text before or after the list.",
+  "check": {
+   "type": "instruct_list6"
+  }
+ },
+ {
+  "id": "if3",
+  "cat": "instruct",
+  "prompt": "Reply with a single valid JSON object and nothing else. It must have keys: \"city\" (string), \"population\" (integer), \"founded\" (integer), \"landmarks\" (array of exactly 3 strings). Use Kyoto, Japan.",
+  "check": {
+   "type": "json_keys",
+   "keys": [
+    "city",
+    "population",
+    "founded",
+    "landmarks"
+   ],
+   "arraylen": {
+    "landmarks": 3
+   }
+  }
+ },
+ {
+  "id": "fact1",
+  "cat": "fact",
+  "prompt": "In which year was the transistor first demonstrated at Bell Labs, who were the three researchers credited, and what Nobel Prize year did they share? Answer in one short paragraph.",
+  "check": {
+   "type": "contains_all",
+   "must": [
+    "1947",
+    "Bardeen",
+    "Brattain",
+    "Shockley",
+    "1956"
+   ]
+  }
+ },
+ {
+  "id": "fact2",
+  "cat": "fact",
+  "prompt": "Explain the difference between a B-tree and a B+ tree in database indexing. Cover where records are stored, leaf linkage, and why one is preferred for range scans. Be precise and concise.",
+  "check": {
+   "type": "contains_any_all",
+   "must_any": [
+    [
+     "leaf",
+     "leaves"
+    ],
+    [
+     "range",
+     "sequential"
+    ],
+    [
+     "internal",
+     "interior",
+     "non-leaf"
+    ]
+   ]
+  }
+ },
+ {
+  "id": "long1",
+  "cat": "long",
+  "prompt": "Explain to a competent programmer who has never studied ML how a mixture-of-experts transformer layer works, why it lets a 180-billion-parameter model run at the cost of roughly 3 billion, and what the routing network actually does. Around 300 words, no bullet lists, no headings.",
+  "check": {
+   "type": "wordcount",
+   "lo": 180,
+   "hi": 520
+  }
+ }
+]

@@ -1,0 +1,198 @@
+
+
+===== 2026-08-25 17:57:43 bench_quality.py ornith-9b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== ornith-9b sampling=default {'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'presence_penalty': 1.5} ===
+  OK base M1_powers        seed=11 tok=  2891 think=0.83   14.8s
+  OK base M2_lcm_pairs     seed=11 tok=   574 think=0.41    3.1s
+  OK base M3_factorial_zeros seed=11 tok=  3387 think=0.81   17.5s
+  OK base M4_coin_runs     seed=11 tok=   948 think=0.57    5.0s
+  OK base R1_knights       seed=11 tok=   813 think=0.58    4.3s
+  OK base R2_race          seed=11 tok=   250 think=0.68    1.4s
+  OK base R3_houses        seed=11 tok=  2320 think=0.86   12.1s
+  OK base R4_boxes         seed=11 tok=   557 think=0.56    3.0s
+  OK hard G1_floor_sqrt    seed=11 tok=  4097 think=0.86   21.2s
+  OK hard G2_spread_subsets seed=11 tok=  2425 think=0.75   12.6s
+  OK hard G3_six_runners   seed=11 tok=  1886 think=0.81    9.8s
+  OK hard G4_five_islanders seed=11 tok=  3429 think=0.80   17.8s
+  OK hard G1_floor_sqrt    seed=22 tok=  3742 think=0.82   19.5s
+  OK hard G2_spread_subsets seed=22 tok=  3533 think=0.84   18.3s
+  OK hard G3_six_runners   seed=22 tok= 10758 think=0.96   56.9s
+  OK hard G4_five_islanders seed=22 tok=  2927 think=0.79   15.3s
+  ornith-9b: 16/16 correct
+
+
+===== 2026-08-25 18:01:43 bench_quality.py ornith-35b-a3b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== ornith-35b-a3b sampling=default {'temperature': 0.6, 'top_p': 0.95, 'top_k': 20} ===
+  OK base M1_powers        seed=11 tok=  1895 think=0.73    7.3s
+  OK base M2_lcm_pairs     seed=11 tok=   799 think=0.48    3.1s
+  OK base M3_factorial_zeros seed=11 tok=  2369 think=0.69    8.7s
+  OK base M4_coin_runs     seed=11 tok=   891 think=0.49    3.4s
+  OK base R1_knights       seed=11 tok=   763 think=0.52    2.9s
+  OK base R2_race          seed=11 tok=   131 think=0.57    0.6s
+  OK base R3_houses        seed=11 tok=  1583 think=0.71    5.9s
+  OK base R4_boxes         seed=11 tok=   527 think=0.56    2.1s
+  OK hard G1_floor_sqrt    seed=11 tok=  2592 think=0.79    9.5s
+  OK hard G2_spread_subsets seed=11 tok=  1839 think=0.67    6.8s
+  OK hard G3_six_runners   seed=11 tok=  1957 think=0.73    7.2s
+  OK hard G4_five_islanders seed=11 tok=  2263 think=0.73    8.4s
+  OK hard G1_floor_sqrt    seed=22 tok=  1710 think=0.64    6.3s
+  OK hard G2_spread_subsets seed=22 tok=  2450 think=0.70    9.0s
+  OK hard G3_six_runners   seed=22 tok=  1652 think=0.65    6.1s
+  OK hard G4_five_islanders seed=22 tok=  2522 think=0.72    9.3s
+  ornith-35b-a3b: 16/16 correct
+
+
+===== 2026-08-25 18:03:36 bench_quality.py qwen3.8-27b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== qwen3.8-27b sampling=default {'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'presence_penalty': 0.0} ===
+  OK base M1_powers        seed=11 tok=  1126 think=0.88   14.7s
+  OK base M2_lcm_pairs     seed=11 tok=   247 think=0.99    3.6s
+  OK base M3_factorial_zeros seed=11 tok=   806 think=0.75   10.8s
+  OK base M4_coin_runs     seed=11 tok=   517 think=0.44    7.1s
+  OK base R1_knights       seed=11 tok=   414 think=0.97    5.8s
+  OK base R2_race          seed=11 tok=   208 think=0.98    3.1s
+  OK base R3_houses        seed=11 tok=   607 think=0.99    8.3s
+  OK base R4_boxes         seed=11 tok=   302 think=0.99    4.3s
+  OK hard G1_floor_sqrt    seed=11 tok=  1198 think=0.82   15.9s
+  OK hard G2_spread_subsets seed=11 tok=  1903 think=0.82   25.1s
+  OK hard G3_six_runners   seed=11 tok=   785 think=0.99   10.6s
+  OK hard G4_five_islanders seed=11 tok=  1432 think=0.85   19.0s
+  XX hard G1_floor_sqrt    seed=22 tok=  1911 think=0.87   25.2s
+  OK hard G2_spread_subsets seed=22 tok=  3801 think=0.94   50.1s
+  OK hard G3_six_runners   seed=22 tok=   874 think=0.99   11.9s
+  OK hard G4_five_islanders seed=22 tok=  1408 think=0.83   18.8s
+  qwen3.8-27b: 15/16 correct
+
+
+===== 2026-08-25 18:07:47 bench_quality.py gemma4-31b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== gemma4-31b sampling=default {'temperature': 1.0, 'top_p': 0.95, 'top_k': 64} ===
+  OK base M1_powers        seed=11 tok=  5604 think=0.88   84.5s
+  OK base M2_lcm_pairs     seed=11 tok=  1504 think=0.60   22.6s
+  OK base M3_factorial_zeros seed=11 tok=  3403 think=0.75   51.2s
+  OK base M4_coin_runs     seed=11 tok=  2873 think=0.73   43.3s
+  OK base R1_knights       seed=11 tok=  1969 think=0.73   29.6s
+  OK base R2_race          seed=11 tok=   369 think=0.76    5.8s
+  OK base R3_houses        seed=11 tok=  2674 think=0.73   40.2s
+  OK base R4_boxes         seed=11 tok=  1028 think=0.61   15.5s
+  OK hard G1_floor_sqrt    seed=11 tok=  3195 think=0.76   48.2s
+  OK hard G2_spread_subsets seed=11 tok=  3649 think=0.74   55.1s
+  OK hard G3_six_runners   seed=11 tok=  2457 think=0.72   37.1s
+  OK hard G4_five_islanders seed=11 tok=  4246 think=0.81   64.3s
+  OK hard G1_floor_sqrt    seed=22 tok=  4682 think=0.84   70.9s
+  OK hard G2_spread_subsets seed=22 tok=  6646 think=0.84  101.0s
+  OK hard G3_six_runners   seed=22 tok=  3019 think=0.76   45.7s
+  OK hard G4_five_islanders seed=22 tok=  7053 think=0.83  107.2s
+  gemma4-31b: 16/16 correct
+
+
+===== 2026-08-25 18:21:45 bench_quality.py muse-glimmer-30b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== muse-glimmer-30b sampling=default {'temperature': 0.6, 'top_p': 0.95, 'top_k': 20} ===
+  OK base M1_powers        seed=11 tok=  1051 think=0.96   13.5s
+  OK base M2_lcm_pairs     seed=11 tok=   633 think=0.83    8.1s
+  OK base M3_factorial_zeros seed=11 tok=  1367 think=1.00   17.4s
+  OK base M4_coin_runs     seed=11 tok=   665 think=0.91    8.5s
+  OK base R1_knights       seed=11 tok=   694 think=0.85    8.9s
+  OK base R2_race          seed=11 tok=   579 think=0.99    7.4s
+  OK base R3_houses        seed=11 tok=  1053 think=1.00   13.5s
+  OK base R4_boxes         seed=11 tok=   893 think=0.93   11.4s
+  OK hard G1_floor_sqrt    seed=11 tok=  1621 think=0.88   20.7s
+  OK hard G2_spread_subsets seed=11 tok=  1907 think=0.93   24.4s
+  OK hard G3_six_runners   seed=11 tok=  1209 think=1.00   15.5s
+  OK hard G4_five_islanders seed=11 tok=  1829 think=1.00   23.4s
+  OK hard G1_floor_sqrt    seed=22 tok=  1365 think=0.88   17.4s
+  OK hard G2_spread_subsets seed=22 tok=  1415 think=0.92   18.0s
+  OK hard G3_six_runners   seed=22 tok=  1267 think=1.00   16.2s
+  OK hard G4_five_islanders seed=22 tok=  1787 think=1.00   22.8s
+  muse-glimmer-30b: 16/16 correct
+
+
+===== 2026-08-26 17:46:01 bench_quality.py ornith-9b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== ornith-9b sampling=default {'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'presence_penalty': 1.5} ===
+  OK base M1_powers        seed=11 tok=  2891 think=0.83   15.4s
+  OK base M2_lcm_pairs     seed=11 tok=   574 think=0.41    3.2s
+  OK base M3_factorial_zeros seed=11 tok=  3387 think=0.81   18.2s
+  OK base M4_coin_runs     seed=11 tok=   948 think=0.57    5.2s
+  OK base R1_knights       seed=11 tok=   813 think=0.58    4.4s
+  OK base R2_race          seed=11 tok=   250 think=0.68    1.4s
+  OK base R3_houses        seed=11 tok=  2320 think=0.86   12.5s
+  OK base R4_boxes         seed=11 tok=   557 think=0.56    3.1s
+  OK hard G1_floor_sqrt    seed=11 tok=  4097 think=0.86   22.0s
+  OK hard G2_spread_subsets seed=11 tok=  2425 think=0.75   13.0s
+  OK hard G3_six_runners   seed=11 tok=  1886 think=0.81   10.2s
+  OK hard G4_five_islanders seed=11 tok=  3429 think=0.80   18.6s
+  OK hard G1_floor_sqrt    seed=22 tok=  3742 think=0.82   20.2s
+  OK hard G2_spread_subsets seed=22 tok=  3533 think=0.84   19.1s
+  OK hard G3_six_runners   seed=22 tok= 10758 think=0.96   59.1s
+  OK hard G4_five_islanders seed=22 tok=  2927 think=0.79   15.9s
+  ornith-9b: 16/16 correct
+
+
+===== 2026-08-26 17:50:08 bench_quality.py ornith-35b-a3b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== ornith-35b-a3b sampling=default {'temperature': 0.6, 'top_p': 0.95, 'top_k': 20} ===
+  OK base M1_powers        seed=11 tok=  1895 think=0.73    7.3s
+  OK base M2_lcm_pairs     seed=11 tok=   799 think=0.48    3.1s
+  OK base M3_factorial_zeros seed=11 tok=  2369 think=0.69    8.9s
+  OK base M4_coin_runs     seed=11 tok=   891 think=0.49    3.5s
+  OK base R1_knights       seed=11 tok=   763 think=0.52    3.0s
+  OK base R2_race          seed=11 tok=   131 think=0.57    0.6s
+  OK base R3_houses        seed=11 tok=  1583 think=0.71    6.0s
+  OK base R4_boxes         seed=11 tok=   527 think=0.56    2.1s
+  OK hard G1_floor_sqrt    seed=11 tok=  2592 think=0.79    9.8s
+  OK hard G2_spread_subsets seed=11 tok=  1839 think=0.67    7.0s
+  OK hard G3_six_runners   seed=11 tok=  1957 think=0.73    7.4s
+  OK hard G4_five_islanders seed=11 tok=  2263 think=0.73    8.5s
+  OK hard G1_floor_sqrt    seed=22 tok=  1710 think=0.64    6.5s
+  OK hard G2_spread_subsets seed=22 tok=  2450 think=0.70    9.2s
+  OK hard G3_six_runners   seed=22 tok=  1652 think=0.65    6.3s
+  OK hard G4_five_islanders seed=22 tok=  2522 think=0.72    9.5s
+  ornith-35b-a3b: 16/16 correct
+
+
+===== 2026-08-26 17:52:00 bench_quality.py qwen3.8-27b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== qwen3.8-27b sampling=default {'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'presence_penalty': 0.0} ===
+  OK base M1_powers        seed=11 tok=  1126 think=0.88   15.1s
+  OK base M2_lcm_pairs     seed=11 tok=   247 think=0.99    3.5s
+  OK base M3_factorial_zeros seed=11 tok=   806 think=0.75   10.8s
+  OK base M4_coin_runs     seed=11 tok=   517 think=0.44    7.1s
+  OK base R1_knights       seed=11 tok=   414 think=0.97    5.8s
+  OK base R2_race          seed=11 tok=   208 think=0.98    3.1s
+  OK base R3_houses        seed=11 tok=   607 think=0.99    8.3s
+  OK base R4_boxes         seed=11 tok=   302 think=0.99    4.4s
+  OK hard G1_floor_sqrt    seed=11 tok=  1198 think=0.82   16.1s
+  OK hard G2_spread_subsets seed=11 tok=  1903 think=0.82   25.5s
+  OK hard G3_six_runners   seed=11 tok=   785 think=0.99   10.7s
+  OK hard G4_five_islanders seed=11 tok=  1432 think=0.85   19.3s
+  XX hard G1_floor_sqrt    seed=22 tok=  1911 think=0.87   25.6s
+  OK hard G2_spread_subsets seed=22 tok=  3801 think=0.94   50.9s
+  OK hard G3_six_runners   seed=22 tok=   874 think=0.99   12.0s
+  OK hard G4_five_islanders seed=22 tok=  1408 think=0.83   19.1s
+  qwen3.8-27b: 15/16 correct
+
+
+===== 2026-08-26 17:56:14 bench_quality.py gemma4-26b --tier both --seeds 11 22 --max-tokens 16384 --ctx 32768 --out quality.jsonl =====
+
+=== gemma4-26b sampling=default {'temperature': 1.0, 'top_p': 0.95, 'top_k': 64} ===
+  OK base M1_powers        seed=11 tok=  8949 think=0.89   41.5s
+  OK base M2_lcm_pairs     seed=11 tok=  3138 think=0.80   14.2s
+  OK base M3_factorial_zeros seed=11 tok=  4891 think=0.85   22.2s
+  OK base M4_coin_runs     seed=11 tok=  4885 think=0.80   22.1s
+  OK base R1_knights       seed=11 tok=  2291 think=0.73   10.4s
+  OK base R2_race          seed=11 tok=  2197 think=0.98   10.2s
+  OK base R3_houses        seed=11 tok=  5073 think=0.86   22.8s
+  OK base R4_boxes         seed=11 tok=  1868 think=0.76    8.3s
+  OK hard G1_floor_sqrt    seed=11 tok=  9602 think=0.91   43.0s
+  OK hard G2_spread_subsets seed=11 tok=  9933 think=0.88   44.3s
+  OK hard G3_six_runners   seed=11 tok= 10451 think=0.93   46.7s
+  OK hard G4_five_islanders seed=11 tok=  7239 think=0.87   32.2s
+  OK hard G1_floor_sqrt    seed=22 tok=  9469 think=0.90   42.2s
+  OK hard G2_spread_subsets seed=22 tok=  9916 think=0.88   44.2s
+  OK hard G3_six_runners   seed=22 tok=  5171 think=0.85   22.9s
+  OK hard G4_five_islanders seed=22 tok= 11277 think=0.91   50.3s
+  gemma4-26b: 16/16 correct

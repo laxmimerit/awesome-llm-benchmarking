@@ -1,0 +1,174 @@
+
+
+===== D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_speed.py granite4.2-8b gemma4-12b ornith-9b granite4.2-30b gemma4-31b qwen3.8-27b --out speed_fwd.jsonl =====
+
+=== granite4.2-8b  ctx=8192 fa=on ===
+  loaded in 5.7s  vram delta 6759 MiB (baseline 3035)
+  granite4.2-8b      counting  rep0  213.94 tok/s (server)  210.09 (wall) 59C 80W
+  granite4.2-8b      code      rep0  213.38 tok/s (server)  207.03 (wall) 69C 529W
+  granite4.2-8b      json      rep0  212.62 tok/s (server)  207.70 (wall) 70C 529W
+  granite4.2-8b      essay     rep0  216.29 tok/s (server)  209.91 (wall) 71C 531W
+  granite4.2-8b      fiction   rep0  216.00 tok/s (server)  211.99 (wall) 68C 523W
+  granite4.2-8b      fiction   rep1  214.37 tok/s (server)  210.45 (wall) 70C 531W
+  granite4.2-8b      essay     rep1  215.08 tok/s (server)  211.39 (wall) 73C 538W
+  granite4.2-8b      json      rep1  214.13 tok/s (server)  210.13 (wall) 75C 541W
+  granite4.2-8b      code      rep1  214.73 tok/s (server)  212.81 (wall) 75C 540W
+  granite4.2-8b      counting  rep1  214.05 tok/s (server)  212.68 (wall) 76C 546W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+=== gemma4-12b  ctx=8192 fa=on ===
+  loaded in 7.7s  vram delta 8259 MiB (baseline 3035)
+  gemma4-12b         counting  rep0  143.76 tok/s (server)  141.84 (wall) 69C 78W
+  gemma4-12b         code      rep0  143.80 tok/s (server)  138.72 (wall) 76C 539W
+  gemma4-12b         json      rep0  143.84 tok/s (server)  138.22 (wall) 77C 546W
+  gemma4-12b         essay     rep0  143.99 tok/s (server)  139.42 (wall) 78C 549W
+  gemma4-12b         fiction   rep0  144.10 tok/s (server)  140.29 (wall) 79C 550W
+  gemma4-12b         fiction   rep1  144.31 tok/s (server)  140.58 (wall) 79C 553W
+  gemma4-12b         essay     rep1  143.85 tok/s (server)  141.53 (wall) 80C 558W
+  gemma4-12b         json      rep1  143.86 tok/s (server)  141.06 (wall) 81C 554W
+  gemma4-12b         code      rep1  143.61 tok/s (server)  141.79 (wall) 81C 555W
+  gemma4-12b         counting  rep1  143.78 tok/s (server)  141.45 (wall) 81C 558W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+=== ornith-9b  ctx=8192 fa=on ===
+  loaded in 4.7s  vram delta 5713 MiB (baseline 3035)
+  ornith-9b          counting  rep0  192.97 tok/s (server)  187.67 (wall) 77C 143W
+  ornith-9b          code      rep0  192.71 tok/s (server)  184.93 (wall) 80C 516W
+  ornith-9b          json      rep0  191.57 tok/s (server)  184.30 (wall) 80C 519W
+  ornith-9b          essay     rep0  190.96 tok/s (server)  183.59 (wall) 80C 513W
+  ornith-9b          fiction   rep0  190.51 tok/s (server)  183.65 (wall) 81C 517W
+  ornith-9b          fiction   rep1  192.44 tok/s (server)  185.14 (wall) 81C 511W
+  ornith-9b          essay     rep1  190.66 tok/s (server)  185.89 (wall) 81C 518W
+  ornith-9b          json      rep1  191.69 tok/s (server)  188.74 (wall) 81C 513W
+  ornith-9b          code      rep1  191.72 tok/s (server)  187.40 (wall) 82C 516W
+  ornith-9b          counting  rep1  194.92 tok/s (server)  190.23 (wall) 81C 521W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+=== granite4.2-30b  ctx=8192 fa=on ===
+  loaded in 13.8s  vram delta 19445 MiB (baseline 3036)
+  granite4.2-30b     counting  rep0   78.66 tok/s (server)   77.98 (wall) 77C 217W
+  granite4.2-30b     code      rep0   78.41 tok/s (server)   77.38 (wall) 81C 599W
+  granite4.2-30b     json      rep0   78.37 tok/s (server)   76.92 (wall) 82C 600W
+  granite4.2-30b     essay     rep0   78.42 tok/s (server)   77.43 (wall) 83C 601W
+  granite4.2-30b     fiction   rep0   78.52 tok/s (server)   77.37 (wall) 84C 599W
+  granite4.2-30b     fiction   rep1   78.51 tok/s (server)   77.37 (wall) 85C 600W
+  granite4.2-30b     essay     rep1   78.51 tok/s (server)   78.17 (wall) 85C 600W
+  granite4.2-30b     json      rep1   78.33 tok/s (server)   77.48 (wall) 86C 600W
+  granite4.2-30b     code      rep1   78.37 tok/s (server)   77.65 (wall) 86C 600W
+  granite4.2-30b     counting  rep1   78.55 tok/s (server)   77.98 (wall) 87C 601W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+=== gemma4-31b  ctx=8192 fa=on ===
+  loaded in 11.7s  vram delta 19983 MiB (baseline 3036)
+  gemma4-31b         counting  rep0   70.62 tok/s (server)   69.73 (wall) 81C 303W
+  gemma4-31b         code      rep0   70.30 tok/s (server)   67.96 (wall) 83C 598W
+  gemma4-31b         json      rep0   70.36 tok/s (server)   67.60 (wall) 85C 600W
+  gemma4-31b         essay     rep0   70.47 tok/s (server)   67.64 (wall) 85C 600W
+  gemma4-31b         fiction   rep0   70.53 tok/s (server)   68.26 (wall) 86C 600W
+  gemma4-31b         fiction   rep1   70.56 tok/s (server)   68.36 (wall) 82C 587W
+  gemma4-31b         essay     rep1   70.44 tok/s (server)   69.71 (wall) 87C 600W
+  gemma4-31b         json      rep1   70.27 tok/s (server)   69.46 (wall) 87C 600W
+  gemma4-31b         code      rep1   70.34 tok/s (server)   69.58 (wall) 87C 600W
+  gemma4-31b         counting  rep1   70.51 tok/s (server)   69.79 (wall) 83C 586W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+=== qwen3.8-27b  ctx=8192 fa=on ===
+  loaded in 13.8s  vram delta 16378 MiB (baseline 3037)
+  qwen3.8-27b        counting  rep0   78.54 tok/s (server)   76.14 (wall) 81C 315W
+  qwen3.8-27b        code      rep0   78.34 tok/s (server)   75.60 (wall) 83C 599W
+  qwen3.8-27b        json      rep0   78.35 tok/s (server)   75.65 (wall) 80C 588W
+  qwen3.8-27b        essay     rep0   78.42 tok/s (server)   75.99 (wall) 85C 601W
+  qwen3.8-27b        fiction   rep0   78.31 tok/s (server)   75.69 (wall) 86C 600W
+  qwen3.8-27b        fiction   rep1   78.15 tok/s (server)   75.76 (wall) 86C 600W
+  qwen3.8-27b        essay     rep1   78.14 tok/s (server)   76.79 (wall) 87C 599W
+  qwen3.8-27b        json      rep1   78.35 tok/s (server)   77.22 (wall) 87C 600W
+  qwen3.8-27b        code      rep1   78.32 tok/s (server)   76.84 (wall) 87C 600W
+  qwen3.8-27b        counting  rep1   78.40 tok/s (server)   77.26 (wall) 88C 603W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_fwd.jsonl
+
+
+===== D:\Claude AI\AI Model Performance\granite42-benchmark\research\bench_speed.py qwen3.8-27b gemma4-31b granite4.2-30b ornith-9b gemma4-12b granite4.2-8b --out speed_rev.jsonl =====
+
+=== qwen3.8-27b  ctx=8192 fa=on ===
+  loaded in 14.8s  vram delta 16382 MiB (baseline 3037)
+  qwen3.8-27b        counting  rep0   78.48 tok/s (server)   76.29 (wall) 81C 276W
+  qwen3.8-27b        code      rep0   78.38 tok/s (server)   75.82 (wall) 82C 597W
+  qwen3.8-27b        json      rep0   78.41 tok/s (server)   76.19 (wall) 84C 600W
+  qwen3.8-27b        essay     rep0   78.41 tok/s (server)   76.37 (wall) 85C 600W
+  qwen3.8-27b        fiction   rep0   78.32 tok/s (server)   76.27 (wall) 86C 599W
+  qwen3.8-27b        fiction   rep1   78.38 tok/s (server)   76.01 (wall) 86C 600W
+  qwen3.8-27b        essay     rep1   78.18 tok/s (server)   76.86 (wall) 87C 599W
+  qwen3.8-27b        json      rep1   78.15 tok/s (server)   76.97 (wall) 87C 600W
+  qwen3.8-27b        code      rep1   78.28 tok/s (server)   76.80 (wall) 87C 600W
+  qwen3.8-27b        counting  rep1   78.31 tok/s (server)   77.35 (wall) 88C 600W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl
+
+=== gemma4-31b  ctx=8192 fa=on ===
+  loaded in 9.8s  vram delta 19983 MiB (baseline 3038)
+  gemma4-31b         counting  rep0   70.60 tok/s (server)   69.65 (wall) 83C 343W
+  gemma4-31b         code      rep0   70.35 tok/s (server)   68.53 (wall) 85C 600W
+  gemma4-31b         json      rep0   70.34 tok/s (server)   68.11 (wall) 86C 600W
+  gemma4-31b         essay     rep0   70.48 tok/s (server)   68.17 (wall) 86C 600W
+  gemma4-31b         fiction   rep0   70.44 tok/s (server)   68.37 (wall) 87C 600W
+  gemma4-31b         fiction   rep1   70.54 tok/s (server)   68.35 (wall) 87C 596W
+  gemma4-31b         essay     rep1   70.40 tok/s (server)   69.92 (wall) 88C 600W
+  gemma4-31b         json      rep1   70.26 tok/s (server)   69.46 (wall) 88C 600W
+  gemma4-31b         code      rep1   70.32 tok/s (server)   69.58 (wall) 88C 600W
+  gemma4-31b         counting  rep1   70.51 tok/s (server)   69.79 (wall) 88C 602W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl
+
+=== granite4.2-30b  ctx=8192 fa=on ===
+  loaded in 14.8s  vram delta 19445 MiB (baseline 3038)
+  granite4.2-30b     counting  rep0   78.66 tok/s (server)   77.99 (wall) 82C 289W
+  granite4.2-30b     code      rep0   78.34 tok/s (server)   77.17 (wall) 84C 599W
+  granite4.2-30b     json      rep0   78.33 tok/s (server)   76.96 (wall) 85C 600W
+  granite4.2-30b     essay     rep0   78.33 tok/s (server)   77.18 (wall) 86C 600W
+  granite4.2-30b     fiction   rep0   78.36 tok/s (server)   77.28 (wall) 86C 600W
+  granite4.2-30b     fiction   rep1   78.42 tok/s (server)   77.63 (wall) 87C 600W
+  granite4.2-30b     essay     rep1   78.36 tok/s (server)   77.76 (wall) 87C 600W
+  granite4.2-30b     json      rep1   78.37 tok/s (server)   77.54 (wall) 87C 600W
+  granite4.2-30b     code      rep1   78.32 tok/s (server)   77.88 (wall) 88C 600W
+  granite4.2-30b     counting  rep1   78.52 tok/s (server)   78.25 (wall) 88C 601W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl
+
+=== ornith-9b  ctx=8192 fa=on ===
+  loaded in 4.6s  vram delta 5713 MiB (baseline 3040)
+  ornith-9b          counting  rep0  193.20 tok/s (server)  188.79 (wall) 76C 99W
+  ornith-9b          code      rep0  190.09 tok/s (server)  184.91 (wall) 85C 534W
+  ornith-9b          json      rep0  192.27 tok/s (server)  185.67 (wall) 85C 521W
+  ornith-9b          essay     rep0  190.86 tok/s (server)  185.84 (wall) 85C 527W
+  ornith-9b          fiction   rep0  191.76 tok/s (server)  186.00 (wall) 85C 525W
+  ornith-9b          fiction   rep1  190.22 tok/s (server)  183.97 (wall) 84C 523W
+  ornith-9b          essay     rep1  191.86 tok/s (server)  187.72 (wall) 81C 513W
+  ornith-9b          json      rep1  193.15 tok/s (server)  188.72 (wall) 85C 530W
+  ornith-9b          code      rep1  192.52 tok/s (server)  188.12 (wall) 85C 524W
+  ornith-9b          counting  rep1  194.53 tok/s (server)  190.28 (wall) 79C 492W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl
+
+=== gemma4-12b  ctx=8192 fa=on ===
+  loaded in 6.8s  vram delta 8259 MiB (baseline 3040)
+  gemma4-12b         counting  rep0  144.23 tok/s (server)  141.54 (wall) 82C 216W
+  gemma4-12b         code      rep0  143.32 tok/s (server)  138.49 (wall) 83C 569W
+  gemma4-12b         json      rep0  143.42 tok/s (server)  138.85 (wall) 84C 564W
+  gemma4-12b         essay     rep0  144.22 tok/s (server)  139.58 (wall) 78C 536W
+  gemma4-12b         fiction   rep0  143.62 tok/s (server)  139.02 (wall) 85C 568W
+  gemma4-12b         fiction   rep1  144.13 tok/s (server)  140.47 (wall) 85C 571W
+  gemma4-12b         essay     rep1  143.36 tok/s (server)  141.03 (wall) 85C 569W
+  gemma4-12b         json      rep1  143.18 tok/s (server)  140.16 (wall) 84C 563W
+  gemma4-12b         code      rep1  143.64 tok/s (server)  140.98 (wall) 86C 568W
+  gemma4-12b         counting  rep1  143.91 tok/s (server)  142.51 (wall) 81C 551W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl
+
+=== granite4.2-8b  ctx=8192 fa=on ===
+  loaded in 5.7s  vram delta 6759 MiB (baseline 3040)
+  granite4.2-8b      counting  rep0  215.63 tok/s (server)  213.60 (wall) 74C 101W
+  granite4.2-8b      code      rep0  213.37 tok/s (server)  206.82 (wall) 84C 568W
+  granite4.2-8b      json      rep0  214.09 tok/s (server)  208.93 (wall) 80C 558W
+  granite4.2-8b      essay     rep0  214.55 tok/s (server)  210.28 (wall) 85C 573W
+  granite4.2-8b      fiction   rep0  215.12 tok/s (server)  208.92 (wall) 85C 568W
+  granite4.2-8b      fiction   rep1  216.09 tok/s (server)  211.92 (wall) 85C 571W
+  granite4.2-8b      essay     rep1  215.45 tok/s (server)  212.02 (wall) 85C 572W
+  granite4.2-8b      json      rep1  215.11 tok/s (server)  210.93 (wall) 86C 570W
+  granite4.2-8b      code      rep1  212.90 tok/s (server)  210.97 (wall) 86C 575W
+  granite4.2-8b      counting  rep1  213.80 tok/s (server)  210.39 (wall) 85C 570W
+  wrote 11 rows to D:\Claude AI\AI Model Performance\granite42-benchmark\results\speed_rev.jsonl

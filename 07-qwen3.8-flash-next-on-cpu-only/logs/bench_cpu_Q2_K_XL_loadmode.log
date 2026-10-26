@@ -1,0 +1,30 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cpu\bin\Release\llama-bench.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-Q2_K_XL\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf -o jsonl -r 3 --progress -p 512 -n 128 -t 24 -lm mmap,mlock
+
+STDOUT:
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-Q2_K_XL\\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf", "model_type": "qwen4exp A3B Q2_K - Medium", "model_size": 78858104320, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "mmap", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 512, "n_gen": 0, "n_depth": 0, "test_time": "2026-08-27T08:49:02Z", "avg_ns": 8996388466, "stddev_ns": 210313505, "avg_ts": 56.932551, "stddev_ts": 1.336323, "samples_ns": [ 9194305400, 9019304600, 8775555400 ],"samples_ts": [ 55.6866, 56.7671, 58.3439 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-Q2_K_XL\\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf", "model_type": "qwen4exp A3B Q2_K - Medium", "model_size": 78858104320, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "mmap", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 128, "n_depth": 0, "test_time": "2026-08-27T08:49:41Z", "avg_ns": 11670066766, "stddev_ns": 32415228, "avg_ts": 10.968288, "stddev_ts": 0.030473, "samples_ns": [ 11701562300, 11671833200, 11636804800 ],"samples_ts": [ 10.9387, 10.9666, 10.9996 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-Q2_K_XL\\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf", "model_type": "qwen4exp A3B Q2_K - Medium", "model_size": 78858104320, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "mlock", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 512, "n_gen": 0, "n_depth": 0, "test_time": "2026-08-27T08:51:26Z", "avg_ns": 9696658966, "stddev_ns": 382257459, "avg_ts": 52.855256, "stddev_ts": 2.038145, "samples_ns": [ 9500646400, 9452167000, 10137163500 ],"samples_ts": [ 53.8911, 54.1675, 50.5072 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-Q2_K_XL\\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf", "model_type": "qwen4exp A3B Q2_K - Medium", "model_size": 78858104320, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "mlock", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 128, "n_depth": 0, "test_time": "2026-08-27T08:52:07Z", "avg_ns": 12335957066, "stddev_ns": 461657366, "avg_ts": 10.385895, "stddev_ts": 0.389842, "samples_ns": [ 12787872600, 12354860000, 11865138600 ],"samples_ts": [ 10.0095, 10.3603, 10.7879 ]}
+
+
+STDERR:
+llama-bench: benchmark 1/4: starting
+llama-bench: benchmark 1/4: warmup prompt run
+llama-bench: benchmark 1/4: prompt run 1/3
+llama-bench: benchmark 1/4: prompt run 2/3
+llama-bench: benchmark 1/4: prompt run 3/3
+llama-bench: benchmark 2/4: starting
+llama-bench: benchmark 2/4: warmup generation run
+llama-bench: benchmark 2/4: generation run 1/3
+llama-bench: benchmark 2/4: generation run 2/3
+llama-bench: benchmark 2/4: generation run 3/3
+llama-bench: benchmark 3/4: starting
+llama-bench: benchmark 3/4: warmup prompt run
+llama-bench: benchmark 3/4: prompt run 1/3
+llama-bench: benchmark 3/4: prompt run 2/3
+llama-bench: benchmark 3/4: prompt run 3/3
+llama-bench: benchmark 4/4: starting
+llama-bench: benchmark 4/4: warmup generation run
+llama-bench: benchmark 4/4: generation run 1/3
+llama-bench: benchmark 4/4: generation run 2/3
+llama-bench: benchmark 4/4: generation run 3/3

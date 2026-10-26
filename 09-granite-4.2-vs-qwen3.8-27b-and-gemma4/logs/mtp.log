@@ -1,0 +1,41 @@
+
+=== qwen3.8-27b: MTP off ===
+  counting    76.40 tok/s
+  code        76.21 tok/s
+  json        76.55 tok/s
+  essay       76.24 tok/s
+  fiction     76.23 tok/s
+  unused nextn tensors reported: 4
+=== qwen3.8-27b: MTP on (--spec-type draft-mtp) ===
+  counting   179.55 tok/s  accept 0.8419
+  code       153.74 tok/s  accept 0.6782
+  json       181.57 tok/s  accept 0.8568
+  essay       93.24 tok/s  accept 0.3131
+  fiction    103.86 tok/s  accept 0.3897
+  counting  identical=False speedup= 2.35x accept=0.8419
+  code      identical=False speedup= 2.02x accept=0.6782
+  json      identical=False speedup= 2.37x accept=0.8568
+  essay     identical=False speedup= 1.22x accept=0.3131
+  fiction   identical=False speedup= 1.36x accept=0.3897
+  wrote D:\Claude AI\AI Model Performance\granite42-benchmark\results\mtp_check.json
+
+=== ornith-9b: MTP off ===
+  counting   208.51 tok/s
+  code       208.59 tok/s
+  json       208.14 tok/s
+  essay      207.79 tok/s
+  fiction    208.59 tok/s
+  unused nextn tensors reported: 4
+=== ornith-9b: MTP on (--spec-type draft-mtp) ===
+  counting   351.83 tok/s  accept 0.8075
+  code       281.48 tok/s  accept 0.5795
+  json       231.16 tok/s  accept 0.4299
+  essay      176.82 tok/s  accept 0.2608
+  fiction    214.63 tok/s  accept 0.3781
+  counting  identical=False speedup= 1.69x accept=0.8075
+  code      identical=False speedup= 1.35x accept=0.5795
+  json      identical=False speedup= 1.11x accept=0.4299
+  essay     identical=False speedup= 0.85x accept=0.2608
+  fiction   identical=False speedup= 1.03x accept=0.3781
+  wrote D:\Claude AI\AI Model Performance\granite42-benchmark\results\mtp_check.json
+MTPDONE

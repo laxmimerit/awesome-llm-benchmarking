@@ -1,0 +1,5 @@
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8097 -c 49152 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 22 -ot per_layer_token_embd=CPU
+loaded
+baseline_bigcap  fail  7/11 structural missing=html_doc,r   957s tok=40960 think=122013 content=17218 html=17210  TRUNCATED
+nothink          fail  2/11 structural missing=html_doc,i   974s tok=40960 think=121045 content=14124 html=14116  TRUNCATED
+directive        fail  10/11 structural missing=raf_loop    800s tok=32989 think=87114 content=22311 html=22303

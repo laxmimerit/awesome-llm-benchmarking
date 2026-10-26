@@ -1,0 +1,63 @@
+45,57d44
+< {%- set num_sys = 0 %}
+< {%- set merged_system = '' %}
+< {%- if messages[0].role == 'system' or messages[0].role == 'developer' %}
+<     {%- set first = render_content(messages[0].content, false, true)|trim %}
+<     {%- if messages|length > 1 and (messages[1].role == 'system' or messages[1].role == 'developer') %}
+<         {%- set second = render_content(messages[1].content, false, true)|trim %}
+<         {%- set merged_system = first + '\n' + second %}
+<         {%- set num_sys = 2 %}
+<     {%- else %}
+<         {%- set merged_system = first %}
+<         {%- set num_sys = 1 %}
+<     {%- endif %}
+< {%- endif %}
+67,68c54,58
+<     {%- if merged_system %}
+<         {{- '\n\n' + merged_system }}
+---
+>     {%- if messages[0].role == 'system' %}
+>         {%- set content = render_content(messages[0].content, false, true)|trim %}
+>         {%- if content %}
+>             {{- '\n\n' + content }}
+>         {%- endif %}
+72,73c62,64
+<     {%- if merged_system %}
+<         {{- '<|im_start|>system\n' + merged_system + '<|im_end|>\n' }}
+---
+>     {%- if messages[0].role == 'system' %}
+>         {%- set content = render_content(messages[0].content, false, true)|trim %}
+>         {{- '<|im_start|>system\n' + content + '<|im_end|>\n' }}
+86a78,80
+> {%- if ns.multi_step_tool %}
+>     {{- raise_exception('No user query found in messages.') }}
+> {%- endif %}
+88d81
+<     {%- if loop.index0 >= num_sys and message.role != "system" and message.role != "developer" %}
+90c83,87
+<     {%- if message.role == "user" %}
+---
+>     {%- if message.role == "system" %}
+>         {%- if not loop.first %}
+>             {{- raise_exception('System message must be at the beginning.') }}
+>         {%- endif %}
+>     {%- elif message.role == "user" %}
+118,120c115,116
+<                 {%- if tool_call.arguments is mapping %}
+<                     {%- for args_name in tool_call.arguments %}
+<                         {%- set args_value = tool_call.arguments[args_name] %}
+---
+>                 {%- if tool_call.arguments is defined %}
+>                     {%- for args_name, args_value in tool_call.arguments|items %}
+143c139,140
+<     {%- endif %}
+---
+>     {%- else %}
+>         {{- raise_exception('Unexpected message role.') }}
+153,154c150
+< {%- endif %}
+< {#- Unsloth fixes - developer role, tool calling #}
+\ No newline at end of file
+---
+> {%- endif %}
+\ No newline at end of file

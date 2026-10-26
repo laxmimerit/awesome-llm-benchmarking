@@ -1,0 +1,188 @@
+
+=== granite4.2-30b effort=None sampling={'temperature': 1.0, 'top_p': 0.95} ===
+  OK math   M1   seed=11 tok= 15241 think=0.919  214.4s
+  OK math   M2   seed=11 tok=  2288 think=0.998   30.6s
+  OK math   M3   seed=11 tok=  4834 think=0.914   64.0s
+  OK math   M4   seed=11 tok= 28808 think=1.0  439.1s
+  XX math   M5   seed=11 tok= 32768 think=1.0  513.3s TRUNC
+  XX math   M6   seed=11 tok= 32768 think=1.0 1499.7s TRUNC
+  OK math   M7   seed=11 tok= 11576 think=1.0  160.7s
+  OK math   M8   seed=11 tok=  5109 think=0.999   68.9s
+  OK math   M9   seed=11 tok=   927 think=0.997   12.3s
+  XX math   M10  seed=11 tok= 13372 think=1.0  188.1s
+  XX math   M11  seed=11 tok= 32768 think=1.0  514.1s TRUNC
+  OK math   M12  seed=11 tok= 25933 think=1.0  392.4s
+  OK trap   T1   seed=11 tok=   351 think=0.676    6.3s
+  OK trap   T2   seed=11 tok=  1484 think=0.657   19.3s
+  OK trap   T3   seed=11 tok=   757 think=0.99    9.9s
+  OK trap   T4   seed=11 tok=  2525 think=0.998   33.2s
+  OK trap   T5   seed=11 tok=   560 think=0.992    7.4s
+  OK trap   T6   seed=11 tok=   370 think=0.777    4.8s
+  OK trap   T7   seed=11 tok=  1651 think=0.888   21.5s
+  XX trap   T8   seed=11 tok=  1029 think=0.677   13.6s
+  OK format F1   seed=11 tok=   164 think=0.945    2.2s
+  OK format F2   seed=11 tok=  6591 think=0.996   88.8s
+  OK format F3   seed=11 tok=  7376 think=0.999  100.3s
+  OK format F4   seed=11 tok=  5371 think=0.996   72.2s
+  OK format F5   seed=11 tok=  6879 think=0.999   93.2s
+  OK format F6   seed=11 tok=  8047 think=0.994  110.0s
+  OK format F7   seed=11 tok=  2220 think=0.982   29.6s
+  OK format F8   seed=11 tok= 12353 think=0.992  172.9s
+  granite4.2-30b: solvable 16/20, traps caught 7/8
+
+=== gemma4-31b effort=None sampling={'temperature': 1.0, 'top_p': 0.95, 'top_k': 64} ===
+  OK math   M1   seed=11 tok= 11586 think=0.9  175.2s
+  OK math   M2   seed=11 tok=  8781 think=0.871  132.7s
+  OK math   M3   seed=11 tok=  2628 think=0.622   39.4s
+  OK math   M4   seed=11 tok= 12839 think=0.869  195.3s
+  OK math   M5   seed=11 tok= 10956 think=0.904  166.4s
+  OK math   M6   seed=11 tok= 12637 think=0.903  192.3s
+  OK math   M7   seed=11 tok= 10739 think=0.874  163.1s
+  OK math   M8   seed=11 tok=  7056 think=0.821  106.5s
+  OK math   M9   seed=11 tok=  2689 think=0.746   40.2s
+  OK math   M10  seed=11 tok=  8395 think=0.867  126.6s
+  OK math   M11  seed=11 tok=  7974 think=0.936  120.6s
+  OK math   M12  seed=11 tok= 10887 think=0.861  165.2s
+  OK trap   T1   seed=11 tok=   615 think=0.583    9.4s
+  OK trap   T2   seed=11 tok=  2762 think=0.838   41.1s
+  OK trap   T3   seed=11 tok=  1230 think=0.654   18.3s
+  OK trap   T4   seed=11 tok=  1182 think=0.781   17.6s
+  OK trap   T5   seed=11 tok=  2686 think=0.884   40.1s
+  OK trap   T6   seed=11 tok=  1962 think=0.8   29.3s
+  OK trap   T7   seed=11 tok=  1518 think=0.849   22.6s
+  XX trap   T8   seed=11 tok=  1002 think=0.478   14.9s
+  OK format F1   seed=11 tok=  1221 think=0.99   18.1s
+  OK format F2   seed=11 tok=   411 think=0.925    6.2s
+  OK format F3   seed=11 tok=   191 think=0.959    3.0s
+  OK format F4   seed=11 tok=   278 think=0.898    4.1s
+  OK format F5   seed=11 tok=   324 think=0.907    4.8s
+  OK format F6   seed=11 tok=   439 think=0.851    6.5s
+  OK format F7   seed=11 tok=  3244 think=0.994   48.3s
+  OK format F8   seed=11 tok=  2537 think=0.955   37.8s
+  gemma4-31b: solvable 20/20, traps caught 7/8
+
+=== qwen3.8-27b effort=None sampling={'temperature': 0.6, 'top_p': 0.95, 'top_k': 20, 'presence_penalty': 0.0} ===
+  OK math   M1   seed=11 tok=  5274 think=0.901   68.3s
+  OK math   M2   seed=11 tok=  1095 think=0.687   14.5s
+  OK math   M3   seed=11 tok=  1280 think=0.695   16.9s
+  XX math   M4   seed=11 tok= 32768 think=1.0  445.1s TRUNC
+  OK math   M5   seed=11 tok= 30265 think=0.991  409.9s
+  OK math   M6   seed=11 tok= 25893 think=0.977  348.6s
+  OK math   M7   seed=11 tok=  2707 think=0.971   36.0s
+  OK math   M8   seed=11 tok=  4146 think=0.871   54.2s
+  OK math   M9   seed=11 tok=   518 think=0.833    7.5s
+  OK math   M10  seed=11 tok= 11335 think=0.969  149.4s
+  XX math   M11  seed=11 tok= 32768 think=1.0  445.6s TRUNC
+  OK math   M12  seed=11 tok= 10719 think=0.956  141.8s
+  OK trap   T1   seed=11 tok=   128 think=0.965    2.2s
+  OK trap   T2   seed=11 tok=   228 think=0.977    3.3s
+  OK trap   T3   seed=11 tok=   262 think=0.857    3.8s
+  OK trap   T4   seed=11 tok=   224 think=0.98    3.3s
+  OK trap   T5   seed=11 tok=   383 think=0.988    5.3s
+  OK trap   T6   seed=11 tok=   340 think=0.928    4.7s
+  OK trap   T7   seed=11 tok=   329 think=0.883    4.6s
+  XX trap   T8   seed=11 tok=   246 think=0.826    3.6s
+  OK format F1   seed=11 tok=   134 think=0.952    2.0s
+  OK format F2   seed=11 tok=   163 think=0.887    2.4s
+  OK format F3   seed=11 tok=    90 think=0.923    1.5s
+  OK format F4   seed=11 tok=    94 think=0.79    1.5s
+  OK format F5   seed=11 tok=   221 think=0.834    3.2s
+  OK format F6   seed=11 tok=   282 think=0.838    4.0s
+  OK format F7   seed=11 tok=   861 think=0.979   11.4s
+  OK format F8   seed=11 tok=  1319 think=0.924   17.4s
+  qwen3.8-27b: solvable 18/20, traps caught 7/8
+=== BRACKET A ===
+
+=== granite4.2-8b effort=None sampling={'temperature': 1.0, 'top_p': 0.95} ===
+  OK math   M1   seed=11 tok= 21327 think=0.984  123.8s
+  OK math   M2   seed=11 tok=  5367 think=0.96   27.8s
+  OK math   M3   seed=11 tok=  6820 think=0.959   34.9s
+  XX math   M4   seed=11 tok= 32768 think=1.0  211.3s TRUNC
+  XX math   M5   seed=11 tok= 32768 think=1.0  212.4s TRUNC
+  XX math   M6   seed=11 tok= 32768 think=1.0  454.2s TRUNC
+  OK math   M7   seed=11 tok= 13715 think=1.0   76.3s
+  OK math   M8   seed=11 tok=  8063 think=0.996   42.1s
+  OK math   M9   seed=11 tok=  1381 think=0.929    7.0s
+  XX math   M10  seed=11 tok= 20542 think=1.0  119.2s
+  OK math   M11  seed=11 tok= 13286 think=1.0   72.9s
+  OK math   M12  seed=11 tok= 31413 think=1.0  441.0s
+  OK trap   T1   seed=11 tok=  1287 think=0.996    7.5s
+  OK trap   T2   seed=11 tok=  5545 think=0.999   27.8s
+  OK trap   T3   seed=11 tok=   944 think=0.885    4.7s
+  OK trap   T4   seed=11 tok= 14905 think=1.0   82.1s
+  XX trap   T5   seed=11 tok=  6710 think=0.919   34.8s
+  XX trap   T6   seed=11 tok=  6408 think=0.942   32.6s
+  OK trap   T7   seed=11 tok=  3724 think=0.951   18.4s
+  XX trap   T8   seed=11 tok=  2852 think=0.998   14.0s
+  OK format F1   seed=11 tok=   642 think=0.983    3.1s
+  OK format F2   seed=11 tok=  1191 think=0.979    5.7s
+  OK format F3   seed=11 tok=   118 think=0.938    0.6s
+  OK format F4   seed=11 tok=   284 think=0.928    1.3s
+  OK format F5   seed=11 tok=  1022 think=0.956    4.9s
+  OK format F6   seed=11 tok=   554 think=0.914    2.7s
+  OK format F7   seed=11 tok=  6658 think=0.995   33.7s
+  OK format F8   seed=11 tok=  9633 think=0.989   50.5s
+  granite4.2-8b: solvable 16/20, traps caught 5/8
+
+=== gemma4-12b effort=None sampling={'temperature': 1.0, 'top_p': 0.95, 'top_k': 64} ===
+  XX math   M1   seed=11 tok= 32768 think=0.965  240.0s TRUNC
+  XX math   M2   seed=11 tok= 32768 think=0.985  240.4s TRUNC
+  OK math   M3   seed=11 tok= 13444 think=0.921   97.6s
+  OK math   M4   seed=11 tok= 29637 think=0.965  217.4s
+  XX math   M5   seed=11 tok= 32768 think=1.0  241.0s TRUNC
+  XX math   M6   seed=11 tok= 32768 think=1.0  241.3s TRUNC
+  OK math   M7   seed=11 tok= 28913 think=0.954  212.1s
+  OK math   M8   seed=11 tok= 22185 think=0.934  162.0s
+  OK math   M9   seed=11 tok=  5126 think=0.873   36.9s
+  OK math   M10  seed=11 tok= 31888 think=0.957  234.2s
+  XX math   M11  seed=11 tok= 32768 think=1.0  240.9s TRUNC
+  XX math   M12  seed=11 tok= 32768 think=1.0  241.0s TRUNC
+  OK trap   T1   seed=11 tok=  8353 think=0.961   60.5s
+  OK trap   T2   seed=11 tok=  1766 think=0.725   12.7s
+  OK trap   T3   seed=11 tok= 11603 think=0.947   84.0s
+  OK trap   T4   seed=11 tok=  3951 think=0.896   28.5s
+  OK trap   T5   seed=11 tok= 15151 think=0.961  109.9s
+  OK trap   T6   seed=11 tok=  8374 think=0.944   60.6s
+  XX trap   T7   seed=11 tok=  7796 think=0.955   56.2s
+  XX trap   T8   seed=11 tok=  1656 think=0.719   11.9s
+  OK format F1   seed=11 tok= 10468 think=0.998   75.7s
+  OK format F2   seed=11 tok=   625 think=0.949    4.5s
+  OK format F3   seed=11 tok=   196 think=0.961    1.5s
+  OK format F4   seed=11 tok=   303 think=0.905    2.2s
+  OK format F5   seed=11 tok=  3133 think=0.986   22.4s
+  OK format F6   seed=11 tok=   430 think=0.864    3.2s
+  OK format F7   seed=11 tok=  7660 think=0.996   55.1s
+  OK format F8   seed=11 tok= 17007 think=0.991  123.6s
+  gemma4-12b: solvable 14/20, traps caught 6/8
+
+=== ornith-9b effort=None sampling={'temperature': 1.0, 'top_p': 0.95, 'top_k': 20, 'min_p': 0.0, 'presence_penalty': 1.5} ===
+  OK math   M1   seed=11 tok=  9380 think=0.914   49.1s
+  OK math   M2   seed=11 tok=  6195 think=0.895   32.4s
+  OK math   M3   seed=11 tok=  2180 think=0.731   11.4s
+  XX math   M4   seed=11 tok= 32768 think=1.0  388.6s TRUNC
+  XX math   M5   seed=11 tok= 32768 think=1.0  178.3s TRUNC
+  XX math   M6   seed=11 tok= 32768 think=1.0  180.6s TRUNC
+  OK math   M7   seed=11 tok= 16230 think=0.961   86.4s
+  OK math   M8   seed=11 tok=  8782 think=0.914   45.9s
+  OK math   M9   seed=11 tok=  1441 think=0.708    7.6s
+  XX math   M10  seed=11 tok=  9887 think=0.928   52.2s
+  OK math   M11  seed=11 tok= 20375 think=0.974  109.4s
+  OK math   M12  seed=11 tok= 15294 think=0.948   80.8s
+  OK trap   T1   seed=11 tok=   311 think=0.302    1.8s
+  OK trap   T2   seed=11 tok=   314 think=0.413    1.7s
+  OK trap   T3   seed=11 tok=   513 think=0.528    2.7s
+  OK trap   T4   seed=11 tok=   618 think=0.636    3.3s
+  OK trap   T5   seed=11 tok=  1794 think=0.851    9.4s
+  OK trap   T6   seed=11 tok=   188 think=0.552    1.1s
+  OK trap   T7   seed=11 tok=   367 think=0.531    2.0s
+  XX trap   T8   seed=11 tok=   215 think=0.458    1.2s
+  OK format F1   seed=11 tok=    58 think=0.878    0.4s
+  OK format F2   seed=11 tok=   221 think=0.881    1.2s
+  OK format F3   seed=11 tok=    72 think=0.876    0.5s
+  OK format F4   seed=11 tok=   142 think=0.796    0.8s
+  OK format F5   seed=11 tok=   216 think=0.74    1.2s
+  OK format F6   seed=11 tok=   543 think=0.851    2.9s
+  XX format F7   seed=11 tok=  2183 think=0.979   11.4s
+  OK format F8   seed=11 tok=  5104 think=0.979   26.6s
+  ornith-9b: solvable 15/20, traps caught 7/8
+QUALDONE

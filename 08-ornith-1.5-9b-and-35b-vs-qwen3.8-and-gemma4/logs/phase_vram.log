@@ -1,0 +1,133 @@
+
+
+===== 2026-08-25 17:21:56 bench_vram.py ornith-9b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-9b :: probe ===
+  ctx=   4096 weights=5357.9 MiB kv=128.0 MiB compute=112.0 MiB smi_delta=5659 MiB
+  ctx=  65536 weights=5357.9 MiB kv=2048.0 MiB compute=232.0 MiB smi_delta=7742 MiB
+  -> KV 32768.0 bytes/token (31.2 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-25 17:22:07 bench_vram.py ornith-35b-a3b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-35b-a3b :: probe ===
+  ctx=   4096 weights=20175.7 MiB kv=80.0 MiB compute=84.0 MiB smi_delta=20475 MiB
+  ctx=  65536 weights=20175.7 MiB kv=1280.0 MiB compute=204.0 MiB smi_delta=21855 MiB
+  -> KV 20480.0 bytes/token (19.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-25 17:22:32 bench_vram.py qwen3.8-27b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== qwen3.8-27b :: probe ===
+  ctx=   4096 weights=15770.4 MiB kv=256.0 MiB compute=150.0 MiB smi_delta=16116 MiB
+  ctx=  65536 weights=15770.4 MiB kv=4096.0 MiB compute=270.0 MiB smi_delta=20013 MiB
+  -> KV 65536.0 bytes/token (62.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-25 17:23:05 bench_vram.py gemma4-31b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== gemma4-31b :: probe ===
+  ctx=   4096 weights=18215.8 MiB kv=1520.0 MiB compute=211.0 MiB smi_delta=19657 MiB
+  ctx=  65536 weights=18215.8 MiB kv=6320.0 MiB compute=331.0 MiB smi_delta=22918 MiB
+  -> KV 81920.0 bytes/token (78.1 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-25 17:23:31 bench_vram.py muse-glimmer-30b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== muse-glimmer-30b :: probe ===
+  ctx=   4096 weights=15967.9 MiB kv=149.5 MiB compute=182.0 MiB smi_delta=16041 MiB
+  ctx=  65536 weights=15967.9 MiB kv=929.5 MiB compute=302.0 MiB smi_delta=16953 MiB
+  -> KV 13312.0 bytes/token (12.7 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:04:26 bench_vram.py ornith-9b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-9b :: probe ===
+  ctx=   4096 weights=5357.9 MiB kv=128.0 MiB compute=112.0 MiB smi_delta=5578 MiB
+  ctx=  65536 weights=5357.9 MiB kv=2048.0 MiB compute=232.0 MiB smi_delta=7502 MiB
+  -> KV 32768.0 bytes/token (31.2 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:04:37 bench_vram.py ornith-35b-a3b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-35b-a3b :: probe ===
+  ctx=   4096 weights=20175.7 MiB kv=80.0 MiB compute=84.0 MiB smi_delta=20637 MiB
+  ctx=  65536 weights=20175.7 MiB kv=1280.0 MiB compute=204.0 MiB smi_delta=21864 MiB
+  -> KV 20480.0 bytes/token (19.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:05:03 bench_vram.py qwen3.8-27b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== qwen3.8-27b :: probe ===
+  ctx=   4096 weights=15770.4 MiB kv=256.0 MiB compute=150.0 MiB smi_delta=16115 MiB
+  ctx=  65536 weights=15770.4 MiB kv=4096.0 MiB compute=270.0 MiB smi_delta=20016 MiB
+  -> KV 65536.0 bytes/token (62.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:05:36 bench_vram.py gemma4-26b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== gemma4-26b :: probe ===
+  ctx=   4096 FAILED: llama-server exited 1
+mbd_head_k_swa     = 256
+0.00.788.097 I print_info: n_embd_head_v_swa     = 256
+0.00.788.097 I print_info: n_rot_swa             = 256
+0.00.788.097 I print_info: n_ctx_orig_yarn 
+  ctx=  65536 FAILED: llama-server exited 1
+mbd_head_k_swa     = 256
+0.00.801.572 I print_info: n_embd_head_v_swa     = 256
+0.00.801.572 I print_info: n_rot_swa             = 256
+0.00.801.572 I print_info: n_ctx_orig_yarn 
+  wrote 2 rows
+
+
+===== 2026-08-26 17:05:39 bench_vram.py muse-glimmer-30b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== muse-glimmer-30b :: probe ===
+  ctx=   4096 weights=15967.9 MiB kv=149.5 MiB compute=182.0 MiB smi_delta=16134 MiB
+  ctx=  65536 weights=15967.9 MiB kv=929.5 MiB compute=302.0 MiB smi_delta=16856 MiB
+  -> KV 13312.0 bytes/token (12.7 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:24:03 bench_vram.py ornith-9b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-9b :: probe ===
+  ctx=   4096 weights=5357.9 MiB kv=128.0 MiB compute=112.0 MiB smi_delta=5597 MiB
+  ctx=  65536 weights=5357.9 MiB kv=2048.0 MiB compute=232.0 MiB smi_delta=7508 MiB
+  -> KV 32768.0 bytes/token (31.2 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:24:13 bench_vram.py ornith-35b-a3b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== ornith-35b-a3b :: probe ===
+  ctx=   4096 weights=20175.7 MiB kv=80.0 MiB compute=84.0 MiB smi_delta=20641 MiB
+  ctx=  65536 weights=20175.7 MiB kv=1280.0 MiB compute=204.0 MiB smi_delta=21896 MiB
+  -> KV 20480.0 bytes/token (19.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:24:39 bench_vram.py qwen3.8-27b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== qwen3.8-27b :: probe ===
+  ctx=   4096 weights=15770.4 MiB kv=256.0 MiB compute=150.0 MiB smi_delta=16079 MiB
+  ctx=  65536 weights=15770.4 MiB kv=4096.0 MiB compute=270.0 MiB smi_delta=20060 MiB
+  -> KV 65536.0 bytes/token (62.5 KiB per 1k)
+  wrote 3 rows
+
+
+===== 2026-08-26 17:25:10 bench_vram.py gemma4-26b --mode probe --ctxs 4096 65536 --out vram.jsonl =====
+
+=== gemma4-26b :: probe ===
+  ctx=   4096 weights=16808.4 MiB kv=380.0 MiB compute=118.0 MiB smi_delta=17162 MiB
+  ctx=  65536 weights=16808.4 MiB kv=1580.0 MiB compute=238.0 MiB smi_delta=18488 MiB
+  -> KV 20480.0 bytes/token (19.5 KiB per 1k)
+  wrote 3 rows

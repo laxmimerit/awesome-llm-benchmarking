@@ -1,0 +1,57 @@
+# Model weights never belong in this repository
+*.gguf
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.npz
+*.npy
+
+# Compiled runtimes and build trees
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.so
+*.dylib
+build/
+build-cpu/
+build-cuda/
+llama.cpp/
+tools/
+_dl/
+
+# Archives and media
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.mp3
+*.mp4
+*.mov
+*.wav
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Safety-eval material that is deliberately not published
+05-qwen3.8-27b-uncensored-vs-base/transcripts/*harmful*
+05-qwen3.8-27b-uncensored-vs-base/transcripts_buggy_2048/*harmful*
+05-qwen3.8-27b-uncensored-vs-base/prompts.py
+
+# Third party corpora: fetch them yourself, they carry their own license
+*.parquet
+05-qwen3.8-27b-uncensored-vs-base/corpus/

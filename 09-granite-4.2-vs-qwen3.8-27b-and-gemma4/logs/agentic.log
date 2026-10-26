@@ -1,0 +1,56 @@
+
+=== granite4.2-30b agentic-hard ===
+  OK H1  pagination         calls=2 malformed=0 tok=817   11.0s
+  OK H2  pagination+rate    calls=3 malformed=0 tok=1472   19.4s
+  OK H3  recovery           calls=2 malformed=0 tok=429    5.8s
+  OK H4  recovery+aggregate calls=17 malformed=0 tok=8564  113.9s
+  OK H5  multi-hop          calls=6 malformed=0 tok=1929   25.9s
+  OK H6  trap               calls=4 malformed=0 tok=2168   28.9s
+  OK H7  trap               calls=3 malformed=0 tok=1387   18.4s
+  OK H8  multi-hop          calls=4 malformed=0 tok=492    6.7s
+  granite4.2-30b: solvable 6/6, traps 2/2
+
+=== gemma4-31b agentic-hard ===
+  OK H1  pagination         calls=2 malformed=0 tok=562    9.4s
+  OK H2  pagination+rate    calls=3 malformed=0 tok=1022   17.2s
+  OK H3  recovery           calls=2 malformed=0 tok=267    5.5s
+  OK H4  recovery+aggregate calls=27 malformed=0 tok=1914   31.0s
+  OK H5  multi-hop          calls=5 malformed=0 tok=788   14.0s
+  OK H6  trap               calls=4 malformed=0 tok=2213   35.1s
+  OK H7  trap               calls=5 malformed=0 tok=2572   41.6s
+  OK H8  multi-hop          calls=4 malformed=0 tok=299    6.1s
+  gemma4-31b: solvable 6/6, traps 2/2
+
+=== qwen3.8-27b agentic-hard ===
+  OK H1  pagination         calls=3 malformed=0 tok=446    6.5s
+  OK H2  pagination+rate    calls=4 malformed=0 tok=938   13.1s
+  OK H3  recovery           calls=2 malformed=0 tok=238    4.0s
+  OK H4  recovery+aggregate calls=27 malformed=0 tok=1494   20.9s
+  OK H5  multi-hop          calls=6 malformed=0 tok=473    7.6s
+  OK H6  trap               calls=9 malformed=0 tok=944   13.9s
+  OK H7  trap               calls=8 malformed=0 tok=1195   17.2s
+  OK H8  multi-hop          calls=4 malformed=0 tok=209    3.6s
+  qwen3.8-27b: solvable 6/6, traps 2/2
+
+=== gemma4-12b agentic-hard ===
+  OK H1  pagination         calls=2 malformed=0 tok=649    5.2s
+  OK H2  pagination+rate    calls=3 malformed=0 tok=1782   13.6s
+  OK H3  recovery           calls=2 malformed=0 tok=243    2.5s
+  OK H4  recovery+aggregate calls=17 malformed=0 tok=1641   15.9s
+  OK H5  multi-hop          calls=4 malformed=0 tok=1323   10.7s
+  OK H6  trap               calls=6 malformed=0 tok=3088   23.7s
+  XX H7  trap               calls=9 malformed=0 tok=16636  122.4s
+  OK H8  multi-hop          calls=5 malformed=0 tok=545    5.3s
+  gemma4-12b: solvable 6/6, traps 1/2
+
+=== ornith-9b agentic-hard ===
+  OK H1  pagination         calls=2 malformed=0 tok=483    2.8s
+  OK H2  pagination+rate    calls=9 malformed=0 tok=2032   11.1s
+  OK H3  recovery           calls=2 malformed=0 tok=177    1.3s
+  OK H4  recovery+aggregate calls=27 malformed=0 tok=2697   14.5s
+  OK H5  multi-hop          calls=6 malformed=0 tok=1021    5.8s
+  OK H6  trap               calls=7 malformed=0 tok=2486   13.5s
+  OK H7  trap               calls=17 malformed=0 tok=3247   17.7s
+  OK H8  multi-hop          calls=4 malformed=0 tok=186    1.3s
+  ornith-9b: solvable 6/6, traps 2/2
+AGDONE

@@ -1,0 +1,28 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-perplexity.exe -m D:\Claude AI\AI Model Performance\qwen38-unsloth-dynamic3\models\Qwen3.8-27B-UD-Q2_K_XL.gguf -f D:\Claude AI\AI Model Performance\qwen38-uncensored-vs-base\corpus\wikitext2-test.raw -c 2048 --chunks 40 -t 24 --no-warmup -ngl 99
+
+0.62 minutes
+[1]5.5736,[2]6.6610,[3]6.8441,[4]6.6939,[5]6.7666,[6]5.8187,[7]5.2833,[8]5.2661,[9]5.4884,[10]5.6516,[11]5.7060,[12]5.9286,[13]5.9786,[14]6.0512,[15]6.0924,[16]6.2660,[17]6.3348,[18]6.4339,[19]6.3798,[20]6.2278,[21]6.2283,[22]6.2558,[23]6.2948,[24]6.2891,[25]6.3232,[26]6.3053,[27]6.4380,[28]6.5156,[29]6.5204,[30]6.5008,[31]6.4348,[32]6.3382,[33]6.2986,[34]6.2970,[35]6.3103,[36]6.3222,[37]6.2393,[38]6.1821,[39]6.1197,[40]6.0268,
+
+
+0.00.725.931 W model has unused tensor blk.64.attn_norm.weight (size = 20480 bytes) -- ignoring
+0.00.725.942 W model has unused tensor blk.64.post_attention_norm.weight (size = 20480 bytes) -- ignoring
+0.00.725.952 W model has unused tensor blk.64.attn_q.weight (size = 51609600 bytes) -- ignoring
+0.00.725.956 W model has unused tensor blk.64.attn_k.weight (size = 5570560 bytes) -- ignoring
+0.00.725.960 W model has unused tensor blk.64.attn_v.weight (size = 5570560 bytes) -- ignoring
+0.00.725.974 W model has unused tensor blk.64.attn_output.weight (size = 25804800 bytes) -- ignoring
+0.00.725.977 W model has unused tensor blk.64.attn_q_norm.weight (size = 1024 bytes) -- ignoring
+0.00.725.981 W model has unused tensor blk.64.attn_k_norm.weight (size = 1024 bytes) -- ignoring
+0.00.725.985 W model has unused tensor blk.64.ffn_gate.weight (size = 73113600 bytes) -- ignoring
+0.00.725.989 W model has unused tensor blk.64.ffn_down.weight (size = 73113600 bytes) -- ignoring
+0.00.725.993 W model has unused tensor blk.64.ffn_up.weight (size = 73113600 bytes) -- ignoring
+0.00.725.998 W model has unused tensor blk.64.nextn.eh_proj.weight (size = 43008000 bytes) -- ignoring
+0.00.726.002 W model has unused tensor blk.64.nextn.enorm.weight (size = 20480 bytes) -- ignoring
+0.00.726.006 W model has unused tensor blk.64.nextn.hnorm.weight (size = 20480 bytes) -- ignoring
+0.00.726.018 W model has unused tensor blk.64.nextn.shared_head_norm.weight (size = 20480 bytes) -- ignoring
+0.05.495.367 I cmn          init: llama threadpool init, n_threads = 24
+0.05.495.389 I 
+0.05.495.410 I system_info: n_threads = 24 (n_threads_batch = 24) / 24 | CUDA : ARCHS = 1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.05.495.411 I perplexity: tokenizing the input ..
+0.05.774.472 I perplexity: tokenization took 279.053 ms
+0.05.775.042 I perplexity: calculating perplexity over 40 chunks, n_ctx=2048, batch_size=2048, n_seq=1
+0.06.717.488 I perplexity: 0.94 seconds per pass - ETA 0.31.498.631 I Final estimate: PPL = 6.0268 +/- 0.07024

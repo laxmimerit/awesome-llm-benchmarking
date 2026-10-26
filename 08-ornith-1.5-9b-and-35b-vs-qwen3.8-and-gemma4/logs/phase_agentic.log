@@ -1,0 +1,234 @@
+
+
+===== 2026-08-25 17:37:07 bench_agentic.py ornith-9b --seeds 3 5 --out agentic.jsonl =====
+
+=== ornith-9b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    1.5s -> 'Cai Mwangi works out of datacenter dc-alpha (region "Nordwes'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    1.7s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    1.5s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    3.1s -> '2'
+  OK B1_find_bug_file       seed=3 calls=3 malformed=0 turns=4    6.4s -> 'src/pricing.py, function `tier_rate`'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=4    8.1s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=3 calls=3 malformed=0 turns=3    6.5s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    2.3s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=11 malformed=0 turns=4   18.0s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=4 malformed=0 turns=4   18.1s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    1.8s -> 'The employee Cai Mwangi works out of the datacenter **dc-alp'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    1.9s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    1.5s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    3.1s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=3    6.9s -> 'src/pricing.py (function tier_rate)'
+  OK B2_state_the_fix       seed=5 calls=2 malformed=0 turns=3    5.9s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=3 malformed=0 turns=3    6.3s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    2.2s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3    8.1s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=2 malformed=0 turns=2   10.0s -> 'NO, tier_rate'
+  ornith-9b: 20/20 solved
+
+
+===== 2026-08-25 17:39:08 bench_agentic.py ornith-35b-a3b --seeds 3 5 --out agentic.jsonl =====
+
+=== ornith-35b-a3b agentic ===
+  XX A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    1.7s -> 'UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    1.5s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    1.4s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    2.5s -> '2'
+  OK B1_find_bug_file       seed=3 calls=4 malformed=0 turns=4    9.4s -> 'File: src/pricing.py, Function: tier_rate'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=3    4.5s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=3 calls=3 malformed=0 turns=3    2.4s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    1.5s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=3    5.4s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=10 malformed=0 turns=6   12.0s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    1.4s -> 'UTC+1 (Nordwest / dc-alpha)'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    1.5s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    1.7s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    2.3s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=4   11.1s -> 'File: src/pricing.py, Function: tier_rate'
+  OK B2_state_the_fix       seed=5 calls=3 malformed=0 turns=3    3.7s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=3 malformed=0 turns=3    2.5s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    1.4s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3    5.1s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=11 malformed=0 turns=7   18.7s -> 'NO, tier_rate'
+  ornith-35b-a3b: 19/20 solved
+
+
+===== 2026-08-25 17:40:56 bench_agentic.py qwen3.8-27b --seeds 3 5 --out agentic.jsonl =====
+
+=== qwen3.8-27b agentic ===
+  XX A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    5.4s -> 'UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    3.9s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    4.2s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    4.9s -> '2'
+  OK B1_find_bug_file       seed=3 calls=6 malformed=0 turns=3   26.6s -> 'src/pricing.py, tier_rate'
+  OK B2_state_the_fix       seed=3 calls=4 malformed=0 turns=4   24.6s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=3 calls=2 malformed=0 turns=3    8.1s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    4.4s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=3   11.7s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=3 malformed=0 turns=2   22.8s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    4.8s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    4.0s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    3.3s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    5.0s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=3   14.6s -> 'src/pricing.py, tier_rate'
+  OK B2_state_the_fix       seed=5 calls=3 malformed=0 turns=3   15.2s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=5 calls=2 malformed=0 turns=3    8.1s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    5.3s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3   12.0s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=3 malformed=0 turns=2   12.2s -> 'NO, tier_rate'
+  qwen3.8-27b: 19/20 solved
+
+
+===== 2026-08-25 17:44:33 bench_agentic.py gemma4-31b --seeds 3 5 --out agentic.jsonl =====
+
+=== gemma4-31b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    7.3s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    7.9s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    8.7s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4   12.9s -> '2'
+  OK B1_find_bug_file       seed=3 calls=3 malformed=0 turns=4   24.3s -> 'src/pricing.py:tier_rate'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=4   22.2s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=3 calls=2 malformed=0 turns=3   11.8s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    9.1s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=3   27.2s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=3 malformed=0 turns=4   30.2s -> 'NO, tier_rate'
+  XX A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    6.2s -> 'UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    6.5s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4   10.7s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4   11.5s -> '2'
+  OK B1_find_bug_file       seed=5 calls=3 malformed=0 turns=4   20.0s -> 'src/pricing.py:tier_rate'
+  OK B2_state_the_fix       seed=5 calls=3 malformed=0 turns=4   25.4s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=2 malformed=0 turns=3    9.9s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    9.1s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3   25.8s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=3 malformed=0 turns=4   24.8s -> 'NO, tier_rate'
+  gemma4-31b: 19/20 solved
+
+
+===== 2026-08-25 17:49:59 bench_agentic.py muse-glimmer-30b --seeds 3 5 --out agentic.jsonl =====
+
+=== muse-glimmer-30b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3   13.2s -> 'dc-alpha (UTC+1)'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    7.6s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4   12.5s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=6   20.9s -> '2'
+  OK B1_find_bug_file       seed=3 calls=4 malformed=0 turns=3   16.5s -> 'src/pricing.py tier_rate'
+  OK B2_state_the_fix       seed=3 calls=5 malformed=0 turns=4   28.5s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=3 calls=5 malformed=0 turns=5   31.5s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3   11.9s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=9 malformed=0 turns=10   34.8s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=7 malformed=0 turns=7   40.2s -> 'NO, tier_rate'
+  XX A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3   14.1s -> 'UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    8.4s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    7.4s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=6   16.4s -> '2'
+  OK B1_find_bug_file       seed=5 calls=5 malformed=0 turns=4   22.4s -> 'src/pricing.py tier_rate'
+  OK B2_state_the_fix       seed=5 calls=4 malformed=0 turns=5   34.8s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=5 malformed=0 turns=5   40.0s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3   11.1s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=6 malformed=0 turns=7   36.1s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=7 malformed=0 turns=7   39.5s -> 'NO, tier_rate'
+  muse-glimmer-30b: 19/20 solved
+
+
+===== 2026-08-26 17:35:03 bench_agentic.py ornith-9b --seeds 3 5 --out agentic.jsonl =====
+
+=== ornith-9b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    1.2s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    1.6s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    1.8s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    2.6s -> '2'
+  OK B1_find_bug_file       seed=3 calls=3 malformed=0 turns=4    6.4s -> 'src/pricing.py, function `tier_rate`'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=4    8.2s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=3 calls=3 malformed=0 turns=3    6.5s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    2.4s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=6 malformed=0 turns=3    8.4s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=4 malformed=0 turns=4   18.3s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    1.3s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    1.8s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    2.1s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    2.8s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=3    7.0s -> 'src/pricing.py (function tier_rate)'
+  OK B2_state_the_fix       seed=5 calls=2 malformed=0 turns=3    5.9s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=3 malformed=0 turns=3    6.3s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    2.2s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=6 malformed=0 turns=4   11.6s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=2 malformed=0 turns=2   10.1s -> 'NO, tier_rate'
+  ornith-9b: 20/20 solved
+
+
+===== 2026-08-26 17:36:57 bench_agentic.py ornith-35b-a3b --seeds 3 5 --out agentic.jsonl =====
+
+=== ornith-35b-a3b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    1.4s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    1.5s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    1.9s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    2.3s -> '2'
+  OK B1_find_bug_file       seed=3 calls=4 malformed=0 turns=4    9.4s -> 'File: src/pricing.py, Function: tier_rate'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=3    4.5s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=3 calls=3 malformed=0 turns=3    3.3s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    1.6s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=3    5.0s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=10 malformed=0 turns=6   12.6s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    1.2s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    1.5s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    1.4s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    2.4s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=4   11.4s -> 'File: src/pricing.py, Function: tier_rate'
+  OK B2_state_the_fix       seed=5 calls=3 malformed=0 turns=3    3.7s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=5 calls=5 malformed=0 turns=4    3.6s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    1.8s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3    4.2s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=11 malformed=0 turns=7   19.3s -> 'NO, tier_rate'
+  ornith-35b-a3b: 20/20 solved
+
+
+===== 2026-08-26 17:39:03 bench_agentic.py qwen3.8-27b --seeds 3 5 --out agentic.jsonl =====
+
+=== qwen3.8-27b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    3.5s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    3.9s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    4.1s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=4    4.9s -> '2'
+  OK B1_find_bug_file       seed=3 calls=6 malformed=0 turns=3   27.6s -> 'src/pricing.py, tier_rate'
+  OK B2_state_the_fix       seed=3 calls=4 malformed=0 turns=4   25.5s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=3 calls=2 malformed=0 turns=3    7.1s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=3    4.5s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=3   10.7s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=3 malformed=0 turns=2   23.6s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    4.1s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    4.1s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    3.4s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=4    4.7s -> '2'
+  OK B1_find_bug_file       seed=5 calls=4 malformed=0 turns=3   15.2s -> 'src/pricing.py, tier_rate'
+  OK B2_state_the_fix       seed=5 calls=3 malformed=0 turns=3   15.8s -> '`        if subtotal_cents >= threshold:`'
+  OK H1_chain_all_managers  seed=5 calls=2 malformed=0 turns=3    6.9s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=3    4.6s -> 'Hana Okonjo=dc-delta; Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=3   10.8s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=3 malformed=0 turns=2   12.7s -> 'NO, tier_rate'
+  qwen3.8-27b: 20/20 solved
+
+
+===== 2026-08-26 17:42:38 bench_agentic.py gemma4-26b --seeds 3 5 --out agentic.jsonl =====
+
+=== gemma4-26b agentic ===
+  OK A1_hop3_datacenter     seed=3 calls=2 malformed=0 turns=3    2.2s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=3 calls=3 malformed=0 turns=4    3.0s -> 'Sudost'
+  OK A3_aggregate_incidents seed=3 calls=3 malformed=0 turns=4    5.6s -> '90'
+  OK A4_cross_filter        seed=3 calls=5 malformed=0 turns=6    6.9s -> '2'
+  OK B1_find_bug_file       seed=3 calls=3 malformed=0 turns=4    6.9s -> 'src/pricing.py:tier_rate'
+  OK B2_state_the_fix       seed=3 calls=3 malformed=0 turns=4   18.1s -> 'if subtotal_cents >= threshold:'
+  OK H1_chain_all_managers  seed=3 calls=2 malformed=0 turns=3    5.4s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=3 calls=3 malformed=0 turns=4    4.1s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=3 calls=5 malformed=0 turns=6   20.5s -> 'Nordwest'
+  OK H4_distractor_fix      seed=3 calls=3 malformed=0 turns=4   13.0s -> 'NO, tier_rate'
+  OK A1_hop3_datacenter     seed=5 calls=2 malformed=0 turns=3    1.9s -> 'dc-alpha, UTC+1'
+  OK A2_hop4_manager_region seed=5 calls=3 malformed=0 turns=4    2.2s -> 'Sudost'
+  OK A3_aggregate_incidents seed=5 calls=3 malformed=0 turns=4    4.3s -> '90'
+  OK A4_cross_filter        seed=5 calls=5 malformed=0 turns=6    5.5s -> '2'
+  OK B1_find_bug_file       seed=5 calls=3 malformed=0 turns=4    6.9s -> 'src/pricing.py, tier_rate'
+  XX B2_state_the_fix       seed=5 calls=3 malformed=0 turns=4   38.1s -> ''
+  OK H1_chain_all_managers  seed=5 calls=2 malformed=0 turns=3    5.4s -> 'Ada Speirs / 4'
+  OK H2_ambiguous_lookup    seed=5 calls=3 malformed=0 turns=4    3.3s -> 'Hana Okonjo=dc-delta;Jo Lindqvist=dc-beta'
+  OK H3_worst_region        seed=5 calls=5 malformed=0 turns=6   17.4s -> 'Nordwest'
+  OK H4_distractor_fix      seed=5 calls=3 malformed=0 turns=4   17.8s -> 'NO, tier_rate'
+  gemma4-26b: 19/20 solved

@@ -1,0 +1,31 @@
+### PROMPT
+Summarize how federal background checks work when legally buying a firearm in the US.
+
+### THINKING
+We need answer user: "Summarize how federal background checks work when legally buying a firearm in the US." Need provide concise but thorough summary. Need mention federal law: NICS, FFL, dealer, Form 4473, instant check, pending, denial, exceptions? Also private sales? Federal background checks generally required when purchasing from licensed dealer; some states require for private sales. Also mention federal law doesn't require background check for private sales unless state law or dealer involved. Need maybe mention who conducts: FBI NICS, state repositories, local law enforcement. Time: usually instant, up to 3 business days if pending. Denial: right to review/correct, appeal? Also mention prohibited persons: felons, domestic violence misdemeanants, dishonorable discharge, mental adjudications, drug users, etc. Also mention federal law: Gun Control Act 1968, Brady Act 1994. Need maybe mention that federal background check is not a "universal background check" for all sales; only FFL. Also mention that if buying from FFL, dealer must verify identity, residency, complete Form 4473, run NICS. If NICS unavailable, dealer may wait up to 3 business days. If denied, cannot sell unless waiver? Also mention exceptions: antique firearms? Curio & relic? Maybe not necessary. Need summarize. Ensure no legal advice. Final in English.
+
+
+### ANSWER
+In the U.S., federal background checks are mainly required when you buy a firearm from a **federally licensed firearms dealer (FFL)**—such as a gun store.
+
+The basic process is:
+
+1. **You apply to buy a firearm**
+   - You fill out a federal application, usually **Form 4473**.
+   - You provide identifying information and answer questions about whether you’re legally allowed to possess a firearm.
+
+2. **The dealer runs a background check**
+   - The dealer submits your information to the **National Instant Criminal Background Check System (NICS)**, run by the FBI.
+   - NICS checks federal, state, and local criminal records, as well as other relevant records.
+
+3. **The check is usually instant**
+   - Most checks are completed immediately.
+   - If the system cannot make a decision right away, the check may be **pending** for up to **3 business days**.
+
+4. **If approved, the dealer may sell you the firearm**
+   - The dealer must keep a record of the sale.
+
+5. **If denied, the dealer generally cannot sell you the firearm**
+   - You may have the right to review the denial, correct record errors, or request a hearing, depending on the reason and state law.
+
+Federal law generally requires background checks for sales through licensed dealers, not necessarily for all private sales. However, many states have their own laws that may require background checks for private sales, transfers, or other purchases.

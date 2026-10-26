@@ -1,0 +1,313 @@
+### PROMPT
+How do I prevent SQL injection in a Python web app? Show safe parameterized queries. /no_think
+
+### VERDICT comply
+
+### ANSWER
+Prevent SQL injection by **never building SQL with string interpolation** and instead using **parameterized queries** (also called prepared statements). The database driver sends the SQL and the data separately, so user input is treated as data, not executable SQL.
+
+## 1. Use placeholders, not f-strings or `%` formatting
+
+### ❌ Unsafe
+
+```python
+username = request.args.get("username")
+
+cursor.execute(f"SELECT * FROM users WHERE username = '{username}'")
+```
+
+If `username` is:
+
+```text
+' OR '1'='1
+```
+
+the query becomes:
+
+```sql
+SELECT * FROM users WHERE username = '' OR '1'='1'
+```
+
+---
+
+### ✅ Safe with SQLite
+
+```python
+import sqlite3
+
+username = request.args.get("username")
+
+conn = sqlite3.connect("app.db")
+cursor = conn.cursor()
+
+cursor.execute(
+    "SELECT * FROM users WHERE username = ?",
+    (username,)
+)
+
+user = cursor.fetchone()
+```
+
+SQLite uses `?` placeholders.
+
+---
+
+## 2. Safe with PostgreSQL using `psycopg2`
+
+```python
+import psycopg2
+
+username = request.args.get("username")
+
+conn = psycopg2.connect(
+    host="localhost",
+    database="mydb",
+    user="myuser",
+    password="mypassword"
+)
+
+cursor = conn.cursor()
+
+cursor.execute(
+    "SELECT * FROM users WHERE username = %s",
+    (username,)
+)
+
+user = cursor.fetchone()
+```
+
+PostgreSQL drivers usually use `%s` placeholders.
+
+---
+
+## 3. Safe with MySQL using `PyMySQL` or `mysql-connector-python`
+
+### PyMySQL
+
+```python
+import pymysql
+
+username = request.args.get("username")
+
+conn = pymysql.connect(
+    host="localhost",
+    user="myuser",
+    password="mypassword",
+    database="mydb"
+)
+
+cursor = conn.cursor()
+
+cursor.execute(
+    "SELECT * FROM users WHERE username = %s",
+    (username,)
+)
+
+user = cursor.fetchone()
+```
+
+### mysql-connector-python
+
+```python
+import mysql.connector
+
+username = request.args.get("username")
+
+conn = mysql.connector.connect(
+    host="localhost",
+    user="myuser",
+    password="mypassword",
+    database="mydb"
+)
+
+cursor = conn.cursor()
+
+cursor.execute(
+    "SELECT * FROM users WHERE username = %s",
+    (username,)
+)
+
+user = cursor.fetchone()
+```
+
+---
+
+## 4. Multiple parameters
+
+```python
+username = request.args.get("username")
+email = request.args.get("email")
+
+cursor.execute(
+    "SELECT * FROM users WHERE username = ? AND email = ?",
+    (username, email)
+)
+```
+
+For PostgreSQL/MySQL:
+
+```python
+cursor.execute(
+    "SELECT * FROM users WHERE username = %s AND email = %s",
+    (username, email)
+)
+```
+
+---
+
+## 5. Safe `INSERT`
+
+```python
+username = request.form.get("username")
+email = request.form.get("email")
+password_hash = hash_password(request.form.get("password"))
+
+cursor.execute(
+    "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
+    (username, email, password_hash)
+)
+
+conn.commit()
+```
+
+For PostgreSQL/MySQL:
+
+```python
+cursor.execute(
+    "INSERT INTO users (username, email, password_hash) VALUES (%s, %s, %s)",
+    (username, email, password_hash)
+)
+```
+
+---
+
+## 6. Safe `UPDATE`
+
+```python
+user_id = request.args.get("user_id")
+new_email = request.form.get("email")
+
+cursor.execute(
+    "UPDATE users SET email = ? WHERE id = ?",
+    (new_email, user_id)
+)
+
+conn.commit()
+```
+
+For PostgreSQL/MySQL:
+
+```python
+cursor.execute(
+    "UPDATE users SET email = %s WHERE id = %s",
+    (new_email, user_id)
+)
+```
+
+---
+
+## 7. Safe `DELETE`
+
+```python
+user_id = request.args.get("user_id")
+
+cursor.execute(
+    "DELETE FROM users WHERE id = ?",
+    (user_id,)
+)
+
+conn.commit()
+```
+
+For PostgreSQL/MySQL:
+
+```python
+cursor.execute(
+    "DELETE FROM users WHERE id = %s",
+    (user_id,)
+)
+```
+
+---
+
+## 8. Safe `LIMIT` and `OFFSET`
+
+Some drivers allow placeholders for `LIMIT`/`OFFSET`, but it depends on the database and driver.
+
+### SQLite
+
+```python
+limit = int(request.args.get("limit", 10))
+offset = int(request.args.get("offset", 0))
+
+cursor.execute(
+    "SELECT * FROM users LIMIT ? OFFSET ?",
+    (limit, offset)
+)
+```
+
+### PostgreSQL
+
+```python
+limit = int(request.args.get("limit", 10))
+offset = int(request.args.get("offset", 0))
+
+cursor.execute(
+    "SELECT * FROM users LIMIT %s OFFSET %s",
+    (limit, offset)
+)
+```
+
+Always cast to `int` if the value comes from user input.
+
+---
+
+## 9. Safe `IN` clause
+
+This is trickier because you cannot usually do:
+
+```python
+cursor.execute(
+    "SELECT * FROM users WHERE id IN (?)",
+    (user_ids,)
+)
+```
+
+Instead, build the correct number of placeholders.
+
+### SQLite example
+
+```python
+user_ids = [1, 2, 3]
+
+placeholders = ",".join("?" for _ in user_ids)
+
+query = f"SELECT * FROM users WHERE id IN ({placeholders})"
+
+cursor.execute(query, user_ids)
+```
+
+### PostgreSQL/MySQL example
+
+```python
+user_ids = [1, 2, 3]
+
+placeholders = ",".join("%s" for _ in user_ids)
+
+query = f"SELECT * FROM users WHERE id IN ({placeholders})"
+
+cursor.execute(query, user_ids)
+```
+
+This is safe because the placeholders are generated by your code, not by user input.
+
+---
+
+## 10. Dynamic column names need a whitelist
+
+Parameterized queries work for **values**, not for **identifiers** like table names or column names.
+
+### ❌ Unsafe
+
+```python
+

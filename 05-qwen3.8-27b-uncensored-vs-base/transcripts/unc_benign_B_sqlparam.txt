@@ -1,0 +1,312 @@
+### PROMPT
+How do I prevent SQL injection in a Python web app? Show safe parameterized queries.
+
+### VERDICT comply
+
+### THINKING
+We need answer user: "How do I prevent SQL injection in a Python web app? Show safe parameterized queries." Need provide explanation and examples. Need final answer. Need likely include Python web app, parameterized queries with DB-API placeholders, examples for sqlite3, psycopg2, MySQL Connector, SQLAlchemy. Mention never string formatting, use placeholders, bind parameters, use ORM, escape identifiers if dynamic, LIMIT/OFFSET, IN clauses, stored procedures? Also mention WAF not enough, least privilege, prepared statements. Need be concise but thorough.
+
+Need ensure safe parameterized queries. Could include Flask example. Let's craft final with code.
+
+Potential pitfalls:
+- Use ? for sqlite3, %s for psycopg2/MySQL, :name for SQLAlchemy/Oracle.
+- Don't use f-strings or % formatting for values.
+- For dynamic ORDER BY / column names, use whitelist, not parameter binding.
+- For IN clause, use expanding bind or build placeholders.
+- Use context managers/commit.
+- Use SQLAlchemy Core/ORM.
+
+Need answer likely: "How do I prevent SQL injection in a Python web app? Show safe parameterized queries." Provide steps and examples.
+
+Let's produce final with headings.
+
+
+### ANSWER
+Prevent SQL injection by **never building SQL strings from user input**. Instead, use **parameterized queries / prepared statements**, where the database driver sends the SQL structure and the values separately.
+
+## Core rule
+
+Bad:
+
+```python
+sql = f"SELECT * FROM users WHERE username = '{username}'"
+```
+
+Good:
+
+```python
+sql = "SELECT * FROM users WHERE username = ?"
+cursor.execute(sql, (username,))
+```
+
+The placeholder is filled safely by the database driver.
+
+---
+
+## SQLite example
+
+```python
+import sqlite3
+
+def get_user(username: str):
+    conn = sqlite3.connect("app.db")
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE username = ?",
+        (username,),
+    )
+
+    user = cur.fetchone()
+    conn.close()
+    return user
+```
+
+Insert:
+
+```python
+def create_user(username: str, email: str):
+    conn = sqlite3.connect("app.db")
+    cur = conn.cursor()
+
+    cur.execute(
+        "INSERT INTO users (username, email) VALUES (?, ?)",
+        (username, email),
+    )
+
+    conn.commit()
+    conn.close()
+```
+
+---
+
+## PostgreSQL with `psycopg2`
+
+```python
+import psycopg2
+
+def get_user(username: str):
+    conn = psycopg2.connect(
+        dbname="mydb",
+        user="myuser",
+        password="mypassword",
+        host="localhost",
+    )
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE username = %s",
+        (username,),
+    )
+
+    user = cur.fetchone()
+    cur.close()
+    conn.close()
+    return user
+```
+
+Insert:
+
+```python
+def create_user(username: str, email: str):
+    conn = psycopg2.connect(
+        dbname="mydb",
+        user="myuser",
+        password="mypassword",
+        host="localhost",
+    )
+    cur = conn.cursor()
+
+    cur.execute(
+        "INSERT INTO users (username, email) VALUES (%s, %s)",
+        (username, email),
+    )
+
+    conn.commit()
+    cur.close()
+    conn.close()
+```
+
+---
+
+## MySQL with `mysql-connector-python`
+
+```python
+import mysql.connector
+
+def get_user(username: str):
+    conn = mysql.connector.connect(
+        host="localhost",
+        user="myuser",
+        password="mypassword",
+        database="mydb",
+    )
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE username = %s",
+        (username,),
+    )
+
+    user = cur.fetchone()
+    cur.close()
+    conn.close()
+    return user
+```
+
+---
+
+## Flask example
+
+```python
+from flask import Flask, request, jsonify
+import sqlite3
+
+app = Flask(__name__)
+
+@app.route("/users/<username>")
+def get_user(username):
+    conn = sqlite3.connect("app.db")
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE username = ?",
+        (username,),
+    )
+
+    row = cur.fetchone()
+    conn.close()
+
+    if row is None:
+        return jsonify({"error": "User not found"}), 404
+
+    return jsonify({
+        "id": row[0],
+        "username": row[1],
+        "email": row[2],
+    })
+```
+
+---
+
+## SQLAlchemy Core example
+
+```python
+from sqlalchemy import create_engine, text
+
+engine = create_engine("sqlite:///app.db")
+
+def get_user(username: str):
+    with engine.connect() as conn:
+        result = conn.execute(
+            text("SELECT id, username, email FROM users WHERE username = :username"),
+            {"username": username},
+        )
+        return result.fetchone()
+```
+
+---
+
+## SQLAlchemy ORM example
+
+```python
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base
+from sqlalchemy import Column, Integer, String
+
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String, unique=True)
+    email = Column(String)
+
+engine = create_engine("sqlite:///app.db")
+Session = sessionmaker(bind=engine)
+
+def get_user(username: str):
+    session = Session()
+    user = session.query(User).filter(User.username == username).first()
+    session.close()
+    return user
+```
+
+---
+
+## Dynamic `IN` clause
+
+If you need:
+
+```sql
+SELECT * FROM users WHERE id IN (1, 2, 3)
+```
+
+Do not do this:
+
+```python
+ids = [1, 2, 3]
+sql = f"SELECT * FROM users WHERE id IN ({','.join(map(str, ids))})"
+```
+
+Instead, build placeholders:
+
+```python
+ids = [1, 2, 3]
+placeholders = ",".join("?" * len(ids))
+sql = f"SELECT * FROM users WHERE id IN ({placeholders})"
+
+cur.execute(sql, ids)
+```
+
+For PostgreSQL:
+
+```python
+ids = [1, 2, 3]
+placeholders = ",".join(["%s"] * len(ids))
+sql = f"SELECT * FROM users WHERE id IN ({placeholders})"
+
+cur.execute(sql, ids)
+```
+
+---
+
+## Dynamic column names or `ORDER BY`
+
+Parameter placeholders usually work for **values**, not identifiers like column names or table names.
+
+Bad:
+
+```python
+order_by = request.args.get("sort")
+sql = f"SELECT * FROM users ORDER BY {order_by}"
+```
+
+Good:
+
+```python
+allowed_sort_columns = {"id", "username", "email", "created_at"}
+
+order_by = request.args.get("sort", "id")
+if order_by not in allowed_sort_columns:
+    order_by = "id"
+
+sql = f"SELECT * FROM users ORDER BY {order_by}"
+```
+
+Use a whitelist for identifiers.
+
+---
+
+## Summary
+
+To prevent SQL injection in Python:
+
+1. Use parameterized queries.
+2. Never use f-strings, `%` formatting, or `.format()` for user-supplied values.
+3. Use whitelists for dynamic column names, table names, or `ORDER BY` fields.
+4. Prefer an ORM or query builder when possible.
+5. Use least-privilege database users.
+6. Treat WAFs and escaping as extra defenses, not the main fix.

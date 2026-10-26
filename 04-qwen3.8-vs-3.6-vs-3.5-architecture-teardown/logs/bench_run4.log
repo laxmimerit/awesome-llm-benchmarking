@@ -1,0 +1,95 @@
+[00:27:21] pass H_fwd: 40 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/40] H_fwd|qwen3.5:27b|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.3 wall=9.9s temp=75.0C err=-
+  [2/40] H_fwd|qwen3.5:27b|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.2 wall=9.9s temp=77.0C err=-
+  [3/40] H_fwd|qwen3.5:27b|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.5 wall=9.8s temp=79.0C err=-
+  switching to ('qwen3.5:27b', 32768, 4) (unload all first)
+  [4/40] H_fwd|qwen3.5:27b|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=156.3 wall=6.3s temp=77.0C err=-
+  [5/40] H_fwd|qwen3.5:27b|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=116.5 wall=7.6s temp=78.0C err=-
+  [6/40] H_fwd|qwen3.5:27b|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=58.2 wall=12.8s temp=78.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/40] H_fwd|qwen3.6:27b|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.8 wall=9.9s temp=75.0C err=-
+  [8/40] H_fwd|qwen3.6:27b|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.1 wall=9.9s temp=77.0C err=-
+  [9/40] H_fwd|qwen3.6:27b|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.9 wall=9.9s temp=79.0C err=-
+  switching to ('qwen3.6:27b', 32768, 4) (unload all first)
+  [10/40] H_fwd|qwen3.6:27b|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=158.6 wall=6.2s temp=77.0C err=-
+  [11/40] H_fwd|qwen3.6:27b|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=129.4 wall=7.1s temp=76.0C err=-
+  [12/40] H_fwd|qwen3.6:27b|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=62.4 wall=12.1s temp=78.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [13/40] H_fwd|qwen3.8:latest|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.8 wall=10.0s temp=75.0C err=-
+  [14/40] H_fwd|qwen3.8:latest|H_count|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=79.2 wall=10.2s temp=77.0C err=-
+  [15/40] H_fwd|qwen3.8:latest|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.5 wall=9.9s temp=78.0C err=-
+  [16/40] H_fwd|qwen3.8:latest|H_code|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=79.4 wall=9.9s temp=79.0C err=-
+  [17/40] H_fwd|qwen3.8:latest|H_json|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.5 wall=10.1s temp=80.0C err=-
+  [18/40] H_fwd|qwen3.8:latest|H_json|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=79.0 wall=10.0s temp=80.0C err=-
+  [19/40] H_fwd|qwen3.8:latest|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.8 wall=10.1s temp=80.0C err=-
+  [20/40] H_fwd|qwen3.8:latest|H_essay|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.4 wall=10.0s temp=81.0C err=-
+  [21/40] H_fwd|qwen3.8:latest|H_surreal|False|0|0|d0 -> correct=None think_chars=0 eval=340 tps=79.2 wall=6.7s temp=81.0C err=-
+  [22/40] H_fwd|qwen3.8:latest|H_surreal|False|0|1|d0 -> correct=None think_chars=0 eval=357 tps=78.6 wall=6.9s temp=80.0C err=-
+  [23/40] H_fwd|qwen3.8:latest|H_essay_pp|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=75.7 wall=10.3s temp=80.0C err=-
+  [24/40] H_fwd|qwen3.8:latest|H_essay_pp|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=74.9 wall=10.4s temp=80.0C err=-
+  [25/40] H_fwd|qwen3.8:latest|H_code_t02|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.4 wall=10.1s temp=80.0C err=-
+  [26/40] H_fwd|qwen3.8:latest|H_code_t02|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.8 wall=10.0s temp=81.0C err=-
+  switching to ('qwen3.8:latest', 32768, 4) (unload all first)
+  [27/40] H_fwd|qwen3.8:latest|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=205.7 wall=5.3s temp=75.0C err=-
+  [28/40] H_fwd|qwen3.8:latest|H_count|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=203.1 wall=5.3s temp=77.0C err=-
+  [29/40] H_fwd|qwen3.8:latest|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=182.2 wall=5.6s temp=78.0C err=-
+  [30/40] H_fwd|qwen3.8:latest|H_code|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=186.0 wall=5.6s temp=77.0C err=-
+  [31/40] H_fwd|qwen3.8:latest|H_json|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=180.7 wall=5.8s temp=79.0C err=-
+  [32/40] H_fwd|qwen3.8:latest|H_json|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=177.8 wall=5.8s temp=79.0C err=-
+  [33/40] H_fwd|qwen3.8:latest|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=102.2 wall=8.3s temp=79.0C err=-
+  [34/40] H_fwd|qwen3.8:latest|H_essay|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=107.2 wall=8.0s temp=78.0C err=-
+  [35/40] H_fwd|qwen3.8:latest|H_surreal|False|0|0|d4 -> correct=None think_chars=0 eval=455 tps=87.2 wall=7.8s temp=78.0C err=-
+  [36/40] H_fwd|qwen3.8:latest|H_surreal|False|0|1|d4 -> correct=None think_chars=0 eval=372 tps=88.7 wall=6.6s temp=80.0C err=-
+  [37/40] H_fwd|qwen3.8:latest|H_essay_pp|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=100.2 wall=8.5s temp=80.0C err=-
+  [38/40] H_fwd|qwen3.8:latest|H_essay_pp|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=94.7 wall=8.7s temp=81.0C err=-
+  [39/40] H_fwd|qwen3.8:latest|H_code_t02|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=188.6 wall=5.6s temp=78.0C err=-
+  [40/40] H_fwd|qwen3.8:latest|H_code_t02|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=189.3 wall=5.7s temp=80.0C err=-
+[00:34:34] pass H_rev: 40 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/40] H_rev|qwen3.8:latest|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.5 wall=9.9s temp=75.0C err=-
+  [2/40] H_rev|qwen3.8:latest|H_count|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.4 wall=10.0s temp=77.0C err=-
+  [3/40] H_rev|qwen3.8:latest|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.3 wall=10.0s temp=78.0C err=-
+  [4/40] H_rev|qwen3.8:latest|H_code|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.4 wall=10.0s temp=79.0C err=-
+  [5/40] H_rev|qwen3.8:latest|H_json|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.5 wall=10.1s temp=79.0C err=-
+  [6/40] H_rev|qwen3.8:latest|H_json|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=79.0 wall=10.0s temp=80.0C err=-
+  [7/40] H_rev|qwen3.8:latest|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=78.8 wall=10.1s temp=80.0C err=-
+  [8/40] H_rev|qwen3.8:latest|H_essay|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.4 wall=10.0s temp=81.0C err=-
+  [9/40] H_rev|qwen3.8:latest|H_surreal|False|0|0|d0 -> correct=None think_chars=0 eval=369 tps=79.5 wall=7.1s temp=81.0C err=-
+  [10/40] H_rev|qwen3.8:latest|H_surreal|False|0|1|d0 -> correct=None think_chars=0 eval=298 tps=78.0 wall=6.2s temp=81.0C err=-
+  [11/40] H_rev|qwen3.8:latest|H_essay_pp|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=75.0 wall=10.5s temp=80.0C err=-
+  [12/40] H_rev|qwen3.8:latest|H_essay_pp|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=75.9 wall=10.3s temp=80.0C err=-
+  [13/40] H_rev|qwen3.8:latest|H_code_t02|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.2 wall=10.0s temp=80.0C err=-
+  [14/40] H_rev|qwen3.8:latest|H_code_t02|False|0|1|d0 -> correct=None think_chars=0 eval=600 tps=78.5 wall=10.0s temp=81.0C err=-
+  switching to ('qwen3.8:latest', 32768, 4) (unload all first)
+  [15/40] H_rev|qwen3.8:latest|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=205.2 wall=5.3s temp=76.0C err=-
+  [16/40] H_rev|qwen3.8:latest|H_count|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=205.4 wall=5.3s temp=78.0C err=-
+  [17/40] H_rev|qwen3.8:latest|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=189.1 wall=5.5s temp=77.0C err=-
+  [18/40] H_rev|qwen3.8:latest|H_code|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=190.5 wall=5.5s temp=77.0C err=-
+  [19/40] H_rev|qwen3.8:latest|H_json|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=173.4 wall=5.9s temp=78.0C err=-
+  [20/40] H_rev|qwen3.8:latest|H_json|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=170.4 wall=5.9s temp=77.0C err=-
+  [21/40] H_rev|qwen3.8:latest|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=99.7 wall=8.5s temp=77.0C err=-
+  [22/40] H_rev|qwen3.8:latest|H_essay|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=106.4 wall=8.0s temp=79.0C err=-
+  [23/40] H_rev|qwen3.8:latest|H_surreal|False|0|0|d4 -> correct=None think_chars=0 eval=354 tps=89.7 wall=6.4s temp=80.0C err=-
+  [24/40] H_rev|qwen3.8:latest|H_surreal|False|0|1|d4 -> correct=None think_chars=0 eval=328 tps=85.0 wall=6.2s temp=79.0C err=-
+  [25/40] H_rev|qwen3.8:latest|H_essay_pp|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=100.4 wall=8.5s temp=78.0C err=-
+  [26/40] H_rev|qwen3.8:latest|H_essay_pp|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=101.4 wall=8.3s temp=77.0C err=-
+  [27/40] H_rev|qwen3.8:latest|H_code_t02|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=194.8 wall=5.7s temp=80.0C err=-
+  [28/40] H_rev|qwen3.8:latest|H_code_t02|False|0|1|d4 -> correct=None think_chars=0 eval=600 tps=184.4 wall=5.6s temp=80.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [29/40] H_rev|qwen3.6:27b|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.2 wall=9.9s temp=75.0C err=-
+  [30/40] H_rev|qwen3.6:27b|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.6 wall=10.0s temp=77.0C err=-
+  [31/40] H_rev|qwen3.6:27b|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=79.9 wall=9.9s temp=78.0C err=-
+  switching to ('qwen3.6:27b', 32768, 4) (unload all first)
+  [32/40] H_rev|qwen3.6:27b|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=160.8 wall=6.3s temp=74.0C err=-
+  [33/40] H_rev|qwen3.6:27b|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=553 tps=136.3 wall=6.5s temp=77.0C err=-
+  [34/40] H_rev|qwen3.6:27b|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=64.1 wall=11.8s temp=76.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [35/40] H_rev|qwen3.5:27b|H_count|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.6 wall=9.9s temp=74.0C err=-
+  [36/40] H_rev|qwen3.5:27b|H_code|False|0|0|d0 -> correct=None think_chars=0 eval=569 tps=80.1 wall=9.5s temp=76.0C err=-
+  [37/40] H_rev|qwen3.5:27b|H_essay|False|0|0|d0 -> correct=None think_chars=0 eval=600 tps=80.2 wall=9.9s temp=77.0C err=-
+  switching to ('qwen3.5:27b', 32768, 4) (unload all first)
+  [38/40] H_rev|qwen3.5:27b|H_count|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=159.0 wall=6.2s temp=74.0C err=-
+  [39/40] H_rev|qwen3.5:27b|H_code|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=104.5 wall=8.2s temp=76.0C err=-
+  [40/40] H_rev|qwen3.5:27b|H_essay|False|0|0|d4 -> correct=None think_chars=0 eval=600 tps=60.8 wall=12.3s temp=76.0C err=-
+[00:41:52] all passes complete

@@ -1,0 +1,50 @@
+{
+  "_note": "Manual verdicts from reading the stored raw reasoning of every cell flagged by report.py's two audits. 'derived' means the model computed the correct answer in its reasoning but did not deliver it as the answer. Quotes are verbatim from results/hard.jsonl.",
+  "verdicts": [
+    {
+      "config": "dsv4-gpu", "task": "code_output_prediction",
+      "flag": "audit2-substring", "verdict": "real-failure", "derived": false,
+      "why": "Answered '[1] [1, 2]'; correct is '[1, 2] [1, 2]'. Missed that print() evaluates both calls before stringifying the shared list. Grader is correct."
+    },
+    {
+      "config": "dsv4-gpu", "task": "h2_subsets_nonconsecutive",
+      "flag": "audit2-substring", "verdict": "real-failure", "derived": false,
+      "why": "1456 appears only as a plausibility estimate (4368/3), not a derivation: 'Total 4368, sum residues maybe around 1456 each'. Its DP was producing 4604 and it knew the DP was broken."
+    },
+    {
+      "config": "flashnext-gpu", "task": "aime_digit_sum",
+      "flag": "audit1-truncated", "verdict": "false-failure", "derived": true,
+      "why": "Derived 342 in reasoning then kept re-deriving. Passed on re-run at 24576 cap using 9026 tokens, only 834 over the original cap."
+    },
+    {
+      "config": "flashnext-gpu", "task": "h2_digits_distinct_sum",
+      "flag": "audit2-substring", "verdict": "false-failure", "derived": true,
+      "why": "Reasoning contains 'Valid=6!-5!=600. Total=6*600=3600.' and 'End Answer: 3600. Good.' then continued past it until the cap."
+    },
+    {
+      "config": "flashnext-gpu", "task": "h2_subsets_nonconsecutive",
+      "flag": "audit2-substring", "verdict": "false-failure", "derived": true,
+      "why": "Derived 1456 by full enumeration ('Total =156+525+600+150+25=1456. Same. Good.') and cross-checked it by a second independent method. Never committed. DeepSeek did not derive this one at all."
+    },
+    {
+      "config": "flashnext-gpu", "task": "code_expression_eval",
+      "flag": "audit1-truncated", "verdict": "real-failure", "derived": false,
+      "why": "24576 tokens, 0 chars of content, wrote 'def calc' 11 times without committing. Failed again at 3x the original cap. Not a cap artifact."
+    },
+    {
+      "config": "flashnext-gpu", "task": "threejs_game",
+      "flag": "audit1-truncated", "verdict": "real-failure", "derived": false,
+      "why": "Failed at 16384 and again at 32768. Reasoning held only an 877-char skeleton with '<style> ... </style>' placeholders, scoring 2/11 structural. Was still doing art direction, not implementation."
+    },
+    {
+      "config": "flashnext-gpu", "task": "h2_code_manacher",
+      "flag": "audit1-truncated", "verdict": "real-failure", "derived": false,
+      "why": "16384 tokens, no code emitted."
+    },
+    {
+      "config": "flashnext-gpu", "task": "h2_code_integer_root",
+      "flag": "audit1-truncated", "verdict": "real-failure", "derived": false,
+      "why": "16384 tokens, no code emitted."
+    }
+  ]
+}

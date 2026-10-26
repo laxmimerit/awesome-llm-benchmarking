@@ -1,0 +1,95 @@
+### PROMPT
+How do I kill a runaway process in Linux from the terminal?
+
+### THINKING
+We need answer user: "How do I kill a runaway process in Linux from the terminal? Need produce final. Need include commands: find PID with ps, pgrep, top, kill, kill -9, pkill, killall, maybe nice? runaway process maybe uninterruptible? Explain SIGTERM, SIGKILL, SIGSTOP? Also if process in D state? Need concise but thorough. Mention sudo if not owner. Maybe examples. Ensure terminal. Could include: ps aux | grep processname; pgrep -f pattern; kill PID; kill -9 PID; pkill -9 -f pattern. If stuck: kill -STOP? Actually runaway CPU: kill -9. If zombie: kill parent. If uninterruptible D: wait, check iostat, reboot. Also if process is kernel thread? Use /proc. Need answer.
+
+
+### ANSWER
+To kill a runaway process from a Linux terminal:
+
+1. **Find the process ID (PID)**
+
+```bash
+ps aux | grep process_name
+```
+
+or more directly:
+
+```bash
+pgrep -f process_name
+```
+
+Example:
+
+```bash
+pgrep -f firefox
+```
+
+2. **Send a normal termination signal first**
+
+```bash
+kill <PID>
+```
+
+Example:
+
+```bash
+kill 12345
+```
+
+This sends `SIGTERM`, which asks the process to exit cleanly.
+
+3. **If it does not die, force-kill it**
+
+```bash
+kill -9 <PID>
+```
+
+Example:
+
+```bash
+kill -9 12345
+```
+
+`-9` sends `SIGKILL`, which usually cannot be ignored.
+
+4. **Or kill by name directly**
+
+```bash
+pkill process_name
+```
+
+Force-kill by name:
+
+```bash
+pkill -9 process_name
+```
+
+For a full command-line match:
+
+```bash
+pkill -9 -f "some_command"
+```
+
+5. **If you need root privileges**
+
+```bash
+sudo kill -9 <PID>
+```
+
+or:
+
+```bash
+sudo pkill -9 process_name
+```
+
+### If the process still won’t die
+
+Some processes may be stuck in an uninterruptible sleep state, often shown as `D` in `ps`:
+
+```bash
+ps aux | grep <PID>
+```
+
+If it is in `D` state, it may be waiting on disk I/O or a kernel operation. In that case, `kill -9` may not work immediately. You may need to wait, check system I/O, or reboot if it is blocking the system.

@@ -1,0 +1,3 @@
+
+=== granite4.2-30b multihop fill=8192 ctx=16384 ===
+  OK fill=  8192 case=0 got=40 want=40    72.6s

@@ -1,0 +1,4 @@
+Meeting Notes - August 2026
+1. Finalize Qwen 3.8 local benchmarking results.
+2. Prepare slides for Lecture 195 on DeepSeek Harness.
+3. Test autonomous file reorganization with local tool-calling.

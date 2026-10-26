@@ -1,0 +1,136 @@
+{
+  "ornith-9b": {
+    "off": {
+      "model": "ornith-9b",
+      "spec_type": "off",
+      "vram_delta_mb": 5670,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n22\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n33\n35\n36\n37\n38\n39\n40\n40\n42\n43\n44\n45\n46\n47\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n66\n68\n69\n70\n71\n72\n73\n74\n75\n75\n77\n78\n79\n80\n81\n82\n83\n84\n85\n85\n87\n88\n89\n90\n91\n92\n93\n94",
+          "decode_tps": 198.15813952042618,
+          "predicted_n": 256,
+          "predicted_ms": 1286.851,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "code": {
+          "text": "    \"\"\"A single cached value together with its metadata.\"\"\"\n\n    value: V\n    created: float\n    accessed: float\n    expires: float | None\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"A thread-safe Least Recently Used cache with optional TTL.\n\n    The implementation keeps an ``OrderedDict`` for O(1) ordering and\n    lookups, and a lock to make every mutating operation safe for use\n    from multiple threads.\n    \"\"\"\n\n    def __init__(\n        self,\n        maxsize: int = 128,\n        *,\n        ttl: float | None = None,\n        on_eviction: Callable[[K, V], None] | None = None,\n        on_expiry: Callable[[K, V], None] | None = None,\n    ) -> None:\n        if maxsize <= 0:\n            raise ValueError(\"maxsize must be a positive integer\")\n        if ttl is not None and ttl <= 0:\n            raise ValueError(\"ttl must be a positive number\")\n\n        self._maxsize = maxsize\n        self._ttl = ttl\n        self._on_eviction = on_eviction\n        self._",
+          "decode_tps": 196.03727937157367,
+          "predicted_n": 256,
+          "predicted_ms": 1300.773,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "json": {
+          "text": "  ...\n]\n\n<think>\nThe user wants a JSON array of 200 employee records. Each record has these keys:\n- id\n- first_name\n- last_name\n- email\n- department\n- title\n- salary\n- hired_on\n- manager_id\n- active\n\nI need to generate 200 records. Let me create realistic data with:\n- Sequential IDs from 1 to 200\n- First names and last names from a pool\n- Emails based on first.last@example.com\n- Departments (Engineering, Sales, Marketing, HR, Finance, Operations, etc.)\n- Titles appropriate to department\n- Salaries\n- Hired dates\n- Manager IDs (some null for top-level managers)\n- Active status (mostly true, some false)\n\nLet me generate this. I'll use a pool of first names and last names, and cycle through them. I'll assign departments and titles.\n\nLet me write out 200 records. This is a lot, but I'll generate them systematically.\n\nLet me create pools:\n\nFirst names:\nAda, James, Maria, Robert, Susan, John, Patricia, Michael, Linda, David, Barbara, William, Elizabeth,",
+          "decode_tps": 193.0361636219943,
+          "predicted_n": 256,
+          "predicted_ms": 1320.996,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "essay": {
+          "text": " the entire institutional architecture of transit is structurally biased against the very outcomes it is supposed to produce. This failure is not accidental; it is the product of a deeply embedded political economy in which funding structures, land use policy, and ridership forecasting conspire to produce systems that are underfunded, spatially mismatched, and politically indefensible.\n\n## The Funding Structure: A System Designed for Failure\n\nThe most fundamental flaw in municipal transit planning lies in its funding architecture. Transit systems in mid-sized cities are chronically underfunded because the financial mechanisms that sustain them are structurally disconnected from the value they generate.\n\nConsider the case of a mid-sized city like Columbus, Ohio, or Charlotte, North Carolina. These cities have populations between 500,000 and 1 million, with growing economies and expanding suburbs. Yet their transit systems remain vestigial\u2014operating at a fraction of the capacity needed to serve their populations. The reason is not a lack of demand, but a lack of funding.\n\nThe federal funding formula for transit is based on a percentage of federal funds apportioned to each metropolitan area, with a cap that has not been adjusted for inflation in decades. This means that a city's transit budget is essentially frozen in",
+          "decode_tps": 188.783869121696,
+          "predicted_n": 256,
+          "predicted_ms": 1350.751,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "fiction": {
+          "text": " stung his eyes, and the great iron lamp at the top of the tower still hummed its low, faithful drone. He climbed the spiral stairs as usual, his boots ringing against the iron, and when he reached the gallery he did the thing he did every morning: he opened the heavy brass valve and let the light spill out over the water.\n\nAnd then he stopped.\n\nBecause the water was wrong.\n\nIt was the same water, of course. The same endless expanse of grey-green, the same foam where the waves broke against the black rocks, the same distant line where the horizon met the sky. But Aldous had kept a ledger, God bless him, and he had recorded the tide. And the tide had not come in. It had not gone out. It had simply, impossibly, *been there*, already, at exactly the height he had measured yesterday, at exactly the moment the moon hung low and fat over the bay.\n\nHe blinked. He rubbed his eyes with the back of a salt-crusted hand. He looked again.\n\nThe sea was identical.\n\nNot a copy in the sense of a photograph, or a painting, or a mirror held up to the truth. It was a copy in the sense that a",
+          "decode_tps": 190.7514710304619,
+          "predicted_n": 256,
+          "predicted_ms": 1336.818,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        }
+      },
+      "unused_nextn_tensors": [
+        "blk.32.nextn.eh_proj.weight",
+        "blk.32.nextn.enorm.weight",
+        "blk.32.nextn.hnorm.weight",
+        "blk.32.nextn.shared_head_norm.weight"
+      ]
+    },
+    "on": {
+      "model": "ornith-9b",
+      "spec_type": "draft-mtp",
+      "vram_delta_mb": 6111,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n22\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n33\n35\n36\n37\n38\n39\n40\n40\n42\n43\n44\n45\n46\n47\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n67\n68\n69\n70\n70\n72\n73\n74\n75\n76\n77\n78\n79\n80\n80\n82\n83\n84\n85\n86\n87\n88\n89\n90\n90\n92\n93\n94",
+          "decode_tps": 297.9964123569179,
+          "predicted_n": 256,
+          "predicted_ms": 855.715,
+          "draft_n": 244,
+          "draft_n_accepted": 193,
+          "accept_rate": 0.791
+        },
+        "code": {
+          "text": "    \"\"\"A single cached value together with its metadata.\"\"\"\n\n    value: V\n    created: float\n    accessed: float\n    expires: float | None\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"A thread-safe Least Recently Used cache with optional TTL.\n\n    The implementation keeps an ``OrderedDict`` for O(1) ordering and\n    lookups, and a lock to make every mutating operation safe for use\n    from multiple threads.\n    \"\"\"\n\n    def __init__(\n        self,\n        maxsize: int = 128,\n        *,\n        ttl: float | None = None,\n        on_eviction: Callable[[K, V], None] | None = None,\n    ) -> None:\n        if maxsize <= 0:\n            raise ValueError(\"maxsize must be a positive integer\")\n        if ttl is not None and ttl <= 0:\n            raise ValueError(\"ttl must be a positive number\")\n\n        self._maxsize = maxsize\n        self._ttl = ttl\n        self._on_eviction = on_eviction\n        self._lock = threading.Lock()\n        self._data: dict[K, _Entry[V]]",
+          "decode_tps": 237.03885485134876,
+          "predicted_n": 256,
+          "predicted_ms": 1075.773,
+          "draft_n": 346,
+          "draft_n_accepted": 168,
+          "accept_rate": 0.4855
+        },
+        "json": {
+          "text": "  ...\n]\n\n<think>\nThe user wants a JSON array of 200 employee records. Each record has these keys:\n- id\n- first_name\n- last_name\n- email\n- department\n- title\n- salary\n- hired_on\n- manager_id\n- active\n\nI need to generate 200 records. Let me create realistic data with:\n- Sequential IDs from 1 to 200\n- First names and last names (I'll use a pool of common names)\n- Email addresses\n- Departments (Engineering, Sales, Marketing, HR, Finance, etc.)\n- Titles\n- Salaries\n- Hired dates\n- Manager IDs (some null for top-level managers)\n- Active status (mostly true, some false)\n\nLet me create a good pool of names and generate the data programmatically in my head, but since I need to output 200 records, I'll write them out. This is a lot of data. Let me be systematic.\n\nLet me create pools:\n\nFirst names (male): James, John, Robert, Michael, David, William, Richard, Joseph, Thomas, Charles, Christopher, Daniel, Matthew, Anthony, Mark, Donald,",
+          "decode_tps": 261.3746667472999,
+          "predicted_n": 256,
+          "predicted_ms": 975.611,
+          "draft_n": 306,
+          "draft_n_accepted": 177,
+          "accept_rate": 0.5784
+        },
+        "essay": {
+          "text": " the entire institutional architecture of transit is structurally biased against the very outcomes it is supposed to produce. This failure is not accidental; it is the product of a deeply embedded political economy in which funding structures, land use policy, and ridership forecasting conspire to produce systems that are underfunded, spatially mismatched, and politically indefensible.\n\nThe first and most fundamental problem is the funding structure. In the United States, and increasingly in many other nations, transit funding is overwhelmingly dependent on local property taxes and fares, with federal and state contributions serving as volatile supplements. This creates a perverse incentive structure. Because transit agencies are typically funded on a cost-recovery basis with ridership as the primary metric of success, agencies are incentivized to build systems that maximize fare revenue rather than maximize social benefit. This means that high-frequency, high-capacity transit along major corridors is often underinvested in, while low-density, low-ridership routes are over-subsidized to maintain political legitimacy. The result is a system that looks comprehensive on a map but fails to deliver the density and frequency that would make transit a viable alternative to the automobile.\n\nThis funding structure is compounded by the fact that transit is treated as a public utility rather than as an investment in",
+          "decode_tps": 147.5384511239826,
+          "predicted_n": 256,
+          "predicted_ms": 1728.363,
+          "draft_n": 514,
+          "draft_n_accepted": 125,
+          "accept_rate": 0.2432
+        },
+        "fiction": {
+          "text": " stung his eyes, and the great brass lamp at the top of the tower still hummed its low, patient note. He climbed the spiral stairs as usual, his boots ringing against the iron, and when he reached the gallery he did the thing he did every morning: he opened the heavy glass doors and looked out.\n\nHe looked out, and he looked out, and he looked out.\n\nThe sea was there. It was the sea. It was the sea, and it was not the sea.\n\nAldous blinked, and the blink did nothing. He rubbed his eyes with the back of a hand that was, he was certain, his own hand, and the sea did not change. It was a perfect copy of the sea, down to the last ripple, the last foam, the last dying gull that had died yesterday and been carried out to sea. Aldous had seen this gull. He had watched it go. And now it was here again, doing exactly what it had done, flapping its broken wings toward the horizon, falling, and the sea taking it.\n\nHe went down the stairs. He went down the stairs, and he went down the stairs, and each time he reached the bottom he looked out, and each",
+          "decode_tps": 147.61412163519398,
+          "predicted_n": 256,
+          "predicted_ms": 1727.477,
+          "draft_n": 472,
+          "draft_n_accepted": 136,
+          "accept_rate": 0.2881
+        }
+      },
+      "unused_nextn_tensors": []
+    },
+    "identical": {
+      "counting": false,
+      "code": false,
+      "json": false,
+      "essay": false,
+      "fiction": false
+    },
+    "unused_nextn_off": [
+      "blk.32.nextn.eh_proj.weight",
+      "blk.32.nextn.enorm.weight",
+      "blk.32.nextn.hnorm.weight",
+      "blk.32.nextn.shared_head_norm.weight"
+    ],
+    "unused_nextn_on": [],
+    "speedup": {
+      "counting": 1.5038,
+      "code": 1.2092,
+      "json": 1.354,
+      "essay": 0.7815,
+      "fiction": 0.7739
+    }
+  }
+}

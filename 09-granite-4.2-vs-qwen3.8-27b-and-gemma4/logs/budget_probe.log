@@ -1,0 +1,6 @@
+
+=== granite4.2-8b effort=None sampling={'temperature': 1.0, 'top_p': 0.95} ===
+  OK math   M1   seed=11 tok= 21327 think=0.984  123.8s
+  XX math   M12  seed=11 tok=  None think=0  234.9s
+  granite4.2-8b: solvable 1/2, traps caught 0/0
+PROBEDONE

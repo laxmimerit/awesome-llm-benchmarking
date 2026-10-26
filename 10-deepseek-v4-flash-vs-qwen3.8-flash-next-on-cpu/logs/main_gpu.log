@@ -1,0 +1,32 @@
+
+########## dsv4-gpu  (12 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\deepseek-v4-vs-flash-next-1bit\models\UD-IQ1_S\DeepSeek-V4-Flash-0731-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 16384 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 30
+   loaded in 19s
+   aime_digit_sum         s1  PASS answer='342'                          299s  24.5 t/s out=7337
+   modular_arithmetic     s1  PASS answer='87'                            13s  25.4 t/s out=337
+   expected_value         s1  PASS answer='42'                            26s  24.7 t/s out=643
+   combinatorics          s1  PASS answer='233'                           22s  25.0 t/s out=546
+   logic_grid             s1  PASS answer='Meera, Kolkata'                57s  24.0 t/s out=1362
+   code_expression_eval   s1  PASS subprocess test                        62s  24.0 t/s out=1484
+   code_lis_nlogn         s1  PASS subprocess test                        11s  22.6 t/s out=239
+   code_output_prediction s1  fail answer='The Python program prints      33s  24.7 t/s out=813
+   code_subtle_bugfix     s1  PASS subprocess test                         8s  20.3 t/s out=159
+   instruction_brutal     s1  fail answer='sper their silent stories.      7s  16.8 t/s out=115
+   json_hard              s1  PASS answer=',\n      "quantity": 2,\n      22s  18.8 t/s out=408
+   threejs_game           s1  PASS 11/11 structural                      363s  25.8 t/s out=9368
+
+########## flashnext-gpu  (12 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 16384 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 20 -ot per_layer_token_embd=CPU
+   loaded in 25s
+   aime_digit_sum         s1  fail answer=''                             169s  48.5 t/s out=8192  TRUNCATED
+   modular_arithmetic     s1  PASS answer='87'                            15s  48.5 t/s out=727
+   expected_value         s1  PASS answer='42'                            44s  49.7 t/s out=2177
+   combinatorics          s1  PASS answer='233'                            7s  46.2 t/s out=338
+   logic_grid             s1  PASS answer='Meera, Kolkata'                16s  47.3 t/s out=769
+   code_expression_eval   s1  fail no code emitted                       169s  48.4 t/s out=8192  TRUNCATED
+   code_lis_nlogn         s1  PASS subprocess test                         7s  44.0 t/s out=320
+   code_output_prediction s1  PASS answer='st has already become `[1,    124s  48.7 t/s out=6021
+   code_subtle_bugfix     s1  PASS subprocess test                         3s  36.8 t/s out=124
+   instruction_brutal     s1  PASS answer='dark sky. Blue waves crash     25s  48.2 t/s out=1204
+   json_hard              s1  PASS answer='s@example.com"}, "items":       9s  44.3 t/s out=420
+   threejs_game           s1  fail no HTML block emitted                 344s  46.9 t/s out=16098  TRUNCATED

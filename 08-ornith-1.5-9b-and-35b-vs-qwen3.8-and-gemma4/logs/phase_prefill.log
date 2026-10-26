@@ -1,0 +1,78 @@
+
+
+===== 2026-08-25 17:27:27 bench_speed.py ornith-9b ornith-35b-a3b qwen3.8-27b gemma4-31b muse-glimmer-30b --n-predict 32 --mode prefill --depths 512 2048 8192 32768 --out prefill.jsonl =====
+
+=== ornith-9b  ctx=33312 fa=on ===
+  loaded in 4.7s  vram delta 6532 MiB (baseline 3983)
+  ornith-9b          depth=    512 prefill   6176.3 tok/s  decode 181.63 tok/s  vram 10537 MiB
+  ornith-9b          depth=   2048 prefill   9659.9 tok/s  decode 184.54 tok/s  vram 10537 MiB
+  ornith-9b          depth=   8192 prefill  10630.3 tok/s  decode 181.17 tok/s  vram 10537 MiB
+  ornith-9b          depth=  32768 prefill   9921.5 tok/s  decode 164.11 tok/s  vram 10537 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== ornith-35b-a3b  ctx=33312 fa=on ===
+  loaded in 12.7s  vram delta 21209 MiB (baseline 3986)
+  ornith-35b-a3b     depth=    512 prefill   1222.7 tok/s  decode 231.82 tok/s  vram 25285 MiB
+  ornith-35b-a3b     depth=   2048 prefill   6726.1 tok/s  decode 247.12 tok/s  vram 25285 MiB
+  ornith-35b-a3b     depth=   8192 prefill   7492.8 tok/s  decode 226.89 tok/s  vram 25285 MiB
+  ornith-35b-a3b     depth=  32768 prefill   7236.1 tok/s  decode 218.93 tok/s  vram 25295 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== qwen3.8-27b  ctx=33312 fa=on ===
+  loaded in 13.7s  vram delta 17941 MiB (baseline 3985)
+  qwen3.8-27b        depth=    512 prefill   2185.4 tok/s  decode  68.92 tok/s  vram 21952 MiB
+  qwen3.8-27b        depth=   2048 prefill   2895.6 tok/s  decode  74.17 tok/s  vram 21966 MiB
+  qwen3.8-27b        depth=   8192 prefill   3473.9 tok/s  decode  72.81 tok/s  vram 21965 MiB
+  qwen3.8-27b        depth=  32768 prefill   3187.3 tok/s  decode  68.45 tok/s  vram 21950 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== gemma4-31b  ctx=33312 fa=on ===
+  loaded in 11.7s  vram delta 21987 MiB (baseline 3939)
+  gemma4-31b         depth=    512 prefill   2169.7 tok/s  decode  67.11 tok/s  vram 25952 MiB
+  gemma4-31b         depth=   2048 prefill   2076.9 tok/s  decode  65.03 tok/s  vram 25952 MiB
+  gemma4-31b         depth=   8192 prefill   2900.5 tok/s  decode  63.58 tok/s  vram 25952 MiB
+  gemma4-31b         depth=  32768 prefill   2824.4 tok/s  decode  57.85 tok/s  vram 25953 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== muse-glimmer-30b  ctx=33312 fa=on ===
+  loaded in 14.7s  vram delta 16352 MiB (baseline 3940)
+  muse-glimmer-30b   depth=    512 prefill   1588.2 tok/s  decode  77.02 tok/s  vram 20318 MiB
+  muse-glimmer-30b   depth=   2048 prefill   3987.1 tok/s  decode  76.57 tok/s  vram 20318 MiB
+  muse-glimmer-30b   depth=   8192 prefill   4087.9 tok/s  decode  75.48 tok/s  vram 20318 MiB
+  muse-glimmer-30b   depth=  32768 prefill   3985.5 tok/s  decode  74.14 tok/s  vram 20318 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+
+===== 2026-08-26 17:27:32 bench_speed.py ornith-9b ornith-35b-a3b qwen3.8-27b gemma4-26b --n-predict 32 --mode prefill --depths 512 2048 8192 32768 --out prefill.jsonl =====
+
+=== ornith-9b  ctx=33312 fa=on ===
+  loaded in 4.7s  vram delta 6545 MiB (baseline 2583)
+  ornith-9b          depth=    512 prefill   6362.3 tok/s  decode 181.31 tok/s  vram 9146 MiB
+  ornith-9b          depth=   2048 prefill   9873.5 tok/s  decode 183.94 tok/s  vram 9154 MiB
+  ornith-9b          depth=   8192 prefill  10699.4 tok/s  decode 179.93 tok/s  vram 9150 MiB
+  ornith-9b          depth=  32768 prefill   9952.2 tok/s  decode 164.42 tok/s  vram 9091 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== ornith-35b-a3b  ctx=33312 fa=on ===
+  loaded in 10.7s  vram delta 21243 MiB (baseline 2542)
+  ornith-35b-a3b     depth=    512 prefill   2304.5 tok/s  decode 180.70 tok/s  vram 23877 MiB
+  ornith-35b-a3b     depth=   2048 prefill   6809.5 tok/s  decode 250.68 tok/s  vram 23880 MiB
+  ornith-35b-a3b     depth=   8192 prefill   7546.6 tok/s  decode 233.21 tok/s  vram 23882 MiB
+  ornith-35b-a3b     depth=  32768 prefill   7216.7 tok/s  decode 219.76 tok/s  vram 23894 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== qwen3.8-27b  ctx=33312 fa=on ===
+  loaded in 13.8s  vram delta 17948 MiB (baseline 2587)
+  qwen3.8-27b        depth=    512 prefill   2269.9 tok/s  decode  73.19 tok/s  vram 20561 MiB
+  qwen3.8-27b        depth=   2048 prefill   3288.9 tok/s  decode  74.70 tok/s  vram 20571 MiB
+  qwen3.8-27b        depth=   8192 prefill   3479.8 tok/s  decode  73.15 tok/s  vram 20570 MiB
+  qwen3.8-27b        depth=  32768 prefill   3184.3 tok/s  decode  67.95 tok/s  vram 20596 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl
+
+=== gemma4-26b  ctx=33312 fa=on ===
+  loaded in 9.7s  vram delta 17763 MiB (baseline 2592)
+  gemma4-26b         depth=    512 prefill   1113.7 tok/s  decode 207.65 tok/s  vram 20450 MiB
+  gemma4-26b         depth=   2048 prefill   7167.7 tok/s  decode 212.12 tok/s  vram 20452 MiB
+  gemma4-26b         depth=   8192 prefill   9718.7 tok/s  decode 203.92 tok/s  vram 20463 MiB
+  gemma4-26b         depth=  32768 prefill   9532.6 tok/s  decode 182.94 tok/s  vram 20464 MiB
+  wrote 5 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\prefill.jsonl

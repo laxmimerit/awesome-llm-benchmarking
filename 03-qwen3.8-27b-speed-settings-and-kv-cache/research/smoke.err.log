@@ -1,0 +1,21 @@
+0.00.101.456 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.167.574 W srv  llama_server: -----------------
+0.00.167.581 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.167.581 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.167.582 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.167.582 W srv  llama_server: -----------------
+0.00.177.883 I srv    load_model: loading model 'E:\AI\ollama\blobs\sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d'
+0.23.078.093 I cmn          init: llama threadpool init, n_threads = 24
+0.23.184.224 I common_speculative_init_result: creating MTP draft context against the target model 'E:\AI\ollama\blobs\sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d'
+0.23.225.621 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.23.257.961 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.23.257.989 I srv  llama_server: model loaded
+0.23.257.991 I srv  llama_server: listening on http://127.0.0.1:8099
+0.38.855.594 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.38.855.651 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.40.571.222 I slot print_timing: id  0 | task 0 | prompt eval time =     275.05 ms /    66 tokens (    4.17 ms per token,   239.95 tokens per second)
+0.40.571.228 I slot print_timing: id  0 | task 0 |        eval time =    1440.47 ms /   154 tokens (    9.41 ms per token,   106.22 tokens per second)
+0.40.571.229 I slot print_timing: id  0 | task 0 |       total time =    1715.52 ms /   220 tokens
+0.40.571.230 I slot print_timing: id  0 | task 0 |    graphs reused =         56
+0.40.571.233 I slot print_timing: id  0 | task 0 | draft acceptance = 0.88393 (   99 accepted /   112 generated), mean len =  2.77
+0.40.571.288 I slot      release: id  0 | task 0 | stop processing: n_tokens = 221, truncated = 0

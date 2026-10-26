@@ -1,0 +1,14 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cpu\bin\Release\llama-bench.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf -o jsonl -r 1 --progress -p 64 -n 16 -t 24
+
+STDOUT:
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 64, "n_gen": 0, "n_depth": 0, "test_time": "2026-08-27T07:18:23Z", "avg_ns": 1577821100, "stddev_ns": 0, "avg_ts": 40.562267, "stddev_ts": 0.000000, "samples_ns": [ 1577821100 ],"samples_ts": [ 40.5623 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "", "backends": "CPU", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": -1, "n_cpu_moe": 0, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 16, "n_depth": 0, "test_time": "2026-08-27T07:18:29Z", "avg_ns": 1783138700, "stddev_ns": 0, "avg_ts": 8.972942, "stddev_ts": 0.000000, "samples_ns": [ 1783138700 ],"samples_ts": [ 8.97294 ]}
+
+
+STDERR:
+llama-bench: benchmark 1/2: starting
+llama-bench: benchmark 1/2: warmup prompt run
+llama-bench: benchmark 1/2: prompt run 1/1
+llama-bench: benchmark 2/2: starting
+llama-bench: benchmark 2/2: warmup generation run
+llama-bench: benchmark 2/2: generation run 1/1

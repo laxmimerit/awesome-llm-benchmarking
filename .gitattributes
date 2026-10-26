@@ -1,0 +1,22 @@
+# Normalise line endings in the repository, keep the platform's own on checkout
+* text=auto
+
+# Measurements and logs are text, and diffs of them should stay readable
+*.jsonl text
+*.json  text
+*.log   text
+*.md    text
+*.py    text
+*.sh    text eol=lf
+*.ps1   text eol=crlf
+*.bat   text eol=crlf
+
+# Binary, never diffed or line-ending converted
+*.png     binary
+*.jpg     binary
+*.pdf     binary
+*.parquet binary
+
+# Keep generated figures and raw logs out of GitHub's language statistics
+figures/** linguist-documentation
+logs/**    linguist-generated

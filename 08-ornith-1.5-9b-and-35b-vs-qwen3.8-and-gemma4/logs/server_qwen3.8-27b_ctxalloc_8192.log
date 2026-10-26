@@ -1,0 +1,42 @@
+0.00.090.057 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.143.562 W srv  llama_server: -----------------
+0.00.143.567 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.143.567 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.143.568 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.143.568 W srv  llama_server: -----------------
+0.00.146.012 I srv    load_model: loading model 'E:\AI\ollama\blobs\sha256-f5f1dd8920d417aac2718b0bda3403da274301efdd6760b4f0f4b864ff2ad57d'
+0.00.713.030 W model has unused tensor blk.64.attn_norm.weight (size = 20480 bytes) -- ignoring
+0.00.713.040 W model has unused tensor blk.64.post_attention_norm.weight (size = 20480 bytes) -- ignoring
+0.00.713.052 W model has unused tensor blk.64.attn_q.weight (size = 35389440 bytes) -- ignoring
+0.00.713.056 W model has unused tensor blk.64.attn_k.weight (size = 2949120 bytes) -- ignoring
+0.00.713.060 W model has unused tensor blk.64.attn_v.weight (size = 4300800 bytes) -- ignoring
+0.00.713.074 W model has unused tensor blk.64.attn_output.weight (size = 17694720 bytes) -- ignoring
+0.00.713.078 W model has unused tensor blk.64.attn_q_norm.weight (size = 1024 bytes) -- ignoring
+0.00.713.082 W model has unused tensor blk.64.attn_k_norm.weight (size = 1024 bytes) -- ignoring
+0.00.713.086 W model has unused tensor blk.64.ffn_gate.weight (size = 50135040 bytes) -- ignoring
+0.00.713.089 W model has unused tensor blk.64.ffn_down.weight (size = 73113600 bytes) -- ignoring
+0.00.713.093 W model has unused tensor blk.64.ffn_up.weight (size = 50135040 bytes) -- ignoring
+0.00.713.098 W model has unused tensor blk.64.nextn.eh_proj.weight (size = 29491200 bytes) -- ignoring
+0.00.713.103 W model has unused tensor blk.64.nextn.enorm.weight (size = 20480 bytes) -- ignoring
+0.00.713.107 W model has unused tensor blk.64.nextn.hnorm.weight (size = 20480 bytes) -- ignoring
+0.00.713.118 W model has unused tensor blk.64.nextn.shared_head_norm.weight (size = 20480 bytes) -- ignoring
+0.12.692.461 I cmn          init: llama threadpool init, n_threads = 24
+0.12.851.936 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 8192, kv_unified = 'false'
+0.12.856.037 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.12.856.058 I srv  llama_server: model loaded
+0.12.856.060 I srv  llama_server: listening on http://127.0.0.1:8099
+0.14.703.983 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.14.704.008 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.15.327.514 I slot print_timing: id  0 | task 0 | prompt eval time =     131.82 ms /    34 tokens (    3.88 ms per token,   257.94 tokens per second)
+0.15.327.521 I slot print_timing: id  0 | task 0 |        eval time =     491.67 ms /    32 tokens (   15.86 ms per token,    63.05 tokens per second)
+0.15.327.521 I slot print_timing: id  0 | task 0 |       total time =     623.48 ms /    66 tokens
+0.15.327.522 I slot print_timing: id  0 | task 0 |    graphs reused =         30
+0.15.327.537 I slot      release: id  0 | task 0 | stop processing: n_tokens = 65, truncated = 0
+0.15.334.551 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 15239318
+0.15.426.997 I slot launch_slot_: id  0 | task 34 | processing task, is_child = 0
+0.18.547.936 I slot print_timing: id  0 | task 34 | n_gen =    233, tg =  77.31 t/s, tg_3s =  77.65 t/s
+0.18.844.754 I slot print_timing: id  0 | task 34 | prompt eval time =     120.15 ms /   103 tokens (    1.17 ms per token,   857.23 tokens per second)
+0.18.844.760 I slot print_timing: id  0 | task 34 |        eval time =    3297.58 ms /   256 tokens (   12.93 ms per token,    77.33 tokens per second)
+0.18.844.761 I slot print_timing: id  0 | task 34 |       total time =    3417.74 ms /   359 tokens
+0.18.844.761 I slot print_timing: id  0 | task 34 |    graphs reused =        283
+0.18.844.778 I slot      release: id  0 | task 34 | stop processing: n_tokens = 358, truncated = 0

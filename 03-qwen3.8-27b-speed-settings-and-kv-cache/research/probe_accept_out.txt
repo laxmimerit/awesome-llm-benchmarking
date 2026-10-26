@@ -1,0 +1,33 @@
+=== Ollama's own template and parameters ===
+
+--- ollama show --template ---
+{{ .Prompt }}
+
+--- ollama show --parameters ---
+temperature                    1
+top_k                          20
+top_p                          0.95
+draft_num_predict              4
+min_p                          0
+presence_penalty               0
+repeat_penalty                 1
+
+--- ollama show --system ---
+(empty)
+
+
+=== measuring acceptance under the real decode workloads ===
+ollama up
+
+  decode_code        decode=147.39 tok/s  think_chars=1993  resp_chars=0  tok=512
+  decode_prose       decode=111.74 tok/s  think_chars=2527  resp_chars=0  tok=512
+  decode_structured  decode=171.93 tok/s  think_chars=234  resp_chars=982  tok=512
+
+=== draft acceptance reported by Ollama's llama-server child ===
+  acceptance = 0.81458  (391 accepted / 480 generated)  mean len = 4.26
+
+  llama.cpp at the same n=4 measured accept=0.5909, mean len=3.561
+  -> if these differ materially, Ollama is generating different text,
+     which means the prompt differs, not the engine.
+
+ollama stopped

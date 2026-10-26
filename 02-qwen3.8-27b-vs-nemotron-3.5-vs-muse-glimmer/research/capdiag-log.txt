@@ -1,0 +1,14 @@
+
+--- preparing nemotron: unloading everything first ---
+  (gpu clear)
+=== nemotron-3.5-lightning:latest (num_predict=60000) ===
+  repunit_digit_sum: STILL CAPPED at 60k (gen=60000tok, done_reason=length)
+  code_calc2: finished but STILL WRONG (gen=29660tok, done_reason=stop)
+
+--- preparing glimmer: unloading everything first ---
+  (gpu clear)
+=== muse-glimmer:latest (num_predict=60000) ===
+  tilings_4x10: STILL CAPPED at 60k (gen=60000tok, done_reason=length)
+  (gpu clear)
+
+saved D:/Claude AI/AI Model Performance/qwen3.8-vs-nemotron-vs-glimmer/research/results-capdiag.json

@@ -1,0 +1,1101 @@
+<title>Ornith 1.5 Teardown</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+  :root {
+    --ground:   #F2F5F5;
+    --surface:  #FFFFFF;
+    --sunken:   #E7ECEC;
+    --ink:      #141B1D;
+    --ink-soft: #3D4A4D;
+    --muted:    #66787C;
+    --line:     #D2DBDB;
+    --line-soft:#E3EAEA;
+
+    --signal:   #00706F;
+    --signal-b: #00908E;
+    --signal-w: #DCEDEC;
+
+    --good:     #1F6B4A;
+    --warn:     #9A5B00;
+    --crit:     #A62D22;
+    --good-w:   #E0EEE7;
+    --warn-w:   #F6E9D6;
+    --crit-w:   #F5E1DE;
+
+    --shadow: 0 1px 2px rgba(20,27,29,.05), 0 8px 24px -12px rgba(20,27,29,.14);
+
+    --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --body: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground:   #0E1416;
+      --surface:  #161F21;
+      --sunken:   #1D282A;
+      --ink:      #E8EFEF;
+      --ink-soft: #BCC9C9;
+      --muted:    #849699;
+      --line:     #2B393B;
+      --line-soft:#222E30;
+
+      --signal:   #4FD1CE;
+      --signal-b: #6FE0DD;
+      --signal-w: #10302F;
+
+      --good:     #5DBE90;
+      --warn:     #D9A25A;
+      --crit:     #E8837A;
+      --good-w:   #142C22;
+      --warn-w:   #2E2413;
+      --crit-w:   #331B18;
+
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ground:   #0E1416;
+    --surface:  #161F21;
+    --sunken:   #1D282A;
+    --ink:      #E8EFEF;
+    --ink-soft: #BCC9C9;
+    --muted:    #849699;
+    --line:     #2B393B;
+    --line-soft:#222E30;
+
+    --signal:   #4FD1CE;
+    --signal-b: #6FE0DD;
+    --signal-w: #10302F;
+
+    --good:     #5DBE90;
+    --warn:     #D9A25A;
+    --crit:     #E8837A;
+    --good-w:   #142C22;
+    --warn-w:   #2E2413;
+    --crit-w:   #331B18;
+
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 28px 96px;
+  }
+
+  .measure { max-width: 68ch; }
+
+  /* ---------- masthead ---------- */
+
+  header.mast {
+    padding: 72px 0 40px;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .kicker {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--signal);
+    font-weight: 600;
+    margin: 0 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    align-items: center;
+  }
+  .kicker span.sep { color: var(--line); }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(42px, 7.5vw, 76px);
+    line-height: .97;
+    letter-spacing: -.03em;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+
+  .standfirst {
+    font-size: clamp(18px, 2.1vw, 21px);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0 0 32px;
+  }
+
+  .rig {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .rig div {
+    flex: 1 1 150px;
+    padding: 12px 16px;
+    border-right: 1px solid var(--line-soft);
+  }
+  .rig div:last-child { border-right: 0; }
+  .rig dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+  .rig dd {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 15px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- sections ---------- */
+
+  section { padding-top: 60px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(26px, 3.4vw, 34px);
+    line-height: 1.12;
+    letter-spacing: -.02em;
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 19px;
+    letter-spacing: -.01em;
+    margin: 34px 0 10px;
+  }
+
+  p { margin: 0 0 18px; }
+  .measure p:last-child { margin-bottom: 0; }
+
+  strong { font-weight: 600; }
+
+  code, .num {
+    font-family: var(--mono);
+    font-size: .88em;
+    font-variant-numeric: tabular-nums;
+  }
+  code {
+    background: var(--sunken);
+    padding: 1px 5px;
+    border-radius: 3px;
+  }
+
+  /* ---------- verdict cards ---------- */
+
+  .verdicts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(228px, 1fr));
+    gap: 14px;
+    margin: 34px 0 0;
+  }
+  .vcard {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 20px 20px 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .vcard .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .vcard .figure {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--signal);
+  }
+  .vcard .figure.plain { color: var(--ink); }
+  .vcard .note {
+    font-size: 14.5px;
+    line-height: 1.42;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- tables ---------- */
+
+  .scroll {
+    overflow-x: auto;
+    margin: 26px 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: var(--display);
+    font-size: 14.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 16px 10px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  th, td {
+    padding: 9px 14px;
+    text-align: right;
+    border-bottom: 1px solid var(--line-soft);
+    white-space: nowrap;
+  }
+  th:first-child, td:first-child {
+    text-align: left;
+    font-weight: 600;
+    position: sticky;
+    left: 0;
+    background: var(--surface);
+  }
+  thead th {
+    font-size: 11.5px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr.us td:first-child { box-shadow: inset 3px 0 0 var(--signal); }
+  tbody tr.us { background: var(--signal-w); }
+  tbody tr.us td:first-child { background: var(--signal-w); }
+
+  td.best { color: var(--good); font-weight: 700; }
+  td.bad  { color: var(--crit); font-weight: 700; }
+
+  /* ---------- bar chart ---------- */
+
+  .chart {
+    margin: 26px 0;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 18px 20px 20px;
+  }
+  .chart h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin: 0 0 16px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: minmax(120px, 165px) 1fr auto;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 9px;
+  }
+  .row:last-child { margin-bottom: 0; }
+  .row .name {
+    font-family: var(--display);
+    font-size: 13.5px;
+    font-weight: 600;
+    text-align: right;
+    color: var(--ink-soft);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .row.us .name { color: var(--ink); }
+  .track {
+    background: var(--sunken);
+    border-radius: 2px;
+    height: 20px;
+    overflow: hidden;
+  }
+  .bar {
+    height: 100%;
+    background: var(--muted);
+    border-radius: 2px;
+  }
+  .row.us .bar { background: var(--signal); }
+  .row .val {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-soft);
+    min-width: 62px;
+    text-align: right;
+  }
+  .row.us .val { color: var(--ink); font-weight: 600; }
+
+  /* ---------- cliff diagram ---------- */
+
+  .cliff {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 26px 0;
+  }
+  .cliffcard {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 18px 20px;
+  }
+  .cliffcard .who {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+  .step {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--line-soft);
+  }
+  .step:last-child { border-bottom: 0; }
+  .step .ctx { color: var(--muted); }
+  .step .tps { font-weight: 600; }
+  .step.ok .tps { color: var(--good); }
+  .step.dead .tps { color: var(--crit); }
+  .cliffcard .verdict {
+    margin-top: 12px;
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    font-family: var(--body);
+  }
+
+  /* ---------- callout ---------- */
+
+  .callout {
+    border-left: 3px solid var(--signal);
+    background: var(--surface);
+    padding: 20px 24px;
+    margin: 28px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout.warn { border-left-color: var(--warn); }
+  .callout .tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* ---------- claims ---------- */
+
+  .claims { display: flex; flex-direction: column; gap: 12px; margin: 26px 0; }
+  .claim {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    background: var(--surface);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+    align-items: start;
+  }
+  .pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .pill.held { background: var(--good-w); color: var(--good); }
+  .pill.untested { background: var(--warn-w); color: var(--warn); }
+  .pill.no { background: var(--crit-w); color: var(--crit); }
+  .claim .what { font-weight: 600; font-family: var(--display); font-size: 15.5px; }
+  .claim .found { grid-column: 2; font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
+
+  footer {
+    margin-top: 80px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--muted);
+  }
+  footer p { margin-bottom: 10px; }
+
+  ul { padding-left: 20px; margin: 0 0 18px; }
+  li { margin-bottom: 7px; }
+
+  @media (max-width: 620px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 18px 64px; }
+    header.mast { padding-top: 44px; }
+    .row { grid-template-columns: 96px 1fr auto; }
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="kicker">
+    <span>Local benchmark</span><span class="sep">/</span>
+    <span>5 models &middot; 9 axes</span><span class="sep">/</span>
+    <span>llama.cpp b10448</span><span class="sep">/</span>
+    <span>2026-08-25</span>
+  </p>
+  <h1>Ornith 1.5 Teardown</h1>
+  <p class="standfirst">
+    Ornith-1.5-9B and 35B-A3B measured against Gemma&nbsp;4-31B, Muse&nbsp;Glimmer&nbsp;30B
+    and Qwen&nbsp;3.8&nbsp;27B on one RTX&nbsp;5090. The MoE is the fastest model here by
+    a factor of three. The context ceilings on every card are a fiction.
+  </p>
+  <dl class="rig">
+    <div><dt>GPU</dt><dd>RTX 5090 &middot; 32 GB</dd></div>
+    <div><dt>Runtime</dt><dd>llama-server b10448</dd></div>
+    <div><dt>Quant</dt><dd>Q4_K_M, all five</dd></div>
+    <div><dt>KV cache</dt><dd>f16, flash attn on</dd></div>
+    <div><dt>Grading</dt><dd>pure functions, no judge</dd></div>
+  </dl>
+</header>
+
+<section>
+  <div class="verdicts">
+    <div class="vcard">
+      <span class="label">Ornith 35B-A3B decode</span>
+      <span class="figure">272<span style="font-size:18px;font-weight:600"> tok/s</span></span>
+      <span class="note">3.5&times; Qwen 3.8 27B, 3.9&times; Gemma 4-31B. Only ~3B parameters active per token.</span>
+    </div>
+    <div class="vcard">
+      <span class="label">Hard problem, correct answer</span>
+      <span class="figure">7.8<span style="font-size:18px;font-weight:600"> s</span></span>
+      <span class="note">Against 59.7 s for Gemma at identical accuracy. Fast decoding plus short thinking, compounded.</span>
+    </div>
+    <div class="vcard">
+      <span class="label">Accuracy across 5 models</span>
+      <span class="figure plain">39/40</span>
+      <span class="note">Reasoning saturated. Agentic saturated at 18/18 each. Cost is the only discriminator left.</span>
+    </div>
+    <div class="vcard">
+      <span class="label">Qwen 3.8 at 262k context</span>
+      <span class="figure" style="color:var(--crit)">2.9<span style="font-size:18px;font-weight:600"> tok/s</span></span>
+      <span class="note">Down from 77.3 at 245k. Silent spill to system RAM, no error anywhere.</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Architecture</p>
+  <h2>There is no new architecture in Ornith 1.5</h2>
+  <div class="measure">
+    <p>
+      The model cards describe an "end-to-end self-improvement loop" and never publish a
+      layer count. The GGUF headers settle it: the 9B declares <code>general.architecture
+      = qwen35</code> and the 35B declares <code>qwen35moe</code>. Both are Qwen&nbsp;3.5
+      with different weights. Whatever these models are worth is entirely post-training,
+      which is why the quality and agentic sections below carry the verdict rather than
+      the speed sections.
+    </p>
+    <p>
+      One thing the cards omit entirely: <strong>both Ornith GGUFs ship a working
+      multi-token-prediction head</strong>, a <code>nextn</code> block that llama.cpp
+      ignores unless you pass <code>--spec-type draft-mtp</code>. Nobody reading the
+      documentation would know it was there.
+    </p>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <caption>GGUF header census, all Q4_K_M</caption>
+      <thead>
+        <tr><th>Model</th><th>Architecture</th><th>Blocks</th><th>Residual</th><th>Heads</th><th>KV heads</th><th>Head dim</th><th>Experts</th><th>MTP</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>qwen35</td><td>32 + 1</td><td>4096</td><td>16</td><td>4</td><td>256</td><td>dense</td><td>yes</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>qwen35moe</td><td>40 + 1</td><td>2048</td><td>16</td><td>2</td><td>256</td><td>256 / 8 active</td><td>yes</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>qwen35</td><td>64 + 1</td><td>5120</td><td>24</td><td>4</td><td>256</td><td>dense</td><td>yes</td></tr>
+        <tr><td>Gemma-4-31B</td><td>gemma4</td><td>60</td><td>5376</td><td>32</td><td>16 / 2</td><td>512</td><td>dense</td><td>no</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>muse-glimmer</td><td>52</td><td>6656</td><td>32</td><td>2</td><td>128</td><td>dense</td><td>no</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      The 35B is an unusually granular mixture: 256 experts of width 512 hanging off a
+      residual stream only 2,048 wide, with 8 experts plus a shared one active per token.
+      That is roughly 3B parameters touched per forward pass, and it is the whole reason
+      the speed numbers below look the way they do.
+    </p>
+    <p>
+      Worth noting for anyone comparing against the card: <strong>Gemma 4-31B is dense.</strong>
+      The <code>gemma4:26b</code> sitting in most Ollama stores is a different model, a
+      128-expert MoE. Same family name, different architecture.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Decode throughput</p>
+  <h2>The MoE beats the dense 9B while being four times its size</h2>
+
+  <div class="chart">
+    <h4>Decode, tok/s &mdash; 512 tokens, MTP off, mean of five content types</h4>
+    <div class="row us"><span class="name">Ornith 35B-A3B</span><span class="track"><span class="bar" style="width:100%"></span></span><span class="val">272.1</span></div>
+    <div class="row us"><span class="name">Ornith 9B</span><span class="track"><span class="bar" style="width:70.6%"></span></span><span class="val">192.1</span></div>
+    <div class="row"><span class="name">Muse Glimmer 30B</span><span class="track"><span class="bar" style="width:29.1%"></span></span><span class="val">79.3</span></div>
+    <div class="row"><span class="name">Qwen 3.8 27B</span><span class="track"><span class="bar" style="width:28.2%"></span></span><span class="val">76.7</span></div>
+    <div class="row"><span class="name">Gemma 4-31B</span><span class="track"><span class="bar" style="width:25.3%"></span></span><span class="val">68.9</span></div>
+  </div>
+
+  <div class="measure">
+    <p>
+      Spread across counting, code, JSON, essay and fiction was <strong>0.3% to 1.4%</strong>
+      for every model. Decode speed is content-independent once speculative decoding is off.
+      That settles something from earlier work on this rig: all the content-dependence I had
+      previously measured came from MTP acceptance rates, none of it from the models.
+    </p>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <caption>Prefill throughput, tok/s, by prompt depth</caption>
+      <thead><tr><th>Model</th><th>512</th><th>2k</th><th>8k</th><th>32k</th><th>128k</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>6,176</td><td>9,660</td><td class="best">10,630</td><td class="best">9,921</td><td class="best">6,074</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td class="bad">1,223</td><td>6,726</td><td>7,493</td><td>7,236</td><td>5,306</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>1,588</td><td>3,987</td><td>4,088</td><td>3,986</td><td>3,219</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>2,185</td><td>2,896</td><td>3,474</td><td>3,187</td><td>1,800</td></tr>
+        <tr><td>Gemma-4-31B</td><td>2,170</td><td>2,077</td><td>2,901</td><td>2,824</td><td>680</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      One caveat against the 35B, flagged in red above: at a 512-token prompt it prefills at
+      only 1,223 tok/s against 7,493 at 8k. Routing 256 experts carries a large fixed cost per
+      forward pass, so <strong>short interactive turns pay a latency penalty the throughput
+      numbers hide</strong>. The 9B is five times faster on short prompts.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Memory</p>
+  <h2>KV cache is where these architectures really diverge</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>VRAM accounting, Q4_K_M with f16 KV and flash attention on</caption>
+      <thead>
+        <tr><th>Model</th><th>Weights</th><th>Attention blocks</th><th>KV per token</th><th>KV at 262k</th><th>Compute buf</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>5,358 MiB</td><td>8 of 32</td><td>32.0 KiB</td><td>8.0 GiB</td><td>232 MiB</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>20,176 MiB</td><td>10 of 40</td><td>20.0 KiB</td><td>5.0 GiB</td><td>204 MiB</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>15,770 MiB</td><td>16 of 64</td><td>64.0 KiB</td><td>16.0 GiB</td><td>270 MiB</td></tr>
+        <tr><td>Gemma-4-31B</td><td>18,216 MiB</td><td>60, 10 full + 50 windowed</td><td class="bad">80.0 KiB</td><td>20.0 GiB</td><td>331 MiB</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>15,968 MiB</td><td>52, 13 full + 39 windowed</td><td class="best">13.0 KiB</td><td>3.2 GiB</td><td>302 MiB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      Every <code>qwen35</code> model holds KV on only a quarter of its blocks, and the reason
+      is not cache sharing: it is a hybrid stack. A real attention block sits at every fourth
+      position (indices 3, 7, 11 and so on) and the three blocks between each pair are Gated
+      DeltaNet, carrying <code>ssm_alpha</code>, <code>ssm_beta</code> and <code>ssm_out</code>
+      instead of key and value projections. Those blocks keep a fixed-size recurrent state that
+      does not grow with context, so they never allocate a cache at all. Ornith 9B is 8
+      attention blocks of 32, the 35B is 10 of 40, Qwen 3.8 is 16 of 64. The 35B is the most
+      frugal of the three at 20 KiB per token.
+    </p>
+    <p>
+      Gemma and Muse both use sliding-window attention and both allocate two caches, but they
+      land at opposite extremes. Muse's 39 windowed layers cost 97.5 MiB total regardless of
+      context. Gemma's ten full-attention layers are so wide, head dimension 512, that it ends
+      up the <em>most</em> expensive model per token in the field despite the windowing.
+      That single fact drives everything that goes wrong for Gemma below.
+    </p>
+    <p>
+      KV quantization behaves identically across all five: <strong>47% smaller at q8_0, 72% at
+      q4_0</strong>. It is a uniform lever, not a model-specific one. The quality cost of that
+      compression was not measured here.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Context ceiling</p>
+  <h2>Every advertised context length is a fiction on a 32 GB card</h2>
+
+  <div class="measure">
+    <p>
+      All five models advertise 262,144 tokens. All five will <em>start</em> at 262,144 and
+      report it cleanly in <code>/props</code>. That number means nothing, and finding out why
+      was the most interesting result in this benchmark.
+    </p>
+  </div>
+
+  <div class="callout warn">
+    <span class="tag">The mechanism</span>
+    <p>
+      On Windows, a CUDA allocation that exceeds VRAM <strong>does not fail</strong>. The
+      driver backs it with system RAM over PCIe. Gemma's own numbers show it happening: from
+      context 155,648 to 262,144 its KV cache grew by 8.3 GiB while measured VRAM never moved
+      off 31.5 GiB. That extra 8 GiB was living in host memory, and nothing in any log said so.
+    </p>
+  </div>
+
+  <div class="measure">
+    <p>
+      So "does it load" has no failure point on this platform and is the wrong question. The
+      right one is where the <em>performance</em> cliff sits. Below, each model's ceiling is
+      the largest context at which it still decodes within 90% of its own short-context rate.
+    </p>
+  </div>
+
+  <div class="scroll">
+    <table>
+      <caption>Usable context ceiling &mdash; decode within 90% of normal rate</caption>
+      <thead>
+        <tr><th>Model</th><th>Usable max</th><th>Of advertised</th><th>Normal rate</th><th>Cliff at</th><th>Past the cliff</th><th>Peak VRAM</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-9B</td><td class="best">262,144</td><td>100%</td><td>191.5</td><td>none</td><td>&mdash;</td><td>14,640 MiB</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td class="best">262,144</td><td>100%</td><td>269.1</td><td>none</td><td>&mdash;</td><td>26,765 MiB</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td class="best">262,144</td><td>100%</td><td>79.5</td><td>none</td><td>&mdash;</td><td>20,291 MiB</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>245,760</td><td>94%</td><td>77.3</td><td>262,144</td><td class="bad">2.9 tok/s</td><td>32,122 MiB</td></tr>
+        <tr><td>Gemma-4-31B</td><td class="bad">147,456</td><td>56%</td><td>69.7</td><td>155,648</td><td class="bad">28.3 tok/s</td><td>32,078 MiB</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>The cliff is a cliff, not a slope</h3>
+  <div class="cliff">
+    <div class="cliffcard">
+      <div class="who">Qwen 3.8 27B</div>
+      <div class="step ok"><span class="ctx">131,072</span><span class="tps">77.1 tok/s</span></div>
+      <div class="step ok"><span class="ctx">229,376</span><span class="tps">77.3 tok/s</span></div>
+      <div class="step ok"><span class="ctx">245,760</span><span class="tps">76.9 tok/s</span></div>
+      <div class="step dead"><span class="ctx">262,144</span><span class="tps">2.9 tok/s</span></div>
+      <p class="verdict">A 7% increase in context costs 96% of the throughput. The last step is the whole drop.</p>
+    </div>
+    <div class="cliffcard">
+      <div class="who">Gemma 4-31B</div>
+      <div class="step ok"><span class="ctx">131,072</span><span class="tps">69.6 tok/s</span></div>
+      <div class="step ok"><span class="ctx">147,456</span><span class="tps">69.4 tok/s</span></div>
+      <div class="step dead"><span class="ctx">155,648</span><span class="tps">28.4 tok/s</span></div>
+      <div class="step dead"><span class="ctx">262,144</span><span class="tps">10.1 tok/s</span></div>
+      <p class="verdict">A 5.6% increase in context costs 59% of the throughput. Gemma loses 44% of its window.</p>
+    </div>
+    <div class="cliffcard">
+      <div class="who">Ornith 35B-A3B</div>
+      <div class="step ok"><span class="ctx">65,536</span><span class="tps">268.6 tok/s</span></div>
+      <div class="step ok"><span class="ctx">131,072</span><span class="tps">269.6 tok/s</span></div>
+      <div class="step ok"><span class="ctx">262,144</span><span class="tps">270.1 tok/s</span></div>
+      <p class="verdict">Flat to the full advertised window with 5.8 GiB still free. No cliff exists to find.</p>
+    </div>
+  </div>
+
+  <div class="measure">
+    <p>
+      This is the practical headline of the whole benchmark. <strong>Ornith 35B-A3B is the only
+      large model here that delivers its full advertised context at full speed</strong>, and it
+      does so with almost 6 GiB of headroom to spare, because 20 KiB per token over 262k tokens
+      is only 5.0 GiB of KV. Gemma needs 20.0 GiB for the same window and cannot have it.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Long context in use</p>
+  <h2>Retrieval is perfect everywhere; the cost is not</h2>
+
+  <div class="measure">
+    <p>
+      Needle retrieval at 16k, 64k and 128k, with the needle at 10% and 90% depth: every model
+      found every needle, 6/6, at every depth. Accuracy is not the differentiator. Time is.
+    </p>
+  </div>
+
+  <div class="chart">
+    <h4>Seconds to answer a question about a 128k-token document</h4>
+    <div class="row us"><span class="name">Ornith 9B</span><span class="track"><span class="bar" style="width:11.5%"></span></span><span class="val">23.6 s</span></div>
+    <div class="row us"><span class="name">Ornith 35B-A3B</span><span class="track"><span class="bar" style="width:12.5%"></span></span><span class="val">25.6 s</span></div>
+    <div class="row"><span class="name">Muse Glimmer 30B</span><span class="track"><span class="bar" style="width:20.9%"></span></span><span class="val">42.9 s</span></div>
+    <div class="row"><span class="name">Qwen 3.8 27B</span><span class="track"><span class="bar" style="width:36.8%"></span></span><span class="val">75.6 s</span></div>
+    <div class="row"><span class="name">Gemma 4-31B</span><span class="track"><span class="bar" style="width:100%"></span></span><span class="val">205.5 s</span></div>
+  </div>
+
+  <div class="measure">
+    <p>
+      Gemma takes three and a half minutes to answer what Ornith answers in 26 seconds. It was
+      running at 139,264 context in that phase, just past its cliff, so part of that penalty is
+      the spill described above. Muse is the quiet winner on shape: sliding-window attention
+      means its prefill decays only 20% from 16k to 128k, against 46% for Qwen.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Speculative decoding</p>
+  <h2>The undocumented MTP head helps structured text and hurts prose</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>--spec-type draft-mtp, speedup over the same model with MTP off</caption>
+      <thead>
+        <tr><th>Model</th><th>Counting</th><th>Code</th><th>JSON</th><th>Essay</th><th>Fiction</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Qwen3.8-27B</td><td class="best">2.34&times;</td><td class="best">2.00&times;</td><td class="best">2.36&times;</td><td>1.23&times;</td><td>1.38&times;</td></tr>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>1.50&times;</td><td>1.21&times;</td><td>1.35&times;</td><td class="bad">0.78&times;</td><td class="bad">0.77&times;</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>1.29&times;</td><td>1.10&times;</td><td>1.16&times;</td><td class="bad">0.77&times;</td><td class="bad">0.75&times;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      Acceptance rate is the whole story: around 0.63 to 0.86 on structured output where the
+      next tokens are predictable, falling to about 0.30 on prose, at which point the drafting
+      overhead costs more than it saves. Qwen 3.8's head is markedly better trained than either
+      Ornith head.
+    </p>
+  </div>
+
+  <div class="callout">
+    <span class="tag">Not a free speedup</span>
+    <p>
+      Two greedy runs of the same model with MTP off are bit-identical. With MTP on, the output
+      diverges &mdash; on 14 of 15 model and content combinations tested. Disabling backend
+      sampling changed nothing (acceptance rates stayed identical to three decimal places). So
+      MTP on this build is a different configuration producing different text, not a
+      transparent accelerator, and its speed numbers should never be folded into a headline
+      tok/s figure. Whether the different text is <em>worse</em> was not measured.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Concurrency</p>
+  <h2>668 tok/s aggregate, and one model that gets slower under load</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>Aggregate throughput, tok/s, by parallel slot count</caption>
+      <thead><tr><th>Model</th><th>1 slot</th><th>4 slots</th><th>8 slots</th><th>Scaling</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>246.4</td><td>500.6</td><td class="best">668.6</td><td>2.71&times;</td></tr>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>185.7</td><td>439.8</td><td>508.9</td><td>2.74&times;</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>77.6</td><td>234.0</td><td>287.1</td><td class="best">3.70&times;</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>74.5</td><td>203.6</td><td>259.7</td><td>3.49&times;</td></tr>
+        <tr><td>Gemma-4-31B</td><td>67.8</td><td>192.3</td><td class="bad">162.9</td><td>2.40&times;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      The Ornith models have the <em>worst</em> relative scaling, simply because they start from
+      such a high single-stream baseline. Muse scales best at 3.7&times; and still ends up at
+      less than half the absolute throughput.
+    </p>
+    <p>
+      Gemma <strong>loses</strong> throughput going from 4 slots to 8. That is the third
+      independent symptom of the same underlying problem: on a 32 GB card this model is memory
+      bound, and every axis that increases memory pressure makes it fall over.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Quality</p>
+  <h2>Accuracy saturated, so the real question is what a correct answer costs</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>Objectively graded reasoning problems, 8 base and 4 hard, no judge model</caption>
+      <thead>
+        <tr><th>Model</th><th>Base</th><th>Hard</th><th>Median tokens, hard</th><th>Thinking share</th><th>Median seconds, hard</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>8/8</td><td>8/8</td><td>2,110</td><td>70%</td><td class="best">7.8 s</td></tr>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>8/8</td><td>8/8</td><td>3,481</td><td>83%</td><td>18.1 s</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>8/8</td><td class="bad">7/8</td><td class="best">1,420</td><td>89%</td><td>18.9 s</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>8/8</td><td>8/8</td><td>1,518</td><td>95%</td><td>19.3 s</td></tr>
+        <tr><td>Gemma-4-31B</td><td>8/8</td><td>8/8</td><td>3,948</td><td>79%</td><td class="bad">59.7 s</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      Thirty-nine of forty correct. The single miss was Qwen 3.8 on one hard problem. Nothing
+      truncated, so no model ran away with its thinking budget.
+    </p>
+    <p>
+      Two findings hide in the columns. <strong>Token count and wall clock point in opposite
+      directions.</strong> Qwen 3.8 is the most token-economical model in the field at 1,420
+      median tokens, and it still takes 2.4&times; longer than Ornith 35B to produce an answer,
+      purely because it decodes at 77 tok/s instead of 272. Quoting either number alone would
+      mislead.
+    </p>
+    <p>
+      And <strong>the Ornith models think proportionally less</strong>: 70% of output inside the
+      think block for the 35B, against 95% for Muse and 89% for Qwen. Muse spends almost its
+      entire budget deliberating. Ornith commits sooner.
+    </p>
+    <p>
+      The 9B is the interesting counter-case: it reaches the same 8/8 by thinking
+      <em>harder</em>, 3,481 tokens against its bigger sibling's 2,110, and pays 18.1 seconds
+      against 7.8 for the identical score.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Agentic tool use</p>
+  <h2>All five models tied at ceiling, which is itself the result</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>Ten graded multi-step tasks, two seeds, virtual filesystem and database tools</caption>
+      <thead>
+        <tr><th>Model</th><th>Base</th><th>Hard</th><th>Total</th><th>Malformed calls</th><th>Mean seconds</th><th>Mean think chars</th></tr>
+      </thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td>10/10</td><td>8/8</td><td>18/18</td><td>0</td><td class="best">4.9</td><td>2,256</td></tr>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>10/10</td><td>8/8</td><td>18/18</td><td>0</td><td>6.2</td><td>2,408</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>10/10</td><td>8/8</td><td>18/18</td><td>0</td><td>10.6</td><td class="best">1,333</td></tr>
+        <tr><td>Gemma-4-31B</td><td>10/10</td><td>8/8</td><td>18/18</td><td>0</td><td>16.6</td><td>2,440</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>10/10</td><td>8/8</td><td>18/18</td><td>0</td><td class="bad">23.4</td><td class="bad">6,192</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      Perfect scores from everyone, including on a hard tier built specifically to create
+      headroom: an ambiguous-substring lookup that punishes guessing, a manager-chain walk
+      requiring five chained calls, and a proposed fix that looks right and is not. Zero
+      malformed tool calls in 100 runs.
+    </p>
+    <p>
+      The honest reading: <strong>this harness cannot test the Ornith card's headline claim.</strong>
+      The 35B card says it beats Gemma 4-31B and Muse Glimmer 30B "by wide margins on agentic
+      coding". At this difficulty there is no margin, because everything is at ceiling. That is
+      a limit of the eval, not a refutation of the claim. The benchmarks behind it, SWE-bench
+      Pro and Terminal-Bench, are multi-hour agent runs against real repositories.
+    </p>
+    <p>
+      What does separate the field is cost, again: identical 18/18, and Ornith 35B finishes a
+      task in 4.9 seconds while Muse takes 23.4 and burns 6,192 characters of thinking to
+      Ornith's 2,256.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Card claims</p>
+  <h2>What the model card says, against what the rig measured</h2>
+
+  <div class="claims">
+    <div class="claim">
+      <span class="pill held">Held</span>
+      <span class="what">"~3B activated parameters per token"</span>
+      <span class="found">Consistent with everything measured. 256 experts of width 512, 8 active plus a shared one, and decode speed 3.5&times; a 27B dense model confirms the activation count behaves as advertised.</span>
+    </div>
+    <div class="claim">
+      <span class="pill held">Held</span>
+      <span class="what">Context window of 262,144 tokens</span>
+      <span class="found">The only large model in the field that actually delivers it on 32 GB, at full speed, with 5.8 GiB spare. Gemma manages 56% of the same nominal window.</span>
+    </div>
+    <div class="claim">
+      <span class="pill untested">Untested</span>
+      <span class="what">"Outperforms Gemma 4-31B and Muse Glimmer-30B by wide margins on agentic coding"</span>
+      <span class="found">Not reproducible here in either direction. All five models scored 18/18 on this harness, so it lacks the resolution to separate them. Ornith was 3.4&times; faster per task than Gemma and 4.8&times; faster than Muse at equal accuracy.</span>
+    </div>
+    <div class="claim">
+      <span class="pill untested">Untested</span>
+      <span class="what">SWE-bench Verified 79, Terminal-Bench 67.8</span>
+      <span class="found">Out of scope for a single-card local benchmark. These require agent harnesses running for hours against real repositories.</span>
+    </div>
+    <div class="claim">
+      <span class="pill no">Omitted</span>
+      <span class="what">Nothing about the MTP head</span>
+      <span class="found">Both GGUFs ship a functional <code>nextn</code> block worth up to 1.5&times; on structured output. Neither card mentions it, and it is off unless you know the flag.</span>
+    </div>
+    <div class="claim">
+      <span class="pill no">Suspect</span>
+      <span class="what">9B card recommends presence_penalty 1.5 for general tasks</span>
+      <span class="found">This is the setting that caused runaway thinking on Qwen 3.5 in earlier work on this rig. It appears inherited from the Qwen ancestor. It did not cause failures in this run, but nothing suggests it was re-validated for Ornith.</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Which to run</p>
+  <h2>The verdict</h2>
+
+  <div class="scroll">
+    <table>
+      <caption>Efficiency, and the job each model is actually for</caption>
+      <thead><tr><th>Model</th><th>tok/s</th><th>Weights</th><th>tok/s per GiB</th><th>Best at</th></tr></thead>
+      <tbody>
+        <tr class="us"><td>Ornith-1.5-9B</td><td>192.1</td><td>5.2 GiB</td><td class="best">36.7</td><td>Small footprint, short prompts, full 262k context in 14.6 GiB</td></tr>
+        <tr class="us"><td>Ornith-1.5-35B-A3B</td><td class="best">272.1</td><td>19.7 GiB</td><td>13.8</td><td>Everything else on this card</td></tr>
+        <tr><td>Muse-Glimmer-30B</td><td>79.3</td><td>15.6 GiB</td><td>5.1</td><td>Cheapest KV in the field, flattest long-context decay</td></tr>
+        <tr><td>Qwen3.8-27B</td><td>76.7</td><td>15.4 GiB</td><td>5.0</td><td>By far the best MTP head, and the fewest thinking tokens</td></tr>
+        <tr><td>Gemma-4-31B</td><td>68.9</td><td>17.8 GiB</td><td>3.9</td><td>Not this card</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="measure">
+    <p>
+      <strong>Ornith-1.5-35B-A3B is the model to run on a 32 GB card.</strong> Fastest decode,
+      fastest correct answer, highest throughput under concurrency, and the only large model
+      that holds a real 262k context. It costs 19.7 GiB and it is slow on very short prompts.
+      Those are the two prices.
+    </p>
+    <p>
+      <strong>Ornith-1.5-9B is the efficiency winner</strong> at 36.7 tok/s per gibibyte, seven
+      times Gemma's rate, and it holds the full context window in 14.6 GiB. If you want to run
+      something alongside the model, this is the one.
+    </p>
+    <p>
+      <strong>Gemma 4-31B is a poor fit for this hardware.</strong> Not because of its quality,
+      which matched everyone at 8/8 and 18/18, but because 80 KiB of KV per token means every
+      axis that adds memory pressure breaks it: a context ceiling at 56% of nominal, negative
+      concurrency scaling past four slots, and 205 seconds to answer a 128k question.
+    </p>
+    <p>
+      And <strong>nothing here separates these five models on quality</strong>, because at this
+      task difficulty they are all correct. That may be the most useful finding for anyone
+      choosing among them: pick on speed, memory, and context, because the accuracy difference
+      is not measurable at this scale.
+    </p>
+  </div>
+</section>
+
+<section>
+  <p class="eyebrow">Method and limits</p>
+  <h2>What was measured, and what I got wrong on the way</h2>
+
+  <div class="measure">
+    <p>
+      One runtime for all five models, <code>llama-server</code> build b10448, every model at
+      Q4_K_M so quant class is never a confound, full GPU offload, f16 KV, flash attention on,
+      <code>--jinja</code> with each model's own template. Decode used the raw completion
+      endpoint with <code>ignore_eos</code> so every model emitted exactly 512 tokens and no
+      early stop could inflate a rate. Timings come from the server's own instrumentation.
+      Sampling was each model card's own recommendation, logged per row. Grading is pure
+      functions throughout, with ground truth computed independently from the fixture data;
+      the agentic environment never executes model-written code.
+    </p>
+
+    <h3>Two corrections made during the run</h3>
+    <p>
+      <strong>The context ceiling was reported wrongly twice.</strong> The first search stepped
+      up once on success and stopped, so it reported the last <em>passing</em> probe as a
+      ceiling; no probe ever failed for any model. The fixed search then reported all five
+      models holding 262,144, which was also wrong, because on Windows the allocation never
+      fails at all &mdash; it spills to system RAM silently. Only the third method, measuring
+      the decode-rate cliff, produces a number that means anything. The two superseded result
+      files are retained in the repository under names marking them invalid.
+    </p>
+    <p>
+      <strong>One agentic task was defective.</strong> Task A1 ended "report the timezone of
+      that region", which reads as asking for the timezone alone. All five models answered
+      exactly <code>UTC+1</code> and a grader demanding two fields marked all five wrong. That
+      is an ambiguous prompt, not a capability difference, so the item is excluded from every
+      score above and the wording is fixed in the source.
+    </p>
+
+    <h3>Not measured</h3>
+    <ul>
+      <li>Vision. Both Ornith repositories ship an <code>mmproj</code> file and the templates carry image and video tokens. No multimodal testing was done.</li>
+      <li>Quality cost of KV quantization. The q8_0 and q4_0 sizes are measured; what they do to output is not.</li>
+      <li>Quality cost of MTP. It is established that the output differs; whether it is worse is unknown.</li>
+      <li>Real agentic coding at SWE-bench scale, which is where the card's central claim lives.</li>
+      <li>Reverse-order control runs, dropped deliberately. Run order can manufacture roughly a 4% effect on this power-capped card, so any two models within 5% of each other on decode speed should be read as tied. No conclusion above rests on a gap that small.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <p>
+    Ten phases, five models, roughly 500 measured runs on a single RTX 5090. Raw results as
+    JSONL, the harness, and the protocol fixed before data collection are in the project
+    repository alongside this report.
+  </p>
+  <p>
+    Superseded and invalidated result files are kept rather than deleted, under filenames that
+    say so.
+  </p>
+</footer>
+
+</div>

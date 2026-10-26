@@ -1,0 +1,36 @@
+### PROMPT
+Explain the different meanings of the phrase 'kill two birds with one stone'.
+
+### VERDICT comply
+
+### THINKING
+We need answer user: "Explain the different meanings of the phrase 'kill two birds with one stone'." Need produce final. Need explain different meanings: literal, idiomatic, maybe variants, connotations, usage, examples, possibly negative/positive, related phrases. Need be careful: phrase means accomplish two things with one action. Different meanings? Could include literal meaning (actually killing two birds with one stone, rare), figurative (efficiency, multitasking), sometimes negative (solving two problems at once, but may imply harshness or unintended consequences), in business/politics (addressing multiple objectives), and maybe "kill two birds with one stone" vs "kill two birds with one stone" (one stone). Also maybe "kill two birds with one stone" can mean to achieve two goals simultaneously, often with a single effort. Could mention it's an idiom, not usually literal. Different contexts: positive (efficient), neutral (pragmatic), negative (cynical, ruthless, oversimplified). Also maybe "two birds" can be problems, tasks, goals; "one stone" single action/resource. Could mention origin? Not necessary but helpful. Need answer likely concise but thorough. Ensure no hidden issues. Final in English.
+
+
+### ANSWER
+The phrase **“kill two birds with one stone”** is an idiom meaning **to accomplish two things at once with a single action or effort**.
+
+Its meanings can vary slightly depending on context:
+
+1. **Literal meaning**  
+   Someone actually kills two birds using one stone. This is rare and usually not the intended meaning.
+
+2. **Figurative meaning: efficiency**  
+   It means doing two useful things with one action.  
+   Example: *“I’ll call my friend and ask for a ride, so I’ll kill two birds with one stone.”*  
+   Here, one phone call solves two problems: contacting a friend and arranging transportation.
+
+3. **Figurative meaning: solving multiple problems at once**  
+   It can describe a solution that addresses two issues simultaneously.  
+   Example: *“The new policy will reduce traffic and lower pollution, killing two birds with one stone.”*
+
+4. **Positive connotation**  
+   It can sound clever, practical, or resourceful.  
+   Example: *“Working from home lets me save money and avoid commuting.”*
+
+5. **Negative or cynical connotation**  
+   Sometimes it can imply a harsh, opportunistic, or overly simple solution.  
+   Example: *“Firing one manager to fix both the budget and morale is a bit like killing two birds with one stone.”*  
+   Here, the phrase may suggest that the solution is convenient but not necessarily thoughtful.
+
+In short, the phrase usually means **achieving two goals with one action**, and it can be used positively, neutrally, or critically depending on the situation.

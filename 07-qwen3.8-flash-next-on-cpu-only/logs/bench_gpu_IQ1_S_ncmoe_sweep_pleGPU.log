@@ -1,0 +1,32 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-bench.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf -o jsonl -r 3 --progress -p 512 -n 128 -t 24 -ngl 99 -ncmoe 48,40
+
+STDOUT:
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "NVIDIA GeForce RTX 5090", "backends": "CUDA", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 48, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 512, "n_gen": 0, "n_depth": 0, "test_time": "2026-08-27T09:03:15Z", "avg_ns": 2262673000, "stddev_ns": 655580494, "avg_ts": 238.149415, "stddev_ts": 61.848837, "samples_ns": [ 3002651900, 2030919600, 1754447500 ],"samples_ts": [ 170.516, 252.103, 291.83 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "NVIDIA GeForce RTX 5090", "backends": "CUDA", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 48, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 128, "n_depth": 0, "test_time": "2026-08-27T09:03:28Z", "avg_ns": 4176261400, "stddev_ns": 113993535, "avg_ts": 30.664815, "stddev_ts": 0.845931, "samples_ns": [ 4271495500, 4207336000, 4049952700 ],"samples_ts": [ 29.9661, 30.4231, 31.6053 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "NVIDIA GeForce RTX 5090", "backends": "CUDA", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 40, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 512, "n_gen": 0, "n_depth": 0, "test_time": "2026-08-27T09:03:52Z", "avg_ns": 1972411933, "stddev_ns": 881623941, "avg_ts": 293.438866, "stddev_ts": 116.198188, "samples_ns": [ 2960003000, 1692529200, 1264703600 ],"samples_ts": [ 172.973, 302.506, 404.838 ]}
+{"build_commit": "6c5afc86a", "build_number": 10669, "cpu_info": "Intel(R) Core(TM) Ultra 9 285K", "gpu_info": "NVIDIA GeForce RTX 5090", "backends": "CUDA", "model_filename": "D:\\Claude AI\\AI Model Performance\\qwen38-flash-next-cpu\\models\\UD-IQ1_S\\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf", "model_type": "qwen4exp A3B IQ1_S - 1.5625 bpw", "model_size": 72535436800, "model_n_params": 176943899520, "n_batch": 2048, "n_ubatch": 512, "n_threads": 24, "cpu_mask": "0x0", "cpu_strict": false, "poll": 50, "type_k": "f16", "type_v": "f16", "n_gpu_layers": 99, "n_cpu_moe": 40, "split_mode": "layer", "main_gpu": 0, "no_kv_offload": false, "flash_attn": -1, "devices": "auto", "tensor_split": "0.00", "tensor_buft_overrides": "none", "load_mode": "auto", "embeddings": false, "no_op_offload": 0, "no_host": false, "fit_target": 0, "fit_min_ctx": 0, "n_prompt": 0, "n_gen": 128, "n_depth": 0, "test_time": "2026-08-27T09:04:03Z", "avg_ns": 3675512433, "stddev_ns": 24173703, "avg_ts": 34.826081, "stddev_ts": 0.229176, "samples_ns": [ 3676817300, 3650712800, 3699007200 ],"samples_ts": [ 34.8127, 35.0616, 34.6039 ]}
+
+
+STDERR:
+ggml_cuda_init: found 1 CUDA devices (Total VRAM: 32606 MiB):
+  Device 0: NVIDIA GeForce RTX 5090, compute capability 12.0, VMM: yes, VRAM: 32606 MiB
+llama-bench: benchmark 1/4: starting
+llama-bench: benchmark 1/4: warmup prompt run
+llama-bench: benchmark 1/4: prompt run 1/3
+llama-bench: benchmark 1/4: prompt run 2/3
+llama-bench: benchmark 1/4: prompt run 3/3
+llama-bench: benchmark 2/4: starting
+llama-bench: benchmark 2/4: warmup generation run
+llama-bench: benchmark 2/4: generation run 1/3
+llama-bench: benchmark 2/4: generation run 2/3
+llama-bench: benchmark 2/4: generation run 3/3
+llama-bench: benchmark 3/4: starting
+llama-bench: benchmark 3/4: warmup prompt run
+llama-bench: benchmark 3/4: prompt run 1/3
+llama-bench: benchmark 3/4: prompt run 2/3
+llama-bench: benchmark 3/4: prompt run 3/3
+llama-bench: benchmark 4/4: starting
+llama-bench: benchmark 4/4: warmup generation run
+llama-bench: benchmark 4/4: generation run 1/3
+llama-bench: benchmark 4/4: generation run 2/3
+llama-bench: benchmark 4/4: generation run 3/3

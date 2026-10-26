@@ -1,0 +1,41 @@
+0.00.091.806 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.141.647 W srv  llama_server: -----------------
+0.00.141.652 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.141.653 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.141.653 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.141.653 W srv  llama_server: -----------------
+0.00.159.027 I srv    load_model: loading model 'D:\Claude AI\AI Model Performance\ornith-benchmark\models\Ornith-1.5-9B-Q4_K_M.gguf'
+0.00.717.220 W model has unused tensor blk.32.attn_norm.weight (size = 16384 bytes) -- ignoring
+0.00.717.230 W model has unused tensor blk.32.post_attention_norm.weight (size = 16384 bytes) -- ignoring
+0.00.717.239 W model has unused tensor blk.32.attn_q.weight (size = 18874368 bytes) -- ignoring
+0.00.717.243 W model has unused tensor blk.32.attn_k.weight (size = 2359296 bytes) -- ignoring
+0.00.717.246 W model has unused tensor blk.32.attn_v.weight (size = 3440640 bytes) -- ignoring
+0.00.717.258 W model has unused tensor blk.32.attn_output.weight (size = 9437184 bytes) -- ignoring
+0.00.717.261 W model has unused tensor blk.32.attn_q_norm.weight (size = 1024 bytes) -- ignoring
+0.00.717.265 W model has unused tensor blk.32.attn_k_norm.weight (size = 1024 bytes) -- ignoring
+0.00.717.269 W model has unused tensor blk.32.ffn_gate.weight (size = 28311552 bytes) -- ignoring
+0.00.717.272 W model has unused tensor blk.32.ffn_down.weight (size = 41287680 bytes) -- ignoring
+0.00.717.275 W model has unused tensor blk.32.ffn_up.weight (size = 28311552 bytes) -- ignoring
+0.00.717.280 W model has unused tensor blk.32.nextn.eh_proj.weight (size = 18874368 bytes) -- ignoring
+0.00.717.284 W model has unused tensor blk.32.nextn.enorm.weight (size = 16384 bytes) -- ignoring
+0.00.717.287 W model has unused tensor blk.32.nextn.hnorm.weight (size = 16384 bytes) -- ignoring
+0.00.717.298 W model has unused tensor blk.32.nextn.shared_head_norm.weight (size = 16384 bytes) -- ignoring
+0.02.892.679 I cmn          init: llama threadpool init, n_threads = 24
+0.02.951.678 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 131072, kv_unified = 'false'
+0.02.955.633 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.02.955.652 I srv  llama_server: model loaded
+0.02.955.653 I srv  llama_server: listening on http://127.0.0.1:8099
+0.04.621.832 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.04.621.859 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.04.841.179 I slot print_timing: id  0 | task 0 | prompt eval time =      49.70 ms /    34 tokens (    1.46 ms per token,   684.10 tokens per second)
+0.04.841.185 I slot print_timing: id  0 | task 0 |        eval time =     169.60 ms /    32 tokens (    5.47 ms per token,   182.78 tokens per second)
+0.04.841.186 I slot print_timing: id  0 | task 0 |       total time =     219.30 ms /    66 tokens
+0.04.841.186 I slot print_timing: id  0 | task 0 |    graphs reused =         30
+0.04.841.200 I slot      release: id  0 | task 0 | stop processing: n_tokens = 65, truncated = 0
+0.04.848.347 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = 4751178
+0.04.880.964 I slot launch_slot_: id  0 | task 34 | processing task, is_child = 0
+0.06.249.189 I slot print_timing: id  0 | task 34 | prompt eval time =      36.32 ms /   103 tokens (    0.35 ms per token,  2836.06 tokens per second)
+0.06.249.195 I slot print_timing: id  0 | task 34 |        eval time =    1331.89 ms /   256 tokens (    5.22 ms per token,   191.46 tokens per second)
+0.06.249.196 I slot print_timing: id  0 | task 34 |       total time =    1368.21 ms /   359 tokens
+0.06.249.197 I slot print_timing: id  0 | task 34 |    graphs reused =        283
+0.06.249.214 I slot      release: id  0 | task 34 | stop processing: n_tokens = 358, truncated = 0

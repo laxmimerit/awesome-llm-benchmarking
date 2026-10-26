@@ -1,0 +1,18 @@
+
+=== granite4.2-8b code eval effort=None ===
+  OK C1  seed=11 15/15 tok= 11947   63.2s
+  OK C2  seed=11 11/11 tok= 10552   55.6s
+  OK C3  seed=11 9/9 tok=  3728   18.6s
+  XX C4  seed=11 0/11 tok= 16384   90.8s TRUNC
+  OK C5  seed=11 9/9 tok=  9372   49.1s
+  XX C6  seed=11 0/12 tok= 16384   91.5s TRUNC
+  XX C7  seed=11 0/11 tok= 16384   91.4s TRUNC
+  OK C8  seed=11 11/11 tok=  4078   20.9s
+  XX C9  seed=11 0/10 tok= 16384   90.7s TRUNC
+  granite4.2-8b: 5/9 tasks fully passed
+=== HARD ===
+
+=== granite4.2-8b effort=None sampling={'temperature': 1.0, 'top_p': 0.95} ===
+  XX math   M1   seed=11 tok= 16384 think=1.0   90.1s TRUNC
+  OK math   M2   seed=11 tok=  5367 think=0.96   27.0s
+  OK math   M3   seed=11 tok=  6820 think=0.959   34.4s

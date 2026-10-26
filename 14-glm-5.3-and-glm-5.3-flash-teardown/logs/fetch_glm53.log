@@ -1,0 +1,9 @@
+glm53: 20/141 shards, 16243 tensors
+glm53: 40/141 shards, 33181 tensors
+glm53: 60/141 shards, 50124 tensors
+glm53: 80/141 shards, 67074 tensors
+glm53: 100/141 shards, 84019 tensors
+glm53: 120/141 shards, 100964 tensors
+glm53: 140/141 shards, 117889 tensors
+glm53: 141/141 shards, 118629 tensors
+glm53: wrote results/glm53_tensors.json with 118629 tensors

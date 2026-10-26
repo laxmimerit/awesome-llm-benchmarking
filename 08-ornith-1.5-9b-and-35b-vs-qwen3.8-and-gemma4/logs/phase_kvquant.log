@@ -1,0 +1,81 @@
+
+
+===== 2026-08-25 17:31:50 bench_vram.py ornith-9b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== ornith-9b :: kvquant ===
+  kv=  f16 ok=True kv_self=2048.0 MiB smi_delta=7573 MiB
+  kv= q8_0 ok=True kv_self=1088.0 MiB smi_delta=6825 MiB
+  kv= q4_0 ok=True kv_self=576.0 MiB smi_delta=6313 MiB
+  wrote 3 rows
+
+
+===== 2026-08-25 17:32:07 bench_vram.py ornith-35b-a3b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== ornith-35b-a3b :: kvquant ===
+  kv=  f16 ok=True kv_self=1280.0 MiB smi_delta=21875 MiB
+  kv= q8_0 ok=True kv_self=680.0 MiB smi_delta=21387 MiB
+  kv= q4_0 ok=True kv_self=360.0 MiB smi_delta=21067 MiB
+  wrote 3 rows
+
+
+===== 2026-08-25 17:32:45 bench_vram.py qwen3.8-27b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== qwen3.8-27b :: kvquant ===
+  kv=  f16 ok=True kv_self=4096.0 MiB smi_delta=20016 MiB
+  kv= q8_0 ok=True kv_self=2176.0 MiB smi_delta=18312 MiB
+  kv= q4_0 ok=True kv_self=1152.0 MiB smi_delta=17275 MiB
+  wrote 3 rows
+
+
+===== 2026-08-25 17:33:30 bench_vram.py gemma4-31b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== gemma4-31b :: kvquant ===
+  kv=  f16 ok=True kv_self=6320.0 MiB smi_delta=24519 MiB
+  kv= q8_0 ok=True kv_self=3357.5 MiB smi_delta=21975 MiB
+  kv= q4_0 ok=True kv_self=1777.5 MiB smi_delta=20395 MiB
+  wrote 3 rows
+
+
+===== 2026-08-25 17:34:07 bench_vram.py muse-glimmer-30b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== muse-glimmer-30b :: kvquant ===
+  kv=  f16 ok=True kv_self=929.5 MiB smi_delta=16885 MiB
+  kv= q8_0 ok=True kv_self=493.8 MiB smi_delta=16448 MiB
+  kv= q4_0 ok=True kv_self=261.42 MiB smi_delta=16217 MiB
+  wrote 3 rows
+
+
+===== 2026-08-26 17:31:41 bench_vram.py ornith-9b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== ornith-9b :: kvquant ===
+  kv=  f16 ok=True kv_self=2048.0 MiB smi_delta=7571 MiB
+  kv= q8_0 ok=True kv_self=1088.0 MiB smi_delta=6835 MiB
+  kv= q4_0 ok=True kv_self=576.0 MiB smi_delta=6324 MiB
+  wrote 3 rows
+
+
+===== 2026-08-26 17:31:57 bench_vram.py ornith-35b-a3b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== ornith-35b-a3b :: kvquant ===
+  kv=  f16 ok=True kv_self=1280.0 MiB smi_delta=21899 MiB
+  kv= q8_0 ok=True kv_self=680.0 MiB smi_delta=21345 MiB
+  kv= q4_0 ok=True kv_self=360.0 MiB smi_delta=21090 MiB
+  wrote 3 rows
+
+
+===== 2026-08-26 17:32:35 bench_vram.py qwen3.8-27b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== qwen3.8-27b :: kvquant ===
+  kv=  f16 ok=True kv_self=4096.0 MiB smi_delta=19969 MiB
+  kv= q8_0 ok=True kv_self=2176.0 MiB smi_delta=18342 MiB
+  kv= q4_0 ok=True kv_self=1152.0 MiB smi_delta=17243 MiB
+  wrote 3 rows
+
+
+===== 2026-08-26 17:33:21 bench_vram.py gemma4-26b --mode kvquant --ctxs 65536 --out kvquant.jsonl =====
+
+=== gemma4-26b :: kvquant ===
+  kv=  f16 ok=True kv_self=1580.0 MiB smi_delta=18486 MiB
+  kv= q8_0 ok=True kv_self=839.38 MiB smi_delta=17900 MiB
+  kv= q4_0 ok=True kv_self=444.38 MiB smi_delta=17573 MiB
+  wrote 3 rows

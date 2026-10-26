@@ -1,0 +1,15 @@
+already recorded: 38 cells
+
+########## flashnext-cpu  (3 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cpu\bin\Release\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 8192 --parallel 1 --jinja -t 24 --no-warmup
+   loaded in 22s
+   modular_arithmetic     s1  PASS answer='87'                            46s  10.3 t/s out=474
+   combinatorics          s1  PASS answer='233'                          100s  10.8 t/s out=1086
+   code_subtle_bugfix     s1  PASS subprocess test                        20s   9.9 t/s out=200
+
+########## dsv4-cpu  (3 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cpu\bin\Release\llama-server.exe -m D:\Claude AI\AI Model Performance\deepseek-v4-vs-flash-next-1bit\models\UD-IQ1_S\DeepSeek-V4-Flash-0731-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 8192 --parallel 1 --jinja -t 24 --no-warmup
+   loaded in 19s
+   modular_arithmetic     s1  PASS answer='87'                            54s   6.1 t/s out=325
+   combinatorics          s1  PASS answer='233'                           56s   6.6 t/s out=369
+   code_subtle_bugfix     s1  PASS subprocess test                        41s   6.1 t/s out=249

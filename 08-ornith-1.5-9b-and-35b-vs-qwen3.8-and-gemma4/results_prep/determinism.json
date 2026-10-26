@@ -1,0 +1,33 @@
+{
+  "model": "ornith-9b",
+  "n_predict": 256,
+  "cases": {
+    "counting": {
+      "self_identical": true,
+      "self_divergence_char": null,
+      "mtp_identical": false,
+      "mtp_divergence_char": 174,
+      "mtp_divergence_frac": 0.68,
+      "window_off": "7\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n66\n68\n69\n70\n71\n72\n73\n74\n75\n75\n77\n78\n79\n80",
+      "window_mtp": "7\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n67\n68\n69\n70\n70\n72\n73\n74\n75\n76\n77\n78\n79\n80"
+    },
+    "code": {
+      "self_identical": true,
+      "self_divergence_char": null,
+      "mtp_identical": false,
+      "mtp_divergence_char": 583,
+      "mtp_divergence_frac": 0.609,
+      "window_off": "     on_eviction: Callable[[K, V], None] | None = None,\n        on_expiry: Callable[[K, V], None] | ",
+      "window_mtp": "     on_eviction: Callable[[K, V], None] | None = None,\n    ) -> None:\n        if maxsize <= 0:\n    "
+    },
+    "essay": {
+      "self_identical": true,
+      "self_divergence_char": null,
+      "mtp_identical": false,
+      "mtp_divergence_char": 390,
+      "mtp_divergence_frac": 0.292,
+      "window_off": "unded, spatially mismatched, and politically indefensible.\n\n## The Funding Structure: A System Desig",
+      "window_mtp": "unded, spatially mismatched, and politically indefensible.\n\nThe first and most fundamental problem i"
+    }
+  }
+}

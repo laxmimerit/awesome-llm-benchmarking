@@ -1,0 +1,8 @@
+already recorded: 21 cells
+
+########## flashnext-gpu  (3 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 40960 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 20 -ot per_layer_token_embd=CPU
+   loaded in 16s
+   aime_digit_sum         s1  PASS answer='342'                          192s  47.0 t/s out=9026
+   code_expression_eval   s1  fail no code emitted                       538s  45.7 t/s out=24576  TRUNCATED
+   threejs_game           s1  fail no HTML block emitted                 734s  44.6 t/s out=32768  TRUNCATED

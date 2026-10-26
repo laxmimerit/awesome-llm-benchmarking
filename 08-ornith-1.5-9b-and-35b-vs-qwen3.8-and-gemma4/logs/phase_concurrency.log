@@ -1,0 +1,108 @@
+
+
+===== 2026-08-25 18:46:06 bench_concurrency.py ornith-9b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== ornith-9b np=1 ctx=4096 ===
+  aggregate   185.69 tok/s  per-stream 191.67  vram 5581 MiB
+
+=== ornith-9b np=4 ctx=16384 ===
+  aggregate   439.80 tok/s  per-stream 115.58  vram 6115 MiB
+
+=== ornith-9b np=8 ctx=32768 ===
+  aggregate   508.87 tok/s  per-stream  66.93  vram 6827 MiB
+
+
+===== 2026-08-25 18:46:30 bench_concurrency.py ornith-35b-a3b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== ornith-35b-a3b np=1 ctx=4096 ===
+  aggregate   246.38 tok/s  per-stream 269.94  vram 20615 MiB
+
+=== ornith-35b-a3b np=4 ctx=16384 ===
+  aggregate   500.62 tok/s  per-stream 138.86  vram 21042 MiB
+
+=== ornith-35b-a3b np=8 ctx=32768 ===
+  aggregate   668.63 tok/s  per-stream  91.74  vram 21632 MiB
+
+
+===== 2026-08-25 18:47:20 bench_concurrency.py qwen3.8-27b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== qwen3.8-27b np=1 ctx=4096 ===
+  aggregate    74.50 tok/s  per-stream  77.57  vram 16118 MiB
+
+=== qwen3.8-27b np=4 ctx=16384 ===
+  aggregate   203.55 tok/s  per-stream  54.50  vram 17337 MiB
+
+=== qwen3.8-27b np=8 ctx=32768 ===
+  aggregate   259.69 tok/s  per-stream  35.22  vram 18957 MiB
+
+
+===== 2026-08-25 18:48:27 bench_concurrency.py gemma4-31b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== gemma4-31b np=1 ctx=4096 ===
+  aggregate    67.80 tok/s  per-stream  69.52  vram 19659 MiB
+
+=== gemma4-31b np=4 ctx=16384 ===
+  aggregate   192.30 tok/s  per-stream  50.20  vram 24219 MiB
+
+=== gemma4-31b np=8 ctx=32768 ===
+  aggregate   162.89 tok/s  per-stream  21.56  vram 29955 MiB
+
+
+===== 2026-08-25 18:49:32 bench_concurrency.py muse-glimmer-30b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== muse-glimmer-30b np=1 ctx=4096 ===
+  aggregate    77.62 tok/s  per-stream  79.26  vram 16042 MiB
+
+=== muse-glimmer-30b np=4 ctx=16384 ===
+  aggregate   233.96 tok/s  per-stream  60.08  vram 16493 MiB
+
+=== muse-glimmer-30b np=8 ctx=32768 ===
+  aggregate   287.14 tok/s  per-stream  37.12  vram 17087 MiB
+
+
+===== 2026-08-26 18:11:42 bench_concurrency.py ornith-9b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== ornith-9b np=1 ctx=4096 ===
+  aggregate   187.45 tok/s  per-stream 192.64  vram 5583 MiB
+
+=== ornith-9b np=4 ctx=16384 ===
+  aggregate   420.39 tok/s  per-stream 110.18  vram 6114 MiB
+
+=== ornith-9b np=8 ctx=32768 ===
+  aggregate   508.17 tok/s  per-stream  66.84  vram 6829 MiB
+
+
+===== 2026-08-26 18:12:07 bench_concurrency.py ornith-35b-a3b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== ornith-35b-a3b np=1 ctx=4096 ===
+  aggregate   248.93 tok/s  per-stream 268.95  vram 20614 MiB
+
+=== ornith-35b-a3b np=4 ctx=16384 ===
+  aggregate   528.69 tok/s  per-stream 142.92  vram 21045 MiB
+
+=== ornith-35b-a3b np=8 ctx=32768 ===
+  aggregate   673.00 tok/s  per-stream  92.23  vram 21630 MiB
+
+
+===== 2026-08-26 18:12:52 bench_concurrency.py qwen3.8-27b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== qwen3.8-27b np=1 ctx=4096 ===
+  aggregate    76.45 tok/s  per-stream  78.72  vram 16118 MiB
+
+=== qwen3.8-27b np=4 ctx=16384 ===
+  aggregate   211.51 tok/s  per-stream  56.06  vram 17333 MiB
+
+=== qwen3.8-27b np=8 ctx=32768 ===
+  aggregate   264.48 tok/s  per-stream  35.33  vram 18957 MiB
+
+
+===== 2026-08-26 18:13:57 bench_concurrency.py gemma4-26b --levels 1 4 8 --n-predict 256 --out concurrency.jsonl =====
+
+=== gemma4-26b np=1 ctx=4096 ===
+  aggregate   222.75 tok/s  per-stream 231.72  vram 17208 MiB
+
+=== gemma4-26b np=4 ctx=16384 ===
+  aggregate   546.53 tok/s  per-stream 143.01  vram 18349 MiB
+
+=== gemma4-26b np=8 ctx=32768 ===
+  aggregate   702.59 tok/s  per-stream  93.56  vram 19866 MiB

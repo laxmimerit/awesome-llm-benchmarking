@@ -1,0 +1,25 @@
+ollama up with OLLAMA_KV_CACHE_TYPE=q8_0
+
+prompt              approx tokens   result    
+--------------------------------------------------
+prefill_25pct       8377            ok         prompt_tok=8255
+prefill_75pct       26246           ok         prompt_tok=26214
+
+=== server-side errors / cache lines ===
+   time=2026-08-16T20:06:39.508+05:30 level=INFO source=routes.go:1933 msg="server config" env="map[CUDA_VISIBLE_DEVICES: GGML_VK_VISIBLE_DEVICES: GPU_DEVICE_ORDINAL: HIP_VISIBLE_DEVICES: HSA_OVERRIDE_GFX_VERSION: HTTPS_PRO
+   time=2026-08-16T20:06:41.093+05:30 level=DEBUG source=native_probe.go:259 msg="native GPU discovery failed" error="exit status 1" stderr="ggml_cuda_init: failed to initialize ROCm: no ROCm-capable device is detected\r\nl
+   time=2026-08-16T20:06:43.118+05:30 level=INFO source=llama_server.go:1348 msg="waiting for llama-server to become available" status="llm server error"
+   print_info: n_ctx_train = 262144
+   print_info: n_ctx_orig_yarn = 262144
+   llama_context: n_ctx = 32768
+   llama_context: n_ctx_seq = 32768
+   llama_context: n_ctx_seq (32768) < n_ctx_train (262144) -- the full capacity of the model will not be utilized
+   cmn common_init_: KV cache shifting is not supported for this context, disabling KV cache shifting
+   srv load_model: initializing, n_slots = 1, n_ctx_slot = 32768, kv_unified = 'false'
+   slot load_model: id 0 | task -1 | new slot, n_ctx = 32768
+   slot operator(): id 0 | task 0 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 8255
+   slot release: id 0 | task 0 | stop processing: n_tokens = 8318, truncated = 0
+   slot operator(): id 0 | task 26 | new prompt, n_ctx_slot = 32768, n_keep = 4, task.n_tokens = 26214
+   slot release: id 0 | task 26 | stop processing: n_tokens = 26277, truncated = 0
+
+ollama stopped

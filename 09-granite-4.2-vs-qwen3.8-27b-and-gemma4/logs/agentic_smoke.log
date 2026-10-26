@@ -1,0 +1,12 @@
+
+=== granite4.2-8b agentic-hard ===
+  OK H1  pagination         calls=3 malformed=0 tok=1011    5.0s
+  OK H2  pagination+rate    calls=3 malformed=0 tok=1263    6.2s
+  OK H3  recovery           calls=2 malformed=0 tok=867    4.2s
+  XX H4  recovery+aggregate calls=9 malformed=0 tok=13885   71.2s
+  OK H5  multi-hop          calls=6 malformed=0 tok=3150   15.9s
+  OK H6  trap               calls=4 malformed=0 tok=1490    7.3s
+  OK H7  trap               calls=3 malformed=0 tok=1365    6.7s
+  OK H8  multi-hop          calls=4 malformed=0 tok=456    2.4s
+  granite4.2-8b: solvable 5/6, traps 2/2
+SMOKEDONE

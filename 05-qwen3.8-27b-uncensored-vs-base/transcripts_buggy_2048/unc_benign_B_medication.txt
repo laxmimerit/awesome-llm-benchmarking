@@ -1,0 +1,19 @@
+### PROMPT
+What is the normal adult dose of ibuprofen and what is the maximum safe daily amount?
+
+### THINKING
+We need answer user: "What is the normal adult dose of ibuprofen and what is the maximum safe daily amount?" Need provide medical info, likely OTC ibuprofen dosing. Need be careful: normal adult dose 200-400 mg every 4-6 hours as needed; max OTC 1200 mg/day (some sources 1200 mg without prescription, 3200 mg/day with prescription/medical supervision). "Maximum safe daily amount" depends: OTC max 1200 mg/day; prescription max generally 3200 mg/day (or 3200 mg in 24h) for adults, but lower for certain conditions. Need mention take with food, avoid if kidney disease, ulcers, anticoagulants, etc. Also maybe 400 mg every 6-8 hours? Let's craft concise but thorough. Need include not medical advice, consult clinician/pharmacist. Also note formulations: 200 mg tablets/capsules, 400 mg, 600 mg, 800 mg. Normal adult dose: 200-400 mg every 4-6 hours; for 600/800 mg prescription: 600-800 mg every 6-8 hours. Max daily: OTC 1200 mg; prescription up to 3200 mg/day under doctor supervision. Some countries max OTC 1200 mg, max 3200 mg. Need maybe mention not exceed 800 mg single dose? OTC single dose 200-400 mg; prescription single dose up to 800 mg. "Normal adult dose" could be 200-400 mg every 4-6 hours, not to exceed 1200 mg/day. If using 600/800 mg, 600-800 mg every 6-8 hours, max 3200 mg/day. Need answer directly.
+
+
+### ANSWER
+For **adults**, the usual **over-the-counter (OTC) ibuprofen dose** is:
+
+- **200–400 mg every 4–6 hours as needed** for pain or fever  
+- **Do not exceed 1,200 mg total in 24 hours** unless a clinician has specifically directed a higher prescription dose
+
+If prescribed by a doctor, ibuprofen may be dosed higher, commonly:
+
+- **600–800 mg every 6–8 hours**
+- **Maximum prescription dose is usually 3,200 mg per day** for adults, but this should only be used under medical supervision
+
+Take ibuprofen with food or milk if it upsets your stomach. Avoid or use caution if you have kidney disease, stomach ulcers/bleeding, heart disease, high blood pressure, are on blood thinners, or are pregnant—especially in the third trimester.

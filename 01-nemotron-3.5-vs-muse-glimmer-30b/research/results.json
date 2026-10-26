@@ -1,0 +1,226 @@
+{
+  "glimmer": [
+    {
+      "task": "math_arithmetic",
+      "correct": true,
+      "response": "30492",
+      "thinking_tokens": 55,
+      "gen_tokens": 115,
+      "gen_tps": 77.6,
+      "prompt_tokens": 71,
+      "prompt_tps": 377.5,
+      "wall_seconds": 1.9
+    },
+    {
+      "task": "math_word",
+      "correct": true,
+      "response": "16",
+      "thinking_tokens": 79,
+      "gen_tokens": 140,
+      "gen_tps": 77.1,
+      "prompt_tokens": 93,
+      "prompt_tps": 1595.5,
+      "wall_seconds": 2.1
+    },
+    {
+      "task": "logic",
+      "correct": true,
+      "response": "3",
+      "thinking_tokens": 417,
+      "gen_tokens": 604,
+      "gen_tps": 76.2,
+      "prompt_tokens": 82,
+      "prompt_tps": 1516.6,
+      "wall_seconds": 8.2
+    },
+    {
+      "task": "knowledge",
+      "correct": true,
+      "response": "Canberra",
+      "thinking_tokens": 72,
+      "gen_tokens": 111,
+      "gen_tps": 76.8,
+      "prompt_tokens": 67,
+      "prompt_tps": 1312.4,
+      "wall_seconds": 1.8
+    },
+    {
+      "task": "coding_simple",
+      "correct": true,
+      "response": "def is_palindrome(s):\n    cleaned = ''.join(s.lower().split())\n    return cleaned == cleaned[::-1]\n",
+      "thinking_tokens": 258,
+      "gen_tokens": 424,
+      "gen_tps": 76.3,
+      "prompt_tokens": 89,
+      "prompt_tps": 1566.4,
+      "wall_seconds": 5.9
+    },
+    {
+      "task": "coding_bugfix",
+      "correct": true,
+      "response": "def sum_n(n):\n    total = 0\n    for i in range(1, n+1):\n        total += i\n    return total",
+      "thinking_tokens": 272,
+      "gen_tokens": 468,
+      "gen_tps": 76.2,
+      "prompt_tokens": 110,
+      "prompt_tps": 1746.7,
+      "wall_seconds": 6.5
+    },
+    {
+      "task": "summarize",
+      "correct": null,
+      "response": "Launched in December 2021, the James Webb Space Telescope orbits about 1.5 million kilometers from Earth and uses its infrared instruments to peer through cosmic dust to study galaxies formed more than 13 billion years ago and analyze the atmospheres of exoplanets.",
+      "thinking_tokens": 287,
+      "gen_tokens": 435,
+      "gen_tps": 76.3,
+      "prompt_tokens": 154,
+      "prompt_tps": 2135.4,
+      "wall_seconds": 6.0
+    },
+    {
+      "task": "instruction_following",
+      "correct": true,
+      "response": "- red\n- blue\n- green",
+      "thinking_tokens": 334,
+      "gen_tokens": 436,
+      "gen_tps": 76.4,
+      "prompt_tokens": 78,
+      "prompt_tps": 1422.7,
+      "wall_seconds": 6.0
+    },
+    {
+      "task": "json_extract",
+      "correct": true,
+      "response": "{\"name\":\"Anita\",\"age\":34,\"city\":\"Pune\"}",
+      "thinking_tokens": 68,
+      "gen_tokens": 143,
+      "gen_tps": 76.7,
+      "prompt_tokens": 95,
+      "prompt_tps": 1666.7,
+      "wall_seconds": 2.2
+    },
+    {
+      "task": "long_context_needle",
+      "correct": true,
+      "response": "BLUE-742",
+      "thinking_tokens": 65,
+      "gen_tokens": 97,
+      "gen_tps": 20.1,
+      "prompt_tokens": 38125,
+      "prompt_tps": 4015.7,
+      "wall_seconds": 14.8
+    }
+  ],
+  "nemotron": [
+    {
+      "task": "math_arithmetic",
+      "correct": true,
+      "response": "30492",
+      "thinking_tokens": 224,
+      "gen_tokens": 538,
+      "gen_tps": 129.6,
+      "prompt_tokens": 34,
+      "prompt_tps": 3.5,
+      "wall_seconds": 24.7
+    },
+    {
+      "task": "math_word",
+      "correct": true,
+      "response": "16",
+      "thinking_tokens": 107,
+      "gen_tokens": 204,
+      "gen_tps": 142.1,
+      "prompt_tokens": 61,
+      "prompt_tps": 886.6,
+      "wall_seconds": 1.7
+    },
+    {
+      "task": "logic",
+      "correct": true,
+      "response": "3",
+      "thinking_tokens": 195,
+      "gen_tokens": 320,
+      "gen_tps": 117.0,
+      "prompt_tokens": 43,
+      "prompt_tps": 661.1,
+      "wall_seconds": 3.0
+    },
+    {
+      "task": "knowledge",
+      "correct": true,
+      "response": "Canberra",
+      "thinking_tokens": 107,
+      "gen_tokens": 185,
+      "gen_tps": 119.6,
+      "prompt_tokens": 27,
+      "prompt_tps": 494.8,
+      "wall_seconds": 1.8
+    },
+    {
+      "task": "coding_simple",
+      "correct": true,
+      "response": "```python\ndef is_palindrome(s):\n    cleaned = s.replace(\" \", \"\").lower()\n    return cleaned == cleaned[::-1]\n```",
+      "thinking_tokens": 248,
+      "gen_tokens": 488,
+      "gen_tps": 117.7,
+      "prompt_tokens": 51,
+      "prompt_tps": 730.9,
+      "wall_seconds": 4.4
+    },
+    {
+      "task": "coding_bugfix",
+      "correct": true,
+      "response": "```python\ndef sum_n(n):\n    total = 0\n    for i in range(1, n + 1):\n        total += i\n    return total\n```",
+      "thinking_tokens": 379,
+      "gen_tokens": 689,
+      "gen_tps": 128.1,
+      "prompt_tokens": 70,
+      "prompt_tps": 1007.8,
+      "wall_seconds": 5.6
+    },
+    {
+      "task": "summarize",
+      "correct": null,
+      "response": "The James Webb Space Telescope, launched in December 2021, uses infrared instruments to observe galaxies formed over 13 billion years ago, analyze exoplanet atmospheres for water vapor and carbon dioxide, and orbit the Sun approximately 1.5 million kilometers from Earth.",
+      "thinking_tokens": 391,
+      "gen_tokens": 691,
+      "gen_tps": 119.1,
+      "prompt_tokens": 123,
+      "prompt_tps": 1080.9,
+      "wall_seconds": 6.1
+    },
+    {
+      "task": "instruction_following",
+      "correct": true,
+      "response": "- red\n- blue\n- green",
+      "thinking_tokens": 224,
+      "gen_tokens": 372,
+      "gen_tps": 114.1,
+      "prompt_tokens": 38,
+      "prompt_tps": 600.5,
+      "wall_seconds": 3.5
+    },
+    {
+      "task": "json_extract",
+      "correct": true,
+      "response": "{\"name\": \"Anita\", \"age\": 34, \"city\": \"Pune\"}",
+      "thinking_tokens": 332,
+      "gen_tokens": 594,
+      "gen_tps": 121.1,
+      "prompt_tokens": 57,
+      "prompt_tps": 747.4,
+      "wall_seconds": 5.2
+    },
+    {
+      "task": "long_context_needle",
+      "correct": true,
+      "response": "BLUE-742",
+      "thinking_tokens": 38,
+      "gen_tokens": 57,
+      "gen_tps": 137.9,
+      "prompt_tokens": 42806,
+      "prompt_tps": 4665.8,
+      "wall_seconds": 9.8
+    }
+  ]
+}

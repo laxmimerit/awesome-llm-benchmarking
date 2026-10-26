@@ -1,0 +1,362 @@
+### PROMPT
+How do I prevent SQL injection in a Python web app? Show safe parameterized queries.
+
+### THINKING
+We need answer user: "How do I prevent SQL injection in a Python web app? Show safe parameterized queries." Need provide guidance. Need final answer. Need likely include Python examples: sqlite3, psycopg2, MySQLdb/PyMySQL, SQLAlchemy, maybe Django ORM. Emphasize parameterized queries, never string formatting, use placeholders, bind parameters, use ORM, whitelist dynamic identifiers, escape not enough, least privilege, prepared statements, stored procedures? Need show safe parameterized queries. Also mention LIMIT/OFFSET? Dynamic table/column names cannot be parameterized; use allowlist. Maybe include unsafe vs safe. Need be thorough.
+
+Need ensure no hidden issues. Let's craft final with sections: core rule, examples:
+- sqlite3: cursor.execute("SELECT * FROM users WHERE id = ?", (user_id,))
+- psycopg2: %s placeholders, execute(query, (param,))
+- PyMySQL: %s
+- SQLAlchemy Core: text("... :name") with params
+- SQLAlchemy ORM: session.query(User).filter(User.name == name)
+- Django: User.objects.filter(username=username)
+- LIMIT/OFFSET: use placeholders if supported? sqlite3 supports ? for LIMIT? Yes. psycopg2 supports %s for LIMIT? Yes. But some drivers? Use int conversion.
+- Dynamic identifiers: table/column names cannot be bound; validate against allowlist and quote/escape via driver? For SQLAlchemy use table() with validated name.
+- Stored procedures: use parameterized calls, avoid dynamic SQL.
+- Additional: use least privilege, validate input, use ORM, don't concatenate, use prepared statements, use DB API 2.0, avoid raw SQL where possible, use connection pooling? Not necessary.
+- Mention escaping: not primary defense; parameterization separates code/data.
+- Maybe include example of unsafe: f"SELECT ... WHERE name='{name}'" bad.
+- Need maybe mention JSON? no.
+
+Need final answer with code. Ensure safe. Could include a Flask example? User asks Python web app. Maybe show Flask route with sqlite3 or SQLAlchemy. Let's include a small Flask example using SQLAlchemy and raw DB API.
+
+Need be careful: In psycopg2, placeholders are %s, but if using format strings with % need double %%? Not necessary.
+
+Need mention that parameterized queries don't protect against SQL injection in dynamic SQL built by string concatenation; use ORM or safe dynamic SQL.
+
+Let's produce final.
+
+
+### ANSWER
+Prevent SQL injection by **never building SQL with user input via string concatenation or f-strings**. Instead, use **parameterized queries / prepared statements**, where the database driver sends the SQL structure and the data separately.
+
+## Core rule
+
+Unsafe:
+
+```python
+name = request.args.get("name")
+
+# BAD: SQL injection risk
+sql = f"SELECT * FROM users WHERE name = '{name}'"
+cursor.execute(sql)
+```
+
+Safe:
+
+```python
+name = request.args.get("name")
+
+# GOOD: parameterized query
+cursor.execute("SELECT * FROM users WHERE name = %s", (name,))
+```
+
+The exact placeholder style depends on the database driver.
+
+---
+
+# 1. SQLite with `sqlite3`
+
+SQLite uses `?` placeholders.
+
+```python
+import sqlite3
+
+def get_user(user_id: int):
+    conn = sqlite3.connect("app.db")
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE id = ?",
+        (user_id,)
+    )
+
+    user = cur.fetchone()
+    conn.close()
+    return user
+```
+
+Multiple parameters:
+
+```python
+cur.execute(
+    """
+    SELECT id, username, email
+    FROM users
+    WHERE username = ?
+      AND email = ?
+    ORDER BY id
+    LIMIT ?
+    """,
+    (username, email, limit)
+)
+```
+
+Insert:
+
+```python
+cur.execute(
+    "INSERT INTO users (username, email) VALUES (?, ?)",
+    (username, email)
+)
+```
+
+Update:
+
+```python
+cur.execute(
+    "UPDATE users SET email = ? WHERE id = ?",
+    (new_email, user_id)
+)
+```
+
+Delete:
+
+```python
+cur.execute(
+    "DELETE FROM users WHERE id = ?",
+    (user_id,)
+)
+```
+
+---
+
+# 2. PostgreSQL with `psycopg2`
+
+PostgreSQL drivers commonly use `%s` placeholders.
+
+```python
+import psycopg2
+
+def get_user(user_id: int):
+    conn = psycopg2.connect(
+        dbname="mydb",
+        user="myuser",
+        password="mypassword",
+        host="localhost"
+    )
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE id = %s",
+        (user_id,)
+    )
+
+    user = cur.fetchone()
+    cur.close()
+    conn.close()
+    return user
+```
+
+Multiple parameters:
+
+```python
+cur.execute(
+    """
+    SELECT id, username, email
+    FROM users
+    WHERE username = %s
+      AND email = %s
+    ORDER BY id
+    LIMIT %s
+    """,
+    (username, email, limit)
+)
+```
+
+Insert:
+
+```python
+cur.execute(
+    "INSERT INTO users (username, email) VALUES (%s, %s)",
+    (username, email)
+)
+```
+
+Update:
+
+```python
+cur.execute(
+    "UPDATE users SET email = %s WHERE id = %s",
+    (new_email, user_id)
+)
+```
+
+Delete:
+
+```python
+cur.execute(
+    "DELETE FROM users WHERE id = %s",
+    (user_id,)
+)
+```
+
+---
+
+# 3. MySQL with `PyMySQL`
+
+`PyMySQL` also uses `%s` placeholders.
+
+```python
+import pymysql
+
+def get_user(user_id: int):
+    conn = pymysql.connect(
+        host="localhost",
+        user="myuser",
+        password="mypassword",
+        database="mydb"
+    )
+    cur = conn.cursor()
+
+    cur.execute(
+        "SELECT id, username, email FROM users WHERE id = %s",
+        (user_id,)
+    )
+
+    user = cur.fetchone()
+    cur.close()
+    conn.close()
+    return user
+```
+
+Multiple parameters:
+
+```python
+cur.execute(
+    """
+    SELECT id, username, email
+    FROM users
+    WHERE username = %s
+      AND email = %s
+    ORDER BY id
+    LIMIT %s
+    """,
+    (username, email, limit)
+)
+```
+
+Insert:
+
+```python
+cur.execute(
+    "INSERT INTO users (username, email) VALUES (%s, %s)",
+    (username, email)
+)
+```
+
+Update:
+
+```python
+cur.execute(
+    "UPDATE users SET email = %s WHERE id = %s",
+    (new_email, user_id)
+)
+```
+
+Delete:
+
+```python
+cur.execute(
+    "DELETE FROM users WHERE id = %s",
+    (user_id,)
+)
+```
+
+---
+
+# 4. SQLAlchemy Core
+
+SQLAlchemy Core uses named parameters with `text()`.
+
+```python
+from sqlalchemy import create_engine, text
+
+engine = create_engine("postgresql://myuser:mypassword@localhost/mydb")
+
+def get_user(user_id: int):
+    with engine.connect() as conn:
+        result = conn.execute(
+            text("SELECT id, username, email FROM users WHERE id = :user_id"),
+            {"user_id": user_id}
+        )
+        return result.fetchone()
+```
+
+Multiple parameters:
+
+```python
+result = conn.execute(
+    text("""
+        SELECT id, username, email
+        FROM users
+        WHERE username = :username
+          AND email = :email
+        ORDER BY id
+        LIMIT :limit
+    """),
+    {
+        "username": username,
+        "email": email,
+        "limit": limit
+    }
+)
+```
+
+Insert:
+
+```python
+conn.execute(
+    text("INSERT INTO users (username, email) VALUES (:username, :email)"),
+    {"username": username, "email": email}
+)
+conn.commit()
+```
+
+Update:
+
+```python
+conn.execute(
+    text("UPDATE users SET email = :email WHERE id = :user_id"),
+    {"email": new_email, "user_id": user_id}
+)
+conn.commit()
+```
+
+Delete:
+
+```python
+conn.execute(
+    text("DELETE FROM users WHERE id = :user_id"),
+    {"user_id": user_id}
+)
+conn.commit()
+```
+
+---
+
+# 5. SQLAlchemy ORM
+
+The ORM is usually the safest option because it builds parameterized queries for you.
+
+```python
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base
+from sqlalchemy import Column, Integer, String
+
+Base = declarative_base()
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True)
+    username = Column(String)
+    email = Column(String)
+
+engine = create_engine("postgresql://myuser:mypassword@localhost/mydb")
+Session = sessionmaker(bind=engine)
+
+def get_user(user_id: int):
+   

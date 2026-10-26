@@ -1,0 +1,51 @@
+
+=== granite4.2-30b ===
+  baseline @8192: 78.6 tok/s (floor 70.8), vram 22723 MiB
+  ctx=  65536    13.90 tok/s  vram 31493/32607 MiB  DEGRADED
+  ctx=  36864    78.62 tok/s  ok
+  ctx=  51200    77.31 tok/s  ok
+  ctx=  58368    78.60 tok/s  ok
+  ctx=  61440    15.09 tok/s  DEGRADED
+  -> usable max ctx: 58,368 (45% of its own nominal 131,072), degrades at 61,440
+
+=== gemma4-31b ===
+  baseline @8192: 70.9 tok/s (floor 63.8), vram 20424 MiB
+  ctx=  65536    70.95 tok/s  vram 24960/32607 MiB  ok
+  ctx= 131072    70.89 tok/s  vram 30144/32607 MiB  ok
+  ctx= 262144    10.15 tok/s  vram 32026/32607 MiB  DEGRADED
+  ctx= 196608    10.27 tok/s  DEGRADED
+  ctx= 163840    13.44 tok/s  DEGRADED
+  ctx= 147456    70.64 tok/s  ok
+  ctx= 155648    70.96 tok/s  ok
+  -> usable max ctx: 155,648 (59% of its own nominal 262,144), degrades at 163,840
+
+=== qwen3.8-27b ===
+  baseline @8192: 78.6 tok/s (floor 70.7), vram 16877 MiB
+  ctx=  65536    78.32 tok/s  vram 20517/32607 MiB  ok
+  ctx= 131072    78.46 tok/s  vram 24677/32607 MiB  ok
+  ctx= 262144     7.79 tok/s  vram 32105/32607 MiB  DEGRADED
+  ctx= 196608    78.52 tok/s  ok
+  ctx= 229376    78.38 tok/s  ok
+  ctx= 245760    78.67 tok/s  ok
+  -> usable max ctx: 245,760 (94% of its own nominal 262,144), degrades at 262,144
+
+=== granite4.2-8b ===
+  baseline @8192: 215.0 tok/s (floor 193.5), vram 7245 MiB
+  ctx=  65536   212.73 tok/s  vram 16261/32607 MiB  ok
+  ctx= 131072   215.92 tok/s  vram 26565/32607 MiB  ok
+  -> usable max ctx: 131,072 (100% of its own nominal 131,072)
+
+=== gemma4-12b ===
+  baseline @8192: 143.1 tok/s (floor 128.8), vram 8761 MiB
+  ctx=  65536   143.65 tok/s  vram 9713/32607 MiB  ok
+  ctx= 131072   143.53 tok/s  vram 10801/32607 MiB  ok
+  ctx= 262144   143.44 tok/s  vram 12977/32607 MiB  ok
+  -> usable max ctx: 262,144 (100% of its own nominal 262,144)
+
+=== ornith-9b ===
+  baseline @8192: 192.0 tok/s (floor 172.8), vram 6205 MiB
+  ctx=  65536   190.46 tok/s  vram 8053/32607 MiB  ok
+  ctx= 131072   190.20 tok/s  vram 10165/32607 MiB  ok
+  ctx= 262144   189.39 tok/s  vram 14389/32607 MiB  ok
+  -> usable max ctx: 262,144 (100% of its own nominal 262,144)
+CTXDONE

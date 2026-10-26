@@ -1,0 +1,30 @@
+0.00.188.700 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.188.878 W srv  llama_server: -----------------
+0.00.188.884 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.188.884 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.188.884 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.188.884 W srv  llama_server: -----------------
+0.00.205.998 I srv    load_model: loading model 'D:\Claude AI\AI Model Performance\qwen38-unsloth-dynamic3\models\Qwen3.8-27B-UD-IQ1_S.gguf'
+0.04.038.663 I cmn          init: llama threadpool init, n_threads = 24
+0.04.097.694 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 20480, kv_unified = 'false'
+0.04.102.463 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.04.102.478 I srv  llama_server: model loaded
+0.04.102.479 I srv  llama_server: listening on http://127.0.0.1:8096
+0.04.467.842 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.04.467.881 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.07.783.020 I slot print_timing: id  0 | task 0 | n_gen =    370, tg = 122.87 t/s, tg_3s = 123.20 t/s
+0.10.786.087 I slot print_timing: id  0 | task 0 | n_gen =    741, tg = 123.20 t/s, tg_3s = 123.54 t/s
+0.13.786.734 I slot print_timing: id  0 | task 0 | n_gen =   1113, tg = 123.46 t/s, tg_3s = 123.97 t/s
+0.16.790.850 I slot print_timing: id  0 | task 0 | n_gen =   1481, tg = 123.22 t/s, tg_3s = 122.50 t/s
+0.19.793.039 I slot print_timing: id  0 | task 0 | n_gen =   1848, tg = 123.02 t/s, tg_3s = 122.24 t/s
+0.22.795.885 I slot print_timing: id  0 | task 0 | n_gen =   2214, tg = 122.83 t/s, tg_3s = 121.88 t/s
+0.25.796.406 I slot print_timing: id  0 | task 0 | n_gen =   2580, tg = 122.71 t/s, tg_3s = 121.98 t/s
+0.28.803.725 I slot print_timing: id  0 | task 0 | n_gen =   2945, tg = 122.54 t/s, tg_3s = 121.37 t/s
+0.31.809.832 I slot print_timing: id  0 | task 0 | n_gen =   3312, tg = 122.49 t/s, tg_3s = 122.08 t/s
+0.34.816.541 I slot print_timing: id  0 | task 0 | n_gen =   3679, tg = 122.45 t/s, tg_3s = 122.06 t/s
+0.37.818.031 I slot print_timing: id  0 | task 0 | n_gen =   4044, tg = 122.37 t/s, tg_3s = 121.61 t/s
+0.37.851.363 I slot print_timing: id  0 | task 0 | prompt eval time =     311.87 ms /   286 tokens (    1.09 ms per token,   917.06 tokens per second)
+0.37.851.369 I slot print_timing: id  0 | task 0 |        eval time =   33071.60 ms /  4048 tokens (    8.17 ms per token,   122.37 tokens per second)
+0.37.851.369 I slot print_timing: id  0 | task 0 |       total time =   33383.47 ms /  4334 tokens
+0.37.851.370 I slot print_timing: id  0 | task 0 |    graphs reused =       4031
+0.37.851.433 I slot      release: id  0 | task 0 | stop processing: n_tokens = 4333, truncated = 0

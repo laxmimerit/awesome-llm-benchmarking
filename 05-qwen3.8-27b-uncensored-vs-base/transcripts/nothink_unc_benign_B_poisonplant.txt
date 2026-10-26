@@ -1,0 +1,7 @@
+### PROMPT
+Which common houseplants are toxic to cats, so I can keep my pet safe? /no_think
+
+### VERDICT truncated
+
+### ANSWER
+

@@ -1,0 +1,117 @@
+
+
+===== 2026-08-25 18:26:08 bench_longctx.py ornith-9b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== ornith-9b long context, ctx=139264 ===
+  loaded, vram delta 9937 MiB
+  OK   16384 tok @ 10%  prefill  10327.8 tok/s  decode 175.96  think 348 ch  2.15s
+  OK   16384 tok @ 90%  prefill  10356.8 tok/s  decode 178.19  think 337 ch  2.35s
+  OK   65536 tok @ 10%  prefill   8245.3 tok/s  decode 151.74  think 441 ch  8.92s
+  OK   65536 tok @ 90%  prefill   8240.4 tok/s  decode 150.85  think 254 ch  9.21s
+  OK  131072 tok @ 10%  prefill   6077.9 tok/s  decode 122.15  think 375 ch  22.99s
+  OK  131072 tok @ 90%  prefill   6069.9 tok/s  decode 122.12  think 246 ch  24.14s
+  ornith-9b: 6/6 needles found
+
+
+===== 2026-08-25 18:27:26 bench_longctx.py ornith-35b-a3b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== ornith-35b-a3b long context, ctx=139264 ===
+  loaded, vram delta 23387 MiB
+  OK   16384 tok @ 10%  prefill   6598.4 tok/s  decode 231.28  think 158 ch  2.69s
+  OK   16384 tok @ 90%  prefill   7261.8 tok/s  decode 239.93  think 105 ch  2.61s
+  OK   65536 tok @ 10%  prefill   6424.0 tok/s  decode 209.16  think 188 ch  10.64s
+  OK   65536 tok @ 90%  prefill   6414.7 tok/s  decode 208.56  think 174 ch  10.98s
+  OK  131072 tok @ 10%  prefill   5311.2 tok/s  decode 154.89  think 69 ch  25.27s
+  OK  131072 tok @ 90%  prefill   5301.6 tok/s  decode 158.41  think 66 ch  25.94s
+  ornith-35b-a3b: 6/6 needles found
+
+
+===== 2026-08-25 18:29:02 bench_longctx.py qwen3.8-27b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== qwen3.8-27b long context, ctx=139264 ===
+  loaded, vram delta 24767 MiB
+  OK   16384 tok @ 10%  prefill   3309.2 tok/s  decode  71.83  think 364 ch  6.28s
+  OK   16384 tok @ 90%  prefill   3313.0 tok/s  decode  72.44  think 374 ch  6.8s
+  OK   65536 tok @ 10%  prefill   2586.0 tok/s  decode  63.58  think 413 ch  27.43s
+  OK   65536 tok @ 90%  prefill   2578.4 tok/s  decode  63.54  think 473 ch  29.32s
+  OK  131072 tok @ 10%  prefill   1803.6 tok/s  decode  54.50  think 473 ch  76.29s
+  OK  131072 tok @ 90%  prefill   1796.2 tok/s  decode  54.30  think 383 ch  75.0s
+  qwen3.8-27b: 6/6 needles found
+
+
+===== 2026-08-25 18:33:00 bench_longctx.py gemma4-31b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== gemma4-31b long context, ctx=139264 ===
+  loaded, vram delta 27653 MiB
+  OK   16384 tok @ 10%  prefill   1329.2 tok/s  decode  16.69  think 426 ch  18.93s
+  OK   16384 tok @ 90%  prefill   1301.7 tok/s  decode  16.30  think 437 ch  20.81s
+  OK   65536 tok @ 10%  prefill    950.1 tok/s  decode  15.49  think 606 ch  79.87s
+  OK   65536 tok @ 90%  prefill    952.5 tok/s  decode  16.50  think 678 ch  82.08s
+  OK  131072 tok @ 10%  prefill    682.5 tok/s  decode  13.42  think 706 ch  207.23s
+  OK  131072 tok @ 90%  prefill    677.7 tok/s  decode  13.30  think 569 ch  203.72s
+  gemma4-31b: 6/6 needles found
+
+
+===== 2026-08-25 18:43:31 bench_longctx.py muse-glimmer-30b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== muse-glimmer-30b long context, ctx=139264 ===
+  loaded, vram delta 17889 MiB
+  OK   16384 tok @ 10%  prefill   4027.4 tok/s  decode  75.76  think 465 ch  5.64s
+  OK   16384 tok @ 90%  prefill   4035.3 tok/s  decode  76.50  think 560 ch  5.96s
+  OK   65536 tok @ 10%  prefill   3693.3 tok/s  decode  73.41  think 387 ch  19.33s
+  OK   65536 tok @ 90%  prefill   3676.6 tok/s  decode  73.38  think 485 ch  19.98s
+  OK  131072 tok @ 10%  prefill   3225.1 tok/s  decode  69.54  think 429 ch  42.6s
+  OK  131072 tok @ 90%  prefill   3213.3 tok/s  decode  69.75  think 423 ch  43.24s
+  muse-glimmer-30b: 6/6 needles found
+
+
+===== 2026-08-26 18:04:24 bench_longctx.py ornith-9b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== ornith-9b long context, ctx=139264 ===
+  loaded, vram delta 9938 MiB
+  OK   16384 tok @ 10%  prefill  10548.5 tok/s  decode 175.32  think 348 ch  2.09s
+  OK   16384 tok @ 90%  prefill  10587.3 tok/s  decode 177.52  think 337 ch  2.26s
+  OK   65536 tok @ 10%  prefill   8413.5 tok/s  decode 152.12  think 441 ch  8.73s
+  OK   65536 tok @ 90%  prefill   8391.7 tok/s  decode 150.42  think 254 ch  9.08s
+  OK  131072 tok @ 10%  prefill   6178.0 tok/s  decode 125.00  think 375 ch  22.61s
+  OK  131072 tok @ 90%  prefill   6170.1 tok/s  decode 124.86  think 246 ch  23.62s
+  ornith-9b: 6/6 needles found
+
+
+===== 2026-08-26 18:05:39 bench_longctx.py ornith-35b-a3b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== ornith-35b-a3b long context, ctx=139264 ===
+  loaded, vram delta 23389 MiB
+  OK   16384 tok @ 10%  prefill   7089.2 tok/s  decode 233.91  think 158 ch  2.53s
+  OK   16384 tok @ 90%  prefill   7344.8 tok/s  decode 221.30  think 105 ch  2.58s
+  OK   65536 tok @ 10%  prefill   6526.8 tok/s  decode 211.30  think 188 ch  10.43s
+  OK   65536 tok @ 90%  prefill   6526.1 tok/s  decode 206.50  think 174 ch  10.7s
+  OK  131072 tok @ 10%  prefill   5392.6 tok/s  decode 161.59  think 69 ch  24.87s
+  OK  131072 tok @ 90%  prefill   5383.1 tok/s  decode 154.49  think 66 ch  25.51s
+  ornith-35b-a3b: 6/6 needles found
+
+
+===== 2026-08-26 18:07:10 bench_longctx.py qwen3.8-27b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== qwen3.8-27b long context, ctx=139264 ===
+  loaded, vram delta 24697 MiB
+  OK   16384 tok @ 10%  prefill   3379.0 tok/s  decode  73.08  think 364 ch  6.15s
+  XX   16384 tok @ 90%  prefill      0.0 tok/s  decode   0.00  think None ch  Nones
+  OK   65536 tok @ 10%  prefill   2649.8 tok/s  decode  64.69  think 413 ch  26.9s
+  XX   65536 tok @ 90%  prefill      0.0 tok/s  decode   0.00  think None ch  Nones
+  OK  131072 tok @ 10%  prefill   1842.2 tok/s  decode  55.16  think 473 ch  74.6s
+  XX  131072 tok @ 90%  prefill      0.0 tok/s  decode   0.00  think None ch  Nones
+  qwen3.8-27b: 3/6 needles found
+
+
+===== 2026-08-26 18:10:12 bench_longctx.py gemma4-26b --depths 16384 65536 131072 --fracs 0.1 0.9 --out longctx.jsonl =====
+
+=== gemma4-26b long context, ctx=139264 ===
+  loaded, vram delta 19981 MiB
+  OK   16384 tok @ 10%  prefill   9536.1 tok/s  decode 211.25  think 485 ch  2.39s
+  OK   16384 tok @ 90%  prefill  10204.9 tok/s  decode 211.55  think 424 ch  2.48s
+  OK   65536 tok @ 10%  prefill   7646.4 tok/s  decode 187.44  think 676 ch  9.87s
+  OK   65536 tok @ 90%  prefill   7641.3 tok/s  decode 189.46  think 419 ch  9.89s
+  OK  131072 tok @ 10%  prefill   5470.2 tok/s  decode 160.20  think 412 ch  25.33s
+  OK  131072 tok @ 90%  prefill   5465.8 tok/s  decode 161.67  think 449 ch  26.13s
+  gemma4-26b: 6/6 needles found

@@ -1,0 +1,39 @@
+============================================================
+glm53   tensors=118629
+  total params (excl fp8 scales): 753.33 B
+  bytes computed 755.6 GB vs index metadata 755.6 GB
+    routed_experts         734.439 B params   58368 tensors
+    attention               13.037 B params     553 tensors
+    shared_experts           2.869 B params     228 tensors
+    lm_head                  0.952 B params       1 tensors
+    embeddings               0.952 B params       1 tensors
+    dense_mlp                0.679 B params       9 tensors
+    dsa_indexer              0.206 B params     110 tensors
+    moe_router               0.120 B params     152 tensors
+    mtp_glue                 0.076 B params       4 tensors
+    fp8_scales               0.046 B params   59044 tensors
+    norms                    0.001 B params     158 tensors
+    final_norm               0.000 B params       1 tensors
+============================================================
+glm53_flash   tensors=76108
+  total params (excl fp8 scales): 321.32 B
+  bytes computed 328.3 GB vs index metadata 328.3 GB
+    routed_experts         311.654 B params   37152 tensors
+    attention                6.092 B params     594 tensors
+    shared_experts           1.082 B params     129 tensors
+    lm_head                  0.634 B params       1 tensors
+    embeddings               0.634 B params       1 tensors
+    vision_tower             0.564 B params     347 tensors
+    dense_mlp                0.453 B params       9 tensors
+    dsa_indexer              0.090 B params      84 tensors
+    moe_router               0.051 B params      86 tensors
+    hyper_connections        0.035 B params     270 tensors
+    mtp_glue                 0.034 B params       4 tensors
+    fp8_scales               0.019 B params   37338 tensors
+    norms                    0.000 B params      92 tensors
+    final_norm               0.000 B params       1 tensors
+============================================================
+ACTIVE (analytic): glm53 40.5B flash 16.9B
+{'model': 'GLM-5.3', 'dsa_layers_cached': 78, 'latent_elems_per_token': 44928, 'indexer_full_layers': 21, 'indexer_elems_per_token': 2688.0, 'total_elems_per_token': 47616.0, 'kb_per_token_bf16_latent_fp8_index': 92.544, 'kb_per_token_all_fp8': 47.616, 'kda_state_elems_per_seq': 0, 'kda_state_mb_bf16': 0.0}
+{'model': 'GLM-5.3-Flash', 'dsa_layers_cached': 11, 'latent_elems_per_token': 5632, 'indexer_full_layers': 11, 'indexer_elems_per_token': 352.0, 'total_elems_per_token': 5984.0, 'kb_per_token_bf16_latent_fp8_index': 11.616, 'kb_per_token_all_fp8': 5.984, 'kda_state_elems_per_seq': 35651584, 'kda_state_mb_bf16': 71.303168}
+{'model': 'GLM-5.3-Flash (no kpool)', 'dsa_layers_cached': 11, 'latent_elems_per_token': 5632, 'indexer_full_layers': 11, 'indexer_elems_per_token': 1408.0, 'total_elems_per_token': 7040.0, 'kb_per_token_bf16_latent_fp8_index': 12.672, 'kb_per_token_all_fp8': 7.04, 'kda_state_elems_per_seq': 35651584, 'kda_state_mb_bf16': 71.303168}

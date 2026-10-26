@@ -1,0 +1,140 @@
+
+
+===== 2026-08-25 17:34:56 bench_vram.py ornith-9b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-9b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 573440 from weights=5358 MiB, kv=32.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-25 17:35:02 bench_vram.py ornith-35b-a3b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-35b-a3b :: maxctx ===
+    trying ctx=159744 ...
+    trying ctx=178176 ...
+  predicted 159744 from weights=20176 MiB, kv=20.0 KiB/tok
+  -> max ctx verified: 178176
+  wrote 3 rows
+
+
+===== 2026-08-25 17:35:31 bench_vram.py qwen3.8-27b --mode maxctx --out maxctx.jsonl =====
+
+=== qwen3.8-27b :: maxctx ===
+    trying ctx=118784 ...
+    trying ctx=132096 ...
+  predicted 118784 from weights=15770 MiB, kv=64.0 KiB/tok
+  -> max ctx verified: 132096
+  wrote 3 rows
+
+
+===== 2026-08-25 17:36:04 bench_vram.py gemma4-31b --mode maxctx --out maxctx.jsonl =====
+
+=== gemma4-31b :: maxctx ===
+    trying ctx=63488 ...
+    trying ctx=70656 ...
+  predicted 63488 from weights=18216 MiB, kv=80.0 KiB/tok
+  -> max ctx verified: 70656
+  wrote 3 rows
+
+
+===== 2026-08-25 17:36:29 bench_vram.py muse-glimmer-30b --mode maxctx --out maxctx.jsonl =====
+
+=== muse-glimmer-30b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 667648 from weights=15968 MiB, kv=13.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-25 18:51:08 bench_vram.py ornith-9b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-9b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 573440 from weights=5358 MiB, kv=32.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-25 18:51:15 bench_vram.py ornith-35b-a3b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-35b-a3b :: maxctx ===
+    trying ctx=159744 ...
+    trying ctx=215040 ...
+    trying ctx=262144 ...
+  predicted 159744 from weights=20176 MiB, kv=20.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 4 rows
+
+
+===== 2026-08-25 18:51:58 bench_vram.py qwen3.8-27b --mode maxctx --out maxctx.jsonl =====
+
+=== qwen3.8-27b :: maxctx ===
+    trying ctx=118784 ...
+    trying ctx=159744 ...
+    trying ctx=216064 ...
+    trying ctx=262144 ...
+  predicted 118784 from weights=15770 MiB, kv=64.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 5 rows
+
+
+===== 2026-08-25 18:53:04 bench_vram.py gemma4-31b --mode maxctx --out maxctx.jsonl =====
+
+=== gemma4-31b :: maxctx ===
+    trying ctx=63488 ...
+    trying ctx=84992 ...
+    trying ctx=114688 ...
+    trying ctx=155648 ...
+    trying ctx=209920 ...
+    trying ctx=262144 ...
+  predicted 63488 from weights=18216 MiB, kv=80.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 7 rows
+
+
+===== 2026-08-25 18:54:30 bench_vram.py muse-glimmer-30b --mode maxctx --out maxctx.jsonl =====
+
+=== muse-glimmer-30b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 667648 from weights=15968 MiB, kv=13.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-26 17:33:56 bench_vram.py ornith-9b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-9b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 751616 from weights=5358 MiB, kv=32.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-26 17:34:02 bench_vram.py ornith-35b-a3b --mode maxctx --out maxctx.jsonl =====
+
+=== ornith-35b-a3b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 447488 from weights=20176 MiB, kv=20.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows
+
+
+===== 2026-08-26 17:34:15 bench_vram.py qwen3.8-27b --mode maxctx --out maxctx.jsonl =====
+
+=== qwen3.8-27b :: maxctx ===
+    trying ctx=208896 ...
+    trying ctx=262144 ...
+  predicted 208896 from weights=15770 MiB, kv=64.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 3 rows
+
+
+===== 2026-08-26 17:34:50 bench_vram.py gemma4-26b --mode maxctx --out maxctx.jsonl =====
+
+=== gemma4-26b :: maxctx ===
+    trying ctx=262144 ...
+  predicted 619520 from weights=16808 MiB, kv=20.0 KiB/tok
+  -> max ctx verified: 262144
+  wrote 2 rows

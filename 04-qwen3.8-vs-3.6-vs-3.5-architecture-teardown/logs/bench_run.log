@@ -1,0 +1,301 @@
+[19:13:23] pass A_fwd: 48 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/48] A_fwd|qwen3.5:27b|M1_powers|True|0|0 -> correct=True think_chars=24428 eval=14974 tps=73.4 wall=206.4s temp=63.0C err=-
+  [2/48] A_fwd|qwen3.5:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=22994 eval=10930 tps=74.0 wall=150.4s temp=81.0C err=-
+  [3/48] A_fwd|qwen3.5:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=21105 eval=10731 tps=74.1 wall=147.4s temp=83.0C err=-
+  [4/48] A_fwd|qwen3.5:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=13687 eval=6428 tps=74.6 wall=88.9s temp=84.0C err=-
+  [5/48] A_fwd|qwen3.5:27b|R1_knights|True|0|0 -> correct=True think_chars=22602 eval=7760 tps=74.4 wall=106.8s temp=85.0C err=-
+  [6/48] A_fwd|qwen3.5:27b|R2_race|True|0|0 -> correct=True think_chars=18856 eval=5217 tps=74.6 wall=72.4s temp=85.0C err=-
+  [7/48] A_fwd|qwen3.5:27b|R3_houses|True|0|0 -> correct=True think_chars=6101 eval=2560 tps=75.3 wall=36.5s temp=85.0C err=-
+  [8/48] A_fwd|qwen3.5:27b|R4_boxes|True|0|0 -> correct=True think_chars=3228 eval=1139 tps=75.6 wall=17.6s temp=85.0C err=-
+  [9/48] A_fwd|qwen3.5:27b|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1834 tps=73.1 wall=27.6s temp=84.0C err=-
+  [10/48] A_fwd|qwen3.5:27b|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=834 tps=72.6 wall=14.0s temp=84.0C err=-
+  [11/48] A_fwd|qwen3.5:27b|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=1277 tps=72.7 wall=20.0s temp=84.0C err=-
+  [12/48] A_fwd|qwen3.5:27b|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=865 tps=72.6 wall=14.4s temp=83.0C err=-
+  [13/48] A_fwd|qwen3.5:27b|R1_knights|False|0|0 -> correct=True think_chars=0 eval=640 tps=72.8 wall=11.3s temp=83.0C err=-
+  [14/48] A_fwd|qwen3.5:27b|R2_race|False|0|0 -> correct=True think_chars=0 eval=167 tps=71.9 wall=4.8s temp=82.0C err=-
+  [15/48] A_fwd|qwen3.5:27b|R3_houses|False|0|0 -> correct=True think_chars=0 eval=1079 tps=72.8 wall=17.3s temp=80.0C err=-
+  [16/48] A_fwd|qwen3.5:27b|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=433 tps=72.0 wall=8.5s temp=82.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [17/48] A_fwd|qwen3.6:27b|M1_powers|True|0|0 -> correct=True think_chars=12735 eval=7002 tps=74.5 wall=96.4s temp=77.0C err=-
+  [18/48] A_fwd|qwen3.6:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=16251 eval=8252 tps=74.2 wall=113.7s temp=85.0C err=-
+  [19/48] A_fwd|qwen3.6:27b|M3_factorial_zeros|True|0|0 -> correct=False think_chars=32837 eval=16384 tps=73.4 wall=225.9s temp=86.0C err=-
+  [20/48] A_fwd|qwen3.6:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=14890 eval=6711 tps=74.6 wall=92.7s temp=86.0C err=-
+  [21/48] A_fwd|qwen3.6:27b|R1_knights|True|0|0 -> correct=True think_chars=8813 eval=3017 tps=75.1 wall=42.7s temp=87.0C err=-
+  [22/48] A_fwd|qwen3.6:27b|R2_race|True|0|0 -> correct=True think_chars=5389 eval=1484 tps=75.0 wall=22.3s temp=86.0C err=-
+  [23/48] A_fwd|qwen3.6:27b|R3_houses|True|0|0 -> correct=True think_chars=8179 eval=2590 tps=75.4 wall=36.8s temp=86.0C err=-
+  [24/48] A_fwd|qwen3.6:27b|R4_boxes|True|0|0 -> correct=True think_chars=6087 eval=1660 tps=75.4 wall=24.5s temp=86.0C err=-
+  [25/48] A_fwd|qwen3.6:27b|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1625 tps=72.8 wall=24.8s temp=86.0C err=-
+  [26/48] A_fwd|qwen3.6:27b|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=1183 tps=72.8 wall=18.7s temp=85.0C err=-
+  [27/48] A_fwd|qwen3.6:27b|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=1608 tps=73.2 wall=24.4s temp=85.0C err=-
+  [28/48] A_fwd|qwen3.6:27b|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=829 tps=73.1 wall=13.8s temp=85.0C err=-
+  [29/48] A_fwd|qwen3.6:27b|R1_knights|False|0|0 -> correct=True think_chars=0 eval=642 tps=72.4 wall=11.3s temp=84.0C err=-
+  [30/48] A_fwd|qwen3.6:27b|R2_race|False|0|0 -> correct=True think_chars=0 eval=201 tps=71.5 wall=5.3s temp=84.0C err=-
+  [31/48] A_fwd|qwen3.6:27b|R3_houses|False|0|0 -> correct=True think_chars=0 eval=1276 tps=72.8 wall=20.0s temp=83.0C err=-
+  [32/48] A_fwd|qwen3.6:27b|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=389 tps=72.5 wall=7.9s temp=83.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [33/48] A_fwd|qwen3.8:latest|M1_powers|True|0|0 -> correct=True think_chars=1679 eval=1688 tps=74.6 wall=25.1s temp=79.0C err=-
+  [34/48] A_fwd|qwen3.8:latest|M2_lcm_pairs|True|0|0 -> correct=True think_chars=1249 eval=971 tps=74.3 wall=15.5s temp=83.0C err=-
+  [35/48] A_fwd|qwen3.8:latest|M3_factorial_zeros|True|0|0 -> correct=True think_chars=1849 eval=1603 tps=74.5 wall=23.9s temp=84.0C err=-
+  [36/48] A_fwd|qwen3.8:latest|M4_coin_runs|True|0|0 -> correct=True think_chars=1178 eval=958 tps=74.6 wall=15.3s temp=85.0C err=-
+  [37/48] A_fwd|qwen3.8:latest|R1_knights|True|0|0 -> correct=True think_chars=1656 eval=910 tps=74.1 wall=14.7s temp=85.0C err=-
+  [38/48] A_fwd|qwen3.8:latest|R2_race|True|0|0 -> correct=True think_chars=669 eval=272 tps=73.7 wall=6.1s temp=85.0C err=-
+  [39/48] A_fwd|qwen3.8:latest|R3_houses|True|0|0 -> correct=True think_chars=3312 eval=1569 tps=74.0 wall=23.6s temp=84.0C err=-
+  [40/48] A_fwd|qwen3.8:latest|R4_boxes|True|0|0 -> correct=True think_chars=1546 eval=642 tps=74.4 wall=11.1s temp=85.0C err=-
+  [41/48] A_fwd|qwen3.8:latest|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1660 tps=71.8 wall=25.5s temp=85.0C err=-
+  [42/48] A_fwd|qwen3.8:latest|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=975 tps=71.5 wall=16.1s temp=85.0C err=-
+  [43/48] A_fwd|qwen3.8:latest|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=1660 tps=71.9 wall=25.5s temp=84.0C err=-
+  [44/48] A_fwd|qwen3.8:latest|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=1528 tps=71.8 wall=23.7s temp=85.0C err=-
+  [45/48] A_fwd|qwen3.8:latest|R1_knights|False|0|0 -> correct=True think_chars=0 eval=818 tps=71.5 wall=13.9s temp=85.0C err=-
+  [46/48] A_fwd|qwen3.8:latest|R2_race|False|0|0 -> correct=True think_chars=0 eval=301 tps=71.4 wall=6.6s temp=85.0C err=-
+  [47/48] A_fwd|qwen3.8:latest|R3_houses|False|0|0 -> correct=True think_chars=0 eval=1310 tps=71.5 wall=20.8s temp=80.0C err=-
+  [48/48] A_fwd|qwen3.8:latest|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=558 tps=71.4 wall=10.3s temp=85.0C err=-
+[19:47:40] pass A_rev: 48 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/48] A_rev|qwen3.8:latest|M1_powers|True|0|0 -> correct=True think_chars=1178 eval=1255 tps=74.2 wall=19.3s temp=80.0C err=-
+  [2/48] A_rev|qwen3.8:latest|M2_lcm_pairs|True|0|0 -> correct=True think_chars=1298 eval=930 tps=73.8 wall=15.0s temp=82.0C err=-
+  [3/48] A_rev|qwen3.8:latest|M3_factorial_zeros|True|0|0 -> correct=True think_chars=2285 eval=1835 tps=74.3 wall=27.1s temp=83.0C err=-
+  [4/48] A_rev|qwen3.8:latest|M4_coin_runs|True|0|0 -> correct=True think_chars=1289 eval=994 tps=74.6 wall=15.8s temp=85.0C err=-
+  [5/48] A_rev|qwen3.8:latest|R1_knights|True|0|0 -> correct=True think_chars=1454 eval=870 tps=74.4 wall=14.1s temp=85.0C err=-
+  [6/48] A_rev|qwen3.8:latest|R2_race|True|0|0 -> correct=True think_chars=514 eval=229 tps=73.1 wall=5.6s temp=85.0C err=-
+  [7/48] A_rev|qwen3.8:latest|R3_houses|True|0|0 -> correct=True think_chars=2827 eval=1255 tps=74.2 wall=19.3s temp=84.0C err=-
+  [8/48] A_rev|qwen3.8:latest|R4_boxes|True|0|0 -> correct=True think_chars=1634 eval=627 tps=74.4 wall=10.9s temp=85.0C err=-
+  [9/48] A_rev|qwen3.8:latest|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1415 tps=72.1 wall=22.1s temp=85.0C err=-
+  [10/48] A_rev|qwen3.8:latest|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=1084 tps=71.4 wall=17.6s temp=85.0C err=-
+  [11/48] A_rev|qwen3.8:latest|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=2037 tps=72.1 wall=30.7s temp=84.0C err=-
+  [12/48] A_rev|qwen3.8:latest|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=1276 tps=72.0 wall=20.1s temp=85.0C err=-
+  [13/48] A_rev|qwen3.8:latest|R1_knights|False|0|0 -> correct=True think_chars=0 eval=851 tps=71.8 wall=14.3s temp=85.0C err=-
+  [14/48] A_rev|qwen3.8:latest|R2_race|False|0|0 -> correct=True think_chars=0 eval=402 tps=71.2 wall=8.1s temp=85.0C err=-
+  [15/48] A_rev|qwen3.8:latest|R3_houses|False|0|0 -> correct=True think_chars=0 eval=950 tps=71.6 wall=15.8s temp=84.0C err=-
+  [16/48] A_rev|qwen3.8:latest|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=475 tps=71.7 wall=9.1s temp=84.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [17/48] A_rev|qwen3.6:27b|M1_powers|True|0|0 -> correct=True think_chars=20828 eval=11252 tps=73.9 wall=154.7s temp=80.0C err=-
+  [18/48] A_rev|qwen3.6:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=16777 eval=7717 tps=74.2 wall=106.7s temp=87.0C err=-
+  [19/48] A_rev|qwen3.6:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=13071 eval=6338 tps=74.6 wall=87.5s temp=87.0C err=-
+  [20/48] A_rev|qwen3.6:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=9259 eval=4437 tps=75.1 wall=61.6s temp=87.0C err=-
+  [21/48] A_rev|qwen3.6:27b|R1_knights|True|0|0 -> correct=True think_chars=5520 eval=2051 tps=75.0 wall=29.9s temp=87.0C err=-
+  [22/48] A_rev|qwen3.6:27b|R2_race|True|0|0 -> correct=True think_chars=3669 eval=1054 tps=75.3 wall=16.4s temp=87.0C err=-
+  [23/48] A_rev|qwen3.6:27b|R3_houses|True|0|0 -> correct=True think_chars=10017 eval=3371 tps=75.1 wall=47.4s temp=86.0C err=-
+  [24/48] A_rev|qwen3.6:27b|R4_boxes|True|0|0 -> correct=True think_chars=6325 eval=1796 tps=75.2 wall=26.4s temp=87.0C err=-
+  [25/48] A_rev|qwen3.6:27b|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1876 tps=73.0 wall=28.2s temp=87.0C err=-
+  [26/48] A_rev|qwen3.6:27b|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=1502 tps=73.1 wall=23.0s temp=86.0C err=-
+  [27/48] A_rev|qwen3.6:27b|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=1852 tps=72.6 wall=28.0s temp=86.0C err=-
+  [28/48] A_rev|qwen3.6:27b|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=916 tps=73.1 wall=15.0s temp=86.0C err=-
+  [29/48] A_rev|qwen3.6:27b|R1_knights|False|0|0 -> correct=True think_chars=0 eval=726 tps=72.6 wall=12.5s temp=85.0C err=-
+  [30/48] A_rev|qwen3.6:27b|R2_race|False|0|0 -> correct=True think_chars=0 eval=289 tps=72.8 wall=6.4s temp=85.0C err=-
+  [31/48] A_rev|qwen3.6:27b|R3_houses|False|0|0 -> correct=True think_chars=0 eval=1438 tps=72.8 wall=22.2s temp=84.0C err=-
+  [32/48] A_rev|qwen3.6:27b|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=478 tps=72.5 wall=9.1s temp=85.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [33/48] A_rev|qwen3.5:27b|M1_powers|True|0|0 -> correct=True think_chars=26521 eval=15944 tps=73.5 wall=219.2s temp=80.0C err=-
+  [34/48] A_rev|qwen3.5:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=17488 eval=8713 tps=74.4 wall=119.8s temp=87.0C err=-
+  [35/48] A_rev|qwen3.5:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=30036 eval=15324 tps=73.7 wall=210.4s temp=88.0C err=-
+  [36/48] A_rev|qwen3.5:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=10948 eval=5401 tps=74.9 wall=74.8s temp=88.0C err=-
+  [37/48] A_rev|qwen3.5:27b|R1_knights|True|0|0 -> correct=True think_chars=7772 eval=3133 tps=73.6 wall=45.1s temp=88.0C err=-
+  [38/48] A_rev|qwen3.5:27b|R2_race|True|0|0 -> correct=True think_chars=2601 eval=949 tps=64.9 wall=17.1s temp=88.0C err=-
+  [39/48] A_rev|qwen3.5:27b|R3_houses|True|0|0 -> correct=True think_chars=8150 eval=3282 tps=75.1 wall=46.2s temp=86.0C err=-
+  [40/48] A_rev|qwen3.5:27b|R4_boxes|True|0|0 -> correct=True think_chars=6015 eval=2023 tps=75.4 wall=29.4s temp=87.0C err=-
+  [41/48] A_rev|qwen3.5:27b|M1_powers|False|0|0 -> correct=True think_chars=0 eval=1484 tps=73.2 wall=22.8s temp=87.0C err=-
+  [42/48] A_rev|qwen3.5:27b|M2_lcm_pairs|False|0|0 -> correct=True think_chars=0 eval=1119 tps=72.8 wall=17.9s temp=86.0C err=-
+  [43/48] A_rev|qwen3.5:27b|M3_factorial_zeros|False|0|0 -> correct=True think_chars=0 eval=1092 tps=72.8 wall=17.5s temp=85.0C err=-
+  [44/48] A_rev|qwen3.5:27b|M4_coin_runs|False|0|0 -> correct=True think_chars=0 eval=809 tps=73.0 wall=13.6s temp=86.0C err=-
+  [45/48] A_rev|qwen3.5:27b|R1_knights|False|0|0 -> correct=True think_chars=0 eval=697 tps=72.4 wall=12.1s temp=85.0C err=-
+  [46/48] A_rev|qwen3.5:27b|R2_race|False|0|0 -> correct=True think_chars=0 eval=158 tps=71.7 wall=4.7s temp=85.0C err=-
+  [47/48] A_rev|qwen3.5:27b|R3_houses|False|0|0 -> correct=True think_chars=0 eval=1261 tps=73.2 wall=19.7s temp=84.0C err=-
+  [48/48] A_rev|qwen3.5:27b|R4_boxes|False|0|0 -> correct=True think_chars=0 eval=180 tps=71.6 wall=5.0s temp=84.0C err=-
+[20:18:49] pass C_fwd: 24 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/24] C_fwd|qwen3.5:27b|M1_powers|True|0|0 -> correct=False think_chars=30589 eval=16384 tps=70.3 wall=235.4s temp=79.0C err=-
+  [2/24] C_fwd|qwen3.5:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=18995 eval=8435 tps=71.1 wall=121.4s temp=87.0C err=-
+  [3/24] C_fwd|qwen3.5:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=28084 eval=13844 tps=70.4 wall=199.2s temp=87.0C err=-
+  [4/24] C_fwd|qwen3.5:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=8953 eval=4693 tps=71.5 wall=68.3s temp=87.0C err=-
+  [5/24] C_fwd|qwen3.5:27b|R1_knights|True|0|0 -> correct=True think_chars=17041 eval=5497 tps=70.2 wall=80.9s temp=87.0C err=-
+  [6/24] C_fwd|qwen3.5:27b|R2_race|True|0|0 -> correct=True think_chars=12351 eval=3515 tps=71.4 wall=51.8s temp=86.0C err=-
+  [7/24] C_fwd|qwen3.5:27b|R3_houses|True|0|0 -> correct=True think_chars=7123 eval=3122 tps=72.6 wall=45.5s temp=84.0C err=-
+  [8/24] C_fwd|qwen3.5:27b|R4_boxes|True|0|0 -> correct=True think_chars=4872 eval=1522 tps=72.3 wall=23.5s temp=87.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [9/24] C_fwd|qwen3.6:27b|M1_powers|True|0|0 -> correct=False think_chars=31502 eval=16384 tps=73.1 wall=226.6s temp=81.0C err=-
+  [10/24] C_fwd|qwen3.6:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=11123 eval=5581 tps=75.0 wall=77.1s temp=88.0C err=-
+  [11/24] C_fwd|qwen3.6:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=23229 eval=11052 tps=73.4 wall=153.0s temp=88.0C err=-
+  [12/24] C_fwd|qwen3.6:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=10350 eval=5439 tps=75.0 wall=75.2s temp=88.0C err=-
+  [13/24] C_fwd|qwen3.6:27b|R1_knights|True|0|0 -> correct=True think_chars=15918 eval=5407 tps=74.7 wall=74.9s temp=88.0C err=-
+  [14/24] C_fwd|qwen3.6:27b|R2_race|True|0|0 -> correct=True think_chars=4558 eval=1287 tps=75.2 wall=19.6s temp=88.0C err=-
+  [15/24] C_fwd|qwen3.6:27b|R3_houses|True|0|0 -> correct=True think_chars=11328 eval=3876 tps=73.8 wall=55.0s temp=88.0C err=-
+  [16/24] C_fwd|qwen3.6:27b|R4_boxes|True|0|0 -> correct=True think_chars=19221 eval=5671 tps=73.3 wall=79.9s temp=88.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [17/24] C_fwd|qwen3.8:latest|M1_powers|max|0|0 -> correct=True think_chars=3183 eval=2289 tps=73.4 wall=33.6s temp=82.0C err=-
+  [18/24] C_fwd|qwen3.8:latest|M2_lcm_pairs|max|0|0 -> correct=True think_chars=1085 eval=548 tps=73.4 wall=9.9s temp=86.0C err=-
+  [19/24] C_fwd|qwen3.8:latest|M3_factorial_zeros|max|0|0 -> correct=True think_chars=2177 eval=1226 tps=73.6 wall=19.1s temp=86.0C err=-
+  [20/24] C_fwd|qwen3.8:latest|M4_coin_runs|max|0|0 -> correct=True think_chars=480 eval=458 tps=73.2 wall=8.7s temp=87.0C err=-
+  [21/24] C_fwd|qwen3.8:latest|R1_knights|max|0|0 -> correct=True think_chars=1869 eval=542 tps=73.5 wall=9.8s temp=86.0C err=-
+  [22/24] C_fwd|qwen3.8:latest|R2_race|max|0|0 -> correct=True think_chars=737 eval=199 tps=73.1 wall=5.2s temp=86.0C err=-
+  [23/24] C_fwd|qwen3.8:latest|R3_houses|max|0|0 -> correct=True think_chars=1940 eval=530 tps=73.3 wall=9.7s temp=84.0C err=-
+  [24/24] C_fwd|qwen3.8:latest|R4_boxes|max|0|0 -> correct=True think_chars=1762 eval=383 tps=73.2 wall=7.7s temp=85.0C err=-
+[20:47:51] pass C_rev: 24 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/24] C_rev|qwen3.8:latest|M1_powers|max|0|0 -> correct=True think_chars=3982 eval=2686 tps=73.7 wall=38.9s temp=80.0C err=-
+  [2/24] C_rev|qwen3.8:latest|M2_lcm_pairs|max|0|0 -> correct=True think_chars=536 eval=339 tps=73.7 wall=7.0s temp=86.0C err=-
+  [3/24] C_rev|qwen3.8:latest|M3_factorial_zeros|max|0|0 -> correct=True think_chars=2026 eval=1104 tps=73.7 wall=17.4s temp=85.0C err=-
+  [4/24] C_rev|qwen3.8:latest|M4_coin_runs|max|0|0 -> correct=True think_chars=643 eval=536 tps=73.9 wall=9.7s temp=86.0C err=-
+  [5/24] C_rev|qwen3.8:latest|R1_knights|max|0|0 -> correct=True think_chars=1389 eval=442 tps=73.8 wall=8.4s temp=85.0C err=-
+  [6/24] C_rev|qwen3.8:latest|R2_race|max|0|0 -> correct=True think_chars=1065 eval=266 tps=72.8 wall=6.1s temp=85.0C err=-
+  [7/24] C_rev|qwen3.8:latest|R3_houses|max|0|0 -> correct=True think_chars=1667 eval=467 tps=74.2 wall=8.7s temp=84.0C err=-
+  [8/24] C_rev|qwen3.8:latest|R4_boxes|max|0|0 -> correct=True think_chars=1373 eval=306 tps=73.5 wall=6.6s temp=85.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [9/24] C_rev|qwen3.6:27b|M1_powers|True|0|0 -> correct=True think_chars=10758 eval=6234 tps=73.9 wall=86.8s temp=80.0C err=-
+  [10/24] C_rev|qwen3.6:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=9935 eval=5219 tps=74.1 wall=73.0s temp=88.0C err=-
+  [11/24] C_rev|qwen3.6:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=32785 eval=15938 tps=72.1 wall=223.4s temp=88.0C err=-
+  [12/24] C_rev|qwen3.6:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=14314 eval=6903 tps=73.7 wall=96.4s temp=89.0C err=-
+  [13/24] C_rev|qwen3.6:27b|R1_knights|True|0|0 -> correct=True think_chars=23015 eval=7664 tps=74.3 wall=105.7s temp=88.0C err=-
+  [14/24] C_rev|qwen3.6:27b|R2_race|True|0|0 -> correct=True think_chars=6050 eval=1762 tps=75.4 wall=25.9s temp=89.0C err=-
+  [15/24] C_rev|qwen3.6:27b|R3_houses|True|0|0 -> correct=True think_chars=10922 eval=4029 tps=75.1 wall=56.1s temp=88.0C err=-
+  [16/24] C_rev|qwen3.6:27b|R4_boxes|True|0|0 -> correct=True think_chars=18458 eval=5335 tps=74.4 wall=74.3s temp=89.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [17/24] C_rev|qwen3.5:27b|M1_powers|True|0|0 -> correct=False think_chars=30500 eval=16384 tps=71.0 wall=233.3s temp=83.0C err=-
+  [18/24] C_rev|qwen3.5:27b|M2_lcm_pairs|True|0|0 -> correct=True think_chars=9039 eval=4362 tps=72.3 wall=63.0s temp=88.0C err=-
+  [19/24] C_rev|qwen3.5:27b|M3_factorial_zeros|True|0|0 -> correct=True think_chars=25548 eval=12853 tps=71.1 wall=183.2s temp=88.0C err=-
+  [20/24] C_rev|qwen3.5:27b|M4_coin_runs|True|0|0 -> correct=True think_chars=20829 eval=8803 tps=71.8 wall=125.2s temp=88.0C err=-
+  [21/24] C_rev|qwen3.5:27b|R1_knights|True|0|0 -> correct=True think_chars=22225 eval=7148 tps=71.0 wall=103.2s temp=88.0C err=-
+  [22/24] C_rev|qwen3.5:27b|R2_race|True|0|0 -> correct=True think_chars=7593 eval=2122 tps=72.5 wall=31.8s temp=88.0C err=-
+  [23/24] C_rev|qwen3.5:27b|R3_houses|True|0|0 -> correct=True think_chars=9655 eval=3726 tps=72.9 wall=53.6s temp=88.0C err=-
+  [24/24] C_rev|qwen3.5:27b|R4_boxes|True|0|0 -> correct=True think_chars=6150 eval=1886 tps=72.7 wall=28.4s temp=88.0C err=-
+[21:16:28] pass D_fwd: 18 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/18] D_fwd|qwen3.5:27b|M1_powers|True|16384|0 -> correct=True think_chars=17049 eval=8502 tps=70.4 wall=129.0s temp=82.0C err=-
+  [2/18] D_fwd|qwen3.5:27b|R3_houses|True|16384|0 -> correct=True think_chars=12560 eval=5036 tps=71.8 wall=77.1s temp=88.0C err=-
+  switching to ('qwen3.5:27b', 65536, 0) (unload all first)
+  [3/18] D_fwd|qwen3.5:27b|M1_powers|True|49152|0 -> correct=False think_chars=15049 eval=7386 tps=62.9 wall=140.6s temp=83.0C err=-
+  [4/18] D_fwd|qwen3.5:27b|R3_houses|True|49152|0 -> correct=True think_chars=20808 eval=7121 tps=66.1 wall=124.8s temp=87.0C err=-
+  switching to ('qwen3.5:27b', 131072, 0) (unload all first)
+  [5/18] D_fwd|qwen3.5:27b|M1_powers|True|98304|0 -> correct=True think_chars=16914 eval=9251 tps=54.7 wall=232.4s temp=82.0C err=-
+  [6/18] D_fwd|qwen3.5:27b|R3_houses|True|98304|0 -> correct=None think_chars=0 eval=None tps=None wall=0s temp=86.0C err=HTTP Error 500: Internal Server Error
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/18] D_fwd|qwen3.6:27b|M1_powers|True|16384|0 -> correct=True think_chars=7362 eval=4394 tps=70.5 wall=70.6s temp=77.0C err=-
+  [8/18] D_fwd|qwen3.6:27b|R3_houses|True|16384|0 -> correct=True think_chars=4666 eval=1975 tps=72.1 wall=34.3s temp=86.0C err=-
+  switching to ('qwen3.6:27b', 65536, 0) (unload all first)
+  [9/18] D_fwd|qwen3.6:27b|M1_powers|True|49152|0 -> correct=True think_chars=9591 eval=5324 tps=63.2 wall=107.5s temp=82.0C err=-
+  [10/18] D_fwd|qwen3.6:27b|R3_houses|True|49152|0 -> correct=True think_chars=7352 eval=2882 tps=66.5 wall=60.3s temp=87.0C err=-
+  switching to ('qwen3.6:27b', 131072, 0) (unload all first)
+  [11/18] D_fwd|qwen3.6:27b|M1_powers|True|98304|0 -> correct=True think_chars=7943 eval=4804 tps=54.9 wall=150.9s temp=82.0C err=-
+  [12/18] D_fwd|qwen3.6:27b|R3_houses|True|98304|0 -> correct=True think_chars=6635 eval=2412 tps=59.8 wall=80.3s temp=86.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [13/18] D_fwd|qwen3.8:latest|M1_powers|True|16384|0 -> correct=True think_chars=1599 eval=1822 tps=70.1 wall=34.2s temp=82.0C err=-
+  [14/18] D_fwd|qwen3.8:latest|R3_houses|True|16384|0 -> correct=True think_chars=4231 eval=1807 tps=71.4 wall=32.1s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 65536, 0) (unload all first)
+  [15/18] D_fwd|qwen3.8:latest|M1_powers|True|49152|0 -> correct=True think_chars=1606 eval=1881 tps=62.8 wall=54.1s temp=81.0C err=-
+  [16/18] D_fwd|qwen3.8:latest|R3_houses|True|49152|0 -> correct=True think_chars=4104 eval=1805 tps=65.9 wall=44.8s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 131072, 0) (unload all first)
+  [17/18] D_fwd|qwen3.8:latest|M1_powers|True|98304|0 -> correct=True think_chars=4198 eval=3693 tps=54.2 wall=131.9s temp=81.0C err=-
+  [18/18] D_fwd|qwen3.8:latest|R3_houses|True|98304|0 -> correct=True think_chars=4080 eval=1940 tps=59.0 wall=73.1s temp=86.0C err=-
+[21:45:35] pass D_rev: 18 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/18] D_rev|qwen3.8:latest|M1_powers|True|16384|0 -> correct=None think_chars=0 eval=None tps=None wall=0s temp=82.0C err=HTTP Error 500: Internal Server Error
+  [2/18] D_rev|qwen3.8:latest|R3_houses|True|16384|0 -> correct=True think_chars=3238 eval=1561 tps=71.2 wall=28.5s temp=65.0C err=-
+  switching to ('qwen3.8:latest', 65536, 0) (unload all first)
+  [3/18] D_rev|qwen3.8:latest|M1_powers|True|49152|0 -> correct=True think_chars=3126 eval=2700 tps=62.5 wall=67.4s temp=79.0C err=-
+  [4/18] D_rev|qwen3.8:latest|R3_houses|True|49152|0 -> correct=True think_chars=3751 eval=1732 tps=65.7 wall=43.8s temp=85.0C err=-
+  switching to ('qwen3.8:latest', 131072, 0) (unload all first)
+  [5/18] D_rev|qwen3.8:latest|M1_powers|True|98304|0 -> correct=True think_chars=2326 eval=2250 tps=54.4 wall=105.1s temp=81.0C err=-
+  [6/18] D_rev|qwen3.8:latest|R3_houses|True|98304|0 -> correct=True think_chars=3905 eval=1806 tps=58.1 wall=71.6s temp=86.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/18] D_rev|qwen3.6:27b|M1_powers|True|16384|0 -> correct=True think_chars=8688 eval=4955 tps=70.2 wall=78.9s temp=80.0C err=-
+  [8/18] D_rev|qwen3.6:27b|R3_houses|True|16384|0 -> correct=True think_chars=8635 eval=3177 tps=71.5 wall=51.3s temp=87.0C err=-
+  switching to ('qwen3.6:27b', 65536, 0) (unload all first)
+  [9/18] D_rev|qwen3.6:27b|M1_powers|True|49152|0 -> correct=True think_chars=6607 eval=4143 tps=62.9 wall=89.2s temp=81.0C err=-
+  [10/18] D_rev|qwen3.6:27b|R3_houses|True|49152|0 -> correct=None think_chars=0 eval=None tps=None wall=0s temp=86.0C err=HTTP Error 500: Internal Server Error
+  switching to ('qwen3.6:27b', 131072, 0) (unload all first)
+  [11/18] D_rev|qwen3.6:27b|M1_powers|True|98304|0 -> correct=True think_chars=6676 eval=4161 tps=53.7 wall=140.9s temp=77.0C err=-
+  [12/18] D_rev|qwen3.6:27b|R3_houses|True|98304|0 -> correct=True think_chars=9026 eval=3549 tps=59.3 wall=100.1s temp=85.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [13/18] D_rev|qwen3.5:27b|M1_powers|True|16384|0 -> correct=None think_chars=0 eval=None tps=None wall=0s temp=82.0C err=HTTP Error 500: Internal Server Error
+  [14/18] D_rev|qwen3.5:27b|R3_houses|True|16384|0 -> correct=True think_chars=7967 eval=3732 tps=71.6 wall=58.7s temp=65.0C err=-
+  switching to ('qwen3.5:27b', 65536, 0) (unload all first)
+  [15/18] D_rev|qwen3.5:27b|M1_powers|True|49152|0 -> correct=True think_chars=11708 eval=6685 tps=62.1 wall=131.0s temp=81.0C err=-
+  [16/18] D_rev|qwen3.5:27b|R3_houses|True|49152|0 -> correct=True think_chars=23284 eval=7762 tps=65.7 wall=135.4s temp=86.0C err=-
+  switching to ('qwen3.5:27b', 131072, 0) (unload all first)
+  [17/18] D_rev|qwen3.5:27b|M1_powers|True|98304|0 -> correct=True think_chars=12383 eval=6930 tps=54.5 wall=190.7s temp=82.0C err=-
+  [18/18] D_rev|qwen3.5:27b|R3_houses|True|98304|0 -> correct=True think_chars=11988 eval=4612 tps=59.3 wall=118.3s temp=85.0C err=-
+[22:12:37] pass E_fwd: 32 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/32] E_fwd|qwen3.8:latest|M1_powers|low|0|0 -> correct=True think_chars=1723 eval=1815 tps=74.1 wall=26.9s temp=82.0C err=-
+  [2/32] E_fwd|qwen3.8:latest|M2_lcm_pairs|low|0|0 -> correct=True think_chars=1567 eval=1147 tps=73.9 wall=18.0s temp=85.0C err=-
+  [3/32] E_fwd|qwen3.8:latest|M3_factorial_zeros|low|0|0 -> correct=True think_chars=1445 eval=1191 tps=74.1 wall=18.5s temp=86.0C err=-
+  [4/32] E_fwd|qwen3.8:latest|M4_coin_runs|low|0|0 -> correct=True think_chars=1339 eval=1065 tps=73.9 wall=16.9s temp=86.0C err=-
+  [5/32] E_fwd|qwen3.8:latest|R1_knights|low|0|0 -> correct=True think_chars=1275 eval=720 tps=73.9 wall=12.2s temp=86.0C err=-
+  [6/32] E_fwd|qwen3.8:latest|R2_race|low|0|0 -> correct=True think_chars=540 eval=242 tps=73.9 wall=5.7s temp=86.0C err=-
+  [7/32] E_fwd|qwen3.8:latest|R3_houses|low|0|0 -> correct=True think_chars=2889 eval=1325 tps=74.0 wall=20.3s temp=85.0C err=-
+  [8/32] E_fwd|qwen3.8:latest|R4_boxes|low|0|0 -> correct=True think_chars=1807 eval=654 tps=73.8 wall=11.3s temp=86.0C err=-
+  [9/32] E_fwd|qwen3.8:latest|M1_powers|medium|0|0 -> correct=True think_chars=1662 eval=1824 tps=74.0 wall=27.0s temp=86.0C err=-
+  [10/32] E_fwd|qwen3.8:latest|M2_lcm_pairs|medium|0|0 -> correct=True think_chars=1679 eval=1246 tps=74.2 wall=19.2s temp=87.0C err=-
+  [11/32] E_fwd|qwen3.8:latest|M3_factorial_zeros|medium|0|0 -> correct=True think_chars=1517 eval=1371 tps=74.0 wall=21.0s temp=86.0C err=-
+  [12/32] E_fwd|qwen3.8:latest|M4_coin_runs|medium|0|0 -> correct=True think_chars=1317 eval=1218 tps=73.9 wall=18.9s temp=87.0C err=-
+  [13/32] E_fwd|qwen3.8:latest|R1_knights|medium|0|0 -> correct=True think_chars=1964 eval=1049 tps=73.9 wall=16.6s temp=86.0C err=-
+  [14/32] E_fwd|qwen3.8:latest|R2_race|medium|0|0 -> correct=True think_chars=421 eval=221 tps=72.4 wall=5.5s temp=86.0C err=-
+  [15/32] E_fwd|qwen3.8:latest|R3_houses|medium|0|0 -> correct=True think_chars=3363 eval=1515 tps=73.9 wall=22.9s temp=86.0C err=-
+  [16/32] E_fwd|qwen3.8:latest|R4_boxes|medium|0|0 -> correct=True think_chars=1044 eval=476 tps=73.9 wall=8.9s temp=86.0C err=-
+  [17/32] E_fwd|qwen3.8:latest|M1_powers|high|0|0 -> correct=True think_chars=2189 eval=979 tps=73.8 wall=15.7s temp=85.0C err=-
+  [18/32] E_fwd|qwen3.8:latest|M2_lcm_pairs|high|0|0 -> correct=True think_chars=921 eval=458 tps=73.7 wall=8.7s temp=86.0C err=-
+  [19/32] E_fwd|qwen3.8:latest|M3_factorial_zeros|high|0|0 -> correct=True think_chars=1495 eval=988 tps=73.6 wall=15.9s temp=85.0C err=-
+  [20/32] E_fwd|qwen3.8:latest|M4_coin_runs|high|0|0 -> correct=True think_chars=500 eval=505 tps=73.4 wall=9.3s temp=85.0C err=-
+  [21/32] E_fwd|qwen3.8:latest|R1_knights|high|0|0 -> correct=True think_chars=1696 eval=633 tps=74.2 wall=11.0s temp=85.0C err=-
+  [22/32] E_fwd|qwen3.8:latest|R2_race|high|0|0 -> correct=True think_chars=774 eval=224 tps=73.4 wall=5.5s temp=85.0C err=-
+  [23/32] E_fwd|qwen3.8:latest|R3_houses|high|0|0 -> correct=True think_chars=2297 eval=671 tps=74.2 wall=11.5s temp=84.0C err=-
+  [24/32] E_fwd|qwen3.8:latest|R4_boxes|high|0|0 -> correct=True think_chars=1507 eval=342 tps=74.2 wall=7.1s temp=85.0C err=-
+  [25/32] E_fwd|qwen3.8:latest|M1_powers|max|0|0 -> correct=True think_chars=2845 eval=1734 tps=73.9 wall=25.9s temp=84.0C err=-
+  [26/32] E_fwd|qwen3.8:latest|M2_lcm_pairs|max|0|0 -> correct=True think_chars=900 eval=488 tps=73.7 wall=9.1s temp=85.0C err=-
+  [27/32] E_fwd|qwen3.8:latest|M3_factorial_zeros|max|0|0 -> correct=True think_chars=1379 eval=995 tps=73.7 wall=15.9s temp=85.0C err=-
+  [28/32] E_fwd|qwen3.8:latest|M4_coin_runs|max|0|0 -> correct=True think_chars=661 eval=471 tps=73.9 wall=8.8s temp=85.0C err=-
+  [29/32] E_fwd|qwen3.8:latest|R1_knights|max|0|0 -> correct=True think_chars=1168 eval=370 tps=74.3 wall=7.4s temp=85.0C err=-
+  [30/32] E_fwd|qwen3.8:latest|R2_race|max|0|0 -> correct=True think_chars=716 eval=198 tps=73.5 wall=5.1s temp=83.0C err=-
+  [31/32] E_fwd|qwen3.8:latest|R3_houses|max|0|0 -> correct=True think_chars=2148 eval=586 tps=74.5 wall=10.3s temp=84.0C err=-
+  [32/32] E_fwd|qwen3.8:latest|R4_boxes|max|0|0 -> correct=True think_chars=2060 eval=457 tps=73.6 wall=8.7s temp=84.0C err=-
+[22:20:23] pass F_fwd: 18 runs to do
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [1/18] F_fwd|qwen3.5:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=72.3 wall=10.7s temp=79.0C err=-
+  [2/18] F_fwd|qwen3.5:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=72.4 wall=10.7s temp=80.0C err=-
+  [3/18] F_fwd|qwen3.5:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=71.2 wall=10.9s temp=81.0C err=-
+  switching to ('qwen3.5:27b', 32768, 4) (unload all first)
+  [4/18] F_fwd|qwen3.5:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=53.9 wall=13.6s temp=80.0C err=-
+  [5/18] F_fwd|qwen3.5:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=56.0 wall=13.1s temp=83.0C err=-
+  [6/18] F_fwd|qwen3.5:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=55.5 wall=13.3s temp=82.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/18] F_fwd|qwen3.6:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=72.0 wall=10.8s temp=79.0C err=-
+  [8/18] F_fwd|qwen3.6:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=71.1 wall=10.9s temp=80.0C err=-
+  [9/18] F_fwd|qwen3.6:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=71.4 wall=10.9s temp=81.0C err=-
+  switching to ('qwen3.6:27b', 32768, 4) (unload all first)
+  [10/18] F_fwd|qwen3.6:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=57.4 wall=12.9s temp=78.0C err=-
+  [11/18] F_fwd|qwen3.6:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=56.7 wall=13.0s temp=81.0C err=-
+  [12/18] F_fwd|qwen3.6:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=59.8 wall=12.5s temp=82.0C err=-
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [13/18] F_fwd|qwen3.8:latest|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=70.9 wall=10.9s temp=78.0C err=-
+  [14/18] F_fwd|qwen3.8:latest|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=70.9 wall=10.8s temp=80.0C err=-
+  [15/18] F_fwd|qwen3.8:latest|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=69.9 wall=11.0s temp=80.0C err=-
+  switching to ('qwen3.8:latest', 32768, 4) (unload all first)
+  [16/18] F_fwd|qwen3.8:latest|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=92.9 wall=8.9s temp=77.0C err=-
+  [17/18] F_fwd|qwen3.8:latest|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=97.3 wall=8.6s temp=81.0C err=-
+  [18/18] F_fwd|qwen3.8:latest|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=103.0 wall=8.2s temp=81.0C err=-
+[22:25:21] pass F_rev: 18 runs to do
+  switching to ('qwen3.8:latest', 32768, 0) (unload all first)
+  [1/18] F_rev|qwen3.8:latest|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=70.6 wall=10.9s temp=77.0C err=-
+  [2/18] F_rev|qwen3.8:latest|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=70.1 wall=10.9s temp=79.0C err=-
+  [3/18] F_rev|qwen3.8:latest|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=70.6 wall=10.9s temp=80.0C err=-
+  switching to ('qwen3.8:latest', 32768, 4) (unload all first)
+  [4/18] F_rev|qwen3.8:latest|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=91.4 wall=9.0s temp=77.0C err=-
+  [5/18] F_rev|qwen3.8:latest|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=95.2 wall=8.7s temp=80.0C err=-
+  [6/18] F_rev|qwen3.8:latest|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=94.9 wall=8.8s temp=81.0C err=-
+  switching to ('qwen3.6:27b', 32768, 0) (unload all first)
+  [7/18] F_rev|qwen3.6:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=71.7 wall=10.8s temp=77.0C err=-
+  [8/18] F_rev|qwen3.6:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=72.1 wall=10.7s temp=78.0C err=-
+  [9/18] F_rev|qwen3.6:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=71.2 wall=10.9s temp=79.0C err=-
+  switching to ('qwen3.6:27b', 32768, 4) (unload all first)
+  [10/18] F_rev|qwen3.6:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=60.3 wall=12.4s temp=76.0C err=-
+  [11/18] F_rev|qwen3.6:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=59.2 wall=12.5s temp=80.0C err=-
+  [12/18] F_rev|qwen3.6:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=59.2 wall=12.6s temp=81.0C err=-
+  switching to ('qwen3.5:27b', 32768, 0) (unload all first)
+  [13/18] F_rev|qwen3.5:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=71.6 wall=10.8s temp=78.0C err=-
+  [14/18] F_rev|qwen3.5:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=71.9 wall=10.7s temp=79.0C err=-
+  [15/18] F_rev|qwen3.5:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=71.2 wall=10.9s temp=80.0C err=-
+  switching to ('qwen3.5:27b', 32768, 4) (unload all first)
+  [16/18] F_rev|qwen3.5:27b|SPEED|False|0|0 -> correct=None think_chars=0 eval=600 tps=55.4 wall=13.3s temp=78.0C err=-
+  [17/18] F_rev|qwen3.5:27b|SPEED|False|0|1 -> correct=None think_chars=0 eval=600 tps=55.1 wall=13.3s temp=82.0C err=-
+  [18/18] F_rev|qwen3.5:27b|SPEED|False|0|2 -> correct=None think_chars=0 eval=600 tps=55.9 wall=13.2s temp=81.0C err=-
+[22:30:25] all passes complete

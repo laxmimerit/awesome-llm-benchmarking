@@ -1,0 +1,30 @@
+{
+  "nemotron": [
+    {
+      "task": "repunit_digit_sum",
+      "correct": false,
+      "capped_again": true,
+      "done_reason": "length",
+      "gen_tokens": 60000,
+      "response_tail": ""
+    },
+    {
+      "task": "code_calc2",
+      "correct": false,
+      "capped_again": false,
+      "done_reason": "stop",
+      "gen_tokens": 29660,
+      "response_tail": "               op = self.advance()\n                right = self.power()\n                if op == '*':\n                    left = left * right\n                elif op == '/':\n                    left = left / right\n                elif op == '//':\n                    left = left // right\n                elif op == '%':\n                    left = left % right\n            return left\n\n        def power(self):\n            left = self.atom()\n            if self.peek() == '**':\n                self.advance()\n                right = self.power()\n                left = left ** right\n            return left\n\n        def atom(self):\n            tok = self.peek()\n            if tok == '-':\n                self.advance()\n                return -self.power()\n            elif tok == '+':\n                self.advance()\n                return self.power()\n            elif tok == '(':\n                self.advance()\n                result = self.expr()\n                if self.peek() != ')':\n                    raise ValueError(\"Missing ')'\")\n                self.advance()\n                return result\n            elif isinstance(tok, float):\n                self.advance()\n                return tok\n            else:\n                raise ValueError(f\"Unexpected token in atom: {tok}\")\n\n    parser = _Parser(tokens)\n    result = parser.parse()\n\n    # convert whole-number floats back to int\n    if isinstance(result, float) and result == int(result):\n        return int(result)\n    return result\n```"
+    }
+  ],
+  "glimmer": [
+    {
+      "task": "tilings_4x10",
+      "correct": false,
+      "capped_again": true,
+      "done_reason": "length",
+      "gen_tokens": 60000,
+      "response_tail": ""
+    }
+  ]
+}

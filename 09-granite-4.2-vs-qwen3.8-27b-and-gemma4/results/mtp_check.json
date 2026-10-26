@@ -1,0 +1,270 @@
+{
+  "qwen3.8-27b": {
+    "off": {
+      "model": "qwen3.8-27b",
+      "spec_type": "off",
+      "vram_delta_mb": 16345,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n5 58\n59\n60\n61\n62\n63\n6 64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n128\n129\n130\n130\n131\n132\n133\n134\n135\n136\n137\n138\n139\n140\n141\n142\n143\n144\n145\n146\n147\n148\n149\n150\n151\n152\n153\n154\n155\n156\n157\n",
+          "decode_tps": 76.40200672636688,
+          "predicted_n": 512,
+          "predicted_ms": 6688.306,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "code": {
+          "text": "    value: V\n    expires_at: float | None  # absolute timestamp (time.monotonic())\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"\n    A thread-safe LRU cache with optional TTL.\n\n    - O(1) get/put/delete via dict + doubly-linked list\n    - TTL is checked lazily on access (no background thread)\n    - Metrics: hits, misses, evictions, expirations\n    \"\"\"\n\n    def __init__(self, capacity: int, ttl: float | None = None) -> None:\n        if capacity <= 0:\n            raise ValueError(\"capacity must be > 0\")\n        self._capacity = capacity\n        self._ttl = ttl\n        self._lock = threading.RLock()\n        self._store: dict[K, _Entry[V]] = {}\n        # Doubly-linked list implemented with sentinel nodes\n        self._head = _Node()  # most-recent end\n        self._tail = _Node()  # least-recent end\n        self._head.next = self._tail\n        self._tail.prev = self._head\n        # Metrics\n        self.hits = 0\n        self.misses = 0\n        self.evictions = 0\n        self.expirations = 0\n\n    # ---------- public API ----------\n\n    def get(self, key: K, default: V | None = None) -> V | None:\n        with self._lock:\n            entry = self._store.get(key)\n            if entry is None:\n                self.misses += 1\n                return default\n            # TTL check\n            if entry.expires_at is not None and time.monotonic() >= entry.expires_at:\n                self._remove_entry(key, entry)\n                self.expirations += 1\n                self.misses += 1\n                return default\n            # Move to head (most recent)\n            self._move_to_head(key, entry)\n            self.hits += 1\n            return entry.value\n\n    def put(self, key: K, value: V) -> None:\n        with self._lock:\n            entry = self._store.get(key)\n            if entry is not None:\n                entry.value = value\n                entry.expires_at = self._compute_expiry()\n                self._move_to_head(key, entry)\n                return\n            # New entry\n           ",
+          "decode_tps": 76.20891802425918,
+          "predicted_n": 512,
+          "predicted_ms": 6705.252,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "json": {
+          "text": "  {\"id\": 2, \"first_name\": \"Alan\", \"last_name\": \"Turing\", \"email\": \"alan@example.com\", \"department\": \"Engineering\", \"exactly 200 records, no more, no less.\n\nI'll generate 200 employee records with realistic data. Let me create a diverse set of employees across multiple departments with proper manager relationships.\n\n```json\n[\n  {\"id\": 1, \"first_name\": \"Ada\", \"last_name\": \"Lovelace\", \"email\": \"ada.lovelace@corp.com\", \"department\": \"Engineering\", \"title\": \"Principal Engineer\", \"salary\": 214000, \"hired_on\": \"2019-03-04\", \"manager_id\": null, \"active\": true},\n  {\"id\": 2, \"first_name\": \"Alan\", \"last_name\": \"Turing\", \"email\": \"alan.turing@corp.com\", \"department\": \"Engineering\", \"title\": \"Senior Engineer\", \"salary\": 185000, \"hired_on\": \"2020-01-15\", \"manager_id\": 1, \"active\": true},\n  {\"id\": 3, \"first_name\": \"Grace\", \"last_name\": \"Hopper\", \"email\": \"grace.hopper@corp.com\", \"department\": \"Engineering\", \"title\": \"Staff Engineer\", \"salary\": 195000, \"hired_on\": \"2018-07-22\", \"manager_id\": 1, \"active\": true},\n  {\"id\": 4, \"first_name\": \"Katherine\", \"last_name\": \"Johnson\", \"email\": \"katherine.johnson@corp.com\", \"department\": \"Engineering\", \"title\": \"Senior Engineer\", \"salary\": 178000, \"hired_on\": \"2019-11-08\", \"manager_id\": 1, \"active\": true},\n  {\"id\": 5, \"first_name\": \"Margaret\", \"last_name\": \"Hamilton\", \"email\": \"margaret.hamilton@corp.com\", \"department\": \"Engineering\", \"title\": \"Staff Engineer\", \"salary\": 192000, \"hired_on\": \"2017-05-",
+          "decode_tps": 76.5527932631145,
+          "predicted_n": 512,
+          "predicted_ms": 6675.132,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "essay": {
+          "text": " the institutional architecture surrounding them is structurally hostile to the production of viable public transit systems. Cities with populations between roughly 100,000 and 750,000\u2014think of places like Tucson, Albuquerque, Fort Wayne, Greenville, or Boise\u2014occupy a peculiar and punishing position in the American transportation landscape. They are too large to be served by the informal, low-cost transit arrangements that work in small towns, yet too small to generate the ridership density that makes fixed-route transit financially self-sustaining. They are too politically significant to be ignored by state legislatures, yet too economically marginal to attract the sustained federal attention that larger metros receive. The result is a planning environment in which the most rational outcomes are systematically foreclosed, and the most common outcomes\u2014underfunded bus networks, politically motivated light rail projects, and chronic service cuts\u2014are not accidents but predictable consequences of the interaction between funding structures, land use policy, and the political economy of ridership forecasting.\n\nTo understand why this failure is structural rather than incidental, one must first examine the funding architecture that governs transit in mid-sized cities, because it is here that the most fundamental distortions are introduced.\n\n**The Funding Trap: A Three-Layered Problem**\n\nThe funding of municipal transit in the United States operates through a three-layered structure: local operating subsidies, state-level distribution formulas, and federal capital grants. Each layer introduces distortions that compound the others, and together they create a system in which the cities most in need of transit investment are the least able to attract it.\n\nAt the local level, the dominant funding mechanism is the property tax levy, typically structured as a mill levy on the assessed value of real property within the city or county. This mechanism is, on its face, reasonable: it ties transit funding to the local tax base, and it gives residents a direct vote on the level of service they wish to purchase. In practice, however, it creates a vicious cycle that is particularly devastating for mid-sized cities. Because transit service levels are determined by the revenue available, and because the revenue available is a function of the property tax base, cities with lower property values\u2014often the same cities with higher concentrations of low-income residents, older housing stock, and less commercial development\u2014generate less transit revenue per capita. This means that the populations most dependent on transit are, by the logic of the funding structure, the least able to fund it. The result is a system in which transit service is inversely",
+          "decode_tps": 76.24389452022746,
+          "predicted_n": 512,
+          "predicted_ms": 6702.176,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "fiction": {
+          "text": " stung the wind, and the waves still broke against the granite teeth of the cliff with the same rhythmic, wet violence.\n\nAldous climbed the spiral stairs of the lighthouse, his boots ringing against the iron treads. He lit the great Fresnel lens, a crystal eye that had watched the horizon for a century. He ate his porridge. He checked the barometer.\n\nIt was only when he looked out the window, past the lens, that the wrongness settled into his bones.\n\nThe water was there. It was blue, it was churning, it was deep. But it was *too* blue. It was the blue of a paint chip, the blue of a plastic toy, the blue of a lie. The real sea, the one that had roared outside his window for thirty years, was a chaotic, bruised, grey-green mess of foam and silt. This new sea was a perfect, high-definition simulation.\n\nAldous walked to the edge of the gallery. He held out his hand. A wave crashed against the railing, spraying mist over his fingers. The mist was cold, but it didn\u2019t smell of brine. It smelled of ozone and static electricity, like the air before a thunderstorm, or the air inside a computer server room.\n\nHe looked down. The water was so clear he could see the bottom, three hundred feet down. And there, resting on the sandy floor, was a lighthouse.\n\nIt was an identical copy of the one he stood in. Same white paint, same red roof, same spiral staircase. And inside the copy, a man was climbing the stairs.\n\nAldous blinked. He rubbed his eyes. The man in the copy lighthouse was still climbing. He was wearing the same grey wool sweater, the same stained trousers. He was eating porridge.\n\nAldous felt a cold dread, not in his stomach, but in the back of his neck. He looked closer. The man in the copy was not looking at the sea. He was looking at *Aldous*.\n\nThe man in the copy raised a hand and waved.\n\nAldous did not wave back. He turned and ran down the stairs, his heart hammering against his ribs like a trapped bird. He burst out of the lighthouse door and onto the cliff path. The wind was howling, but it was a silent howl, a visual representation of sound, like a cartoon effect. The grass was sw",
+          "decode_tps": 76.2287333395092,
+          "predicted_n": 512,
+          "predicted_ms": 6703.509,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        }
+      },
+      "unused_nextn_tensors": [
+        "blk.64.nextn.eh_proj.weight",
+        "blk.64.nextn.enorm.weight",
+        "blk.64.nextn.hnorm.weight",
+        "blk.64.nextn.shared_head_norm.weight"
+      ]
+    },
+    "on": {
+      "model": "qwen3.8-27b",
+      "spec_type": "draft-mtp",
+      "vram_delta_mb": 17386,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n34\n35\n36\n37\n38\n39\n40\n41\n42\n43\n44\n45\n46\n47\n48\n49\n50\n51\n52\n53\n54\n55\n56\n57\n58\n59\n60\n61\n6\n\n<think>\nThe user wants me to count upward, one number per line, starting from 1, and not stop. They've already provided numbers 1 through 61, and then \"6\" which seems like the start of 62. I should continue from where they left off. Looking at the last line, it says \"6\" which appears to be the beginning of \"62\" that got cut off. Let me continue from 62.\n\nActually, looking more carefully, the last line is just \"6\" - this could be the start of 62 that was cut off. I'll continue from 62.\n\nLet me just continue counting from 62 onward. I'll go for a reasonable number of lines to show I'm continuing.\n</think>\n\n62\n63\n64\n65\n66\n67\n68\n69\n70\n71\n72\n73\n74\n75\n76\n77\n78\n79\n80\n81\n82\n83\n84\n85\n86\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n101\n102\n103\n104\n105\n106\n107\n108\n109\n110\n111\n112\n113\n114\n115\n116\n117\n118",
+          "decode_tps": 179.55194936845854,
+          "predicted_n": 512,
+          "predicted_ms": 2845.973,
+          "draft_n": 468,
+          "draft_n_accepted": 394,
+          "accept_rate": 0.8419
+        },
+        "code": {
+          "text": "    value: V\n    expires_at: float | None  # absolute timestamp (time.monotonic())\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"\n    A thread-safe LRU cache with optional TTL.\n\n    - O(1) get/put/delete via dict + doubly-linked list\n    - TTL is per-entry; expired entries are lazily evicted on access\n    - Metrics: hits, misses, evictions, ttl_expirations\n    \"\"\"\n\n    def __init__(self, capacity: int, ttl: float | None = None) -> None:\n        if capacity <= 0:\n            raise ValueError(\"capacity must be > 0\")\n        self._capacity = capacity\n        self._ttl = ttl\n        self._lock = threading.RLock()\n        self._store: dict[K, _Entry[V]] = {}\n        # Doubly-linked list implemented with sentinel nodes\n        self._head = _Node()  # most-recent end\n        self._tail = _Node()  # least-recent end\n        self._head.next = self._tail\n        self._tail.prev = self._head\n        # Metrics\n        self.hits = 0\n        self.misses = 0\n        self.evictions = 0\n        self.ttl_expirations = 0\n\n    # ---------- public API ----------\n\n    def get(self, key: K) -> V | None:\n        with self._lock:\n            node = self._store.get(key)\n            if node is None:\n                self.misses += 1\n                return None\n            entry = node.entry\n            # TTL check\n            if entry.expires_at is not None and time.monotonic() >= entry.expires_at:\n                self._remove_node(node)\n                del self._store[key]\n                self.ttl_expirations += 1\n                self.misses += 1\n                return None\n            # Move to head (most recent)\n            self._move_to_head(node)\n            self.hits += 1\n            return entry.value\n\n    def put(self, key: K, value: V) -> None:\n        with self._lock:\n            now = time.monotonic()\n            expires_at = now + self._ttl if self._ttl is not None else None\n            if key in self._store:\n                node = self._store[key]\n",
+          "decode_tps": 153.74436734493707,
+          "predicted_n": 512,
+          "predicted_ms": 3323.699,
+          "draft_n": 550,
+          "draft_n_accepted": 373,
+          "accept_rate": 0.6782
+        },
+        "json": {
+          "text": "  {\"id\": 2, \"first_name\": \"Alan\", \"last_name\": \"Turing\", \"email\": \"alan@example.com\", \"department\": \"Engineering\", \"exactly 200 records, no more, no less.\n\nI'll generate 200 employee records with realistic data. Let me create a diverse set of employees across multiple departments with proper manager relationships.\n\n```json\n[\n  {\"id\": 1, \"first_name\": \"Ada\", \"last_name\": \"Lovelace\", \"email\": \"ada.lovelace@corp.com\", \"department\": \"Engineering\", \"title\": \"Principal Engineer\", \"salary\": 214000, \"hired_on\": \"2019-03-04\", \"manager_id\": null, \"active\": true},\n  {\"id\": 2, \"first_name\": \"Alan\", \"last_name\": \"Turing\", \"email\": \"alan.turing@corp.com\", \"department\": \"Engineering\", \"title\": \"Staff Engineer\", \"salary\": 195000, \"hired_on\": \"2018-07-12\", \"manager_id\": 1, \"active\": true},\n  {\"id\": 3, \"first_name\": \"Grace\", \"last_name\": \"Hopper\", \"email\": \"grace.hopper@corp.com\", \"department\": \"Engineering\", \"title\": \"Senior Engineer\", \"salary\": 168000, \"hired_on\": \"2020-01-15\", \"manager_id\": 2, \"active\": true},\n  {\"id\": 4, \"first_name\": \"Katherine\", \"last_name\": \"Johnson\", \"email\": \"katherine.johnson@corp.com\", \"department\": \"Engineering\", \"title\": \"Engineer II\", \"salary\": 132000, \"hired_on\": \"2021-06-20\", \"manager_id\": 3, \"active\": true},\n  {\"id\": 5, \"first_name\": \"Margaret\", \"last_name\": \"Hamilton\", \"email\": \"margaret.hamilton@corp.com\", \"department\": \"Engineering\", \"title\": \"Engineer I\", \"salary\": 105000, \"hired_on\": \"2022-0",
+          "decode_tps": 181.56829526202685,
+          "predicted_n": 512,
+          "predicted_ms": 2814.368,
+          "draft_n": 461,
+          "draft_n_accepted": 395,
+          "accept_rate": 0.8568
+        },
+        "essay": {
+          "text": " the institutional architecture within which they operate is structurally hostile to the production of efficient, equitable, and politically durable public transportation systems. The failure is not a bug; it is the predictable output of a set of interlocking constraints\u2014funding structures that reward capital over operations, land use policies that generate demand for private mobility, and ridership forecasting methodologies that encode political preferences as technical assumptions. To understand why a city of 250,000 or 500,000 residents consistently produces transit systems that are underfunded, poorly integrated, and politically fragile, one must examine how these three domains interact to create a self-reinforcing cycle of underinvestment and underperformance.\n\nThis is not a story of individual incompetence. The transit planners in these cities are often highly trained, well-intentioned professionals who understand the theoretical case for public transit. The failure is systemic, and it is most acute in the mid-sized city precisely because these cities occupy a peculiar institutional position: too large to be governed by the informal consensus that holds small-town transit together, yet too small to command the political and fiscal resources that sustain the transit systems of New York, Chicago, or Los Angeles. They exist in a gap, and that gap is where the system breaks.\n\n**I. The Funding Structure: Capital Bias and the Operations Trap**\n\nThe first and perhaps most fundamental structural failure is the architecture of transit funding in the United States, which creates a powerful and persistent bias toward capital projects at the expense of operations. This bias is not accidental; it is embedded in the design of federal, state, and local funding mechanisms, and it is most damaging in mid-sized cities because they lack the fiscal capacity to offset it.\n\nFederal transit funding, administered primarily through the Federal Transit Administration (FTA), is structured around two main programs: the Capital Investment Grants (CIG) program and the Formula Grants program. The CIG program, which funds major capital projects such as light rail lines, bus rapid transit corridors, and station construction, operates on a competitive, discretionary basis. A city must submit a detailed project proposal, demonstrate local match, and compete against other cities for a limited pool of funds. The Formula Grants program, by contrast, distributes funds based on a formula that incorporates population, ridership, and other demographic factors, and it is available for both capital and operations. However, the relative weight of capital funding in the overall federal transit budget is heavily skewed. In recent years, capital funding has consistently represented a larger share of",
+          "decode_tps": 93.23694591527298,
+          "predicted_n": 512,
+          "predicted_ms": 5480.66,
+          "draft_n": 907,
+          "draft_n_accepted": 284,
+          "accept_rate": 0.3131
+        },
+        "fiction": {
+          "text": " stung the wind, and the waves still broke against the granite teeth of the cliff with the same rhythmic, wet violence.\n\nAldous climbed the spiral stairs of the lighthouse, his boots ringing against the iron treads. He lit the great Fresnel lens, a crystal eye that had watched the horizon for a century. He ate his porridge. He checked the barometer.\n\nIt was only when he looked out the window, past the lens, that the wrongness settled into his bones.\n\nThe water was there. It was blue, it was churning, it was deep. But it was *too* blue. It was the blue of a paint chip, the blue of a plastic toy, the blue of a lie. The real sea, the one that had roared outside his window for thirty years, was a chaotic, muddy, grey-green thing that smelled of rot and life. This new sea was sterile. It was a perfect, high-resolution copy of the ocean, rendered in a medium that didn't exist.\n\nAldous walked to the edge of the gallery. He held out his hand. The wind blew, but it didn't carry the scent of brine. It carried the scent of ozone and static, like the air before a lightning strike, but without the storm.\n\nHe looked down. The waves were crashing, but they weren't making a sound. He could see the white foam exploding against the rocks, but the silence was absolute. It was a mute film playing on the surface of the world.\n\nHe turned back to the lighthouse. The lens was still spinning, casting its beam into the grey sky. But the beam wasn't hitting the water. It was hitting the *idea* of the water. The light passed through the waves as if they were made of smoke, illuminating nothing, casting no shadows.\n\nAldous felt a cold dread, not of danger, but of irrelevance. If the sea was a copy, then what was he? Was he the keeper of the real thing, or was he just a character in a story about a keeper?\n\nHe went back inside. He picked up his logbook. The ink was wet. He wrote: *Day 4,102. Sea replaced. No change in weather. No change in gulls. No change in me.*\n\nHe looked at his hand. It was trembling. He looked at the reflection in the glass of the logbook. The reflection wasn't trembling.",
+          "decode_tps": 103.86313968311784,
+          "predicted_n": 512,
+          "predicted_ms": 4919.936,
+          "draft_n": 798,
+          "draft_n_accepted": 311,
+          "accept_rate": 0.3897
+        }
+      },
+      "unused_nextn_tensors": []
+    },
+    "identical": {
+      "counting": false,
+      "code": false,
+      "json": false,
+      "essay": false,
+      "fiction": false
+    },
+    "unused_nextn_off": [
+      "blk.64.nextn.eh_proj.weight",
+      "blk.64.nextn.enorm.weight",
+      "blk.64.nextn.hnorm.weight",
+      "blk.64.nextn.shared_head_norm.weight"
+    ],
+    "unused_nextn_on": [],
+    "speedup": {
+      "counting": 2.3501,
+      "code": 2.0174,
+      "json": 2.3718,
+      "essay": 1.2229,
+      "fiction": 1.3625
+    }
+  },
+  "ornith-9b": {
+    "off": {
+      "model": "ornith-9b",
+      "spec_type": "off",
+      "vram_delta_mb": 5706,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n22\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n33\n35\n36\n37\n38\n39\n40\n40\n42\n43\n44\n45\n46\n47\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n66\n68\n69\n70\n71\n72\n73\n74\n75\n75\n77\n78\n79\n80\n81\n82\n83\n84\n85\n85\n87\n88\n89\n90\n91\n92\n93\n94\n95\n96\n97\n98\n99\n100\n100\n102\n103\n104\n105\n106\n107\n108\n109\n110\n110\n112\n113\n114\n105\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n1 27\n128\n129\n130\n131\n132\n133\n134\n135\n136\n137\n138\n139\n140\n141\n142\n143\n144\n145\n146\n147\n148\n149\n150\n151\n152\n153\n154\n155\n156\n157\n158\n159",
+          "decode_tps": 208.51372558940835,
+          "predicted_n": 512,
+          "predicted_ms": 2450.678,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "code": {
+          "text": "    \"\"\"A single cached value together with its metadata.\"\"\"\n\n    value: V\n    created: float\n    accessed: float\n    expires: float | None\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"A thread-safe Least Recently Used cache with optional TTL.\n\n    The implementation keeps an ``OrderedDict`` for O(1) ordering and\n    lookups, and a lock to make every mutating operation safe for use\n    from multiple threads.\n    \"\"\"\n\n    def __init__(\n        self,\n        maxsize: int = 128,\n        *,\n        ttl: float | None = None,\n        on_eviction: Callable[[K, V], None] | None = None,\n        on_expiry: Callable[[K, V], None] | None = None,\n    ) -> None:\n        if maxsize <= 0:\n            raise ValueError(\"maxsize must be a positive integer\")\n        if ttl is not None and ttl <= 0:\n            raise ValueError(\"ttl must be a positive number\")\n\n        self._maxsize = maxsize\n        self._ttl = ttl\n        self._on_eviction = on_eviction\n        self._on_expiry = on_expiry\n\n        self._data: dict[K, _Entry[V]] = {}\n        self._order: dict[K, None] = {}\n        self._lock = threading.Lock()\n        self._hits = 0\n        self._misses = 0\n        self._evictions = 0\n        self._expirations = 0\n\n    # ------------------------------------------------------------------\n    # Public API\n    # ------------------------------------------------------------------\n    def get(self, key: K) -> V | None:\n        \"\"\"Return the value for *key* or ``None`` if absent/expired.\"\"\"\n        with self._lock:\n            entry = self._data.get(key)\n            if entry is None:\n                self._misses += 1\n                return None\n            if entry.expires is not None and entry.expires <= time.monotonic():\n                self._expire_locked(key)\n                return None\n            entry.accessed = time.monotonic()\n            self._move_to_end(key)\n            self._hits += 1\n            return entry.value\n\n    def set(self, key: K, value: V) -> None:\n        \"\"\"Insert or update *key* with *value*,",
+          "decode_tps": 208.58888192685512,
+          "predicted_n": 512,
+          "predicted_ms": 2449.795,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "json": {
+          "text": "  ...\n]\n\n<think>\nThe user wants a JSON array of 200 employee records. Each record has these keys:\n- id\n- first_name\n- last_name\n- email\n- department\n- title\n- salary\n- hired_on\n- manager_id\n- active\n\nI need to generate 200 records. Let me create realistic data with:\n- Sequential IDs from 1 to 200\n- First names and last names from a pool\n- Emails based on first.last@example.com\n- Departments (Engineering, Sales, Marketing, HR, Finance, Operations, etc.)\n- Titles appropriate to department\n- Salaries\n- Hired dates\n- Manager IDs (some null for top-level managers)\n- Active status (mostly true, some false)\n\nLet me generate this. I'll use a pool of first names and last names, and cycle through them. I'll assign departments and titles.\n\nLet me write out 200 records. This is a lot, but I'll generate them systematically.\n\nLet me create pools:\n\nFirst names:\nAda, James, Maria, Robert, Susan, John, Patricia, Michael, Linda, David, Barbara, William, Elizabeth, Richard, Jennifer, Joseph, Sarah, Thomas, Nancy, Charles, Lisa, Daniel, Karen, Matthew, Betty, Anthony, Margaret, Mark, Sandra, Donald, Ashley, Steven, Kimberly, Paul, Emily, Andrew, Donna, Joshua, Michelle, Kenneth, Carol, Kevin, Amanda, Brian, Dorothy, George, Shelley, Edward, Lauren, Jonathan, Jasmine, Larry, Sarah, Gary, Nicole, Steve, Hannah, Eric, Cindy, Jonathan, Amber, Stephen, Rebekah, Larry, Stephanie, Wayne, Julia, Samuel, Frances, Raymond, Grace, Jay, Kathleen, Gregory, Sandra, Alexander, Nicole, Patrick, Hannah, Zachary, Donna, Douglas, Amy, Peter, Kelly, Jerry, Gloria, Tyler, Amy, Aaron, Anna, Henry, Brenda, Nathan, Pamela, Peter, Emma, Brandon, Sarah, Larry, Rebecca, Justin, Sharon, Sean, Emily, Jose, Deborah, Adam, Rachel, Nathan, Carol, Christopher, Janet, Benjamin, Kirsten, Christian, Heather, Brandon, Amy, Joshua, Anna, Kyle, Julia, Ethan, Maria, Jacob, Laura, Noah, Donna, Owen, Ashley, Luke, Kelly, Isabella, Sarah, Levi, Amanda, Gabriel,",
+          "decode_tps": 208.14384165100836,
+          "predicted_n": 512,
+          "predicted_ms": 2455.033,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "essay": {
+          "text": " the entire institutional architecture of transit is structurally biased against the very outcomes it is supposed to produce. This failure is not accidental; it is the product of a deeply embedded political economy in which funding structures, land use policy, and ridership forecasting conspire to produce systems that are underfunded, spatially mismatched, and politically indefensible.\n\n## The Funding Structure: A System Designed for Failure\n\nThe most fundamental flaw in municipal transit planning lies in its funding architecture. Transit systems in mid-sized cities are chronically underfunded because the financial mechanisms that sustain them are structurally disconnected from the value they generate.\n\nConsider the case of a mid-sized city like Columbus, Ohio, or Charlotte, North Carolina. These cities have populations between 500,000 and 1 million, with growing economies and expanding suburbs. Yet their transit systems remain vestigial\u2014operating at a fraction of the capacity needed to serve their populations. The reason is not a lack of demand, but a lack of funding.\n\nThe federal funding formula for transit is based on a percentage of federal funds apportioned to each metropolitan area, with a cap that has not been adjusted for inflation in decades. This means that a city's transit budget is essentially frozen in time, growing only nominally with population increases. Meanwhile, the cost of operating a transit system\u2014fuel, maintenance, labor, vehicle replacement\u2014rises with inflation and technological obsolescence. The result is a permanent structural deficit.\n\nMoreover, the reliance on local funding mechanisms\u2014property taxes, sales taxes, fares\u2014creates a perverse incentive structure. Property taxes are politically unpopular and subject to referenda that are frequently defeated. Sales taxes are regressive and generate less revenue than expected. Fares are the most direct source of revenue, but they are also the most politically toxic, as they penalize the very riders who need transit most.\n\nThe consequence is a vicious cycle: underfunding leads to inadequate service, which leads to low ridership, which justifies further underfunding. This cycle is self-reinforcing and nearly impossible to break without a fundamental restructuring of the funding model.\n\n## Land Use Policy: The Spatial Mismatch\n\nIf funding structures explain why transit systems are underfunded, then land use policy explains why they are spatially mismatched. The core problem is that mid-sized cities have developed in a pattern that is fundamentally incompatible with efficient transit service.\n\nThe dominant land use pattern in American cities is the separation of residential, commercial,",
+          "decode_tps": 207.79072911774333,
+          "predicted_n": 512,
+          "predicted_ms": 2459.205,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        },
+        "fiction": {
+          "text": " stung his eyes, and the great iron lamp at the top of the tower still hummed its low, faithful drone. He climbed the spiral stairs as usual, his boots ringing against the iron, and when he reached the gallery he did the thing he did every morning: he opened the heavy brass valve and let the light spill out over the water.\n\nAnd then he stopped.\n\nBecause the water was wrong.\n\nIt was the same water, of course. The same endless expanse of grey-green, the same foam where the waves broke against the black rocks, the same distant line where the horizon met the sky. But Aldous had kept a ledger, God bless him, and he had recorded the tide. And the tide had not come in. It had not gone out. It had simply, impossibly, *been there*, already, at exactly the height he had measured yesterday, at exactly the moment the moon hung low and fat over the bay.\n\nHe blinked. He rubbed his eyes with the back of a salt-crusted hand. He looked again.\n\nThe sea was identical.\n\nNot a copy in the sense of a photograph, or a painting, or a mirror held up to the truth. It was a copy in the sense that a word is a copy of a word, or a dream is a copy of a waking thought. Every ripple, every swell, every bubble of foam was in perfect, exact correspondence with the sea that had been there the night before. The same wave broke at the same instant. The same spray arced at the same angle. The same gull, with the same bent wing and the same missing feather, circled at the same altitude.\n\nAldous had never seen a still sea. He had never seen a sea that did not move.\n\nHe descended the stairs, his heart doing something strange and wet in his chest, and went down to the keeper's cottage. He sat at his little round table and looked out the window. And there, on the table, was his breakfast.\n\nThe porridge. The exact bowl he had used. The exact spoon, still half-full of the cold, lumpy porridge he had eaten the night before. The same crust of salt on the rim. The same dark stain from last week's spilled coffee, ringed and faded.\n\nHe reached for the spoon. His hand passed *through* it.\n\nHe reached again, and this time he grabbed the spoon, and he felt it, cold and ceramic and",
+          "decode_tps": 208.59126602652415,
+          "predicted_n": 512,
+          "predicted_ms": 2449.767,
+          "draft_n": null,
+          "draft_n_accepted": null,
+          "accept_rate": null
+        }
+      },
+      "unused_nextn_tensors": [
+        "blk.32.nextn.eh_proj.weight",
+        "blk.32.nextn.enorm.weight",
+        "blk.32.nextn.hnorm.weight",
+        "blk.32.nextn.shared_head_norm.weight"
+      ]
+    },
+    "on": {
+      "model": "ornith-9b",
+      "spec_type": "draft-mtp",
+      "vram_delta_mb": 6129,
+      "runs": {
+        "counting": {
+          "text": "9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n22\n24\n25\n26\n27\n28\n29\n30\n31\n32\n33\n33\n35\n36\n37\n38\n39\n40\n40\n42\n43\n44\n45\n46\n47\n48\n49\n50\n50\n52\n53\n54\n55\n56\n57\n58\n59\n60\n60\n62\n63\n64\n65\n66\n67\n68\n69\n70\n70\n72\n73\n74\n75\n76\n77\n78\n79\n80\n80\n82\n83\n84\n85\n86\n87\n88\n89\n90\n90\n92\n93\n94\n95\n96\n97\n98\n99\n100\n100\n102\n103\n104\n105\n106\n107\n108\n109\n110\n110\n112\n113\n114\n105\n116\n117\n118\n119\n120\n121\n122\n123\n124\n125\n126\n127\n128\n119\n130\n131\n132\n133\n114\n135\n136\n137\n138\n139\n140\n141\n142\n143\n144\n145\n146\n147\n148\n149\n150\n151\n152\n153\n154\n155\n156\n157\n158\n159\n",
+          "decode_tps": 351.83338933290736,
+          "predicted_n": 512,
+          "predicted_ms": 1452.392,
+          "draft_n": 483,
+          "draft_n_accepted": 390,
+          "accept_rate": 0.8075
+        },
+        "code": {
+          "text": "    \"\"\"A single cached value together with its metadata.\"\"\"\n\n    value: V\n    created: float\n    accessed: float\n    expires: float | None\n\n\nclass LRUCache(Generic[K, V]):\n    \"\"\"A thread-safe Least Recently Used cache with optional TTL.\n\n    The implementation keeps an ``OrderedDict`` for O(1) ordering and\n    lookups, and a lock to make every mutating operation safe for use\n    from multiple threads.\n    \"\"\"\n\n    def __init__(\n        self,\n        maxsize: int = 128,\n        *,\n        ttl: float | None = None,\n        on_eviction: Callable[[K, V], None] | None = None,\n    ) -> None:\n        if maxsize <= 0:\n            raise ValueError(\"maxsize must be a positive integer\")\n        if ttl is not None and ttl <= 0:\n            raise ValueError(\"ttl must be a positive number\")\n\n        self._maxsize = maxsize\n        self._ttl = ttl\n        self._on_eviction = on_eviction\n        self._lock = threading.Lock()\n        self._data: dict[K, _Entry[V]] = {}\n        self._hits = 0\n        self._misses = 0\n        self._evictions = 0\n\n    # ------------------------------------------------------------------\n    # Public API\n    # ------------------------------------------------------------------\n    def get(self, key: K) -> V | None:\n        \"\"\"Return the value for *key* or ``None`` if absent/expired.\"\"\"\n        with self._lock:\n            entry = self._data.get(key)\n            if entry is None:\n                self._misses += 1\n                return None\n            if entry.expires is not None and entry.expires <= time.monotonic():\n                del self._data[key]\n                self._misses += 1\n                return None\n            entry.accessed = time.monotonic()\n            self._hits += 1\n            self._move_to_end(key)\n            return entry.value\n\n    def set(self, key: K, value: V) -> None:\n        \"\"\"Store *value* under *key*, evicting the LRU entry if needed.\"\"\"\n        now = time.monotonic()\n        with self._lock:\n            if key in self._data:\n                entry = self._data[key",
+          "decode_tps": 281.4792699606535,
+          "predicted_n": 512,
+          "predicted_ms": 1815.409,
+          "draft_n": 616,
+          "draft_n_accepted": 357,
+          "accept_rate": 0.5795
+        },
+        "json": {
+          "text": "  ...\n]\n\n<think>\nThe user wants a JSON array of 200 employee records. Each record has these keys:\n- id\n- first_name\n- last_name\n- email\n- department\n- title\n- salary\n- hired_on\n- manager_id\n- active\n\nI need to generate 200 records. Let me create realistic data with:\n- Sequential IDs from 1 to 200\n- First names and last names (I'll use a pool of common names)\n- Email addresses\n- Departments (Engineering, Sales, Marketing, HR, Finance, etc.)\n- Titles\n- Salaries\n- Hired dates\n- Manager IDs (some null for top-level managers)\n- Active status (mostly true, some false)\n\nLet me create a good pool of names and generate the data programmatically in my head, but since I need to output 200 records, I'll write them out. This is a lot of data. Let me be systematic.\n\nLet me create pools:\n\nFirst names (male): James, John, Robert, Michael, David, William, Richard, Joseph, Thomas, Charles, Christopher, Daniel, Matthew, Anthony, Mark, Donald, Steven, Paul, Andrew, Joshua, Kenneth, Kevin, Brian, George, Edward, Timothy, Jonathan, Charles, Ryan, Nicholas, Eric, Jonathan, Stephen, Larry, Justin, Scott, Brandon, Benjamin, Samuel, Gregory, Frank, Alexander, Patrick, Jack, Dylan, Terry, Aaron, Henry, Peter, Douglas, Nigel, Wade, Carl, Arthur, Walter, Raymond, Jesse, Roger, Louis, Gary, Zachary, Norman, Albert, Will, Forrest, Phillip, Keith, Walter, Sean, Bruce, Jesse, Corey, Hunter, Alan, Jordan, Tyler, Austin, Garrett, Jesse, Evan, Caleb, Noah, Isaiah, Eli, Owen, Luke, Levi, Jasper, Silas, Wyatt, Grayson, Mason, Jaxon, Colton, Brayden, Hudson, Lincoln, Asher, Elian, Theo, Felix, Julian, Milo, Rowan, Silas, Jude, Ezra, Silas\n\nFirst names (female): Mary, Patricia, Jennifer, Linda, Barbara, Elizabeth, Susan, Jessica, Sarah, Karen, Nancy, Lisa, Betty, Sandra, Ashley, Dorothy, Kimberly, Donna, Michelle, Carol, Emily, Amanda, Melinda, Deborah, Stephanie, Rebecca, Shelley,",
+          "decode_tps": 231.16000705693955,
+          "predicted_n": 512,
+          "predicted_ms": 2210.59,
+          "draft_n": 749,
+          "draft_n_accepted": 322,
+          "accept_rate": 0.4299
+        },
+        "essay": {
+          "text": " the entire institutional architecture of transit is structurally biased against the very outcomes it is supposed to produce. This failure is not accidental; it is the product of a deeply embedded political economy in which funding structures, land use policy, and ridership forecasting conspire to produce systems that are underfunded, spatially mismatched, and politically indefensible.\n\nThe first and most fundamental problem is the funding structure. In the United States, and increasingly in many other nations, transit funding is overwhelmingly dependent on local property taxes and fares, with federal and state contributions serving as volatile supplements. This creates a perverse incentive structure. Because transit agencies are typically funded on a cost-recovery basis with ridership as the primary metric of success, agencies are incentivized to build systems that maximize fare revenue rather than maximize social benefit. This means that high-frequency, high-capacity transit along major corridors is often underinvested in, while low-density, low-ridership routes are over-subsidized to maintain political legitimacy. The result is a system that looks comprehensive on a map but fails to deliver the density and frequency that would make transit a viable alternative to the automobile.\n\nThis funding structure is compounded by the fact that transit is treated as a public utility rather than as an investment in infrastructure. Unlike highways, which are often funded through dedicated tolls or fuel taxes, transit has no dedicated revenue stream. This means that transit budgets are subject to the same political pressures as any municipal service, and they are routinely cut during periods of fiscal stress. The consequence is a chronic underinvestment that leaves systems operating at a fraction of their capacity, with aging fleets and deteriorating infrastructure.\n\nThe second major problem is land use policy. Transit is only viable in dense, mixed-use environments where a critical mass of people live, work, and shop within walking distance of stations. Yet most mid-sized cities have developed in a car-centric model that separates these functions and spreads them out over large areas. This is not accidental; it is the product of decades of zoning laws that mandate single-use development, minimum parking requirements, and low-density residential zones. These policies are not neutral; they are the product of political coalitions that benefit from sprawl, including developers who profit from land speculation, homeowners who benefit from low-density property values, and businesses that rely on free parking.\n\nThe mismatch between land use and transit is particularly acute in mid-sized cities, which are often in the process of transitioning from industrial to post-industrial economies. These cities have large areas of vacant or under",
+          "decode_tps": 176.81893395138067,
+          "predicted_n": 512,
+          "predicted_ms": 2889.962,
+          "draft_n": 997,
+          "draft_n_accepted": 260,
+          "accept_rate": 0.2608
+        },
+        "fiction": {
+          "text": " stung his eyes, and the great brass lamp at the top of the tower still hummed its low, patient note. He climbed the spiral stairs as usual, his boots ringing against the iron, and when he reached the gallery he did the thing he did every morning: he opened the heavy glass doors and looked out.\n\nHe looked out, and he looked out, and he looked out.\n\nThe sea was there. It was the sea. It was the sea, and it was not the sea.\n\nAldous blinked, and the blink did nothing. He rubbed his eyes with the back of a hand that was, he was certain, his own hand, and the sea did not change. It was a perfect copy of the sea, down to the last ripple, the last foam, the last dying gull that had died yesterday and been carried out to sea. Aldous had seen this gull. He had watched it go. And now it was here again, doing exactly what it had done, flapping its broken wings toward the horizon, falling, and the sea taking it.\n\nHe went down the stairs. He went down the stairs, and he went down the stairs, and each time he reached the bottom he looked out, and each time the sea was there, and each time it was the sea, and each time it was the sea, and each time it was not the sea.\n\nHe made his way to the keeper's cottage, which was a small, salt-stained house with a window that faced the sea. He sat at the table and ate his porridge, which was cold, and he drank his tea, which was cold, and he watched the sea, which was a perfect copy of the sea.\n\nHe thought about the copy. He thought about how it was identical, how it was the same, how it was the sea and not the sea. He thought about the gull, and he thought about the gull, and he thought about the gull, and he thought that the gull was the gull, and the gull was not the gull, and the gull was the gull, and the gull was not the gull, and the gull was the gull, and the gull was not the gull.\n\nHe stood up. He walked to the window. He looked out. The sea was there. It was the sea. It was the sea, and it was not the sea.\n\nHe went to the door",
+          "decode_tps": 214.63328580039106,
+          "predicted_n": 512,
+          "predicted_ms": 2380.805,
+          "draft_n": 812,
+          "draft_n_accepted": 307,
+          "accept_rate": 0.3781
+        }
+      },
+      "unused_nextn_tensors": []
+    },
+    "identical": {
+      "counting": false,
+      "code": false,
+      "json": false,
+      "essay": false,
+      "fiction": false
+    },
+    "unused_nextn_off": [
+      "blk.32.nextn.eh_proj.weight",
+      "blk.32.nextn.enorm.weight",
+      "blk.32.nextn.hnorm.weight",
+      "blk.32.nextn.shared_head_norm.weight"
+    ],
+    "unused_nextn_on": [],
+    "speedup": {
+      "counting": 1.6873,
+      "code": 1.3494,
+      "json": 1.1106,
+      "essay": 0.8509,
+      "fiction": 1.029
+    }
+  }
+}

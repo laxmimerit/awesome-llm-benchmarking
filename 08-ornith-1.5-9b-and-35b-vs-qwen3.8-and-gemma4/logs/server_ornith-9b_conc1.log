@@ -1,0 +1,41 @@
+0.00.091.492 I cmn  common_param: common_params_print_info: verbosity = 3 (adjust with the `-lv N` CLI arg)
+0.00.144.258 W srv  llama_server: -----------------
+0.00.144.263 W srv  llama_server: CORS is set to allow all origins ('*') and no API key is set
+0.00.144.263 W srv  llama_server: this can be a security risk (cross-origin attacks)
+0.00.144.264 W srv  llama_server: more info: https://github.com/ggml-org/llama.cpp/pull/25655
+0.00.144.264 W srv  llama_server: -----------------
+0.00.160.118 I srv    load_model: loading model 'D:\Claude AI\AI Model Performance\ornith-benchmark\models\Ornith-1.5-9B-Q4_K_M.gguf'
+0.00.716.011 W model has unused tensor blk.32.attn_norm.weight (size = 16384 bytes) -- ignoring
+0.00.716.021 W model has unused tensor blk.32.post_attention_norm.weight (size = 16384 bytes) -- ignoring
+0.00.716.031 W model has unused tensor blk.32.attn_q.weight (size = 18874368 bytes) -- ignoring
+0.00.716.034 W model has unused tensor blk.32.attn_k.weight (size = 2359296 bytes) -- ignoring
+0.00.716.038 W model has unused tensor blk.32.attn_v.weight (size = 3440640 bytes) -- ignoring
+0.00.716.050 W model has unused tensor blk.32.attn_output.weight (size = 9437184 bytes) -- ignoring
+0.00.716.054 W model has unused tensor blk.32.attn_q_norm.weight (size = 1024 bytes) -- ignoring
+0.00.716.057 W model has unused tensor blk.32.attn_k_norm.weight (size = 1024 bytes) -- ignoring
+0.00.716.061 W model has unused tensor blk.32.ffn_gate.weight (size = 28311552 bytes) -- ignoring
+0.00.716.064 W model has unused tensor blk.32.ffn_down.weight (size = 41287680 bytes) -- ignoring
+0.00.716.068 W model has unused tensor blk.32.ffn_up.weight (size = 28311552 bytes) -- ignoring
+0.00.716.072 W model has unused tensor blk.32.nextn.eh_proj.weight (size = 18874368 bytes) -- ignoring
+0.00.716.076 W model has unused tensor blk.32.nextn.enorm.weight (size = 16384 bytes) -- ignoring
+0.00.716.080 W model has unused tensor blk.32.nextn.hnorm.weight (size = 16384 bytes) -- ignoring
+0.00.716.091 W model has unused tensor blk.32.nextn.shared_head_norm.weight (size = 16384 bytes) -- ignoring
+0.02.941.151 I cmn          init: llama threadpool init, n_threads = 24
+0.02.992.037 I srv    load_model: initializing, n_slots = 1, n_ctx_slot = 4096, kv_unified = 'false'
+0.02.996.028 I srv          init: chat template supports preserving reasoning, consider enabling it via --reasoning-preserve
+0.02.996.051 I srv  llama_server: model loaded
+0.02.996.052 I srv  llama_server: listening on http://127.0.0.1:8099
+0.04.641.165 I slot get_availabl: id  0 | task -1 | selected slot by LRU, t_last = -1
+0.04.641.236 I slot launch_slot_: id  0 | task 0 | processing task, is_child = 0
+0.04.856.024 I slot print_timing: id  0 | task 0 | prompt eval time =      48.93 ms /   103 tokens (    0.48 ms per token,  2104.92 tokens per second)
+0.04.856.030 I slot print_timing: id  0 | task 0 |        eval time =     165.83 ms /    32 tokens (    5.35 ms per token,   186.94 tokens per second)
+0.04.856.031 I slot print_timing: id  0 | task 0 |       total time =     214.76 ms /   135 tokens
+0.04.856.032 I slot print_timing: id  0 | task 0 |    graphs reused =         30
+0.04.856.053 I slot      release: id  0 | task 0 | stop processing: n_tokens = 134, truncated = 0
+0.04.863.446 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 1.000 (> 0.100 thold), f_keep = 0.769
+0.04.863.593 I slot launch_slot_: id  0 | task 34 | processing task, is_child = 0
+0.06.221.906 I slot print_timing: id  0 | task 34 | prompt eval time =      34.57 ms /   103 tokens (    0.34 ms per token,  2979.63 tokens per second)
+0.06.221.913 I slot print_timing: id  0 | task 34 |        eval time =    1323.73 ms /   256 tokens (    5.19 ms per token,   192.64 tokens per second)
+0.06.221.914 I slot print_timing: id  0 | task 34 |       total time =    1358.30 ms /   359 tokens
+0.06.221.914 I slot print_timing: id  0 | task 34 |    graphs reused =        283
+0.06.221.931 I slot      release: id  0 | task 34 | stop processing: n_tokens = 358, truncated = 0

@@ -1,0 +1,878 @@
+Idle VRAM at sweep start = 7965 MiB
+(re-measured before every config; background usage drifts)
+
+
+### stage 'spec': 7 configs
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specnone-think
+========================================================================
+    idle baseline now 8041 MiB
+    loaded in 13.64s, process VRAM 17943.9 MiB (whole card 25938 MiB)
+    [0] decode_code        ttft=0.1808 dec=74.6tps pre=503.32tps vram=17911.0MiB ok=None
+    [0] decode_prose       ttft=0.1788 dec=74.4tps pre=520.13tps vram=17910.0MiB ok=None
+    [0] decode_structured  ttft=0.2937 dec=74.46tps pre=316.65tps vram=17918.0MiB ok=None
+    [0] prefill_25pct      ttft=2.6338 dec=72.33tps pre=3150.2tps vram=17911.0MiB ok=True
+    [0] prefill_75pct      ttft=8.6088 dec=69.13tps pre=3049.9tps vram=17904.0MiB ok=True
+    [0] q_arithmetic       ttft=0.8469 dec=71.76tps pre=82.65tps vram=17897.0MiB ok=True
+    [0] q_logic            ttft=0.3108 dec=72.69tps pre=254.18tps vram=17889.0MiB ok=True
+    [0] q_code             ttft=0.3233 dec=73.63tps pre=253.63tps vram=17889.0MiB ok=True
+    [0] q_json             ttft=0.2927 dec=74.85tps pre=317.73tps vram=17889.0MiB ok=True
+    [0] needle_d10         ttft=9.8538 dec=67.6tps pre=3041.77tps vram=17891.0MiB ok=True
+    [0] needle_d50         ttft=10.6206 dec=68.16tps pre=2822.16tps vram=17934.0MiB ok=True
+    [0] needle_d90         ttft=10.2059 dec=67.41tps pre=2936.93tps vram=17949.0MiB ok=True
+    [1] decode_code        ttft=0.8831 dec=71.84tps pre=103.05tps vram=17960.0MiB ok=None
+    [1] decode_prose       ttft=0.3833 dec=71.35tps pre=242.63tps vram=17890.0MiB ok=None
+    [1] decode_structured  ttft=0.2941 dec=70.47tps pre=316.22tps vram=17901.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3168 dec=69.63tps pre=220.96tps vram=17895.0MiB ok=True
+    [1] q_logic            ttft=0.2896 dec=75.03tps pre=272.79tps vram=17895.0MiB ok=True
+    [1] q_code             ttft=0.3757 dec=69.02tps pre=218.26tps vram=17895.0MiB ok=True
+    [1] q_json             ttft=0.2985 dec=74.79tps pre=311.56tps vram=17895.0MiB ok=True
+    [2] decode_code        ttft=0.3047 dec=68.51tps pre=298.65tps vram=17898.0MiB ok=None
+    [2] decode_prose       ttft=0.1935 dec=71.12tps pre=480.62tps vram=17905.0MiB ok=None
+    [2] decode_structured  ttft=0.1637 dec=71.52tps pre=568.11tps vram=17905.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1451 dec=74.49tps pre=482.43tps vram=17899.0MiB ok=True
+    [2] q_logic            ttft=0.2194 dec=75.03tps pre=360.07tps vram=17899.0MiB ok=True
+    [2] q_code             ttft=0.2632 dec=74.16tps pre=311.55tps vram=17899.0MiB ok=True
+    [2] q_json             ttft=0.1225 dec=74.16tps pre=759.18tps vram=17899.0MiB ok=True
+    draft: {}
+    !! WARNING: server processes still running: ['ollama.exe', 'ollama app.exe'] - next config may be contaminated
+    GPU released, VRAM back to 8170 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn1-think
+========================================================================
+    idle baseline now 8169 MiB
+    loaded in 13.65s, process VRAM 18606.0 MiB (whole card 26616 MiB)
+    [0] decode_code        ttft=0.2186 dec=102.17tps pre=416.29tps vram=18472.0MiB ok=None
+    [0] decode_prose       ttft=0.1794 dec=104.36tps pre=518.39tps vram=18472.0MiB ok=None
+    [0] decode_structured  ttft=0.3241 dec=109.92tps pre=286.95tps vram=18469.0MiB ok=None
+    [0] prefill_25pct      ttft=3.0119 dec=106.21tps pre=2754.74tps vram=18486.0MiB ok=True
+    [0] prefill_75pct      ttft=9.5269 dec=94.62tps pre=2755.99tps vram=18491.0MiB ok=True
+    [0] q_arithmetic       ttft=1.0335 dec=103.15tps pre=67.73tps vram=18467.0MiB ok=True
+    [0] q_logic            ttft=0.3159 dec=102.07tps pre=250.08tps vram=18467.0MiB ok=True
+    [0] q_code             ttft=0.3216 dec=99.85tps pre=254.98tps vram=18469.0MiB ok=True
+    [0] q_json             ttft=0.2903 dec=113.17tps pre=320.36tps vram=18327.0MiB ok=True
+    [0] needle_d10         ttft=10.5893 dec=101.13tps pre=2830.5tps vram=18335.0MiB ok=True
+    [0] needle_d50         ttft=11.3145 dec=95.69tps pre=2649.08tps vram=18336.0MiB ok=True
+    [0] needle_d90         ttft=11.1393 dec=104.62tps pre=2690.83tps vram=18325.0MiB ok=True
+    [1] decode_code        ttft=1.0843 dec=106.34tps pre=83.93tps vram=18306.0MiB ok=None
+    [1] decode_prose       ttft=0.3699 dec=105.87tps pre=251.42tps vram=18313.0MiB ok=None
+    [1] decode_structured  ttft=0.3412 dec=110.03tps pre=272.57tps vram=18297.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3373 dec=107.59tps pre=207.53tps vram=18257.0MiB ok=True
+    [1] q_logic            ttft=0.3907 dec=110.23tps pre=202.2tps vram=18258.0MiB ok=True
+    [1] q_code             ttft=0.3094 dec=105.97tps pre=265.03tps vram=18235.0MiB ok=True
+    [1] q_json             ttft=0.3035 dec=111.58tps pre=306.43tps vram=18261.0MiB ok=True
+    [2] decode_code        ttft=0.3339 dec=105.02tps pre=272.54tps vram=18291.0MiB ok=None
+    [2] decode_prose       ttft=0.1678 dec=104.14tps pre=554.23tps vram=18352.0MiB ok=None
+    [2] decode_structured  ttft=0.1709 dec=108.67tps pre=544.18tps vram=18310.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1407 dec=109.2tps pre=497.51tps vram=18279.0MiB ok=True
+    [2] q_logic            ttft=0.2158 dec=107.17tps pre=366.08tps vram=18280.0MiB ok=True
+    [2] q_code             ttft=0.2854 dec=103.34tps pre=287.32tps vram=18313.0MiB ok=True
+    [2] q_json             ttft=0.1345 dec=111.94tps pre=691.45tps vram=18317.0MiB ok=True
+    draft: {'draft_accepted': 3381, 'draft_generated': 3932, 'accept_rate': 0.8599, 'n_requests': 27, 'mean_accepted_len': 1.879}
+    GPU released, VRAM back to 7800 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7790 MiB
+    loaded in 13.68s, process VRAM 18756.0 MiB (whole card 26471 MiB)
+    [0] decode_code        ttft=0.2053 dec=124.92tps pre=443.25tps vram=18722.5MiB ok=None
+    [0] decode_prose       ttft=0.1701 dec=126.37tps pre=546.74tps vram=18722.5MiB ok=None
+    [0] decode_structured  ttft=0.3319 dec=144.56tps pre=280.2tps vram=18708.5MiB ok=None
+    [0] prefill_25pct      ttft=2.8686 dec=120.0tps pre=2892.35tps vram=18715.5MiB ok=True
+    [0] prefill_75pct      ttft=9.2341 dec=117.81tps pre=2843.37tps vram=18715.5MiB ok=True
+    [0] q_arithmetic       ttft=1.0152 dec=131.76tps pre=68.95tps vram=18715.5MiB ok=True
+    [0] q_logic            ttft=0.3277 dec=114.21tps pre=241.07tps vram=18715.5MiB ok=True
+    [0] q_code             ttft=0.3224 dec=121.06tps pre=254.34tps vram=18715.5MiB ok=True
+    [0] q_json             ttft=0.3102 dec=137.06tps pre=299.81tps vram=18715.5MiB ok=True
+    [0] needle_d10         ttft=10.5869 dec=127.34tps pre=2831.14tps vram=18715.5MiB ok=True
+    [0] needle_d50         ttft=11.426 dec=113.6tps pre=2623.23tps vram=18739.5MiB ok=True
+    [0] needle_d90         ttft=11.3702 dec=122.72tps pre=2636.19tps vram=18797.5MiB ok=True
+    [1] decode_code        ttft=1.1013 dec=124.37tps pre=82.63tps vram=18775.5MiB ok=None
+    [1] decode_prose       ttft=0.279 dec=125.24tps pre=333.33tps vram=18825.5MiB ok=None
+    [1] decode_structured  ttft=0.3076 dec=145.09tps pre=302.34tps vram=18782.5MiB ok=None
+    [1] q_arithmetic       ttft=0.2669 dec=139.79tps pre=262.27tps vram=18685.5MiB ok=True
+    [1] q_logic            ttft=0.3622 dec=124.87tps pre=218.11tps vram=18666.5MiB ok=True
+    [1] q_code             ttft=0.2634 dec=128.9tps pre=311.31tps vram=18676.5MiB ok=True
+    [1] q_json             ttft=0.2671 dec=138.0tps pre=348.18tps vram=18810.5MiB ok=True
+    [2] decode_code        ttft=0.2732 dec=126.51tps pre=333.09tps vram=18862.5MiB ok=None
+    [2] decode_prose       ttft=0.1764 dec=128.97tps pre=527.21tps vram=18750.5MiB ok=None
+    [2] decode_structured  ttft=0.1709 dec=148.31tps pre=544.18tps vram=18733.5MiB ok=None
+    [2] q_arithmetic       ttft=0.1464 dec=148.92tps pre=478.14tps vram=18729.5MiB ok=True
+    [2] q_logic            ttft=0.2033 dec=123.96tps pre=388.59tps vram=18725.5MiB ok=True
+    [2] q_code             ttft=0.2406 dec=131.95tps pre=340.81tps vram=18715.5MiB ok=True
+    [2] q_json             ttft=0.1453 dec=141.39tps pre=640.06tps vram=18701.5MiB ok=True
+    draft: {'draft_accepted': 4429, 'draft_generated': 5779, 'accept_rate': 0.7664, 'n_requests': 27, 'mean_accepted_len': 2.561}
+    GPU released, VRAM back to 7713 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn3-think
+========================================================================
+    idle baseline now 7717 MiB
+    loaded in 13.72s, process VRAM 18906.0 MiB (whole card 26617 MiB)
+    [0] decode_code        ttft=0.1832 dec=133.94tps pre=496.72tps vram=18905.0MiB ok=None
+    [0] decode_prose       ttft=0.1572 dec=127.22tps pre=591.6tps vram=18889.0MiB ok=None
+    [0] decode_structured  ttft=0.2714 dec=161.47tps pre=342.67tps vram=18904.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8059 dec=135.27tps pre=2956.98tps vram=18916.0MiB ok=True
+    [0] prefill_75pct      ttft=9.0531 dec=128.22tps pre=2900.22tps vram=18909.0MiB ok=True
+    [0] q_arithmetic       ttft=0.8394 dec=146.79tps pre=83.39tps vram=18883.0MiB ok=True
+    [0] q_logic            ttft=0.2941 dec=124.08tps pre=268.62tps vram=18915.0MiB ok=True
+    [0] q_code             ttft=0.3082 dec=123.13tps pre=266.06tps vram=18913.0MiB ok=True
+    [0] q_json             ttft=0.2897 dec=154.28tps pre=321.02tps vram=18910.0MiB ok=True
+    [0] needle_d10         ttft=10.4066 dec=129.42tps pre=2880.19tps vram=18911.0MiB ok=True
+    [0] needle_d50         ttft=11.1315 dec=130.2tps pre=2692.63tps vram=18883.0MiB ok=True
+    [0] needle_d90         ttft=10.9677 dec=134.26tps pre=2732.93tps vram=18917.0MiB ok=True
+    [1] decode_code        ttft=0.838 dec=133.84tps pre=108.59tps vram=18916.0MiB ok=None
+    [1] decode_prose       ttft=0.2628 dec=127.31tps pre=353.88tps vram=18909.0MiB ok=None
+    [1] decode_structured  ttft=0.2741 dec=161.55tps pre=339.29tps vram=18904.0MiB ok=None
+    [1] q_arithmetic       ttft=0.2517 dec=158.2tps pre=278.11tps vram=18894.0MiB ok=True
+    [1] q_logic            ttft=0.3854 dec=130.01tps pre=204.98tps vram=18894.0MiB ok=True
+    [1] q_code             ttft=0.2474 dec=130.26tps pre=331.45tps vram=18888.0MiB ok=True
+    [1] q_json             ttft=0.253 dec=155.57tps pre=367.59tps vram=18880.0MiB ok=True
+    [2] decode_code        ttft=0.2619 dec=131.98tps pre=347.46tps vram=18898.0MiB ok=None
+    [2] decode_prose       ttft=0.1739 dec=127.68tps pre=534.79tps vram=18925.0MiB ok=None
+    [2] decode_structured  ttft=0.1698 dec=161.2tps pre=547.7tps vram=18915.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1318 dec=157.24tps pre=531.11tps vram=18912.0MiB ok=True
+    [2] q_logic            ttft=0.1913 dec=122.56tps pre=412.96tps vram=18909.0MiB ok=True
+    [2] q_code             ttft=0.2362 dec=131.12tps pre=347.16tps vram=18909.0MiB ok=True
+    [2] q_json             ttft=0.1443 dec=156.09tps pre=644.49tps vram=18908.0MiB ok=True
+    draft: {'draft_accepted': 4900, 'draft_generated': 7269, 'accept_rate': 0.6741, 'n_requests': 27, 'mean_accepted_len': 3.114}
+    GPU released, VRAM back to 7648 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn4-think
+========================================================================
+    idle baseline now 7648 MiB
+    loaded in 13.79s, process VRAM 19056.0 MiB (whole card 26713 MiB)
+    [0] decode_code        ttft=0.188 dec=123.54tps pre=484.04tps vram=19093.0MiB ok=None
+    [0] decode_prose       ttft=0.1595 dec=124.68tps pre=583.07tps vram=19092.0MiB ok=None
+    [0] decode_structured  ttft=0.2616 dec=175.16tps pre=355.5tps vram=19086.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8143 dec=133.08tps pre=2948.16tps vram=19076.0MiB ok=True
+    [0] prefill_75pct      ttft=9.0857 dec=149.55tps pre=2889.82tps vram=19110.0MiB ok=True
+    [0] q_arithmetic       ttft=0.8383 dec=140.38tps pre=83.5tps vram=19105.0MiB ok=True
+    [0] q_logic            ttft=0.3046 dec=117.0tps pre=259.36tps vram=19100.0MiB ok=True
+    [0] q_code             ttft=0.2957 dec=137.38tps pre=277.31tps vram=19100.0MiB ok=True
+    [0] q_json             ttft=0.3045 dec=156.64tps pre=305.42tps vram=19100.0MiB ok=True
+    [0] needle_d10         ttft=10.457 dec=126.26tps pre=2866.31tps vram=19100.0MiB ok=True
+    [0] needle_d50         ttft=11.2194 dec=133.93tps pre=2671.53tps vram=19119.0MiB ok=True
+    [0] needle_d90         ttft=10.9828 dec=134.33tps pre=2729.18tps vram=19113.0MiB ok=True
+    [1] decode_code        ttft=0.8494 dec=121.54tps pre=107.13tps vram=19108.0MiB ok=None
+    [1] decode_prose       ttft=0.259 dec=123.65tps pre=359.07tps vram=19105.0MiB ok=None
+    [1] decode_structured  ttft=0.2599 dec=172.31tps pre=357.83tps vram=19103.0MiB ok=None
+    [1] q_arithmetic       ttft=0.268 dec=165.91tps pre=261.19tps vram=19066.0MiB ok=True
+    [1] q_logic            ttft=0.3571 dec=126.07tps pre=221.23tps vram=19062.0MiB ok=True
+    [1] q_code             ttft=0.2602 dec=141.85tps pre=315.14tps vram=19058.0MiB ok=True
+    [1] q_json             ttft=0.2775 dec=164.62tps pre=335.14tps vram=19058.0MiB ok=True
+    [2] decode_code        ttft=0.2734 dec=123.68tps pre=332.85tps vram=19058.0MiB ok=None
+    [2] decode_prose       ttft=0.1748 dec=123.42tps pre=532.04tps vram=19075.0MiB ok=None
+    [2] decode_structured  ttft=0.1719 dec=172.12tps pre=541.01tps vram=19107.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1499 dec=159.82tps pre=466.98tps vram=19107.0MiB ok=True
+    [2] q_logic            ttft=0.2104 dec=121.55tps pre=375.48tps vram=19102.0MiB ok=True
+    [2] q_code             ttft=0.1904 dec=143.56tps pre=430.67tps vram=19102.0MiB ok=True
+    [2] q_json             ttft=0.2134 dec=162.48tps pre=435.8tps vram=19102.0MiB ok=True
+    draft: {'draft_accepted': 4882, 'draft_generated': 8246, 'accept_rate': 0.592, 'n_requests': 27, 'mean_accepted_len': 3.561}
+    GPU released, VRAM back to 7617 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn5-think
+========================================================================
+    idle baseline now 7655 MiB
+    loaded in 13.71s, process VRAM 19204.0 MiB (whole card 26813 MiB)
+    [0] decode_code        ttft=0.1908 dec=115.36tps pre=476.94tps vram=19207.0MiB ok=None
+    [0] decode_prose       ttft=0.1609 dec=113.5tps pre=578.0tps vram=19207.0MiB ok=None
+    [0] decode_structured  ttft=0.2726 dec=172.42tps pre=341.16tps vram=19238.0MiB ok=None
+    [0] prefill_25pct      ttft=2.7919 dec=140.0tps pre=2971.81tps vram=19248.0MiB ok=True
+    [0] prefill_75pct      ttft=9.1055 dec=160.53tps pre=2883.53tps vram=19271.0MiB ok=True
+    [0] q_arithmetic       ttft=0.8917 dec=147.62tps pre=78.5tps vram=19245.0MiB ok=True
+    [0] q_logic            ttft=0.3193 dec=110.76tps pre=247.42tps vram=19246.0MiB ok=True
+    [0] q_code             ttft=0.2875 dec=128.1tps pre=285.22tps vram=19241.0MiB ok=True
+    [0] q_json             ttft=0.3128 dec=154.77tps pre=297.31tps vram=19241.0MiB ok=True
+    [0] needle_d10         ttft=10.4356 dec=132.78tps pre=2872.19tps vram=19224.0MiB ok=True
+    [0] needle_d50         ttft=11.1834 dec=125.28tps pre=2680.13tps vram=19216.0MiB ok=True
+    [0] needle_d90         ttft=11.0261 dec=143.99tps pre=2718.46tps vram=19209.0MiB ok=True
+    [1] decode_code        ttft=0.8262 dec=115.29tps pre=110.14tps vram=19194.0MiB ok=None
+    [1] decode_prose       ttft=0.2898 dec=112.62tps pre=320.91tps vram=19194.0MiB ok=None
+    [1] decode_structured  ttft=0.279 dec=173.08tps pre=333.33tps vram=19182.0MiB ok=None
+    [1] q_arithmetic       ttft=0.2667 dec=154.78tps pre=262.47tps vram=19195.0MiB ok=True
+    [1] q_logic            ttft=0.387 dec=114.87tps pre=204.13tps vram=19195.0MiB ok=True
+    [1] q_code             ttft=0.271 dec=132.94tps pre=302.58tps vram=19195.0MiB ok=True
+    [1] q_json             ttft=0.2536 dec=158.85tps pre=366.72tps vram=19195.0MiB ok=True
+    [2] decode_code        ttft=0.2631 dec=115.08tps pre=345.88tps vram=19224.0MiB ok=None
+    [2] decode_prose       ttft=0.1859 dec=112.78tps pre=500.27tps vram=19223.0MiB ok=None
+    [2] decode_structured  ttft=0.1628 dec=171.1tps pre=571.25tps vram=19221.0MiB ok=None
+    [2] q_arithmetic       ttft=0.149 dec=153.01tps pre=469.8tps vram=19221.0MiB ok=True
+    [2] q_logic            ttft=0.2033 dec=111.9tps pre=388.59tps vram=19224.0MiB ok=True
+    [2] q_code             ttft=0.1871 dec=130.26tps pre=438.27tps vram=19224.0MiB ok=True
+    [2] q_json             ttft=0.192 dec=159.17tps pre=484.38tps vram=19224.0MiB ok=True
+    draft: {'draft_accepted': 5020, 'draft_generated': 9647, 'accept_rate': 0.5204, 'n_requests': 27, 'mean_accepted_len': 3.903}
+    GPU released, VRAM back to 7604 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specngram-mod-think
+========================================================================
+    idle baseline now 7588 MiB
+    loaded in 13.77s, process VRAM 17943.9 MiB (whole card 25539 MiB)
+    [0] decode_code        ttft=0.1675 dec=80.73tps pre=543.28tps vram=18009.0MiB ok=None
+    [0] decode_prose       ttft=0.2316 dec=76.0tps pre=401.55tps vram=18008.0MiB ok=None
+    [0] decode_structured  ttft=0.2649 dec=76.44tps pre=351.08tps vram=17995.0MiB ok=None
+    [0] prefill_25pct      ttft=2.5955 dec=72.48tps pre=3196.69tps vram=17981.0MiB ok=True
+    [0] prefill_75pct      ttft=8.4647 dec=65.39tps pre=3101.82tps vram=17999.0MiB ok=True
+    [0] q_arithmetic       ttft=0.7915 dec=74.06tps pre=88.44tps vram=18000.0MiB ok=True
+    [0] q_logic            ttft=0.2945 dec=74.62tps pre=268.25tps vram=17999.0MiB ok=True
+    [0] q_code             ttft=0.3024 dec=72.55tps pre=271.16tps vram=17999.0MiB ok=True
+    [0] q_json             ttft=0.2474 dec=82.56tps pre=375.91tps vram=17981.0MiB ok=True
+    [0] needle_d10         ttft=9.7977 dec=105.51tps pre=3059.19tps vram=18008.0MiB ok=True
+    [0] needle_d50         ttft=10.3717 dec=68.82tps pre=2889.88tps vram=18003.0MiB ok=True
+    [0] needle_d90         ttft=10.1958 dec=74.86tps pre=2939.84tps vram=18001.0MiB ok=True
+    [1] decode_code        ttft=0.696 dec=80.96tps pre=130.75tps vram=17969.0MiB ok=None
+    [1] decode_prose       ttft=0.3273 dec=90.35tps pre=284.14tps vram=17990.0MiB ok=None
+    [1] decode_structured  ttft=0.2728 dec=97.25tps pre=340.91tps vram=17990.0MiB ok=None
+    [1] q_arithmetic       ttft=0.2455 dec=75.27tps pre=285.13tps vram=17989.0MiB ok=True
+    [1] q_logic            ttft=0.237 dec=76.21tps pre=333.33tps vram=17988.0MiB ok=True
+    [1] q_code             ttft=0.3461 dec=73.6tps pre=236.93tps vram=17983.0MiB ok=True
+    [1] q_json             ttft=0.2323 dec=81.69tps pre=400.34tps vram=17955.0MiB ok=True
+    [2] decode_code        ttft=0.2528 dec=75.67tps pre=359.97tps vram=17993.0MiB ok=None
+    [2] decode_prose       ttft=0.251 dec=75.94tps pre=370.52tps vram=17997.0MiB ok=None
+    [2] decode_structured  ttft=0.3411 dec=699.06tps pre=272.65tps vram=17986.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1319 dec=395.95tps pre=530.71tps vram=17980.0MiB ok=True
+    [2] q_logic            ttft=0.1839 dec=167.1tps pre=429.58tps vram=17976.0MiB ok=True
+    [2] q_code             ttft=0.2081 dec=417.09tps pre=394.04tps vram=17970.0MiB ok=True
+    [2] q_json             ttft=0.121 dec=162.8tps pre=768.6tps vram=17955.0MiB ok=True
+    draft: {'draft_accepted': 1476, 'draft_generated': 2758, 'accept_rate': 0.5352, 'n_requests': 21, 'mean_accepted_len': 26.92}
+    GPU released, VRAM back to 7576 MiB
+
+### stage 'think': 4 configs
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specnone-think
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specnone-nothink
+========================================================================
+    idle baseline now 7621 MiB
+    loaded in 13.78s, process VRAM 17943.9 MiB (whole card 25551 MiB)
+    [0] decode_code        ttft=0.1614 dec=74.97tps pre=315.99tps vram=17922.0MiB ok=None
+    [0] decode_prose       ttft=0.1107 dec=75.64tps pre=478.77tps vram=17926.0MiB ok=None
+    [0] decode_structured  ttft=0.177 dec=75.55tps pre=299.44tps vram=17930.0MiB ok=None
+    [0] prefill_25pct      ttft=2.5097 dec=74.49tps pre=3290.03tps vram=17930.0MiB ok=True
+    [0] prefill_75pct      ttft=8.4158 dec=73.89tps pre=3115.09tps vram=17926.0MiB ok=True
+    [0] q_arithmetic       ttft=0.4844 dec=72.59tps pre=61.93tps vram=14899.0MiB ok=True
+    [0] q_logic            ttft=0.163 dec=Nonetps pre=239.26tps vram=14899.0MiB ok=True
+    [0] q_code             ttft=0.1649 dec=74.23tps pre=254.7tps vram=14940.0MiB ok=True
+    [0] q_json             ttft=0.1584 dec=73.48tps pre=334.6tps vram=14941.0MiB ok=True
+    [0] needle_d10         ttft=9.6663 dec=68.28tps pre=3096.63tps vram=14939.0MiB ok=True
+    [0] needle_d50         ttft=10.3479 dec=72.63tps pre=2892.66tps vram=16784.0MiB ok=True
+    [0] needle_d90         ttft=10.4484 dec=68.65tps pre=2864.94tps vram=17973.0MiB ok=True
+    [1] decode_code        ttft=0.5789 dec=70.27tps pre=88.1tps vram=17973.0MiB ok=None
+    [1] decode_prose       ttft=0.1737 dec=70.17tps pre=305.12tps vram=17966.0MiB ok=None
+    [1] decode_structured  ttft=0.1824 dec=70.59tps pre=290.57tps vram=17970.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1607 dec=72.4tps pre=186.68tps vram=17967.0MiB ok=True
+    [1] q_logic            ttft=0.2171 dec=Nonetps pre=179.64tps vram=17967.0MiB ok=True
+    [1] q_code             ttft=0.1536 dec=70.25tps pre=273.44tps vram=17966.0MiB ok=True
+    [1] q_json             ttft=0.1872 dec=65.79tps pre=283.12tps vram=17963.0MiB ok=True
+    [2] decode_code        ttft=0.1796 dec=70.32tps pre=283.96tps vram=17964.0MiB ok=None
+    [2] decode_prose       ttft=0.1101 dec=73.43tps pre=481.38tps vram=17960.0MiB ok=None
+    [2] decode_structured  ttft=0.109 dec=74.23tps pre=486.24tps vram=17963.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1153 dec=73.33tps pre=260.19tps vram=17967.0MiB ok=True
+    [2] q_logic            ttft=0.1771 dec=Nonetps pre=220.21tps vram=17967.0MiB ok=True
+    [2] q_code             ttft=0.1838 dec=64.58tps pre=228.51tps vram=17960.0MiB ok=True
+    [2] q_json             ttft=0.1921 dec=75.91tps pre=275.9tps vram=17941.0MiB ok=True
+    draft: {}
+    GPU released, VRAM back to 7624 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-nothink
+========================================================================
+    idle baseline now 7614 MiB
+    loaded in 13.77s, process VRAM 18756.0 MiB (whole card 26381 MiB)
+    [0] decode_code        ttft=0.16 dec=154.61tps pre=318.75tps vram=18800.0MiB ok=None
+    [0] decode_prose       ttft=0.1213 dec=120.26tps pre=436.93tps vram=18855.0MiB ok=None
+    [0] decode_structured  ttft=0.1711 dec=150.4tps pre=309.76tps vram=18879.0MiB ok=None
+    [0] prefill_25pct      ttft=2.736 dec=79.3tps pre=3017.91tps vram=18882.0MiB ok=True
+    [0] prefill_75pct      ttft=9.1776 dec=86.92tps pre=2856.52tps vram=18960.0MiB ok=True
+    [0] q_arithmetic       ttft=0.6593 dec=94.39tps pre=45.5tps vram=18907.0MiB ok=True
+    [0] q_logic            ttft=0.234 dec=Nonetps pre=166.67tps vram=18906.0MiB ok=True
+    [0] q_code             ttft=0.2233 dec=128.14tps pre=188.09tps vram=18927.0MiB ok=True
+    [0] q_json             ttft=0.1983 dec=137.16tps pre=267.27tps vram=18931.0MiB ok=True
+    [0] needle_d10         ttft=10.4074 dec=94.45tps pre=2876.13tps vram=18932.0MiB ok=True
+    [0] needle_d50         ttft=11.1216 dec=96.34tps pre=2691.43tps vram=18930.0MiB ok=True
+    [0] needle_d90         ttft=10.77 dec=111.69tps pre=2779.39tps vram=18917.0MiB ok=True
+    [1] decode_code        ttft=0.8494 dec=155.39tps pre=60.04tps vram=18914.0MiB ok=None
+    [1] decode_prose       ttft=0.2813 dec=124.43tps pre=188.41tps vram=18914.0MiB ok=None
+    [1] decode_structured  ttft=0.2088 dec=151.24tps pre=253.83tps vram=18914.0MiB ok=None
+    [1] q_arithmetic       ttft=0.2011 dec=100.08tps pre=149.18tps vram=18914.0MiB ok=True
+    [1] q_logic            ttft=0.2062 dec=Nonetps pre=189.14tps vram=18914.0MiB ok=True
+    [1] q_code             ttft=0.2062 dec=121.06tps pre=203.69tps vram=18914.0MiB ok=True
+    [1] q_json             ttft=0.1922 dec=148.87tps pre=275.75tps vram=18914.0MiB ok=True
+    [2] decode_code        ttft=0.209 dec=155.72tps pre=244.02tps vram=18914.0MiB ok=None
+    [2] decode_prose       ttft=0.1095 dec=124.2tps pre=484.02tps vram=18914.0MiB ok=None
+    [2] decode_structured  ttft=0.1155 dec=151.88tps pre=458.87tps vram=18914.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1067 dec=97.3tps pre=281.16tps vram=18914.0MiB ok=True
+    [2] q_logic            ttft=0.2299 dec=Nonetps pre=169.64tps vram=18914.0MiB ok=True
+    [2] q_code             ttft=0.2115 dec=112.74tps pre=198.58tps vram=18914.0MiB ok=True
+    [2] q_json             ttft=0.2306 dec=148.39tps pre=229.84tps vram=18914.0MiB ok=True
+    draft: {'draft_accepted': 3391, 'draft_generated': 3930, 'accept_rate': 0.8628, 'n_requests': 27, 'mean_accepted_len': 2.866}
+    GPU released, VRAM back to 7731 MiB
+
+### stage 'reasoning': 4 configs
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think-xhigh
+========================================================================
+    idle baseline now 7731 MiB
+    loaded in 13.75s, process VRAM 18756.0 MiB (whole card 26483 MiB)
+    [0] decode_code        ttft=0.1974 dec=126.82tps pre=460.99tps vram=18792.0MiB ok=None
+    [0] decode_prose       ttft=0.1666 dec=128.16tps pre=558.22tps vram=18777.0MiB ok=None
+    [0] decode_structured  ttft=0.2941 dec=145.68tps pre=316.22tps vram=18777.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8453 dec=123.75tps pre=2916.04tps vram=18794.0MiB ok=True
+    [0] prefill_75pct      ttft=9.0569 dec=120.89tps pre=2899.01tps vram=18820.0MiB ok=True
+    [0] q_arithmetic       ttft=1.0276 dec=138.0tps pre=68.12tps vram=18820.0MiB ok=True
+    [0] q_logic            ttft=0.3442 dec=118.39tps pre=229.52tps vram=18832.0MiB ok=True
+    [0] q_code             ttft=0.3264 dec=124.74tps pre=251.23tps vram=18942.0MiB ok=True
+    [0] q_json             ttft=0.3756 dec=139.73tps pre=247.6tps vram=18901.0MiB ok=True
+    [0] needle_d10         ttft=10.4561 dec=130.39tps pre=2866.56tps vram=18917.0MiB ok=True
+    [0] needle_d50         ttft=11.2418 dec=116.62tps pre=2666.21tps vram=18950.0MiB ok=True
+    [0] needle_d90         ttft=11.0568 dec=125.82tps pre=2710.91tps vram=18879.0MiB ok=True
+    [1] decode_code        ttft=1.0745 dec=128.86tps pre=84.69tps vram=18878.0MiB ok=None
+    [1] decode_prose       ttft=0.3394 dec=129.83tps pre=274.01tps vram=18845.0MiB ok=None
+    [1] decode_structured  ttft=0.3618 dec=142.3tps pre=257.05tps vram=18941.0MiB ok=None
+    [1] q_arithmetic       ttft=0.2848 dec=141.98tps pre=245.79tps vram=18952.0MiB ok=True
+    [1] q_logic            ttft=0.4308 dec=120.62tps pre=183.38tps vram=18919.0MiB ok=True
+    [1] q_code             ttft=0.3315 dec=128.38tps pre=247.36tps vram=19097.0MiB ok=True
+    [1] q_json             ttft=0.3279 dec=139.44tps pre=283.62tps vram=18985.0MiB ok=True
+    [2] decode_code        ttft=0.2742 dec=124.31tps pre=331.87tps vram=18969.0MiB ok=None
+    [2] decode_prose       ttft=0.1697 dec=125.12tps pre=548.03tps vram=19034.0MiB ok=None
+    [2] decode_structured  ttft=0.1672 dec=143.02tps pre=556.22tps vram=19044.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1527 dec=146.52tps pre=458.42tps vram=19017.0MiB ok=True
+    [2] q_logic            ttft=0.2559 dec=122.43tps pre=308.71tps vram=19007.0MiB ok=True
+    [2] q_code             ttft=0.2721 dec=129.72tps pre=301.36tps vram=19091.0MiB ok=True
+    [2] q_json             ttft=0.1312 dec=137.66tps pre=708.84tps vram=19078.0MiB ok=True
+    draft: {'draft_accepted': 4429, 'draft_generated': 5779, 'accept_rate': 0.7664, 'n_requests': 27, 'mean_accepted_len': 2.561}
+    GPU released, VRAM back to 7993 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think-medium
+========================================================================
+    idle baseline now 8007 MiB
+    loaded in 13.68s, process VRAM 18756.0 MiB (whole card 26813 MiB)
+    [0] decode_code        ttft=0.1761 dec=138.2tps pre=278.25tps vram=18850.0MiB ok=None
+    [0] decode_prose       ttft=0.1171 dec=121.06tps pre=435.53tps vram=18842.0MiB ok=None
+    [0] decode_structured  ttft=0.2074 dec=147.82tps pre=245.9tps vram=18855.0MiB ok=None
+    [0] prefill_25pct      ttft=2.7004 dec=139.44tps pre=3056.95tps vram=18869.0MiB ok=True
+    [0] prefill_75pct      ttft=8.882 dec=139.61tps pre=2951.36tps vram=18860.0MiB ok=True
+    [0] q_arithmetic       ttft=0.7343 dec=145.44tps pre=38.13tps vram=18853.0MiB ok=True
+    [0] q_logic            ttft=0.203 dec=139.89tps pre=182.27tps vram=18853.0MiB ok=True
+    [0] q_code             ttft=0.1944 dec=150.15tps pre=205.76tps vram=18853.0MiB ok=True
+    [0] q_json             ttft=0.2173 dec=144.84tps pre=234.7tps vram=18853.0MiB ok=True
+    [0] needle_d10         ttft=10.2408 dec=127.97tps pre=2922.72tps vram=18853.0MiB ok=True
+    [0] needle_d50         ttft=10.9311 dec=132.81tps pre=2738.15tps vram=18853.0MiB ok=True
+    [0] needle_d90         ttft=10.759 dec=131.47tps pre=2782.04tps vram=18853.0MiB ok=True
+    [1] decode_code        ttft=0.8704 dec=139.37tps pre=56.3tps vram=18804.0MiB ok=None
+    [1] decode_prose       ttft=0.3044 dec=120.6tps pre=167.54tps vram=18803.0MiB ok=None
+    [1] decode_structured  ttft=0.2255 dec=148.37tps pre=226.16tps vram=18803.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1963 dec=154.17tps pre=142.64tps vram=18803.0MiB ok=True
+    [1] q_logic            ttft=0.2093 dec=139.91tps pre=176.78tps vram=18803.0MiB ok=True
+    [1] q_code             ttft=0.1998 dec=149.82tps pre=200.2tps vram=18803.0MiB ok=True
+    [1] q_json             ttft=0.1937 dec=149.96tps pre=263.29tps vram=18803.0MiB ok=True
+    [2] decode_code        ttft=0.1952 dec=139.24tps pre=251.02tps vram=18803.0MiB ok=None
+    [2] decode_prose       ttft=0.123 dec=120.81tps pre=414.63tps vram=18803.0MiB ok=None
+    [2] decode_structured  ttft=0.1066 dec=148.46tps pre=478.42tps vram=18803.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1153 dec=155.21tps pre=242.84tps vram=18802.0MiB ok=True
+    [2] q_logic            ttft=0.1301 dec=139.24tps pre=284.4tps vram=18802.0MiB ok=True
+    [2] q_code             ttft=0.122 dec=148.02tps pre=327.87tps vram=18802.0MiB ok=True
+    [2] q_json             ttft=0.1072 dec=153.44tps pre=475.75tps vram=18802.0MiB ok=True
+    draft: {'draft_accepted': 4264, 'draft_generated': 5198, 'accept_rate': 0.8203, 'n_requests': 27, 'mean_accepted_len': 2.754}
+    GPU released, VRAM back to 8012 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think-low
+========================================================================
+    idle baseline now 8012 MiB
+    loaded in 13.8s, process VRAM 18756.0 MiB (whole card 26768 MiB)
+    [0] decode_code        ttft=0.1899 dec=143.42tps pre=416.01tps vram=18791.0MiB ok=None
+    [0] decode_prose       ttft=0.1635 dec=124.94tps pre=495.41tps vram=18788.0MiB ok=None
+    [0] decode_structured  ttft=0.308 dec=149.29tps pre=262.99tps vram=18789.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8261 dec=139.29tps pre=2931.6tps vram=18808.0MiB ok=True
+    [0] prefill_75pct      ttft=8.9673 dec=138.31tps pre=2926.63tps vram=18808.0MiB ok=True
+    [0] q_arithmetic       ttft=0.9765 dec=144.16tps pre=59.4tps vram=18796.0MiB ok=True
+    [0] q_logic            ttft=0.3584 dec=137.76tps pre=186.94tps vram=18796.0MiB ok=True
+    [0] q_code             ttft=0.3023 dec=138.76tps pre=231.56tps vram=18796.0MiB ok=True
+    [0] q_json             ttft=0.3064 dec=163.73tps pre=264.36tps vram=18796.0MiB ok=True
+    [0] needle_d10         ttft=10.2299 dec=140.17tps pre=2928.77tps vram=18796.0MiB ok=True
+    [0] needle_d50         ttft=11.0301 dec=140.19tps pre=2716.29tps vram=18796.0MiB ok=True
+    [0] needle_d90         ttft=10.7991 dec=132.95tps pre=2774.49tps vram=18796.0MiB ok=True
+    [1] decode_code        ttft=1.0658 dec=147.47tps pre=74.12tps vram=18796.0MiB ok=None
+    [1] decode_prose       ttft=0.2926 dec=128.14tps pre=276.83tps vram=18796.0MiB ok=None
+    [1] decode_structured  ttft=0.3124 dec=153.21tps pre=259.28tps vram=18796.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3456 dec=155.78tps pre=167.82tps vram=18796.0MiB ok=True
+    [1] q_logic            ttft=0.4289 dec=143.66tps pre=156.21tps vram=18796.0MiB ok=True
+    [1] q_code             ttft=0.2867 dec=149.58tps pre=244.16tps vram=18796.0MiB ok=True
+    [1] q_json             ttft=0.3251 dec=163.49tps pre=249.15tps vram=18796.0MiB ok=True
+    [2] decode_code        ttft=0.3414 dec=147.27tps pre=231.4tps vram=18796.0MiB ok=None
+    [2] decode_prose       ttft=0.1761 dec=127.84tps pre=459.97tps vram=18796.0MiB ok=None
+    [2] decode_structured  ttft=0.1671 dec=153.07tps pre=484.74tps vram=18796.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1246 dec=153.82tps pre=465.49tps vram=18796.0MiB ok=True
+    [2] q_logic            ttft=0.26 dec=142.01tps pre=257.69tps vram=18796.0MiB ok=True
+    [2] q_code             ttft=0.2581 dec=148.5tps pre=271.21tps vram=18796.0MiB ok=True
+    [2] q_json             ttft=0.2552 dec=160.98tps pre=317.4tps vram=18796.0MiB ok=True
+    draft: {'draft_accepted': 4231, 'draft_generated': 5044, 'accept_rate': 0.8388, 'n_requests': 27, 'mean_accepted_len': 2.764}
+    GPU released, VRAM back to 8010 MiB
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-nothink
+
+### stage 'kv': 6 configs
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specnone-think
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think
+
+========================================================================
+>>> llamacpp-ctx32k-kvq8_0-faon-specnone-think
+========================================================================
+    idle baseline now 8010 MiB
+    loaded in 13.65s, process VRAM 17069.9 MiB (whole card 25080 MiB)
+    [0] decode_code        ttft=0.1936 dec=77.05tps pre=470.04tps vram=17082.0MiB ok=None
+    [0] decode_prose       ttft=0.1791 dec=77.05tps pre=519.26tps vram=17082.0MiB ok=None
+    [0] decode_structured  ttft=0.2759 dec=77.14tps pre=337.08tps vram=17076.0MiB ok=None
+    [0] prefill_25pct      ttft=2.5729 dec=75.27tps pre=3224.77tps vram=17086.0MiB ok=True
+    [0] prefill_75pct      ttft=8.3398 dec=71.5tps pre=3148.28tps vram=17086.0MiB ok=True
+    [0] q_arithmetic       ttft=0.5519 dec=75.61tps pre=126.83tps vram=17086.0MiB ok=True
+    [0] q_logic            ttft=0.2737 dec=76.09tps pre=288.64tps vram=17086.0MiB ok=True
+    [0] q_code             ttft=0.2801 dec=75.88tps pre=292.75tps vram=17086.0MiB ok=True
+    [0] q_json             ttft=0.285 dec=77.91tps pre=326.32tps vram=17086.0MiB ok=True
+    [0] needle_d10         ttft=9.637 dec=70.08tps pre=3110.2tps vram=17086.0MiB ok=True
+    [0] needle_d50         ttft=9.9882 dec=70.5tps pre=3000.84tps vram=17086.0MiB ok=True
+    [0] needle_d90         ttft=9.8936 dec=70.59tps pre=3029.64tps vram=17086.0MiB ok=True
+    [1] decode_code        ttft=0.6543 dec=77.11tps pre=139.08tps vram=17086.0MiB ok=None
+    [1] decode_prose       ttft=0.3081 dec=76.71tps pre=301.85tps vram=17086.0MiB ok=None
+    [1] decode_structured  ttft=0.3504 dec=77.1tps pre=265.41tps vram=17086.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3325 dec=77.92tps pre=210.53tps vram=17086.0MiB ok=True
+    [1] q_logic            ttft=0.3229 dec=77.68tps pre=244.66tps vram=17086.0MiB ok=True
+    [1] q_code             ttft=0.3382 dec=77.25tps pre=242.46tps vram=17086.0MiB ok=True
+    [1] q_json             ttft=0.288 dec=77.8tps pre=322.92tps vram=17086.0MiB ok=True
+    [2] decode_code        ttft=0.2983 dec=77.08tps pre=305.06tps vram=17086.0MiB ok=None
+    [2] decode_prose       ttft=0.1636 dec=77.06tps pre=568.46tps vram=17086.0MiB ok=None
+    [2] decode_structured  ttft=0.1696 dec=76.99tps pre=548.35tps vram=17086.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1199 dec=77.76tps pre=583.82tps vram=17086.0MiB ok=True
+    [2] q_logic            ttft=0.227 dec=78.03tps pre=348.02tps vram=17086.0MiB ok=True
+    [2] q_code             ttft=0.2439 dec=77.36tps pre=336.2tps vram=17086.0MiB ok=True
+    [2] q_json             ttft=0.1375 dec=77.28tps pre=676.36tps vram=17086.0MiB ok=True
+    draft: {}
+    GPU released, VRAM back to 7997 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvq8_0-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7997 MiB
+    loaded in 13.78s, process VRAM 17882.0 MiB (whole card 25878 MiB)
+    [0] decode_code        ttft=0.2229 dec=124.72tps pre=408.25tps vram=17908.0MiB ok=None
+    [0] decode_prose       ttft=0.1822 dec=128.67tps pre=510.43tps vram=17907.0MiB ok=None
+    [0] decode_structured  ttft=0.3207 dec=149.77tps pre=289.99tps vram=17907.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8057 dec=110.05tps pre=2957.19tps vram=17923.0MiB ok=True
+    [0] prefill_75pct      ttft=8.9374 dec=127.84tps pre=2937.77tps vram=17923.0MiB ok=True
+    [0] q_arithmetic       ttft=0.6896 dec=149.58tps pre=101.51tps vram=17923.0MiB ok=True
+    [0] q_logic            ttft=0.307 dec=127.2tps pre=257.33tps vram=17923.0MiB ok=True
+    [0] q_code             ttft=0.3356 dec=132.77tps pre=244.34tps vram=17923.0MiB ok=True
+    [0] q_json             ttft=0.3839 dec=135.47tps pre=242.25tps vram=17923.0MiB ok=True
+    [0] needle_d10         ttft=10.3015 dec=124.79tps pre=2909.58tps vram=17923.0MiB ok=True
+    [0] needle_d50         ttft=10.7654 dec=111.87tps pre=2784.2tps vram=17923.0MiB ok=True
+    [0] needle_d90         ttft=10.624 dec=125.02tps pre=2821.35tps vram=17923.0MiB ok=True
+    [1] decode_code        ttft=0.7901 dec=125.63tps pre=115.18tps vram=17923.0MiB ok=None
+    [1] decode_prose       ttft=0.3685 dec=128.32tps pre=252.37tps vram=17923.0MiB ok=None
+    [1] decode_structured  ttft=0.3386 dec=148.64tps pre=274.66tps vram=17923.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3016 dec=146.39tps pre=232.1tps vram=17923.0MiB ok=True
+    [1] q_logic            ttft=0.3676 dec=127.55tps pre=214.91tps vram=17923.0MiB ok=True
+    [1] q_code             ttft=0.2956 dec=132.93tps pre=277.4tps vram=17923.0MiB ok=True
+    [1] q_json             ttft=0.328 dec=142.03tps pre=283.54tps vram=17923.0MiB ok=True
+    [2] decode_code        ttft=0.3867 dec=124.07tps pre=235.32tps vram=17923.0MiB ok=None
+    [2] decode_prose       ttft=0.1686 dec=128.15tps pre=551.6tps vram=17923.0MiB ok=None
+    [2] decode_structured  ttft=0.1693 dec=149.18tps pre=549.32tps vram=17923.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1447 dec=146.5tps pre=483.76tps vram=17923.0MiB ok=True
+    [2] q_logic            ttft=0.2562 dec=124.25tps pre=308.35tps vram=17923.0MiB ok=True
+    [2] q_code             ttft=0.3072 dec=132.68tps pre=266.93tps vram=17923.0MiB ok=True
+    [2] q_json             ttft=0.1414 dec=141.02tps pre=657.71tps vram=17923.0MiB ok=True
+    draft: {'draft_accepted': 4415, 'draft_generated': 5917, 'accept_rate': 0.7462, 'n_requests': 27, 'mean_accepted_len': 2.542}
+    GPU released, VRAM back to 4994 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvq4_0-faon-specnone-think
+========================================================================
+    idle baseline now 4994 MiB
+    loaded in 13.72s, process VRAM 16557.9 MiB (whole card 21551 MiB)
+    [0] decode_code        ttft=0.1975 dec=76.88tps pre=460.76tps vram=16571.0MiB ok=None
+    [0] decode_prose       ttft=0.1622 dec=77.39tps pre=573.37tps vram=16571.0MiB ok=None
+    [0] decode_structured  ttft=0.3243 dec=76.81tps pre=286.77tps vram=16571.0MiB ok=None
+    [0] prefill_25pct      ttft=2.6073 dec=75.0tps pre=3182.22tps vram=16456.0MiB ok=True
+    [0] prefill_75pct      ttft=8.328 dec=71.24tps pre=3152.74tps vram=16263.0MiB ok=True
+    [0] q_arithmetic       ttft=0.4965 dec=77.75tps pre=140.99tps vram=16263.0MiB ok=True
+    [0] q_logic            ttft=0.3027 dec=78.18tps pre=260.98tps vram=16263.0MiB ok=True
+    [0] q_code             ttft=0.2886 dec=78.29tps pre=284.13tps vram=16263.0MiB ok=True
+    [0] q_json             ttft=0.3033 dec=78.26tps pre=306.63tps vram=16263.0MiB ok=True
+    [0] needle_d10         ttft=9.5915 dec=69.43tps pre=3124.95tps vram=16263.0MiB ok=True
+    [0] needle_d50         ttft=9.8593 dec=70.07tps pre=3040.07tps vram=16263.0MiB ok=True
+    [0] needle_d90         ttft=9.7821 dec=70.26tps pre=3064.17tps vram=16263.0MiB ok=True
+    [1] decode_code        ttft=0.5448 dec=76.28tps pre=167.03tps vram=16263.0MiB ok=None
+    [1] decode_prose       ttft=0.1678 dec=77.3tps pre=554.23tps vram=16263.0MiB ok=None
+    [1] decode_structured  ttft=0.147 dec=77.27tps pre=632.65tps vram=16263.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1217 dec=77.89tps pre=575.18tps vram=16263.0MiB ok=True
+    [1] q_logic            ttft=0.2351 dec=78.0tps pre=336.03tps vram=16263.0MiB ok=True
+    [1] q_code             ttft=0.2155 dec=77.84tps pre=380.51tps vram=16263.0MiB ok=True
+    [1] q_json             ttft=0.2626 dec=77.91tps pre=354.15tps vram=16263.0MiB ok=True
+    [2] decode_code        ttft=0.2746 dec=76.99tps pre=331.39tps vram=16263.0MiB ok=None
+    [2] decode_prose       ttft=0.1566 dec=77.12tps pre=593.87tps vram=16263.0MiB ok=None
+    [2] decode_structured  ttft=0.149 dec=77.3tps pre=624.16tps vram=16251.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1163 dec=77.8tps pre=601.89tps vram=16251.0MiB ok=True
+    [2] q_logic            ttft=0.2254 dec=78.15tps pre=350.49tps vram=16251.0MiB ok=True
+    [2] q_code             ttft=0.221 dec=77.82tps pre=371.04tps vram=16251.0MiB ok=True
+    [2] q_json             ttft=0.2527 dec=78.06tps pre=368.03tps vram=16251.0MiB ok=True
+    draft: {}
+    GPU released, VRAM back to 4666 MiB
+
+========================================================================
+>>> llamacpp-ctx32k-kvq4_0-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 4666 MiB
+    loaded in 13.7s, process VRAM 17370.0 MiB (whole card 22035 MiB)
+    [0] decode_code        ttft=0.1923 dec=136.72tps pre=473.22tps vram=17395.0MiB ok=None
+    [0] decode_prose       ttft=0.1809 dec=129.11tps pre=514.1tps vram=17395.0MiB ok=None
+    [0] decode_structured  ttft=0.346 dec=152.35tps pre=268.79tps vram=17395.0MiB ok=None
+    [0] prefill_25pct      ttft=2.8474 dec=113.6tps pre=2913.89tps vram=17411.0MiB ok=True
+    [0] prefill_75pct      ttft=8.8799 dec=118.66tps pre=2956.79tps vram=17413.0MiB ok=True
+    [0] q_arithmetic       ttft=0.5738 dec=150.29tps pre=121.99tps vram=17413.0MiB ok=True
+    [0] q_logic            ttft=0.3378 dec=137.09tps pre=233.87tps vram=17413.0MiB ok=True
+    [0] q_code             ttft=0.3333 dec=141.83tps pre=246.02tps vram=17413.0MiB ok=True
+    [0] q_json             ttft=0.3256 dec=143.84tps pre=285.63tps vram=17413.0MiB ok=True
+    [0] needle_d10         ttft=10.2229 dec=115.58tps pre=2931.95tps vram=17413.0MiB ok=True
+    [0] needle_d50         ttft=10.5964 dec=110.31tps pre=2828.6tps vram=17413.0MiB ok=True
+    [0] needle_d90         ttft=10.5249 dec=113.8tps pre=2847.91tps vram=17413.0MiB ok=True
+    [1] decode_code        ttft=0.7201 dec=132.22tps pre=126.37tps vram=17413.0MiB ok=None
+    [1] decode_prose       ttft=0.315 dec=128.69tps pre=295.24tps vram=17413.0MiB ok=None
+    [1] decode_structured  ttft=0.3091 dec=151.79tps pre=300.87tps vram=17413.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3422 dec=149.44tps pre=204.56tps vram=17413.0MiB ok=True
+    [1] q_logic            ttft=0.3383 dec=137.2tps pre=233.52tps vram=17413.0MiB ok=True
+    [1] q_code             ttft=0.3508 dec=140.59tps pre=233.75tps vram=17413.0MiB ok=True
+    [1] q_json             ttft=0.3897 dec=143.09tps pre=238.65tps vram=17413.0MiB ok=True
+    [2] decode_code        ttft=0.3057 dec=137.0tps pre=297.68tps vram=17413.0MiB ok=None
+    [2] decode_prose       ttft=0.1838 dec=129.1tps pre=505.98tps vram=17413.0MiB ok=None
+    [2] decode_structured  ttft=0.1898 dec=151.42tps pre=489.99tps vram=17413.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1375 dec=142.29tps pre=509.09tps vram=17413.0MiB ok=True
+    [2] q_logic            ttft=0.228 dec=136.88tps pre=346.49tps vram=17413.0MiB ok=True
+    [2] q_code             ttft=0.5375 dec=130.13tps pre=152.56tps vram=17408.0MiB ok=True
+    [2] q_json             ttft=0.2206 dec=137.55tps pre=421.58tps vram=17458.0MiB ok=True
+    draft: {'draft_accepted': 4143, 'draft_generated': 5192, 'accept_rate': 0.798, 'n_requests': 27, 'mean_accepted_len': 2.611}
+    GPU released, VRAM back to 6513 MiB
+
+### stage 'fa': 2 configs
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specnone-think
+
+========================================================================
+>>> llamacpp-ctx32k-kvf16-faoff-specnone-think
+========================================================================
+    idle baseline now 7653 MiB
+    loaded in 13.62s, process VRAM 19450.0 MiB (whole card 27141 MiB)
+    [0] decode_code        ttft=0.3342 dec=70.16tps pre=272.29tps vram=19734.0MiB ok=None
+    [0] decode_prose       ttft=0.1836 dec=69.62tps pre=506.54tps vram=19672.0MiB ok=None
+    [0] decode_structured  ttft=0.4793 dec=70.91tps pre=194.03tps vram=19589.0MiB ok=None
+    [0] prefill_25pct      ttft=3.0854 dec=69.41tps pre=2689.12tps vram=19770.0MiB ok=True
+    [0] prefill_75pct      ttft=10.6614 dec=61.31tps pre=2462.72tps vram=20208.0MiB ok=True
+    [0] q_arithmetic       ttft=1.0601 dec=73.83tps pre=66.03tps vram=20198.0MiB ok=True
+    [0] q_logic            ttft=0.4676 dec=74.24tps pre=168.95tps vram=20198.0MiB ok=True
+    [0] q_code             ttft=0.5492 dec=72.8tps pre=149.31tps vram=20209.0MiB ok=True
+    [0] q_json             ttft=0.4773 dec=73.97tps pre=194.85tps vram=20205.0MiB ok=True
+    [0] needle_d10         ttft=12.5265 dec=59.44tps pre=2392.77tps vram=20251.0MiB ok=True
+    [0] needle_d50         ttft=13.3854 dec=60.06tps pre=2239.23tps vram=20252.0MiB ok=True
+    [0] needle_d90         ttft=13.0237 dec=59.65tps pre=2301.5tps vram=20252.0MiB ok=True
+    [1] decode_code        ttft=1.2291 dec=73.19tps pre=74.04tps vram=20252.0MiB ok=None
+    [1] decode_prose       ttft=0.567 dec=73.18tps pre=164.02tps vram=20252.0MiB ok=None
+    [1] decode_structured  ttft=0.4644 dec=73.36tps pre=200.26tps vram=20251.0MiB ok=None
+    [1] q_arithmetic       ttft=0.4748 dec=73.94tps pre=147.43tps vram=20251.0MiB ok=True
+    [1] q_logic            ttft=0.5038 dec=73.44tps pre=156.81tps vram=20251.0MiB ok=True
+    [1] q_code             ttft=0.6062 dec=73.63tps pre=135.27tps vram=20251.0MiB ok=True
+    [1] q_json             ttft=0.4672 dec=74.42tps pre=199.06tps vram=20251.0MiB ok=True
+    [2] decode_code        ttft=0.4677 dec=73.29tps pre=194.57tps vram=20251.0MiB ok=None
+    [2] decode_prose       ttft=0.1687 dec=73.44tps pre=551.27tps vram=20251.0MiB ok=None
+    [2] decode_structured  ttft=0.1682 dec=73.35tps pre=552.91tps vram=20251.0MiB ok=None
+    [2] q_arithmetic       ttft=0.3076 dec=73.68tps pre=227.57tps vram=20251.0MiB ok=True
+    [2] q_logic            ttft=0.5611 dec=74.63tps pre=140.79tps vram=20251.0MiB ok=True
+    [2] q_code             ttft=0.4301 dec=73.87tps pre=190.65tps vram=20251.0MiB ok=True
+    [2] q_json             ttft=0.3047 dec=73.24tps pre=305.22tps vram=20251.0MiB ok=True
+    draft: {}
+    GPU released, VRAM back to 7626 MiB
+
+### stage 'runtime': 6 configs
+
+========================================================================
+>>> ollama-ctx32k-kvf16-faon-specnone-think
+========================================================================
+    idle baseline now 7626 MiB
+    loaded in 8.11s, process VRAM 0.3 MiB (whole card 28126 MiB)
+    [0] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=20517.0MiB ok=None ERR=no tokens generated
+    [0] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=20518.0MiB ok=None ERR=no tokens generated
+    [0] decode_structured  ttft=0.7098 dec=194.78tps pre=71.85tps vram=20522.0MiB ok=None
+    [0] prefill_25pct      ttft=3.3482 dec=132061.63tps pre=2465.5tps vram=20535.0MiB ok=True
+    [0] prefill_75pct      ttft=9.5242 dec=2352.47tps pre=2752.36tps vram=20538.0MiB ok=True
+    [0] q_arithmetic       ttft=1.4539 dec=3477.54tps pre=19.26tps vram=20523.0MiB ok=True
+    [0] q_logic            ttft=1.1543 dec=Nonetps pre=32.05tps vram=20523.0MiB ok=True
+    [0] q_code             ttft=1.0197 dec=926.56tps pre=39.23tps vram=20523.0MiB ok=True
+    [0] q_json             ttft=0.8229 dec=1242.37tps pre=61.98tps vram=20523.0MiB ok=True
+    [0] needle_d10         ttft=10.8747 dec=2570.04tps pre=2752.35tps vram=20523.0MiB ok=True
+    [0] needle_d50         ttft=11.691 dec=2369.28tps pre=2560.17tps vram=20523.0MiB ok=True
+    [0] needle_d90         ttft=11.599 dec=3440.74tps pre=2580.57tps vram=20528.0MiB ok=True
+    [1] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=20524.0MiB ok=None ERR=no tokens generated
+    [1] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=20524.0MiB ok=None ERR=no tokens generated
+    [1] decode_structured  ttft=0.7122 dec=193.96tps pre=71.61tps vram=20523.0MiB ok=None
+    [1] q_arithmetic       ttft=0.9222 dec=4067.61tps pre=30.36tps vram=20523.0MiB ok=True
+    [1] q_logic            ttft=1.1575 dec=Nonetps pre=31.97tps vram=20523.0MiB ok=True
+    [1] q_code             ttft=1.0153 dec=927.09tps pre=39.4tps vram=20523.0MiB ok=True
+    [1] q_json             ttft=0.8327 dec=1215.44tps pre=61.25tps vram=20523.0MiB ok=True
+    [2] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=20523.0MiB ok=None ERR=no tokens generated
+    [2] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=20524.0MiB ok=None ERR=no tokens generated
+    [2] decode_structured  ttft=0.621 dec=194.51tps pre=82.13tps vram=20523.0MiB ok=None
+    [2] q_arithmetic       ttft=0.7845 dec=3659.38tps pre=35.69tps vram=20524.0MiB ok=True
+    [2] q_logic            ttft=1.0871 dec=Nonetps pre=34.04tps vram=20523.0MiB ok=True
+    [2] q_code             ttft=0.9482 dec=921.19tps pre=42.19tps vram=20523.0MiB ok=True
+    [2] q_json             ttft=0.7502 dec=1266.57tps pre=67.98tps vram=20523.0MiB ok=True
+    GPU released, VRAM back to 7626 MiB
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specnone-think
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think
+
+========================================================================
+>>> ollama-ctx32k-kvq8_0-faon-specnone-think
+========================================================================
+    idle baseline now 7626 MiB
+    loaded in 9.21s, process VRAM 0.3 MiB (whole card 27193 MiB)
+    [0] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=19591.0MiB ok=None ERR=no tokens generated
+    [0] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=19588.0MiB ok=None ERR=no tokens generated
+    [0] decode_structured  ttft=0.7086 dec=193.27tps pre=71.97tps vram=19588.0MiB ok=None
+    [0] prefill_25pct      ttft=3.3232 dec=86299.89tps pre=2484.05tps vram=19604.0MiB ok=True
+    [0] prefill_75pct      ttft=None dec=Nonetps pre=Nonetps vram=NoneMiB ok=None ERR=HTTP Error 500: Internal Server Error
+    [0] q_arithmetic       ttft=1.1558 dec=3800.08tps pre=24.23tps vram=19603.0MiB ok=True
+    [0] q_logic            ttft=1.0243 dec=Nonetps pre=36.12tps vram=19603.0MiB ok=True
+    [0] q_code             ttft=0.755 dec=542.35tps pre=52.98tps vram=19603.0MiB ok=True
+    [0] q_json             ttft=0.8207 dec=1252.16tps pre=62.14tps vram=19603.0MiB ok=True
+    [0] needle_d10         ttft=10.7849 dec=2174.96tps pre=2775.27tps vram=19603.0MiB ok=True
+    [0] needle_d50         ttft=11.1852 dec=2407.91tps pre=2675.95tps vram=19604.0MiB ok=True
+    [0] needle_d90         ttft=None dec=Nonetps pre=Nonetps vram=NoneMiB ok=None ERR=HTTP Error 500: Internal Server Error
+    [1] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=19598.0MiB ok=None ERR=no tokens generated
+    [1] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=19598.0MiB ok=None ERR=no tokens generated
+    [1] decode_structured  ttft=0.6202 dec=191.25tps pre=82.23tps vram=19599.0MiB ok=None
+    [1] q_arithmetic       ttft=0.7993 dec=3809.95tps pre=35.03tps vram=19598.0MiB ok=True
+    [1] q_logic            ttft=0.9298 dec=Nonetps pre=39.79tps vram=19598.0MiB ok=True
+    [1] q_code             ttft=0.7926 dec=544.71tps pre=50.47tps vram=19598.0MiB ok=True
+    [1] q_json             ttft=0.8726 dec=1268.41tps pre=58.45tps vram=19598.0MiB ok=True
+    [2] decode_code        ttft=None dec=Nonetps pre=Nonetps vram=19599.0MiB ok=None ERR=no tokens generated
+    [2] decode_prose       ttft=None dec=Nonetps pre=Nonetps vram=19598.0MiB ok=None ERR=no tokens generated
+    [2] decode_structured  ttft=0.6241 dec=191.63tps pre=81.72tps vram=19598.0MiB ok=None
+    [2] q_arithmetic       ttft=0.7926 dec=3809.83tps pre=35.33tps vram=19598.0MiB ok=True
+    [2] q_logic            ttft=0.9334 dec=Nonetps pre=39.64tps vram=19598.0MiB ok=True
+    [2] q_code             ttft=0.7981 dec=534.95tps pre=50.12tps vram=19598.0MiB ok=True
+    [2] q_json             ttft=0.8637 dec=1236.51tps pre=59.05tps vram=19602.0MiB ok=True
+    GPU released, VRAM back to 7621 MiB
+  skip (cached): llamacpp-ctx32k-kvq8_0-faon-specnone-think
+  skip (cached): llamacpp-ctx32k-kvq8_0-faon-specdraft-mtpn2-think
+
+### stage 'ctx': 7 configs
+
+========================================================================
+>>> llamacpp-ctx4k-kvf16-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7621 MiB
+    loaded in 13.63s, process VRAM 16819.9 MiB (whole card 24441 MiB)
+    [0] decode_code        ttft=0.2347 dec=125.11tps pre=387.73tps vram=16864.0MiB ok=None
+    [0] decode_prose       ttft=0.1668 dec=127.04tps pre=557.55tps vram=16860.0MiB ok=None
+    [0] decode_structured  ttft=0.3532 dec=144.87tps pre=263.31tps vram=16850.0MiB ok=None
+    [0] prefill_75pct      ttft=1.1921 dec=135.85tps pre=2313.56tps vram=16846.0MiB ok=True
+    [0] q_arithmetic       ttft=0.4301 dec=143.57tps pre=162.75tps vram=16866.0MiB ok=True
+    [0] q_logic            ttft=0.3364 dec=124.33tps pre=234.84tps vram=16862.0MiB ok=True
+    [0] q_code             ttft=0.338 dec=128.79tps pre=242.6tps vram=16862.0MiB ok=True
+    [0] q_json             ttft=0.337 dec=138.33tps pre=275.96tps vram=16862.0MiB ok=True
+    [0] needle_d10         ttft=1.3156 dec=136.33tps pre=2442.23tps vram=16862.0MiB ok=True
+    [0] needle_d50         ttft=1.4797 dec=134.56tps pre=2171.39tps vram=16862.0MiB ok=True
+    [0] needle_d90         ttft=1.4185 dec=144.91tps pre=2265.77tps vram=16862.0MiB ok=True
+    [1] decode_code        ttft=0.5669 dec=122.82tps pre=160.52tps vram=16862.0MiB ok=None
+    [1] decode_prose       ttft=0.1778 dec=126.46tps pre=523.06tps vram=16862.0MiB ok=None
+    [1] decode_structured  ttft=0.1808 dec=144.67tps pre=514.38tps vram=16862.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1351 dec=142.53tps pre=518.13tps vram=16861.0MiB ok=True
+    [1] q_logic            ttft=0.2498 dec=120.16tps pre=316.25tps vram=16862.0MiB ok=True
+    [1] q_code             ttft=0.3076 dec=127.66tps pre=266.58tps vram=16862.0MiB ok=True
+    [1] q_json             ttft=0.1401 dec=136.97tps pre=663.81tps vram=16861.0MiB ok=True
+    [2] decode_code        ttft=0.3066 dec=125.37tps pre=296.8tps vram=16861.0MiB ok=None
+    [2] decode_prose       ttft=0.1794 dec=126.35tps pre=518.39tps vram=16862.0MiB ok=None
+    [2] decode_structured  ttft=0.1791 dec=144.26tps pre=519.26tps vram=16858.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1263 dec=140.24tps pre=554.24tps vram=16858.0MiB ok=True
+    [2] q_logic            ttft=0.2431 dec=119.09tps pre=324.97tps vram=16858.0MiB ok=True
+    [2] q_code             ttft=0.3004 dec=127.23tps pre=272.97tps vram=16858.0MiB ok=True
+    [2] q_json             ttft=0.1419 dec=137.09tps pre=655.39tps vram=16858.0MiB ok=True
+    draft: {'draft_accepted': 4357, 'draft_generated': 5673, 'accept_rate': 0.768, 'n_requests': 26, 'mean_accepted_len': 2.591}
+    GPU released, VRAM back to 7613 MiB
+
+========================================================================
+>>> llamacpp-ctx8k-kvf16-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7612 MiB
+    loaded in 13.63s, process VRAM 17099.9 MiB (whole card 24711 MiB)
+    [0] decode_code        ttft=0.2289 dec=124.98tps pre=397.55tps vram=17126.0MiB ok=None
+    [0] decode_prose       ttft=0.1702 dec=125.96tps pre=546.42tps vram=17126.0MiB ok=None
+    [0] decode_structured  ttft=0.355 dec=144.55tps pre=261.97tps vram=17126.0MiB ok=None
+    [0] prefill_25pct      ttft=0.8611 dec=147.03tps pre=1954.48tps vram=17126.0MiB ok=True
+    [0] prefill_75pct      ttft=2.2846 dec=120.29tps pre=2668.74tps vram=17142.0MiB ok=True
+    [0] q_arithmetic       ttft=0.4845 dec=141.21tps pre=144.48tps vram=17142.0MiB ok=True
+    [0] q_logic            ttft=0.349 dec=121.32tps pre=226.36tps vram=17142.0MiB ok=True
+    [0] q_code             ttft=0.3514 dec=127.47tps pre=233.35tps vram=17142.0MiB ok=True
+    [0] q_json             ttft=0.3353 dec=136.56tps pre=277.36tps vram=17142.0MiB ok=True
+    [0] needle_d10         ttft=2.5456 dec=125.63tps pre=2741.59tps vram=17146.0MiB ok=True
+    [0] needle_d50         ttft=2.7621 dec=121.07tps pre=2526.7tps vram=17142.0MiB ok=True
+    [0] needle_d90         ttft=2.6614 dec=121.46tps pre=2622.68tps vram=17142.0MiB ok=True
+    [1] decode_code        ttft=0.6491 dec=123.19tps pre=140.19tps vram=17142.0MiB ok=None
+    [1] decode_prose       ttft=0.1892 dec=126.3tps pre=491.54tps vram=17141.0MiB ok=None
+    [1] decode_structured  ttft=0.1922 dec=142.84tps pre=483.87tps vram=17142.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1494 dec=140.78tps pre=468.54tps vram=17141.0MiB ok=True
+    [1] q_logic            ttft=0.2581 dec=119.94tps pre=306.08tps vram=17141.0MiB ok=True
+    [1] q_code             ttft=0.2855 dec=127.8tps pre=287.22tps vram=17141.0MiB ok=True
+    [1] q_json             ttft=0.1491 dec=136.53tps pre=623.74tps vram=17141.0MiB ok=True
+    [2] decode_code        ttft=0.3159 dec=123.9tps pre=288.07tps vram=17142.0MiB ok=None
+    [2] decode_prose       ttft=0.1765 dec=126.09tps pre=526.91tps vram=17141.0MiB ok=None
+    [2] decode_structured  ttft=0.1791 dec=143.02tps pre=519.26tps vram=17142.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1264 dec=141.62tps pre=553.8tps vram=17157.0MiB ok=True
+    [2] q_logic            ttft=0.2411 dec=120.21tps pre=327.66tps vram=17156.0MiB ok=True
+    [2] q_code             ttft=0.2879 dec=127.53tps pre=284.82tps vram=17156.0MiB ok=True
+    [2] q_json             ttft=0.1293 dec=135.92tps pre=719.26tps vram=17156.0MiB ok=True
+    draft: {'draft_accepted': 4412, 'draft_generated': 5765, 'accept_rate': 0.7653, 'n_requests': 27, 'mean_accepted_len': 2.559}
+    GPU released, VRAM back to 7627 MiB
+
+========================================================================
+>>> llamacpp-ctx16k-kvf16-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7630 MiB
+    loaded in 13.63s, process VRAM 17635.9 MiB (whole card 25266 MiB)
+    [0] decode_code        ttft=0.2379 dec=125.54tps pre=382.51tps vram=17662.0MiB ok=None
+    [0] decode_prose       ttft=0.1657 dec=126.81tps pre=561.26tps vram=17662.0MiB ok=None
+    [0] decode_structured  ttft=0.3559 dec=144.32tps pre=261.31tps vram=17662.0MiB ok=None
+    [0] prefill_25pct      ttft=1.5498 dec=135.55tps pre=2497.1tps vram=17677.0MiB ok=True
+    [0] prefill_75pct      ttft=4.4533 dec=116.26tps pre=2858.11tps vram=17677.0MiB ok=True
+    [0] q_arithmetic       ttft=0.6138 dec=144.01tps pre=114.04tps vram=17677.0MiB ok=True
+    [0] q_logic            ttft=0.3308 dec=123.0tps pre=238.81tps vram=17677.0MiB ok=True
+    [0] q_code             ttft=0.3374 dec=127.32tps pre=243.03tps vram=17678.0MiB ok=True
+    [0] q_json             ttft=0.3449 dec=135.55tps pre=269.64tps vram=17678.0MiB ok=True
+    [0] needle_d10         ttft=5.0044 dec=131.81tps pre=2897.45tps vram=17678.0MiB ok=True
+    [0] needle_d50         ttft=5.5725 dec=122.54tps pre=2602.06tps vram=17678.0MiB ok=True
+    [0] needle_d90         ttft=5.222 dec=124.87tps pre=2776.91tps vram=17675.0MiB ok=True
+    [1] decode_code        ttft=0.7095 dec=125.16tps pre=128.26tps vram=17675.0MiB ok=None
+    [1] decode_prose       ttft=0.382 dec=126.25tps pre=243.46tps vram=17674.0MiB ok=None
+    [1] decode_structured  ttft=0.3687 dec=142.68tps pre=252.24tps vram=17675.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3624 dec=142.86tps pre=193.16tps vram=17674.0MiB ok=True
+    [1] q_logic            ttft=0.35 dec=122.2tps pre=225.71tps vram=17674.0MiB ok=True
+    [1] q_code             ttft=0.4139 dec=127.24tps pre=198.12tps vram=17675.0MiB ok=True
+    [1] q_json             ttft=0.3506 dec=136.34tps pre=265.26tps vram=17675.0MiB ok=True
+    [2] decode_code        ttft=0.337 dec=124.57tps pre=270.03tps vram=17675.0MiB ok=None
+    [2] decode_prose       ttft=0.1904 dec=126.14tps pre=488.45tps vram=17675.0MiB ok=None
+    [2] decode_structured  ttft=0.1752 dec=143.31tps pre=530.82tps vram=17675.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1307 dec=142.61tps pre=535.58tps vram=17674.0MiB ok=True
+    [2] q_logic            ttft=0.2609 dec=119.39tps pre=302.8tps vram=17674.0MiB ok=True
+    [2] q_code             ttft=0.2933 dec=126.75tps pre=279.58tps vram=17675.0MiB ok=True
+    [2] q_json             ttft=0.1306 dec=135.14tps pre=712.1tps vram=17675.0MiB ok=True
+    draft: {'draft_accepted': 4405, 'draft_generated': 5741, 'accept_rate': 0.7673, 'n_requests': 27, 'mean_accepted_len': 2.57}
+    GPU released, VRAM back to 7628 MiB
+  skip (cached): llamacpp-ctx32k-kvf16-faon-specdraft-mtpn2-think
+
+========================================================================
+>>> llamacpp-ctx64k-kvf16-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7628 MiB
+    loaded in 13.6s, process VRAM 20966.1 MiB (whole card 28593 MiB)
+    [0] decode_code        ttft=0.2214 dec=125.12tps pre=411.02tps vram=20995.0MiB ok=None
+    [0] decode_prose       ttft=0.1693 dec=125.86tps pre=549.32tps vram=20992.0MiB ok=None
+    [0] decode_structured  ttft=0.3488 dec=143.79tps pre=266.63tps vram=20991.0MiB ok=None
+    [0] prefill_25pct      ttft=5.8532 dec=113.4tps pre=2930.88tps vram=21011.0MiB ok=True
+    [0] prefill_75pct      ttft=21.7438 dec=110.02tps pre=2488.02tps vram=21012.0MiB ok=True
+    [0] q_arithmetic       ttft=1.6828 dec=137.35tps pre=41.6tps vram=21007.0MiB ok=True
+    [0] q_logic            ttft=0.4303 dec=118.48tps pre=183.59tps vram=21006.0MiB ok=True
+    [0] q_code             ttft=0.4185 dec=127.36tps pre=195.94tps vram=21006.0MiB ok=True
+    [0] q_json             ttft=0.3976 dec=137.43tps pre=233.9tps vram=21006.0MiB ok=True
+    [0] needle_d10         ttft=25.4627 dec=112.72tps pre=2416.55tps vram=21007.0MiB ok=True
+    [0] needle_d50         ttft=27.0692 dec=108.51tps pre=2273.14tps vram=21007.0MiB ok=True
+    [0] needle_d90         ttft=26.9894 dec=109.68tps pre=2279.9tps vram=18035.0MiB ok=True
+    [1] decode_code        ttft=1.7098 dec=124.65tps pre=53.22tps vram=18035.0MiB ok=None
+    [1] decode_prose       ttft=0.3436 dec=126.39tps pre=270.66tps vram=18035.0MiB ok=None
+    [1] decode_structured  ttft=0.3412 dec=142.91tps pre=272.57tps vram=18020.0MiB ok=None
+    [1] q_arithmetic       ttft=0.3404 dec=143.61tps pre=205.64tps vram=18019.0MiB ok=True
+    [1] q_logic            ttft=0.3395 dec=122.51tps pre=232.7tps vram=18019.0MiB ok=True
+    [1] q_code             ttft=0.4954 dec=127.48tps pre=165.52tps vram=18020.0MiB ok=True
+    [1] q_json             ttft=0.3395 dec=136.32tps pre=273.93tps vram=18020.0MiB ok=True
+    [2] decode_code        ttft=0.3528 dec=124.31tps pre=257.94tps vram=18019.0MiB ok=None
+    [2] decode_prose       ttft=0.1713 dec=126.49tps pre=542.91tps vram=18019.0MiB ok=None
+    [2] decode_structured  ttft=0.1761 dec=144.23tps pre=528.11tps vram=18019.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1302 dec=141.07tps pre=537.63tps vram=18019.0MiB ok=True
+    [2] q_logic            ttft=0.2445 dec=119.17tps pre=323.11tps vram=18020.0MiB ok=True
+    [2] q_code             ttft=0.2908 dec=126.53tps pre=281.98tps vram=18020.0MiB ok=True
+    [2] q_json             ttft=0.1245 dec=136.73tps pre=746.99tps vram=18019.0MiB ok=True
+    draft: {'draft_accepted': 4437, 'draft_generated': 5793, 'accept_rate': 0.7659, 'n_requests': 27, 'mean_accepted_len': 2.557}
+    GPU released, VRAM back to 4640 MiB
+
+========================================================================
+>>> llamacpp-ctx128k-kvq8_0-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 4640 MiB
+    loaded in 13.67s, process VRAM 22076.4 MiB (whole card 26721 MiB)
+    [0] decode_code        ttft=0.2205 dec=114.28tps pre=412.7tps vram=25110.0MiB ok=None
+    [0] decode_prose       ttft=0.1715 dec=117.5tps pre=542.27tps vram=25107.0MiB ok=None
+    [0] decode_structured  ttft=0.3599 dec=140.68tps pre=258.41tps vram=25103.0MiB ok=None
+    [0] prefill_25pct      ttft=13.2225 dec=108.09tps pre=2688.15tps vram=25123.0MiB ok=True
+    [0] prefill_75pct      ttft=63.2376 dec=82.31tps pre=1736.04tps vram=25120.0MiB ok=True
+    [0] q_arithmetic       ttft=2.0982 dec=135.06tps pre=33.36tps vram=25119.0MiB ok=True
+    [0] q_logic            ttft=0.4824 dec=115.45tps pre=163.76tps vram=25119.0MiB ok=True
+    [0] q_code             ttft=0.4058 dec=125.23tps pre=202.07tps vram=25119.0MiB ok=True
+    [0] q_json             ttft=0.3349 dec=134.28tps pre=277.69tps vram=25119.0MiB ok=True
+    [0] needle_d10         ttft=75.8981 dec=79.95tps pre=1642.02tps vram=25119.0MiB ok=True
+    [0] needle_d50         ttft=78.0985 dec=76.5tps pre=1595.75tps vram=25119.0MiB ok=True
+    [0] needle_d90         ttft=77.719 dec=77.17tps pre=1603.56tps vram=25119.0MiB ok=True
+    [1] decode_code        ttft=2.1159 dec=117.21tps pre=43.01tps vram=25119.0MiB ok=None
+    [1] decode_prose       ttft=0.357 dec=120.78tps pre=260.5tps vram=25119.0MiB ok=None
+    [1] decode_structured  ttft=0.3493 dec=141.31tps pre=266.25tps vram=25119.0MiB ok=None
+    [1] q_arithmetic       ttft=0.5417 dec=140.5tps pre=129.22tps vram=25119.0MiB ok=True
+    [1] q_logic            ttft=0.3363 dec=119.05tps pre=234.91tps vram=25119.0MiB ok=True
+    [1] q_code             ttft=0.3557 dec=124.66tps pre=230.53tps vram=25119.0MiB ok=True
+    [1] q_json             ttft=0.3387 dec=134.81tps pre=274.58tps vram=25117.0MiB ok=True
+    [2] decode_code        ttft=0.3553 dec=117.39tps pre=256.12tps vram=25117.0MiB ok=None
+    [2] decode_prose       ttft=0.1733 dec=120.62tps pre=536.64tps vram=25117.0MiB ok=None
+    [2] decode_structured  ttft=0.1756 dec=141.16tps pre=529.61tps vram=25117.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1315 dec=137.73tps pre=532.32tps vram=25117.0MiB ok=True
+    [2] q_logic            ttft=0.2623 dec=116.49tps pre=301.18tps vram=25117.0MiB ok=True
+    [2] q_code             ttft=0.2882 dec=124.82tps pre=284.52tps vram=25117.0MiB ok=True
+    [2] q_json             ttft=0.1425 dec=134.49tps pre=652.63tps vram=25117.0MiB ok=True
+    draft: {'draft_accepted': 4479, 'draft_generated': 5967, 'accept_rate': 0.7506, 'n_requests': 27, 'mean_accepted_len': 2.579}
+    GPU released, VRAM back to 7640 MiB
+
+========================================================================
+>>> llamacpp-ctx256k-kvq8_0-faon-specdraft-mtpn2-think
+========================================================================
+    idle baseline now 7639 MiB
+    loaded in 14.65s, process VRAM 27389.6 MiB (whole card 31339 MiB)
+    [0] decode_code        ttft=0.2489 dec=53.77tps pre=365.61tps vram=23735.0MiB ok=None
+    [0] decode_prose       ttft=0.2118 dec=55.74tps pre=439.09tps vram=23731.0MiB ok=None
+    [0] decode_structured  ttft=0.3654 dec=66.92tps pre=254.52tps vram=23731.0MiB ok=None
+    [0] prefill_25pct      ttft=98.4985 dec=43.32tps pre=737.83tps vram=23797.0MiB ok=True
+    [0] prefill_75pct      ttft=507.5612 dec=54.78tps pre=436.29tps vram=23798.0MiB ok=True
+    [0] q_arithmetic       ttft=0.2962 dec=138.48tps pre=236.33tps vram=22387.0MiB ok=True
+    [0] q_logic            ttft=0.3324 dec=118.14tps pre=237.67tps vram=22386.0MiB ok=True
+    [0] q_code             ttft=0.337 dec=124.25tps pre=243.32tps vram=22386.0MiB ok=True
+    [0] q_json             ttft=0.3532 dec=133.33tps pre=263.31tps vram=22386.0MiB ok=True
+    [0] needle_d10         ttft=577.7886 dec=13.33tps pre=437.03tps vram=23853.0MiB ok=True
+    [0] needle_d50         ttft=1651.2648 dec=9.26tps pre=152.92tps vram=23905.0MiB ok=True
+    [0] needle_d90         ttft=757.0688 dec=52.58tps pre=333.54tps vram=23602.0MiB ok=True
+    [1] decode_code        ttft=0.3439 dec=115.1tps pre=264.61tps vram=21640.0MiB ok=None
+    [1] decode_prose       ttft=0.1735 dec=119.2tps pre=536.02tps vram=21640.0MiB ok=None
+    [1] decode_structured  ttft=0.1778 dec=139.17tps pre=523.06tps vram=21640.0MiB ok=None
+    [1] q_arithmetic       ttft=0.1943 dec=136.36tps pre=360.27tps vram=21640.0MiB ok=True
+    [1] q_logic            ttft=0.2783 dec=114.75tps pre=283.87tps vram=21640.0MiB ok=True
+    [1] q_code             ttft=0.2918 dec=123.3tps pre=281.01tps vram=21640.0MiB ok=True
+    [1] q_json             ttft=0.1896 dec=132.4tps pre=490.51tps vram=21640.0MiB ok=True
+    [2] decode_code        ttft=0.3049 dec=114.72tps pre=298.46tps vram=21640.0MiB ok=None
+    [2] decode_prose       ttft=0.1791 dec=119.72tps pre=519.26tps vram=21640.0MiB ok=None
+    [2] decode_structured  ttft=0.1753 dec=138.96tps pre=530.52tps vram=21640.0MiB ok=None
+    [2] q_arithmetic       ttft=0.1358 dec=136.38tps pre=515.46tps vram=21640.0MiB ok=True
+    [2] q_logic            ttft=0.2222 dec=115.52tps pre=355.54tps vram=21640.0MiB ok=True
+    [2] q_code             ttft=0.2658 dec=123.55tps pre=308.5tps vram=21640.0MiB ok=True
+    [2] q_json             ttft=0.1281 dec=132.13tps pre=726.0tps vram=21640.0MiB ok=True
+    draft: {'draft_accepted': 4476, 'draft_generated': 5991, 'accept_rate': 0.7471, 'n_requests': 27, 'mean_accepted_len': 2.557}
+    GPU released, VRAM back to 1530 MiB
+
+Saved D:\Claude AI\AI Model Performance\qwen3.8-mtp-benchmark\research\results.json

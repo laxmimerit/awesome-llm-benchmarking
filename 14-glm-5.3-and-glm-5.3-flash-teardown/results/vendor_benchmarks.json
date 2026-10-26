@@ -1,0 +1,22 @@
+{
+  "_provenance": "Vendor self-reported scores, NOT measured on our rig. flash_vs_52 rows quoted from llm-stats.com launch coverage of Z.ai's GLM-5.3-Flash announcement (fetched 2026-08-30); glm53_rows quoted from the zai-org/GLM-5.3 Hugging Face model card (fetched 2026-08-30). local-ai-zone's deep dive prints the same six flash numbers but mislabels the comparison column as GLM-5.3; llm-stats and the HF card agree it is GLM-5.2.",
+  "flash_vs_52": [
+    {"bench": "Terminal-Bench 2.1", "flash": 84.3, "glm52": 81.0},
+    {"bench": "Toolathlon", "flash": 78.4, "glm52": 59.9},
+    {"bench": "DeepSWE v1.1", "flash": 63.4, "glm52": 46.2},
+    {"bench": "NL2Repo", "flash": 56.3, "glm52": 48.9},
+    {"bench": "AutomationBench", "flash": 48.8, "glm52": 26.2},
+    {"bench": "Agents' Last Exam", "flash": 26.3, "glm52": 20.4}
+  ],
+  "glm53_rows": [
+    {"bench": "Terminal Bench 2.1", "glm53": 88.2, "rival": 88.8, "rival_name": "GPT-5.6 Sol"},
+    {"bench": "CyberGym", "glm53": 84.5, "rival": 83.3, "rival_name": "DeepSeek-V4"},
+    {"bench": "DeepSWE v1.1", "glm53": 66.9, "rival": 72.7, "rival_name": "GPT-5.6 Sol"},
+    {"bench": "ExploitBench", "glm53": 54.4, "rival": 78.0, "rival_name": "GPT-5.6 Sol"}
+  ],
+  "efficiency_claims": {
+    "attention_compute_vs_glm53": 3.0,
+    "kv_cache_vs_glm53": 4.4,
+    "source": "Z.ai launch materials as quoted by llm-stats.com and local-ai-zone (both fetched 2026-08-30); our own per-token derivation from the configs gives 7.96x for cache elements per token, see architecture_analysis.json"
+  }
+}

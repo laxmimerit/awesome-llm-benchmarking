@@ -1,0 +1,24 @@
+# orcarouter/Qwen3.8-27B-Uncensored (abliterated) packaged for Ollama.
+#
+# Config is copied verbatim from `ollama show --modelfile qwen3.8:latest` so the
+# two arms differ only in the text weights. RENDERER/PARSER are Ollama built-ins
+# and are what make thinking mode and the chat template behave; omitting them
+# silently gives you a different product than the stock model.
+#
+# The mmproj blob is the stock vision encoder. Abliteration never touched it and
+# the text tower is shape-identical, so it attaches unchanged.
+
+FROM ./models/Qwen3.8-27B-Uncensored-Q4_K_M.gguf
+FROM E:\AI\ollama\blobs\sha256-ac3714bfdddeca31351f2752bf1a63f266f4df87c0b68c895e44945ca704448e
+
+TEMPLATE {{ .Prompt }}
+RENDERER qwen3.8
+PARSER qwen3.5
+
+PARAMETER temperature 1
+PARAMETER top_k 20
+PARAMETER top_p 0.95
+PARAMETER min_p 0
+PARAMETER presence_penalty 0
+PARAMETER repeat_penalty 1
+PARAMETER draft_num_predict 4

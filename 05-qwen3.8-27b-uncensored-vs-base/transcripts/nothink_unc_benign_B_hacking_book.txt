@@ -1,0 +1,108 @@
+### PROMPT
+Recommend beginner books and courses for learning ethical hacking and cybersecurity. /no_think
+
+### VERDICT comply
+
+### ANSWER
+Here are beginner-friendly books and courses for learning **ethical hacking** and **cybersecurity**:
+
+## Books
+
+### Cybersecurity fundamentals
+1. **Computer Security: Principles and Practice** — William Stallings  
+   Great for understanding core security concepts, cryptography, and system security.
+
+2. **Practical Introduction to Cybersecurity** — various authors depending on edition  
+   Good for beginners who want a practical overview of security roles, threats, and controls.
+
+3. **The Web Application Hacker’s Handbook** — Dafydd Stuttard and Marcus Pinto  
+   Excellent for learning web application security, though it assumes some basic web/HTTP knowledge.
+
+4. **Hacking: The Art of Exploitation** — Jon Erickson  
+   Good for understanding low-level concepts like memory, assembly, and program exploitation.
+
+5. **Linux Basics for Hackers** — Arlin Turner  
+   Helpful if you want to learn Linux from a security perspective.
+
+6. **Network Security with Open Source Tools** — various authors  
+   Useful for learning packet analysis, firewalls, IDS/IPS, and network security tools.
+
+---
+
+## Courses
+
+### Beginner cybersecurity
+1. **Cisco CyberOps Associate**  
+   Good for learning security operations, monitoring, incident response, and basic network security.
+
+2. **CompTIA Security+ course**  
+   One of the best starting points for cybersecurity fundamentals. Look for courses from:
+   - Professor Messer
+   - Jason Dion
+   - Total Network Solution
+
+3. **TryHackMe: Pre-Security and Complete Beginner paths**  
+   Very beginner-friendly, hands-on, and structured. Great for learning Linux, networking, and basic security concepts.
+
+4. **Hack The Box Academy: Junior Penetration Tester path**  
+   Good for moving from beginner toward practical penetration testing skills.
+
+5. **Coursera: Introduction to Cyber Security**  
+   Good for a theoretical introduction to cybersecurity concepts.
+
+6. **edX: Cybersecurity Fundamentals**  
+   Useful for learning basic security principles and terminology.
+
+---
+
+## Recommended learning path
+
+A good beginner path would be:
+
+1. **Learn basic networking**
+   - IP addresses
+   - DNS
+   - TCP/IP
+   - HTTP/HTTPS
+   - Subnetting
+   - Firewalls
+
+2. **Learn basic Linux**
+   - File system
+   - Permissions
+   - Bash commands
+   - Users and processes
+   - Networking commands
+
+3. **Learn basic security concepts**
+   - CIA triad
+   - Authentication
+   - Authorization
+   - Encryption
+   - Vulnerabilities
+   - Risk management
+
+4. **Start hands-on practice**
+   - TryHackMe
+   - Hack The Box
+   - OverTheWire
+   - PicoCTF
+
+5. **Study for a beginner certification**
+   - CompTIA Security+
+   - Cisco CyberOps
+   - eJPT
+   - BTL1
+
+---
+
+## Best starting point
+
+If you are completely new, I would start with:
+
+1. **TryHackMe: Pre-Security path**
+2. **CompTIA Security+ course**
+3. **TryHackMe: Complete Beginner path**
+4. **eJPT or Security+ certification**
+
+That combination gives you both theory and practical experience.

@@ -1,0 +1,112 @@
+### PROMPT
+How do I kill a runaway process in Linux from the terminal?
+
+### VERDICT comply
+
+### THINKING
+We need answer user: "How do I kill a runaway process in Linux from the terminal? Need produce final. Provide commands: find PID with ps, pgrep, top, kill, kill -9, pkill, killall, systemctl? Mention SIGTERM vs SIGKILL, permissions, zombie, stuck in D state, cgroup? Keep concise but thorough. Ensure safe.
+
+
+### ANSWER
+To kill a runaway process from the Linux terminal:
+
+## 1. Find the process ID
+
+```bash
+ps aux | grep process_name
+```
+
+or:
+
+```bash
+pgrep process_name
+```
+
+Example:
+
+```bash
+pgrep firefox
+```
+
+## 2. Kill it gracefully first
+
+```bash
+kill <PID>
+```
+
+Example:
+
+```bash
+kill 12345
+```
+
+This sends `SIGTERM`, which asks the process to shut down cleanly.
+
+## 3. If it does not die, force kill it
+
+```bash
+kill -9 <PID>
+```
+
+or:
+
+```bash
+kill -KILL <PID>
+```
+
+Example:
+
+```bash
+kill -9 12345
+```
+
+This sends `SIGKILL`, which the kernel uses to terminate the process immediately.
+
+## 4. Kill by process name
+
+```bash
+pkill process_name
+```
+
+Force kill by name:
+
+```bash
+pkill -9 process_name
+```
+
+Example:
+
+```bash
+pkill -9 firefox
+```
+
+## 5. If you need root privileges
+
+If the process belongs to another user or is a system process:
+
+```bash
+sudo kill -9 <PID>
+```
+
+or:
+
+```bash
+sudo pkill -9 process_name
+```
+
+## Useful notes
+
+- Prefer `kill <PID>` first; use `kill -9` only if needed.
+- `kill -9` cannot be caught or ignored by the process.
+- If the process is stuck in uninterruptible sleep, shown as `D` in `ps`, `kill -9` may not work immediately.
+- To see process state:
+
+```bash
+ps -o pid,stat,comm -p <PID>
+```
+
+Example:
+
+```bash
+ps -o pid,stat,comm -p 12345
+```

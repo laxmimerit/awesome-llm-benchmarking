@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>NIGHTLINE // endless lane runner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#03090f; --deep:#062029; --teal:#37e7c8; --amber:#ffb445; --coral:#ff5b4a;
+  --blue:#4d9fe8; --steel:#9fbecb; --paper:#eaf8f9;
+  --disp:'Chakra Petch','Segoe UI',system-ui,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#03090f;color:var(--paper);
+  font-family:var(--body);-webkit-tap-highlight-color:transparent;user-select:none;touch-action:none}
+
+/* ---------- ambient layers ---------- */
+.layer{position:fixed;inset:0;pointer-events:none}
+#bgSky{z-index:0;background:
+  linear-gradient(180deg,#01040a 0%,#030f16 26%,#071c25 55%,#0c2a33 78%,#113640 92%)}
+#bgGlow{z-index:0;
+  background:
+    radial-gradient(125% 42% at 50% 100%,rgba(55,231,200,.16) 0%,rgba(55,231,200,0) 62%),
+    radial-gradient(70% 26% at 18% 100%,rgba(255,180,69,.10) 0%,rgba(255,180,69,0) 65%),
+    radial-gradient(60% 24% at 84% 100%,rgba(77,159,232,.09) 0%,rgba(77,159,232,0) 60%);
+  animation:breath 14s ease-in-out infinite}
+@keyframes breath{50%{opacity:.55;transform:scale(1.05)}}
+#bgRails{z-index:0;height:34%;top:66%;opacity:.55;
+  background-image:
+    repeating-linear-gradient(90deg,rgba(55,231,200,.25) 0 2px,transparent 2px 26px),
+    repeating-linear-gradient(90deg,rgba(255,91,74,.20) 0 1px,transparent 1px 40px);
+  background-size:100% 1px,100% 1px;background-position:0 46%,0 88%;background-repeat:repeat-x;
+  animation:railA 9s linear infinite,railB 15s linear infinite}
+@keyframes railA{to{background-position:-140px 46%,0 88%}}
+@keyframes railB{to{background-position:0 46%,-160px 88%}}
+#grain{z-index:5;opacity:.30;mix-blend-mode:soft-light;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E")}
+#vig{z-index:5;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(0,0,0,.55) 100%)}
+#stage{position:fixed;inset:0;z-index:1}
+#stage canvas{display:block}
+#flash{z-index:6;opacity:0;background:radial-gradient(100% 70% at 50% 62%,rgba(255,91,74,.45),transparent 70%)}
+#flash.hit{animation:hit .55s ease-out}
+#flash.good{background:radial-gradient(100% 60% at 50% 62%,rgba(255,180,69,.22),transparent 70%);animation:hit .35s ease-out}
+@keyframes hit{0%{opacity:1}100%{opacity:0}}
+
+/* ---------- shared bits ---------- */
+.tick{position:relative;border:1px solid rgba(55,231,200,.22);background:rgba(4,20,26,.62);
+  backdrop-filter:blur(6px)}
+.tick::before,.tick::after{content:"";position:absolute;width:8px;height:8px;border:1px solid var(--teal)}
+.tick::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.tick::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.kicker{margin:0;font:500 10px/1.4 var(--body);letter-spacing:.34em;text-transform:uppercase;color:var(--amber)}
+.kicker.dim{color:var(--steel)}
+.num{font-family:var(--disp);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.lbl{font:500 9px/1.2 var(--body);letter-spacing:.32em;text-transform:uppercase;color:rgba(159,190,203,.75)}
+
+/* ---------- HUD ---------- */
+#hud{position:fixed;inset:0;z-index:4;pointer-events:none;transition:opacity .5s}
+#hud.dim{opacity:.28}
+#hud.hide{opacity:0}
+.hudTop{position:absolute;top:22px;left:26px;right:26px;display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.panel{padding:14px 18px 12px}
+#score{font-size:clamp(38px,7.6vw,74px);line-height:.92;color:var(--paper);text-shadow:0 0 22px rgba(55,231,200,.35)}
+#scoreWrap{display:flex;align-items:flex-end;gap:14px}
+#mult{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--amber);
+  padding:4px 8px;border:1px solid rgba(255,180,69,.5);opacity:0;transition:opacity .3s,transform .3s}
+#mult.on{opacity:1}
+#mult.pop{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(1.55)}100%{transform:scale(1)}}
+.statCol{display:flex;gap:16px}
+.stat{min-width:74px;text-align:right}
+.stat b{display:block;font-family:var(--disp);font-weight:700;font-size:22px;color:var(--teal);font-variant-numeric:tabular-nums}
+#speedBar{width:120px;height:3px;background:rgba(159,190,203,.18);margin-top:6px;margin-left:auto}
+#speedFill{height:100%;width:0%;background:var(--coral);transition:width .2s}
+.hudBottom{position:absolute;left:26px;right:26px;bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px}
+#pips{display:flex;gap:8px;align-items:center}
+#pips i{width:22px;height:8px;border-radius:1px;background:rgba(159,190,203,.22);transition:.18s}
+#pips i.on{background:var(--teal);box-shadow:0 0 12px rgba(55,231,200,.7);transform:scaleY(1.8)}
+#pips i.amber{background:var(--amber);box-shadow:0 0 12px rgba(255,180,69,.7)}
+#pad{display:flex;gap:8px}
+#pad span{font-family:var(--disp);font-weight:500;font-size:13px;letter-spacing:.14em;
+  padding:8px 14px;border:1px solid rgba(55,231,200,.25);color:rgba(159,190,203,.7);transition:.12s}
+#pad span.hit{background:rgba(55,231,200,.18);color:#fff;border-color:var(--teal);transform:translateY(3px)}
+#railStat{writing-mode:vertical-rl;font:500 9px/1 var(--body);letter-spacing:.3em;color:rgba(159,190,203,.45);text-transform:uppercase}
+#toasts{position:absolute;top:150px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:6px;align-items:center}
+.toast{font-family:var(--disp);font-weight:700;font-size:20px;letter-spacing:.06em;animation:rise 1s ease-out forwards}
+.toast.gold{color:var(--amber);text-shadow:0 0 18px rgba(255,180,69,.6)}
+.toast.bad{color:var(--coral);text-shadow:0 0 18px rgba(255,91,74,.6)}
+@keyframes rise{0%{opacity:0;transform:translateY(14px) scale(.9)}20%{opacity:1}100%{opacity:0;transform:translateY(-26px)}}
+
+/* ---------- screens ---------- */
+.screen{position:fixed;inset:0;z-index:4;opacity:1;transition:opacity .55s,visibility .55s}
+.screen.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.wrap{width:min(660px,90vw);margin:auto;padding:0 6vw}
+.wrap.shift{margin:0 auto 0 clamp(6vw,9vw,140px)}
+@media(min-width:1100px){ .wrap.shift{margin-left:12vw} }
+@media(min-width:1100px){ .wrap.center{margin:auto;margin-left:auto;margin-right:auto} }
+.rule{width:0;height:1px;background:linear-gradient(90deg,var(--amber),transparent);transition:width 1s .2s}
+.screen.show .rule{width:min(460px,70vw)}
+h1.title{margin:14px 0 4px;font-family:var(--disp);font-weight:700;font-size:clamp(58px,13vw,148px);
+  line-height:.86;letter-spacing:-.03em;color:var(--paper);text-shadow:-3px 0 0 rgba(55,231,200,.55),3px 0 0 rgba(255,91,74,.45)}
+h1.title em{font-style:normal;color:var(--amber);display:inline-block}
+h1.title i{font-style:normal;color:var(--teal);opacity:.55;font-size:.42em;vertical-align:super;margin-right:.1em}
+.lede{max-width:44ch;margin:18px 0 0;font-size:15px;line-height:1.65;color:rgba(233,247,249,.72)}
+.lede b{color:var(--paper);font-weight:600}
+.cols{display:flex;flex-wrap:wrap;gap:22px 46px;margin-top:30px}
+.col h4{margin:0 0 10px;font:500 10px/1 var(--body);letter-spacing:.3em;text-transform:uppercase;color:var(--teal)}
+.col ul{margin:0;padding:0;list-style:none;font-size:14px;line-height:2;color:rgba(233,247,249,.8)}
+kbd{font-family:var(--disp);font-weight:500;font-size:12px;letter-spacing:.08em;padding:3px 8px;margin-right:4px;
+  border:1px solid rgba(159,190,203,.35);background:rgba(159,190,203,.08);border-radius:3px;color:#fff}
+.btnRow{display:flex;align-items:center;gap:20px;margin-top:36px;flex-wrap:wrap}
+button{position:relative;font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);background:var(--teal);border:0;padding:15px 34px;cursor:pointer;
+  transition:transform .18s cubic-bezier(.2,.9,.3,1),box-shadow .18s,color .18s}
+button::before{content:"";position:absolute;inset:4px 6px;border:1px solid rgba(3,9,15,.35);transition:.2s}
+button:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 rgba(55,231,200,.35),0 0 30px rgba(55,231,200,.35)}
+button:hover::before{inset:-3px;border-color:rgba(255,180,69,.75)}
+button:active{transform:translate(0,0);box-shadow:none}
+button.ghost{background:transparent;color:var(--steel);border:1px solid rgba(159,190,203,.35);padding:12px 22px}
+button.ghost:hover{color:#fff;border-color:var(--teal);box-shadow:0 0 22px rgba(55,231,200,.25)}
+.hint{font-size:12px;letter-spacing:.14em;color:rgba(159,190,203,.65)}
+.best{margin-top:40px;display:flex;gap:30px;align-items:flex-end;border-top:1px solid rgba(55,231,200,.16);padding-top:16px}
+.best .num{font-size:30px;color:var(--amber)}
+.plate{padding:30px 30px 34px;max-width:min(560px,92vw)}
+.plate h2{margin:10px 0 0;font-family:var(--disp);font-weight:700;font-size:clamp(30px,5.4vw,54px);
+  line-height:1;letter-spacing:-.02em;color:var(--coral);text-shadow:0 0 26px rgba(255,91,74,.4)}
+.finalRow{display:flex;align-items:flex-end;gap:20px;margin-top:26px}
+#finalScore{font-size:clamp(56px,12vw,116px);line-height:.9;color:#fff;text-shadow:0 0 30px rgba(255,180,69,.4)}
+#recBadge{font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.24em;color:var(--ink);
+  background:var(--amber);padding:5px 10px;transform:skewX(-8deg);opacity:0;transition:.4s}
+#recBadge.on{opacity:1;animation:pop .5s}
+.ostats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:14px;margin-top:26px;
+  border-top:1px solid rgba(55,231,200,.16);padding-top:18px}
+.ostats div b{display:block;font-family:var(--disp);font-weight:700;font-size:20px;color:var(--teal);
+  font-variant-numeric:tabular-nums;margin-top:4px}
+#err{z-index:9;display:flex;align-items:center;justify-content:center;padding:8vw;text-align:center;
+  font-size:14px;line-height:1.8;color:var(--steel);background:rgba(3,9,15,.92);opacity:0;visibility:hidden}
+#err.show{opacity:1;visibility:visible}
+@media(max-width:760px){
+  .hudTop{top:14px;left:16px;right:16px}
+  .panel{padding:10px 14px}
+  .statCol{gap:10px}.stat{min-width:58px}.stat b{font-size:17px}
+  #speedBar{width:80px}
+  .hudBottom{left:16px;right:16px;bottom:14px}
+  .cols{gap:18px 28px}
+  .wrap.shift{margin:0 auto;padding:0 7vw}
+}
+</style>
+</head>
+<body>
+<div id="bgSky" class="layer"></div>
+<div id="bgGlow" class="layer"></div>
+<div id="bgRails" class="layer"></div>
+<div id="stage"></div>
+<div id="grain" class="layer"></div>
+<div id="vig" class="layer"></div>
+<div id="flash" class="layer"></div>
+
+<!-- ============ HUD ============ -->
+<div id="hud" class="hide">
+  <div class="hudTop">
+    <div class="panel tick">
+      <p class="kicker">score</p>
+      <div id="scoreWrap"><span id="score" class="num">0</span><span id="mult">×1</span></div>
+    </div>
+    <div class="panel tick statCol">
+      <div class="stat"><span class="lbl">dist</span><b id="dist">0</b></div>
+      <div class="stat"><span class="lbl">spd</span><b id="spd">0</b>
+        <div id="speedBar"><div id="speedFill"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hudBottom">
+    <div id="pips" class="tick" style="padding:10px 14px"><span class="lbl" style="margin-right:8px">lane</span><i></i><i></i><i></i></div>
+    <div id="railStat">nightline · corridor 03</div>
+    <div id="pad"><span>← A</span><span>D →</span></div>
+  </div>
+  <div id="toasts"></div>
+</div>
+
+<!-- ============ TITLE ============ -->
+<div id="screenTitle" class="screen show">
+  <div class="wrap shift">
+    <p class="kicker">endless lane runner · single file · three.js</p>
+    <div class="rule"></div>
+    <h1 class="title"><i>◈</i>NIGHT<em>LINE</em></h1>
+    <p class="lede">The corridor never ends. <b>Three lanes, no brakes.</b> Thread the courier cube through
+      the gaps, ride the amber shards, and let the counter do the counting.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>controls</h4>
+        <ul>
+          <li><kbd>←</kbd><kbd>A</kbd> lane left</li>
+          <li><kbd>→</kbd><kbd>D</kbd> lane right</li>
+          <li>tap / click left · right half</li>
+        </ul>
+      </div>
+      <div class="col">
+        <h4>run rules</h4>
+        <ul>
+          <li>one contact ends the run</li>
+          <li>speed climbs with distance</li>
+          <li>shards stack your multiplier</li>
+        </ul>
+      </div>
+    </div>
+    <div class="btnRow">
+      <button id="btnPlay">▸ begin run</button>
+      <span class="hint">or press <kbd>SPACE</kbd></span>
+    </div>
+    <div class="best">
+      <div><span class="lbl">personal best</span><span class="num" id="tBest">0</span></div>
+      <div><span class="lbl">lanes</span><span class="num" style="font-size:30px">03</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ GAME OVER ============ -->
+<div id="screenOver" class="screen hidden">
+  <div class="wrap center">
+    <div class="plate tick">
+      <p class="kicker">run terminated · contact at <span id="oWhere">0</span> m</p>
+      <div class="rule"></div>
+      <h2>SIGNAL LOST</h2>
+      <div class="finalRow">
+        <div><span class="lbl">final score</span><br><span id="finalScore" class="num">0</span></div>
+        <span id="recBadge">NEW RECORD</span>
+      </div>
+      <div class="ostats">
+        <div><span class="lbl">distance</span><div><b id="oDist">0</b> m</div></div>
+        <div><span class="lbl">shards</span><div><b id="oShards">0</b></div></div>
+        <div><span class="lbl">top speed</span><div><b id="oSpeed">0</b></div></div>
+        <div><span class="lbl">best score</span><div><b id="oBest">0</b></div></div>
+      </div>
+      <div class="btnRow">
+        <button id="btnAgain">▸ run again</button>
+        <button id="btnTitle" class="ghost">exit</button>
+        <span class="hint"><kbd>SPACE</kbd> / tap</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="err" class="layer"><b>three.js could not be loaded.</b><br>
+  This game pulls three.js from a CDN — reconnect online, then reload the file.</div>
+
+<script>
+window.__nightlineReady = false;
+setTimeout(function(){
+  if(!window.__nightlineReady){ var e=document.getElementById('err'); if(e) e.classList.add('show'); }
+},12000);
+</script>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+} }
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+/* ============================================================ helpers ============ */
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+const rand=(a,b)=>a+Math.random()*(b-a);
+const pick=a=>a[(Math.random()*a.length)|0];
+const damp=(c,t,r,dt)=>c+ (t-c)*(1-Math.exp(-r*dt));
+const $=s=>document.querySelector(s);
+
+let best=0;
+const readBest=()=>{try{return Number(localStorage.getItem('nightline.best'))||0}catch(e){return 0}};
+const writeBest=v=>{try{localStorage.setItem('nightline.best',String(v))}catch(e){}};
+best=readBest();
+
+/* ============================================================ renderer ============ */
+const stage=$('#stage');
+let renderer;
+try{
+  renderer=new THREE.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});
+}catch(err){ $('#err').classList.add('show'); throw err; }
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setClearColor(0x000000,0);
+renderer.toneMapping=THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure=1.18;
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+stage.appendChild(renderer.domElement);
+
+/* ============================================================ scene ============ */
+const FOG=0x0c2731;
+const scene=new THREE.Scene();
+scene.fog=new THREE.FogExp2(FOG,0.0088);
+const camera=new THREE.PerspectiveCamera(62,1,0.4,1400);
+scene.add(camera);
+const camBase=new THREE.Vector3(0,4.4,12.6);
+const camLook=new THREE.Vector3(0,1.25,-18);
+
+const amb=new THREE.AmbientLight(0x2c505c,1.05);      scene.add(amb);
+const hemi=new THREE.HemisphereLight(0x1d4b56,0x050b0f,0.7); scene.add(hemi);
+
+const key=new THREE.DirectionalLight(0xffe2b8,2.35);
+key.position.set(-7,34,-5);
+key.castShadow=true;
+key.shadow.mapSize.set(1536,1536);
+key.shadow.camera.left=-24; key.shadow.camera.right=24;
+key.shadow.camera.top=55;   key.shadow.camera.bottom=-14;
+key.shadow.camera.near=6;   key.shadow.camera.far=110;
+key.shadow.bias=-0.0016; key.shadow.camera.updateProjectionMatrix();
+scene.add(key); scene.add(key.target);
+
+const fill=new THREE.DirectionalLight(0x6fd2ff,0.75);
+fill.position.set(0,7,34); scene.add(fill);
+
+/* ============================================================ textures ============ */
+function gridTexture(){
+  const c=document.createElement('canvas'); c.width=c.height=256;
+  const g=c.getContext('2d');
+  g.fillStyle='#06

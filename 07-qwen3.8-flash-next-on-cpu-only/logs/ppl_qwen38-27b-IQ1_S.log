@@ -1,0 +1,13 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-perplexity.exe -m D:\Claude AI\AI Model Performance\qwen38-unsloth-dynamic3\models\Qwen3.8-27B-UD-IQ1_S.gguf -f D:\Claude AI\AI Model Performance\qwen38-uncensored-vs-base\corpus\wikitext2-test.raw -c 2048 --chunks 40 -t 24 --no-warmup -ngl 99
+
+0.60 minutes
+[1]7.7035,[2]9.1620,[3]9.7377,[4]9.4464,[5]9.5139,[6]8.1039,[7]7.3651,[8]7.2895,[9]7.5726,[10]7.7096,[11]7.7770,[12]8.0364,[13]8.0803,[14]8.1476,[15]8.1578,[16]8.3319,[17]8.3694,[18]8.4841,[19]8.3897,[20]8.1905,[21]8.1932,[22]8.2192,[23]8.2880,[24]8.2699,[25]8.2975,[26]8.2943,[27]8.4665,[28]8.5599,[29]8.5763,[30]8.5614,[31]8.4966,[32]8.4180,[33]8.3782,[34]8.3732,[35]8.3860,[36]8.3925,[37]8.2618,[38]8.2031,[39]8.1031,[40]7.9706,
+
+
+0.03.801.107 I cmn          init: llama threadpool init, n_threads = 24
+0.03.801.124 I 
+0.03.801.146 I system_info: n_threads = 24 (n_threads_batch = 24) / 24 | CUDA : ARCHS = 1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.03.801.147 I perplexity: tokenizing the input ..
+0.04.085.480 I perplexity: tokenization took 284.326 ms
+0.04.086.032 I perplexity: calculating perplexity over 40 chunks, n_ctx=2048, batch_size=2048, n_seq=1
+0.05.010.593 I perplexity: 0.92 seconds per pass - ETA 0.29.382.184 I Final estimate: PPL = 7.9706 +/- 0.09690

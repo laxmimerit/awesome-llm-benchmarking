@@ -1,0 +1,90 @@
+
+
+===== 2026-08-25 17:24:05 bench_speed.py ornith-9b ornith-35b-a3b qwen3.8-27b gemma4-31b muse-glimmer-30b --ctx 8192 --n-predict 512 --reps 1 --mode decode --out speed.jsonl =====
+
+=== ornith-9b  ctx=8192 fa=on ===
+  loaded in 4.6s  vram delta 5716 MiB (baseline 7027)
+  ornith-9b          counting  rep0  193.52 tok/s (server)  188.07 (wall) 58C 79W
+  ornith-9b          code      rep0  192.48 tok/s (server)  186.85 (wall) 67C 498W
+  ornith-9b          json      rep0  192.07 tok/s (server)  185.01 (wall) 69C 492W
+  ornith-9b          essay     rep0  190.83 tok/s (server)  185.13 (wall) 70C 494W
+  ornith-9b          fiction   rep0  191.73 tok/s (server)  186.35 (wall) 70C 494W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== ornith-35b-a3b  ctx=8192 fa=on ===
+  loaded in 13.7s  vram delta 20699 MiB (baseline 7072)
+  ornith-35b-a3b     counting  rep0  271.78 tok/s (server)  253.83 (wall) 57C 44W
+  ornith-35b-a3b     code      rep0  271.10 tok/s (server)  249.98 (wall) 66C 383W
+  ornith-35b-a3b     json      rep0  272.49 tok/s (server)  251.36 (wall) 66C 389W
+  ornith-35b-a3b     essay     rep0  272.80 tok/s (server)  255.64 (wall) 66C 391W
+  ornith-35b-a3b     fiction   rep0  272.32 tok/s (server)  256.80 (wall) 67C 391W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== qwen3.8-27b  ctx=8192 fa=on ===
+  loaded in 13.7s  vram delta 16309 MiB (baseline 7072)
+  qwen3.8-27b        counting  rep0   76.81 tok/s (server)   74.63 (wall) 67C 342W
+  qwen3.8-27b        code      rep0   76.87 tok/s (server)   74.52 (wall) 69C 572W
+  qwen3.8-27b        json      rep0   76.81 tok/s (server)   74.41 (wall) 71C 579W
+  qwen3.8-27b        essay     rep0   76.62 tok/s (server)   74.48 (wall) 73C 583W
+  qwen3.8-27b        fiction   rep0   76.63 tok/s (server)   74.67 (wall) 74C 580W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== gemma4-31b  ctx=8192 fa=on ===
+  loaded in 11.7s  vram delta 19979 MiB (baseline 4008)
+  gemma4-31b         counting  rep0   68.92 tok/s (server)   68.18 (wall) 71C 428W
+  gemma4-31b         code      rep0   68.81 tok/s (server)   66.66 (wall) 73C 581W
+  gemma4-31b         json      rep0   68.83 tok/s (server)   66.38 (wall) 75C 586W
+  gemma4-31b         essay     rep0   68.96 tok/s (server)   66.54 (wall) 76C 591W
+  gemma4-31b         fiction   rep0   69.11 tok/s (server)   67.18 (wall) 77C 589W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== muse-glimmer-30b  ctx=8192 fa=on ===
+  loaded in 14.8s  vram delta 16096 MiB (baseline 4002)
+  muse-glimmer-30b   counting  rep0   79.44 tok/s (server)   78.92 (wall) 71C 296W
+  muse-glimmer-30b   code      rep0   79.11 tok/s (server)   78.35 (wall) 73C 571W
+  muse-glimmer-30b   json      rep0   79.26 tok/s (server)   78.18 (wall) 75C 576W
+  muse-glimmer-30b   essay     rep0   79.33 tok/s (server)   78.33 (wall) 76C 579W
+  muse-glimmer-30b   fiction   rep0   79.28 tok/s (server)   78.33 (wall) 77C 580W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+
+===== 2026-08-26 17:06:13 bench_speed.py ornith-9b ornith-35b-a3b qwen3.8-27b gemma4-26b muse-glimmer-30b --ctx 8192 --n-predict 512 --reps 1 --mode decode --out speed.jsonl =====
+
+
+===== 2026-08-26 17:25:33 bench_speed.py ornith-9b ornith-35b-a3b qwen3.8-27b gemma4-26b --ctx 8192 --n-predict 512 --reps 1 --mode decode --out speed.jsonl =====
+
+=== ornith-9b  ctx=8192 fa=on ===
+  loaded in 4.6s  vram delta 5721 MiB (baseline 2590)
+  ornith-9b          counting  rep0  194.68 tok/s (server)  188.24 (wall) 59C 87W
+  ornith-9b          code      rep0  193.02 tok/s (server)  187.42 (wall) 67C 499W
+  ornith-9b          json      rep0  192.15 tok/s (server)  186.40 (wall) 68C 495W
+  ornith-9b          essay     rep0  191.72 tok/s (server)  184.64 (wall) 69C 494W
+  ornith-9b          fiction   rep0  192.08 tok/s (server)  186.49 (wall) 70C 494W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== ornith-35b-a3b  ctx=8192 fa=on ===
+  loaded in 10.7s  vram delta 20723 MiB (baseline 2562)
+  ornith-35b-a3b     counting  rep0  273.49 tok/s (server)  256.84 (wall) 58C 56W
+  ornith-35b-a3b     code      rep0  273.32 tok/s (server)  256.52 (wall) 67C 387W
+  ornith-35b-a3b     json      rep0  272.88 tok/s (server)  253.72 (wall) 67C 393W
+  ornith-35b-a3b     essay     rep0  273.60 tok/s (server)  257.09 (wall) 67C 394W
+  ornith-35b-a3b     fiction   rep0  272.94 tok/s (server)  255.08 (wall) 67C 394W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== qwen3.8-27b  ctx=8192 fa=on ===
+  loaded in 13.7s  vram delta 16408 MiB (baseline 2551)
+  qwen3.8-27b        counting  rep0   77.26 tok/s (server)   75.14 (wall) 68C 434W
+  qwen3.8-27b        code      rep0   77.21 tok/s (server)   75.03 (wall) 69C 576W
+  qwen3.8-27b        json      rep0   77.14 tok/s (server)   74.78 (wall) 73C 583W
+  qwen3.8-27b        essay     rep0   77.06 tok/s (server)   74.57 (wall) 74C 587W
+  qwen3.8-27b        fiction   rep0   77.10 tok/s (server)   74.95 (wall) 75C 586W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl
+
+=== gemma4-26b  ctx=8192 fa=on ===
+  loaded in 9.7s  vram delta 17244 MiB (baseline 2597)
+  gemma4-26b         counting  rep0  232.79 tok/s (server)  225.92 (wall) 67C 105W
+  gemma4-26b         code      rep0  231.90 tok/s (server)  223.57 (wall) 71C 413W
+  gemma4-26b         json      rep0  233.08 tok/s (server)  224.08 (wall) 71C 414W
+  gemma4-26b         essay     rep0  232.69 tok/s (server)  223.97 (wall) 71C 417W
+  gemma4-26b         fiction   rep0  231.38 tok/s (server)  223.95 (wall) 71C 416W
+  wrote 6 rows to D:\Claude AI\AI Model Performance\ornith-benchmark\results\speed.jsonl

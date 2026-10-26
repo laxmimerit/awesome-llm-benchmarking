@@ -1,0 +1,69 @@
+
+--- preparing qwen38: unloading everything first ---
+  (gpu clear)
+
+=== qwen3.8:latest ===
+  repunit_digit_sum: correct=False gen=27179tok @180.4tps wall=157s
+  power_tower_mod: correct=True gen=2084tok @178.9tps wall=13s
+  expected_three_sixes: correct=True gen=1500tok @177.9tps wall=9s
+  tilings_4x10: correct=False gen=9950tok @170.3tps wall=59s
+  mississippi_no_ss: correct=True gen=661tok @166.0tps wall=5s
+  expected_first_blue: correct=True gen=5717tok @180.3tps wall=32s
+  code_calc2: correct=True gen=3712tok @164.1tps wall=23s
+  code_inversions: correct=True gen=3105tok @156.5tps wall=20s
+  code_lru: correct=True gen=802tok @151.6tps wall=6s
+  code_closure_bug: correct=True gen=210tok @156.5tps wall=2s
+  code_version_compare: correct=True gen=616tok @191.6tps wall=4s
+  code_output_prediction: correct=True gen=716tok @183.5tps wall=4s
+  logic_grid_5x5: correct=True gen=1179tok @170.7tps wall=7s
+  instruction_pythonic: correct=True gen=812tok @158.1tps wall=6s
+  json_computed: correct=True gen=681tok @192.6tps wall=4s
+  multihop_needle_3hop: correct=True gen=600tok @155.8tps wall=29s
+  >> qwen38: 14/16 correct (0 hit the generation cap), saved
+
+--- preparing nemotron: unloading everything first ---
+  (gpu clear)
+
+=== nemotron-3.5-lightning:latest ===
+  repunit_digit_sum: correct=False gen=32768tok @241.9tps wall=143s CAPPED
+  power_tower_mod: correct=True gen=2805tok @236.2tps wall=12s
+  expected_three_sixes: correct=True gen=1369tok @222.5tps wall=6s
+  tilings_4x10: correct=True gen=11639tok @197.6tps wall=59s
+  mississippi_no_ss: correct=True gen=1118tok @216.8tps wall=5s
+  expected_first_blue: correct=True gen=2449tok @236.5tps wall=11s
+  code_calc2: correct=False gen=32768tok @195.7tps wall=168s CAPPED
+  code_inversions: correct=True gen=2260tok @199.8tps wall=12s
+  code_lru: correct=True gen=2277tok @207.9tps wall=11s
+  code_closure_bug: correct=True gen=638tok @219.2tps wall=3s
+  code_version_compare: correct=True gen=902tok @242.3tps wall=4s
+  code_output_prediction: correct=True gen=4305tok @187.4tps wall=23s
+  logic_grid_5x5: correct=True gen=2194tok @201.8tps wall=11s
+  instruction_pythonic: correct=True gen=2532tok @227.9tps wall=11s
+  json_computed: correct=True gen=2025tok @225.6tps wall=9s
+  multihop_needle_3hop: correct=True gen=687tok @202.4tps wall=11s
+  >> nemotron: 14/16 correct (2 hit the generation cap), saved
+
+--- preparing glimmer: unloading everything first ---
+  (gpu clear)
+
+=== muse-glimmer:latest ===
+  repunit_digit_sum: correct=True gen=21492tok @79.4tps wall=281s
+  power_tower_mod: correct=True gen=1468tok @81.7tps wall=18s
+  expected_three_sixes: correct=True gen=1653tok @81.7tps wall=21s
+  tilings_4x10: correct=False gen=32768tok @79.0tps wall=415s CAPPED
+  mississippi_no_ss: correct=True gen=1151tok @82.0tps wall=14s
+  expected_first_blue: correct=True gen=1289tok @81.8tps wall=16s
+  code_calc2: correct=True gen=5732tok @80.1tps wall=72s
+  code_inversions: correct=True gen=2372tok @81.2tps wall=30s
+  code_lru: correct=True gen=934tok @82.2tps wall=12s
+  code_closure_bug: correct=True gen=385tok @82.6tps wall=5s
+  code_version_compare: correct=True gen=671tok @82.3tps wall=8s
+  code_output_prediction: correct=True gen=794tok @82.2tps wall=10s
+  logic_grid_5x5: correct=True gen=1792tok @81.6tps wall=22s
+  instruction_pythonic: correct=True gen=960tok @82.1tps wall=12s
+  json_computed: correct=True gen=971tok @82.0tps wall=12s
+  multihop_needle_3hop: correct=True gen=765tok @77.1tps wall=24s
+  >> glimmer: 15/16 correct (1 hit the generation cap), saved
+  (gpu clear)
+
+All done.

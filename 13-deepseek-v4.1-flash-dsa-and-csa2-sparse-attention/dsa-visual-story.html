@@ -1,0 +1,689 @@
+<title>The Scout and the Library</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#F1F5F9; --surface:#FFFFFF; --surface-2:#E7EDF4; --ink:#16202E; --ink-2:#465364; --muted:#7F8DA0; --line:#D3DBE6;
+  --spark:#E3941F; --spark-soft:#FBEBD0; --scout:#1D8A88; --scout-soft:#D6EFEE; --heavy:#C6483D; --heavy-soft:#F8DDD9; --dim:#CBD4DF; --good:#2E8B57;
+  --shadow:0 1px 2px rgba(22,32,46,.06),0 8px 24px rgba(22,32,46,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0D131B; --surface:#151E29; --surface-2:#1C2735; --ink:#E9EFF6; --ink-2:#B3BFCF; --muted:#7A879B; --line:#2A3648;
+    --spark:#F0B04A; --spark-soft:#3A2C12; --scout:#3FB6B2; --scout-soft:#123534; --heavy:#E4695C; --heavy-soft:#3C1E1B; --dim:#2B3747; --good:#4FB87C;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0D131B; --surface:#151E29; --surface-2:#1C2735; --ink:#E9EFF6; --ink-2:#B3BFCF; --muted:#7A879B; --line:#2A3648;
+  --spark:#F0B04A; --spark-soft:#3A2C12; --scout:#3FB6B2; --scout-soft:#123534; --heavy:#E4695C; --heavy-soft:#3C1E1B; --dim:#2B3747; --good:#4FB87C;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--scout)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px}
+.prose{max-width:660px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Atkinson Hyperlegible",sans-serif;text-wrap:balance;line-height:1.1;margin:0}
+h1{font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3.6vw,34px);font-weight:700;letter-spacing:-.015em;margin-bottom:12px}
+h3{font-size:18px;font-weight:700}
+p{margin:0 0 14px}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.mono{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums}
+mark{background:var(--spark-soft);color:inherit;padding:0 4px;border-radius:3px}
+.scout-word{color:var(--scout);font-weight:700}
+.spark-word{color:var(--spark);font-weight:700}
+.heavy-word{color:var(--heavy);font-weight:700}
+
+/* hero */
+.hero{padding:64px 0 30px}
+.hero .lede{font-size:clamp(18px,2.2vw,22px);color:var(--ink-2);max-width:640px;margin:18px 0 26px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 22px 16px;box-shadow:var(--shadow)}
+.strip{display:flex;align-items:flex-end;gap:3px;height:96px;padding:0 0 6px;border-bottom:1px dashed var(--line)}
+.tok{flex:1 1 0;min-width:0;height:100%;display:flex;align-items:flex-end}
+.tok i{display:block;width:100%;height:100%;border-radius:2px;background:var(--dim);transform-origin:bottom;transform:scaleY(.10);transition:transform .45s ease,background-color .45s ease,opacity .45s ease}
+.tok.query i{background:var(--ink);transform:scaleY(1);}
+.tok.scored i{background:var(--scout)}
+.tok.chosen i{background:var(--spark);transform:scaleY(1)!important}
+.tok.dropped i{opacity:.28;transform:scaleY(.06)!important}
+.stage-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:12px;flex-wrap:wrap}
+.phase{font-weight:700;min-height:1.6em}
+.phase b{font-family:"JetBrains Mono",monospace;font-weight:600;color:var(--muted);margin-right:8px}
+.small{font-size:14px;color:var(--muted)}
+button.replay{font:inherit;font-weight:700;font-size:14px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+button.replay:hover{border-color:var(--ink-2)}
+button.replay:focus-visible,input:focus-visible{outline:3px solid var(--scout);outline-offset:2px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--ink-2);margin-top:10px}
+.legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .l-q::before{background:var(--ink)} .legend .l-s::before{background:var(--scout)} .legend .l-c::before{background:var(--spark)} .legend .l-d::before{background:var(--dim)}
+
+/* toc */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 10px}
+.toc a{font-size:13px;text-decoration:none;color:var(--ink-2);border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 11px}
+.toc a:hover{border-color:var(--scout);color:var(--scout)}
+
+/* chapters */
+.chapter{padding:56px 0 8px;border-top:1px solid var(--line);margin-top:40px;scroll-margin-top:20px}
+.chapter .num{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--scout);text-transform:uppercase;margin-bottom:8px}
+figure{margin:26px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 18px 12px;box-shadow:var(--shadow);overflow-x:auto}
+figure svg{display:block;max-width:100%;height:auto;color:var(--ink);font-family:"Atkinson Hyperlegible",sans-serif}
+figure svg .mono{font-family:"JetBrains Mono",monospace}
+figcaption{font-size:14px;color:var(--ink-2);margin-top:12px;line-height:1.5}
+.takeaway{margin-top:22px;border-left:4px solid var(--spark);background:var(--surface);padding:12px 16px;border-radius:0 10px 10px 0;font-weight:700}
+.takeaway .eyebrow{margin-bottom:4px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:22px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.card h3{margin-bottom:6px}
+.card p{margin:0;color:var(--ink-2);font-size:15px}
+.card.hi{border-color:var(--heavy)} .card.lo{border-color:var(--good)}
+.stat{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:34px;letter-spacing:-.02em;line-height:1;margin:2px 0 6px}
+.stat.spark{color:var(--spark)} .stat.scout{color:var(--scout)} .stat.heavy{color:var(--heavy)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:22px}
+.steps .card{position:relative;padding-top:18px}
+.steps .card::before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:14px;background:var(--scout);color:#fff;font-family:"JetBrains Mono",monospace;font-weight:600;font-size:12px;width:24px;height:24px;border-radius:999px;display:grid;place-items:center}
+.limits .card{border-top:3px solid var(--heavy)}
+table{border-collapse:collapse;width:100%;font-size:15px;margin-top:6px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+td.num{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;text-align:right}
+th.num{text-align:right}
+.src{font-size:12px;color:var(--muted)}
+
+/* slider */
+.slider{display:grid;gap:14px;margin-top:8px}
+.slider label{font-weight:700}
+input[type=range]{width:100%;accent-color:var(--scout)}
+.ticks{display:flex;justify-content:space-between;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+.bar{height:34px;border-radius:8px;background:var(--dim);position:relative;overflow:hidden}
+.bar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--spark);min-width:5px;transition:width .3s ease}
+.readout{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.readout .card{padding:12px 14px}
+.readout .stat{font-size:28px}
+
+.recap{margin-top:22px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;box-shadow:var(--shadow)}
+.recap ol{margin:8px 0 0;padding-left:22px}
+.recap li{margin-bottom:8px}
+.sources{margin-top:36px;font-size:14px;color:var(--ink-2)}
+.sources ul{padding-left:20px;margin:6px 0 0}
+.sources li{margin-bottom:4px}
+@media (prefers-reduced-motion: reduce){ .tok i{transition:none} }
+</style>
+
+<div class="wrap">
+<header class="hero">
+  <div class="eyebrow">DeepSeek Sparse Attention, explained with pictures</div>
+  <h1>The Scout and the Library</h1>
+  <p class="lede">A language model reading 128,000 tokens has to decide which earlier words matter. DeepSeek's trick is to send a <span class="scout-word">cheap scout</span> first, keep the <span class="spark-word">best 2,048</span>, and let the expensive attention read only those. Here is how it works, one picture at a time.</p>
+
+  <div class="stage" aria-label="Animated strip of tokens showing scout, select and attend phases">
+    <div class="strip" id="strip"></div>
+    <div class="stage-foot">
+      <div class="phase" id="phase"><b>1/3</b>The scout scores every past token, cheaply</div>
+      <button class="replay" id="replay" type="button">Replay</button>
+    </div>
+    <div class="legend"><span class="l-q">the current token</span><span class="l-s">scout score</span><span class="l-c">kept for full attention</span><span class="l-d">never touched by full attention</span></div>
+    <p class="small" style="margin:10px 0 0">In the real model the budget is 2,048 tokens. With a 131,072-token context, that is 1.56 percent.</p>
+  </div>
+
+  <nav class="toc" aria-label="Chapters">
+    <a href="#c1">Attention</a><a href="#c2">Mostly dark</a><a href="#c3">Why long context hurts</a><a href="#c4">The catch</a><a href="#c5">Send a scout</a><a href="#c6">How the scout scores</a><a href="#c7">Budget slider</a><a href="#c8">On top of MLA</a><a href="#c9">Full picture</a><a href="#c10">Training</a><a href="#c11">Cost</a><a href="#c12">On the GPU</a><a href="#c13">Two sparsities</a><a href="#c14">Limits</a><a href="#c15">Recap</a>
+  </nav>
+</header>
+
+<!-- 1 -->
+<section class="chapter" id="c1">
+  <div class="num">Chapter 1</div>
+  <h2>What attention actually does</h2>
+  <div class="prose">
+    <p>Every token in a transformer plays three roles at once. As a <b>query</b> it asks "who should I look at?". As a <b>key</b> it answers "here is what I am about". As a <b>value</b> it carries "here is what I would give you". All three are just learned projections of the same vector.</p>
+    <p>For one query token, the model compares its query with every earlier key, scales the scores, and runs softmax so they add up to one. The output is a weighted average of the values.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 236" role="img" aria-label="The word 'it' attends to every earlier word; bars show it looks mostly at 'trophy' and 'suitcase'">
+      <defs><marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <text x="20" y="24" font-size="13" fill="var(--ink-2)">How much the query <tspan font-weight="700">"it"</tspan> looks at each earlier word (weights add up to 1)</text>
+      <g fill="var(--dim)">
+        <rect x="41" y="135" width="20" height="5"/>
+        <rect x="185" y="137" width="20" height="3"/>
+        <rect x="257" y="137" width="20" height="3"/>
+        <rect x="329" y="134" width="20" height="6"/>
+        <rect x="401" y="137" width="20" height="3"/>
+        <rect x="473" y="137" width="20" height="3"/>
+        <rect x="617" y="132" width="20" height="8"/>
+      </g>
+      <rect x="113" y="52" width="20" height="88" fill="var(--spark)"/>
+      <rect x="545" y="100" width="20" height="40" fill="var(--spark)"/>
+      <text x="123" y="46" font-size="12" text-anchor="middle" class="mono" fill="var(--spark)" font-weight="600">0.55</text>
+      <text x="555" y="94" font-size="12" text-anchor="middle" class="mono" fill="var(--spark)" font-weight="600">0.25</text>
+      <g font-size="14" text-anchor="middle">
+        <rect x="20" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="51" y="178">The</text>
+        <rect x="92" y="150" width="62" height="44" rx="6" fill="var(--spark-soft)" stroke="var(--spark)"/><text x="123" y="178">trophy</text>
+        <rect x="164" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="195" y="178">did</text>
+        <rect x="236" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="267" y="178">not</text>
+        <rect x="308" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="339" y="178">fit</text>
+        <rect x="380" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="411" y="178">in</text>
+        <rect x="452" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="483" y="178">the</text>
+        <rect x="524" y="150" width="62" height="44" rx="6" fill="var(--spark-soft)" stroke="var(--spark)"/><text x="555" y="178">suitcase</text>
+        <rect x="596" y="150" width="62" height="44" rx="6" fill="var(--surface-2)" stroke="var(--line)"/><text x="627" y="178">because</text>
+        <rect x="668" y="150" width="62" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="2.5"/><text x="699" y="178" font-weight="700">it</text>
+      </g>
+      <text x="699" y="216" font-size="12" text-anchor="middle" fill="var(--ink-2)">query token</text>
+      <path d="M668,160 C640,110 600,80 575,96" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#arw)" opacity=".6"/>
+      <path d="M668,156 C560,60 300,30 135,50" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#arw)" opacity=".6"/>
+    </svg>
+    <figcaption>One row of attention, with illustrative weights. The query compares itself to every earlier key. Most of the weight lands on two words. The rest of the row is close to zero.</figcaption>
+  </figure>
+</section>
+
+<!-- 2 -->
+<section class="chapter" id="c2">
+  <div class="num">Chapter 2</div>
+  <h2>Most of the attention map is dark</h2>
+  <div class="prose">
+    <p>Stack all those rows up and you get an attention heat map. Softmax makes the weights in each row add up to one, so when a few tokens get most of the weight, everything else in that row is pushed close to zero. In long contexts, that is the usual picture: a handful of bright cells per row and a long dark tail.</p>
+    <p>That observation is the bet behind DeepSeek Sparse Attention. <mark>What if we only computed the bright cells?</mark></p>
+  </div>
+  <figure>
+    <svg id="rowfig" viewBox="0 0 760 170" role="img" aria-label="One query's attention over 64 earlier tokens: a flat line of near-zero values with three sharp spikes"></svg>
+    <figcaption>An illustrative row: one query token's attention over 64 earlier tokens. A long flat line of small values, then a few sharp spikes. Different queries spike in different places.</figcaption>
+  </figure>
+</section>
+
+<!-- 3 -->
+<section class="chapter" id="c3">
+  <div class="num">Chapter 3</div>
+  <h2>Why long context hurts twice</h2>
+  <div class="prose">
+    <p>Running a model has two phases with two different bottlenecks. The numbers below are for DeepSeek-V3.2-Exp at its 128K context: 131,072 tokens, 128 attention heads, 61 transformer layers plus one multi-token-prediction layer.</p>
+  </div>
+  <div class="grid2">
+    <div class="card hi"><div class="eyebrow">Prefill: reading the prompt</div><h3>Compute-bound</h3><p>You build the full L by L attention matrix. At 131,072 tokens that matrix has 17.2 billion cells per head per layer. Cost grows with L squared.</p></div>
+    <div class="card hi"><div class="eyebrow">Decode: writing the answer</div><h3>Memory-bound</h3><p>Tokens come out one at a time. To avoid recomputing the past, the model keeps a KV cache. In BF16, one 128K request holds 9.36 GB of cache across the 62 layers, and every new token must read all of it. Cost grows with L, every step.</p></div>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 250" role="img" aria-label="The KV cache lives in large off-chip HBM memory; every decode step moves the whole cache into small on-chip memory where compute happens">
+      <defs><marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--heavy)"/></marker></defs>
+      <rect x="20" y="40" width="340" height="180" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+      <text x="36" y="66" font-size="14" font-weight="700">HBM3 (off-chip memory)</text>
+      <text x="36" y="84" font-size="12" fill="var(--ink-2)" class="mono">80 GB · 3.35 TB/s</text>
+      <text x="36" y="206" font-size="12" fill="var(--ink-2)">KV cache: one entry per token per layer</text>
+      <g fill="var(--dim)" id="hbmcells"></g>
+      <rect x="560" y="85" width="180" height="90" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+      <text x="650" y="115" font-size="14" font-weight="700" text-anchor="middle">On-chip memory</text>
+      <text x="650" y="134" font-size="12" text-anchor="middle" fill="var(--ink-2)" class="mono">50 MB L2 · 256 KB per SM</text>
+      <text x="650" y="154" font-size="12" text-anchor="middle" fill="var(--ink-2)">where the math happens</text>
+      <line x1="362" y1="130" x2="552" y2="130" stroke="var(--heavy)" stroke-width="10" marker-end="url(#arw2)" opacity=".9"/>
+      <text x="457" y="116" font-size="12" text-anchor="middle" fill="var(--heavy)" font-weight="700">every decode step: the whole cache</text>
+      <text x="457" y="156" font-size="12" text-anchor="middle" fill="var(--ink-2)">9.36 GB per generated token at 128K (BF16)</text>
+      <text x="380" y="240" font-size="12" text-anchor="middle" fill="var(--muted)">The compute cores wait for data to arrive. This is what "memory-bandwidth-bound" means.</text>
+    </svg>
+    <figcaption>Decode at long context is a traffic problem, not a math problem. The pipe between HBM and the chip is the bottleneck. GPU figures are for the H100 SXM5 class of Hopper GPU, which the H800 belongs to.</figcaption>
+  </figure>
+  <div class="takeaway"><div class="eyebrow">In DeepSeek's words</div>DSA reduces the core attention complexity of the main model from O(L²) to O(Lk), where k is the number of selected tokens and k is much smaller than L.</div>
+</section>
+
+<!-- 4 -->
+<section class="chapter" id="c4">
+  <div class="num">Chapter 4</div>
+  <h2>The catch: you cannot see the bright cells without computing them</h2>
+  <div class="prose">
+    <p>The obvious plan is "skip the near-zero entries". The problem is that it is circular. You only find out which cells are bright by computing all of them, and computing all of them is exactly the work you wanted to avoid.</p>
+    <p>So the real question is different: <mark>can something much cheaper predict where the spikes will be, before running the full attention?</mark></p>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="eyebrow">To know what matters</div><p>you must attend to everything</p></div>
+    <div class="card"><div class="eyebrow">But attending to everything</div><p>is exactly what you are trying to avoid</p></div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="chapter" id="c5">
+  <div class="num">Chapter 5</div>
+  <h2>DSA's answer: send a scout first</h2>
+  <div class="prose">
+    <p>DeepSeek adds a small, fast network to every attention layer called the <span class="scout-word">lightning indexer</span>. Given the current token and all earlier tokens, it produces a rough relevance score for each of them. A <b>top-k selector</b> keeps the 2,048 highest. Then the real attention runs on those 2,048 only.</p>
+    <p>Each stage has one job. The scout trades precision for speed: it only needs a good ranking, not exact numbers. The selector is purely mechanical. The attention step is the same computation as before, just on a much smaller set.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 900 250" role="img" aria-label="Three stages: the scout scores all L tokens cheaply, the selector keeps the top 2,048, full attention runs only on those">
+      <defs><marker id="arw3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <g font-size="13">
+        <rect x="20" y="60" width="150" height="110" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+        <text x="95" y="90" text-anchor="middle" font-weight="700">All past tokens</text>
+        <text x="95" y="112" text-anchor="middle" class="mono" fill="var(--ink-2)">L = 131,072</text>
+        <text x="95" y="150" text-anchor="middle" fill="var(--muted)" font-size="12">the whole library</text>
+
+        <rect x="230" y="60" width="180" height="110" rx="10" fill="var(--scout-soft)" stroke="var(--scout)" stroke-width="1.5"/>
+        <text x="320" y="90" text-anchor="middle" font-weight="700" fill="var(--scout)">Scout</text>
+        <text x="320" y="110" text-anchor="middle">lightning indexer</text>
+        <text x="320" y="130" text-anchor="middle" fill="var(--ink-2)" font-size="12">64 small heads, FP8, ReLU</text>
+        <text x="320" y="150" text-anchor="middle" fill="var(--ink-2)" font-size="12">one score per past token</text>
+
+        <rect x="470" y="60" width="180" height="110" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+        <text x="560" y="90" text-anchor="middle" font-weight="700">Top-k selector</text>
+        <text x="560" y="110" text-anchor="middle">keep the top 2,048</text>
+        <text x="560" y="130" text-anchor="middle" fill="var(--ink-2)" font-size="12">discard the rest</text>
+        <text x="560" y="150" text-anchor="middle" fill="var(--ink-2)" font-size="12">no learning, just a sort</text>
+
+        <rect x="710" y="60" width="170" height="110" rx="10" fill="var(--spark-soft)" stroke="var(--spark)" stroke-width="1.5"/>
+        <text x="795" y="90" text-anchor="middle" font-weight="700" fill="var(--spark)">Full attention</text>
+        <text x="795" y="110" text-anchor="middle">on 2,048 tokens only</text>
+        <text x="795" y="130" text-anchor="middle" fill="var(--ink-2)" font-size="12">128 heads, BF16 maths</text>
+        <text x="795" y="150" text-anchor="middle" fill="var(--ink-2)" font-size="12">just a smaller set</text>
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" fill="none">
+        <line x1="172" y1="115" x2="226" y2="115" marker-end="url(#arw3)"/>
+        <line x1="412" y1="115" x2="466" y2="115" marker-end="url(#arw3)"/>
+        <line x1="652" y1="115" x2="706" y2="115" marker-end="url(#arw3)"/>
+      </g>
+      <g font-size="11" class="mono" fill="var(--ink-2)" text-anchor="middle">
+        <text x="199" y="105">L tokens</text><text x="439" y="105">L scores</text><text x="679" y="105">2,048 ids</text>
+      </g>
+      <g font-size="12" text-anchor="middle" fill="var(--muted)">
+        <text x="320" y="205">cost: low, but touches all L</text>
+        <text x="560" y="205">cost: trivial</text>
+        <text x="795" y="205">cost: full price, tiny set</text>
+      </g>
+      <text x="450" y="238" font-size="13" text-anchor="middle" fill="var(--ink-2)">The expensive step runs on the output of the cheap step.</text>
+    </svg>
+    <figcaption>The cheap operation narrows the field. The expensive operation inherits the narrowed field. That is the whole idea.</figcaption>
+  </figure>
+  <div class="takeaway"><div class="eyebrow">What it bought</div>On DeepSeek's own H800 cost chart, decoding at the 128K position drops from about 2.2 to about 0.25 dollars per million tokens, and prefill from about 0.66 to about 0.19. The public API price was cut by more than half on the same day.</div>
+</section>
+
+<!-- 6 -->
+<section class="chapter" id="c6">
+  <div class="num">Chapter 6</div>
+  <h2>How the scout scores a token</h2>
+  <div class="prose">
+    <p>The indexer is deliberately small. It has 64 heads of 128 dimensions, against the main attention's 128 heads reading 576-dimensional keys. For the current token it makes 64 small query vectors and 64 scalar weights. For every earlier token it makes a <b>single shared key</b>, used by all 64 heads.</p>
+    <p>The score is a weighted sum, across heads, of ReLU applied to the dot product between each indexer query and that shared key. Both sides are stored in FP8. DeepSeek picked ReLU over softmax purely for throughput. The score does not need to be exact. It only needs to rank well.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 210" role="img" aria-label="Indexer score: 64 small query vectors from the current token dotted with one shared key from a past token, passed through ReLU, weighted and summed">
+      <defs><marker id="arw4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <g font-size="13">
+        <rect x="20" y="30" width="150" height="150" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+        <text x="95" y="56" text-anchor="middle" font-weight="700">current token</text>
+        <g fill="var(--scout)"><rect x="45" y="72" width="100" height="14" rx="3"/><rect x="45" y="94" width="100" height="14" rx="3"/><rect x="45" y="116" width="100" height="14" rx="3"/></g>
+        <text x="95" y="150" text-anchor="middle" font-size="12" fill="var(--ink-2)">64 queries of 128 dims</text>
+        <text x="95" y="166" text-anchor="middle" font-size="12" fill="var(--ink-2)">plus 64 scalar weights</text>
+
+        <rect x="230" y="30" width="150" height="150" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+        <text x="305" y="56" text-anchor="middle" font-weight="700">a past token</text>
+        <rect x="255" y="94" width="100" height="14" rx="3" fill="var(--ink-2)"/>
+        <text x="305" y="150" text-anchor="middle" font-size="12" fill="var(--ink-2)">one shared key, 128 dims</text>
+        <text x="305" y="166" text-anchor="middle" font-size="12" fill="var(--ink-2)">used by every head</text>
+
+        <rect x="440" y="30" width="300" height="150" rx="10" fill="var(--scout-soft)" stroke="var(--scout)" stroke-width="1.5"/>
+        <text x="590" y="56" text-anchor="middle" font-weight="700" fill="var(--scout)">index score</text>
+        <text x="590" y="86" text-anchor="middle" class="mono" font-size="14">sum over 64 heads of</text>
+        <text x="590" y="108" text-anchor="middle" class="mono" font-size="14">weight × ReLU(query · key)</text>
+        <text x="590" y="140" text-anchor="middle" font-size="12" fill="var(--ink-2)">one number per past token</text>
+        <text x="590" y="158" text-anchor="middle" font-size="12" fill="var(--ink-2)">FP8 inputs, rough, fast</text>
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" fill="none"><line x1="172" y1="105" x2="228" y2="105" marker-end="url(#arw4)"/><line x1="382" y1="105" x2="436" y2="105" marker-end="url(#arw4)"/></g>
+      <text x="380" y="202" font-size="12" text-anchor="middle" fill="var(--muted)">Repeat for all L past tokens. Then keep the 2,048 highest scores for this query.</text>
+    </svg>
+    <figcaption>Every query token gets its own top 2,048. The same past token can be chosen by one query and skipped by the next, depending on content. Early in a sequence, before 2,048 tokens exist, the selector simply keeps everything.</figcaption>
+  </figure>
+  <div class="grid2">
+    <div class="card"><div class="eyebrow">Where the pieces come from</div><p>The indexer queries are projected from the same compressed query latent the main attention uses. The shared key is projected from the token's hidden state and normalised. The 64 weights are a third small projection of the hidden state. Position is added with rotary embeddings on 64 of the 128 dimensions.</p></div>
+    <div class="card"><div class="eyebrow">How much it adds</div><div class="stat scout mono">0.87B</div><p>parameters across 62 layers, about 14 million per layer, on a 671-billion-parameter model. The indexer also keeps its own tiny key cache: 128 FP8 numbers per token per layer.</p></div>
+  </div>
+  <div class="takeaway"><div class="eyebrow">Why 2,048?</div>It is a fixed hyperparameter in the model config. It is the same budget for every query and every layer.</div>
+</section>
+
+<!-- 7 -->
+<section class="chapter" id="c7">
+  <div class="num">Chapter 7</div>
+  <h2>Try the budget yourself</h2>
+  <div class="prose"><p>The budget is fixed at 2,048 tokens per query. So the longer the context, the smaller the slice that full attention actually reads. Drag the slider.</p></div>
+  <figure>
+    <div class="slider">
+      <label for="ctx">Context length: <span class="mono" id="ctxval">131,072</span> tokens</label>
+      <input type="range" id="ctx" min="0" max="5" step="1" value="5" aria-label="Context length">
+      <div class="ticks"><span>4k</span><span>8k</span><span>16k</span><span>32k</span><span>64k</span><span>128k</span></div>
+      <div class="bar" aria-hidden="true"><div class="fill" id="fill" style="width:1.56%"></div></div>
+      <div class="readout">
+        <div class="card"><div class="eyebrow">Full attention reads</div><div class="stat spark mono" id="pct">1.6%</div><p>of the context</p></div>
+        <div class="card"><div class="eyebrow">Cache entries loaded per step</div><div class="stat spark mono">2,048</div><p>instead of <span class="mono" id="ctxval2">131,072</span></p></div>
+        <div class="card"><div class="eyebrow">Never reach full attention</div><div class="stat mono" id="skipped">129,024</div><p>tokens, this step</p></div>
+      </div>
+    </div>
+    <figcaption>The amber slice is what the expensive attention touches. The grey part is only ever seen by the cheap scout.</figcaption>
+  </figure>
+</section>
+
+<!-- 8 -->
+<section class="chapter" id="c8">
+  <div class="num">Chapter 8</div>
+  <h2>It sits on top of MLA, and the two fix different things</h2>
+  <div class="prose">
+    <p>DeepSeek models already use <b>multi-head latent attention</b> (MLA). Instead of storing full keys and values for every head, MLA stores one compressed latent per token and expands it when needed. In this model that latent is 512 numbers, plus 64 numbers that carry rotary position, so 576 numbers per token per layer. Storing full keys and values for all 128 heads would take 40,960. That is 71 times less per entry.</p>
+    <p>But MLA has a limit. It shrinks each entry in the cache. It does not reduce the number of entries. With L tokens, it still reads L latents on every decode step.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 300" role="img" aria-label="Three rows of cache drawers: full multi-head attention has big drawers per token, MLA has thin drawers per token, MLA plus DSA opens only a few of the thin drawers">
+      <g font-size="13">
+        <text x="20" y="48" font-weight="700">Full K and V per head</text><text x="20" y="66" font-size="12" fill="var(--ink-2)">40,960 numbers per token</text>
+        <text x="20" y="150" font-weight="700" >MLA</text><text x="20" y="168" font-size="12" fill="var(--ink-2)">576 numbers per token</text>
+        <text x="20" y="186" font-size="12" fill="var(--ink-2)">71x less per entry</text>
+        <text x="20" y="244" font-weight="700">MLA + DSA</text><text x="20" y="262" font-size="12" fill="var(--ink-2)">same small entries,</text>
+        <text x="20" y="280" font-size="12" fill="var(--ink-2)">only 2,048 opened per step</text>
+      </g>
+      <g id="drawers"></g>
+      <g font-size="12" fill="var(--muted)" text-anchor="end">
+        <text x="740" y="100">reads every entry, each big</text>
+        <text x="740" y="194">reads every entry, each small</text>
+        <text x="740" y="292">reads a few entries, each small</text>
+      </g>
+    </svg>
+    <figcaption>MLA answers "how much data per entry". DSA answers "how many entries". Stacked, you get both savings. Numbers are per token per layer, from the model config.</figcaption>
+  </figure>
+  <div class="takeaway"><div class="eyebrow">One requirement</div>DSA runs in MLA's multi-query mode: all 128 query heads share the same 576-number key and the same 512-number value for each selected token. Sharing is what makes fetching a small set of entries pay off, because each fetched entry serves every head.</div>
+</section>
+
+<!-- 9 -->
+<section class="chapter" id="c9">
+  <div class="num">Chapter 9</div>
+  <h2>The full picture: two paths, one gate</h2>
+  <div class="prose">
+    <p>Inside one attention block, the current token's hidden state splits into two paths. The <span class="scout-word">indexer path</span> on top is fast and disposable. The <span class="spark-word">MLA path</span> below is precise and full resolution. They meet at a gate: the index set from the top decides which cache entries the bottom is allowed to load.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 1000 400" role="img" aria-label="Pipeline: the hidden state feeds an indexer path that produces the top 2,048 index set, and an MLA path that stores a latent into the KV cache; the index set gates which cache entries are gathered for attention">
+      <defs><marker id="arw5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+      <marker id="arwS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--scout)"/></marker></defs>
+      <g font-size="13">
+        <rect x="20" y="170" width="120" height="60" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+        <text x="80" y="196" text-anchor="middle" font-weight="700">hidden state</text><text x="80" y="214" text-anchor="middle" class="mono" fill="var(--ink-2)">h_t</text>
+
+        <text x="200" y="30" font-size="12" font-weight="700" fill="var(--scout)" letter-spacing=".08em">INDEXER PATH · FAST AND CHEAP</text>
+        <rect x="200" y="42" width="180" height="70" rx="10" fill="var(--scout-soft)" stroke="var(--scout)"/>
+        <text x="290" y="70" text-anchor="middle" font-weight="700">64 indexer queries</text><text x="290" y="90" text-anchor="middle" font-size="12" fill="var(--ink-2)">+ 64 scalar weights</text>
+        <rect x="420" y="42" width="180" height="70" rx="10" fill="var(--scout-soft)" stroke="var(--scout)"/>
+        <text x="510" y="70" text-anchor="middle" font-weight="700">score all L past tokens</text><text x="510" y="90" text-anchor="middle" font-size="12" fill="var(--ink-2)">FP8, ReLU dot products</text>
+        <rect x="640" y="42" width="180" height="70" rx="10" fill="var(--scout-soft)" stroke="var(--scout)"/>
+        <text x="730" y="70" text-anchor="middle" font-weight="700">top-k selector</text><text x="730" y="90" text-anchor="middle" font-size="12" fill="var(--ink-2)">index set, 2,048 positions</text>
+
+        <text x="200" y="262" font-size="12" font-weight="700" fill="var(--spark)" letter-spacing=".08em">MLA PATH · PRECISE, FULL RESOLUTION</text>
+        <rect x="200" y="274" width="180" height="70" rx="10" fill="var(--spark-soft)" stroke="var(--spark)"/>
+        <text x="290" y="302" text-anchor="middle" font-weight="700">compress to latent</text><text x="290" y="322" text-anchor="middle" class="mono" font-size="12" fill="var(--ink-2)">512 + 64 numbers</text>
+        <rect x="420" y="274" width="180" height="70" rx="10" fill="var(--spark-soft)" stroke="var(--spark)"/>
+        <text x="510" y="302" text-anchor="middle" font-weight="700">KV cache in HBM</text><text x="510" y="322" text-anchor="middle" font-size="12" fill="var(--ink-2)">all L latents, 656 B each in FP8</text>
+        <rect x="640" y="274" width="180" height="70" rx="10" fill="var(--spark-soft)" stroke="var(--spark)"/>
+        <text x="730" y="302" text-anchor="middle" font-weight="700">gather only the index set</text><text x="730" y="322" text-anchor="middle" font-size="12" fill="var(--ink-2)">2,048 entries, dequantise to BF16</text>
+
+        <rect x="860" y="170" width="120" height="60" rx="10" fill="var(--surface-2)" stroke="currentColor" stroke-width="1.5"/>
+        <text x="920" y="196" text-anchor="middle" font-weight="700">attention</text><text x="920" y="214" text-anchor="middle" font-size="12" fill="var(--ink-2)">over 2,048 only</text>
+      </g>
+      <g stroke="currentColor" stroke-width="1.5" fill="none">
+        <path d="M140,190 C170,190 170,77 196,77" marker-end="url(#arw5)"/>
+        <path d="M140,210 C170,210 170,309 196,309" marker-end="url(#arw5)"/>
+        <line x1="382" y1="77" x2="416" y2="77" marker-end="url(#arw5)"/>
+        <line x1="602" y1="77" x2="636" y2="77" marker-end="url(#arw5)"/>
+        <line x1="382" y1="309" x2="416" y2="309" marker-end="url(#arw5)"/>
+        <line x1="602" y1="309" x2="636" y2="309" marker-end="url(#arw5)"/>
+        <path d="M820,309 C845,309 845,200 856,200" marker-end="url(#arw5)"/>
+      </g>
+      <line x1="730" y1="114" x2="730" y2="270" stroke="var(--scout)" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arwS)"/>
+      <rect x="742" y="176" width="112" height="36" rx="6" fill="var(--surface)" stroke="var(--scout)"/>
+      <text x="798" y="193" font-size="12" text-anchor="middle" fill="var(--scout)" font-weight="700">the gate</text>
+      <text x="798" y="206" font-size="11" text-anchor="middle" fill="var(--ink-2)">load only these</text>
+      <text x="510" y="130" font-size="11" text-anchor="middle" fill="var(--muted)">each past token's shared indexer key was computed once and cached (128 FP8 numbers)</text>
+      <text x="510" y="366" font-size="12" text-anchor="middle" fill="var(--muted)">128 query heads share each selected key (576) and value (512). Softmax runs over the 2,048 selected tokens. Matrix maths in BF16.</text>
+      <text x="920" y="250" font-size="11" text-anchor="middle" fill="var(--muted)">output for this token</text>
+    </svg>
+    <figcaption>One subtle change: softmax normalises over the 2,048 selected tokens, not over all L. That is a different operation from dense attention, and the model is trained with it from the start of sparse training, so it learns to live inside the budget.</figcaption>
+  </figure>
+</section>
+
+<!-- 10 -->
+<section class="chapter" id="c10">
+  <div class="num">Chapter 10</div>
+  <h2>How it was trained: teach the scout, then unfreeze everything</h2>
+  <div class="prose">
+    <p>DSA was not trained from scratch. It was added to a finished model, DeepSeek-V3.1-Terminus with its context already extended to 128K, through two stages of continued pre-training. The normal post-training pipeline then ran on top, unchanged from V3.1-Terminus, so any difference in results can be pinned on DSA.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 120" role="img" aria-label="Timeline: stage one is 1,000 steps, stage two is 15,000 steps, drawn to scale">
+      <rect x="20" y="30" width="44" height="34" rx="5" fill="var(--scout)"/>
+      <rect x="66" y="30" width="674" height="34" rx="5" fill="var(--spark)"/>
+      <text x="42" y="88" font-size="12" text-anchor="middle" class="mono" fill="var(--scout)" font-weight="600">1,000 steps</text>
+      <text x="403" y="52" font-size="13" text-anchor="middle" font-weight="700" fill="#1a1a1a">Stage 2: sparse training, 15,000 steps, 943.7 billion tokens</text>
+      <text x="42" y="106" font-size="11" text-anchor="middle" fill="var(--ink-2)">Stage 1</text>
+      <text x="740" y="88" font-size="12" text-anchor="end" fill="var(--muted)">drawn to scale by steps</text>
+    </svg>
+    <figcaption>Stage 1 is tiny next to stage 2, and that is the point: the scout only needs a short apprenticeship before the whole model adapts.</figcaption>
+  </figure>
+  <div class="grid2">
+    <div class="card" style="border-color:var(--scout)"><div class="eyebrow">Stage 1 · dense warm-up</div><h3>Only the scout learns</h3><p>1,000 steps of 16 sequences of 128K tokens, 2.1 billion tokens in total. Attention stays dense. Every existing weight is frozen; the new indexer is the only trainable part. Its target is the frozen model's own attention: the real attention scores are summed across all heads and normalised to a distribution, and the indexer is trained with a KL-divergence loss to match it. In plain words, the scout copies where the big model looks. Learning rate is 0.001.</p></div>
+    <div class="card" style="border-color:var(--spark)"><div class="eyebrow">Stage 2 · sparse training</div><h3>Everything learns, with the budget on</h3><p>15,000 steps of 480 sequences of 128K tokens, 943.7 billion tokens in total. The selector now picks 2,048 tokens per query and attention only sees those. All weights train, at a learning rate of 0.0000073. The indexer keeps its KL loss, now measured only over the selected tokens. One deliberate detail: the indexer's input is detached from the graph, so the indexer learns only from its own loss and the main model learns only from the language-modelling loss.</p></div>
+  </div>
+  <div class="takeaway"><div class="eyebrow">Did it hurt quality?</div>On DeepSeek's published benchmark table, V3.2-Exp lands within a few points of V3.1-Terminus in both directions: MMLU-Pro 85.0 versus 85.0, AIME 2025 89.3 versus 88.4, GPQA-Diamond 79.9 versus 80.7, HMMT 2025 83.6 versus 86.1. DeepSeek attributes the small drops to the sparse model writing fewer reasoning tokens.</div>
+</section>
+
+<!-- 11 -->
+<section class="chapter" id="c11">
+  <div class="num">Chapter 11</div>
+  <h2>What it costs, honestly</h2>
+  <div class="prose">
+    <p>The indexer still compares the current token with every past token, so its cost still grows with L squared. DeepSeek says so plainly in the report. What changed is the constant: 64 heads of 128 dimensions in FP8, against 128 heads reading 576-dimensional keys and 512-dimensional values in BF16.</p>
+    <p>The sparse attention itself is genuinely linear: 2,048 entries per query, no matter how long the context. Counting multiply-adds per query token per layer from the config gives the picture below.</p>
+  </div>
+  <figure>
+    <svg id="costfig" viewBox="0 0 800 350" role="img" aria-label="Log-log plot of multiply-adds per query token per layer against context length: dense attention and the indexer both grow with L squared, the indexer 17 times lower; sparse attention is flat at 2,048 entries; the indexer overtakes the sparse core near 35,000 tokens"></svg>
+    <figcaption>Multiply-adds per query token per layer, computed from the model config: dense is 128 heads × L × (576 + 512), the indexer is 64 heads × L × 128, sparse is 128 heads × 2,048 × (576 + 512). Time is not the same as multiply-adds: the indexer's FP8 maths runs at twice the BF16 rate on Hopper tensor cores, and decode time is dominated by memory reads, which DSA cuts by the same 2,048-over-L factor.</figcaption>
+  </figure>
+  <div class="grid2">
+    <div class="card"><div class="eyebrow">At 131,072 tokens, per query token per layer</div>
+      <table>
+        <tr><th>Attention core</th><th class="num">Multiply-adds</th><th class="num">vs dense</th></tr>
+        <tr><td>Dense MLA (all L)</td><td class="num">18.25 G</td><td class="num">1x</td></tr>
+        <tr><td>Indexer (all L, FP8)</td><td class="num">1.07 G</td><td class="num">17x fewer</td></tr>
+        <tr><td>Sparse MLA (2,048)</td><td class="num">0.29 G</td><td class="num">64x fewer</td></tr>
+        <tr><td><b>DSA total</b></td><td class="num"><b>1.36 G</b></td><td class="num"><b>13x fewer</b></td></tr>
+      </table>
+      <p class="src" style="margin-top:8px">Derived from config.json: 128 heads, key dim 576, value dim 512, 64 indexer heads of 128, top-k 2,048.</p>
+    </div>
+    <div class="card"><div class="eyebrow">What DeepSeek measured on H800s, at 2 dollars per GPU-hour</div>
+      <table>
+        <tr><th>Cost per million tokens at the 128K position</th><th class="num">V3.1-Terminus</th><th class="num">V3.2-Exp</th></tr>
+        <tr><td>Prefill</td><td class="num">≈ $0.66</td><td class="num">≈ $0.19</td></tr>
+        <tr><td>Decode</td><td class="num">≈ $2.2</td><td class="num">≈ $0.25</td></tr>
+      </table>
+      <p class="src" style="margin-top:8px">Read off Figure 3 of the V3.2-Exp report, so the values are approximate. The lines are near-straight in token position, and the two models cost about the same below roughly 8K tokens.</p>
+    </div>
+  </div>
+  <div class="takeaway"><div class="eyebrow">Small surprise</div>Below about 35,000 tokens the indexer does fewer multiply-adds than the sparse attention core it feeds, because 64 × 128 per token is so small. Above that, the indexer's quadratic term is the larger of the two, which is exactly why DeepSeek flags it as the remaining O(L²) piece.</div>
+</section>
+
+<!-- 12 -->
+<section class="chapter" id="c12">
+  <div class="num">Chapter 12</div>
+  <h2>On the GPU: three kernels, no detours</h2>
+  <div class="prose"><p>A mechanism that works on paper must also map to hardware. DeepSeek published the attention kernels in its FlashMLA library and the indexer scoring kernel with the model's reference code. Per layer, per token, the work is three steps.</p></div>
+  <div class="steps">
+    <div class="card"><h3>FP8 index scoring</h3><p>The 64 indexer queries, their weights, and the cached FP8 indexer keys go through one scoring kernel that returns a score for every past position.</p></div>
+    <div class="card"><h3>Top-k</h3><p>Keep the 2,048 highest scores, or every position if fewer than 2,048 exist yet. The result is a list of positions that points straight into the paged KV cache.</p></div>
+    <div class="card"><h3>Sparse MLA attention</h3><p>The kernel fetches only the listed entries, 656 bytes each in FP8, dequantises them to BF16, and runs the 128-head attention in BF16 on chip.</p></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><div class="eyebrow">FlashMLA sparse prefill, H800 SXM5, CUDA 12.8</div><div class="stat scout mono">640 TFLOPS</div><p>up to, in forward computation. Up to 1,450 TFLOPS on B200.</p></div>
+    <div class="card"><div class="eyebrow">FlashMLA sparse decode, H800 SXM5, CUDA 12.8</div><div class="stat scout mono">410 TFLOPS</div><p>compute-bound configuration, FP8 cache with BF16 maths. Up to 350 TFLOPS on B200, which DeepSeek says is not yet optimised.</p></div>
+  </div>
+  <div class="takeaway"><div class="eyebrow">The hard part was not the maths</div>DeepSeek's own kernel write-up shows the decode kernel is dequantisation-bound: on an H800, turning one token's FP8 entry back into BF16 takes about 50 clock cycles on the CUDA cores, while the tensor-core multiply for 64 query heads takes about 34. Their fix, nicknamed "crossover", has two thread blocks share dequantised entries through Hopper's distributed shared memory so each block only converts half.</div>
+</section>
+
+<!-- 13 -->
+<section class="chapter" id="c13">
+  <div class="num">Chapter 13</div>
+  <h2>Two kinds of sparsity in one model</h2>
+  <div class="prose">
+    <p>The model was already sparse before DSA. It keeps the DeepSeek-V3 skeleton: a mixture-of-experts model with 671 billion parameters in total and 37 billion active per token, because the router picks 8 of 256 routed experts, plus one shared expert that is always on. DSA adds a second, independent kind of sparsity: which past tokens to attend to.</p>
+    <p>Both are learned and both depend on content. Neither is fixed, and neither is positional.</p>
+  </div>
+  <figure>
+    <svg viewBox="0 0 760 210" role="img" aria-label="Two bars: experts, 8 of 256 routed experts active; tokens, 2,048 of 131,072 attended">
+      <g font-size="13">
+        <text x="20" y="40" font-weight="700">Expert sparsity (mixture of experts)</text>
+        <text x="740" y="40" text-anchor="end" class="mono" fill="var(--ink-2)">8 of 256 · 3.1%</text>
+        <rect x="20" y="52" width="720" height="28" rx="6" fill="var(--dim)"/>
+        <rect x="20" y="52" width="22.5" height="28" rx="6" fill="var(--spark)"/>
+        <text x="20" y="100" font-size="12" fill="var(--ink-2)">the router chooses which routed experts to run, per token (plus 1 shared expert, always on)</text>
+
+        <text x="20" y="140" font-weight="700">Attention sparsity (DSA)</text>
+        <text x="740" y="140" text-anchor="end" class="mono" fill="var(--ink-2)">2,048 of 131,072 · 1.56%</text>
+        <rect x="20" y="152" width="720" height="28" rx="6" fill="var(--dim)"/>
+        <rect x="20" y="152" width="11.25" height="28" rx="6" fill="var(--spark)"/>
+        <text x="20" y="200" font-size="12" fill="var(--ink-2)">the indexer chooses which past tokens to read, per query</text>
+      </g>
+    </svg>
+    <figcaption>Two routers, two budgets. One decides which weights wake up, the other decides which memories get read. Counts are from the model config.</figcaption>
+  </figure>
+</section>
+
+<!-- 14 -->
+<section class="chapter" id="c14">
+  <div class="num">Chapter 14</div>
+  <h2>Where it still hurts</h2>
+  <div class="prose"><p>DSA is a real win, and it has real limits. These follow from the report, the config, and the kernel code.</p></div>
+  <div class="grid2 limits">
+    <div class="card"><h3>The scout is still quadratic</h3><p>The report says it directly: the lightning indexer still has O(L²) complexity. The constant shrank a lot, but the scaling law did not change.</p></div>
+    <div class="card"><h3>A miss is permanent</h3><p>Attention is computed only over the top-k set. If the indexer leaves out a token that would have mattered, that token is invisible for this query at this layer. There is no second pass.</p></div>
+    <div class="card"><h3>Gather plus dequantise is the bottleneck</h3><p>DeepSeek's kernel write-up calls the sparse memory access and the FP8-to-BF16 conversion the hard parts, and had to invent a cross-block sharing trick to keep the tensor cores busy.</p></div>
+    <div class="card"><h3>One budget for everyone</h3><p>Top-k is a single number, 2,048, for every query, every layer, every task. Some queries need far fewer tokens. Some might genuinely need more.</p></div>
+    <div class="card"><h3>Hardware specific</h3><p>DeepSeek's sparse kernels target NVIDIA Hopper and Blackwell. Other vendors maintain their own ports, and the Blackwell decode kernel is described as not yet optimised.</p></div>
+    <div class="card"><h3>Still labelled experimental</h3><p>The report itself says DeepSeek is pursuing further large-scale real-world testing to uncover potential limitations of the sparse architecture.</p></div>
+  </div>
+</section>
+
+<!-- 15 -->
+<section class="chapter" id="c15">
+  <div class="num">Chapter 15</div>
+  <h2>The whole story in one breath</h2>
+  <div class="recap">
+    <ol>
+      <li>Attention is expensive at long context because <span class="heavy-word">every token checks every other token</span>. That is quadratic, and it also drags the whole KV cache through memory on every decode step.</li>
+      <li>But most of those checks are wasted. In each row, a few tokens take most of the weight and the rest sit near zero.</li>
+      <li>You cannot skip the zeros without computing them first, so DSA <span class="scout-word">predicts</span> them instead: a 64-head FP8 indexer, under a billion parameters in total, scores every past token cheaply.</li>
+      <li>A selector keeps <span class="spark-word">exactly 2,048</span> tokens per query. At the 131,072-token context, that is 1.56 percent.</li>
+      <li>Full-quality attention runs only on those 2,048. MLA had already made each cache entry small; DSA makes the number of entries read small.</li>
+      <li>The scout learned by copying a frozen model's attention for 2.1 billion tokens, then the whole model trained with the budget on for 943.7 billion. Benchmarks stayed level, and DeepSeek's decode cost at 128K fell by roughly nine times.</li>
+    </ol>
+  </div>
+  <div class="sources">
+    <b>Sources</b> (every number on this page comes from one of these, or is computed from them)
+    <ul>
+      <li><a href="https://github.com/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/DeepSeek_V3_2.pdf">DeepSeek-V3.2-Exp technical report</a>: indexer formula, MQA mode, training stages, learning rates, token counts, complexity statement, Figure 3 costs, benchmark table.</li>
+      <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/config.json">DeepSeek-V3.2-Exp config.json</a>: 64 indexer heads of 128, top-k 2,048, latent 512 + rotary 64, 128 heads, 61 layers, 256 routed and 1 shared expert, 8 per token, 163,840 max positions.</li>
+      <li><a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/inference/model.py">Reference inference code</a> and <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.2-Exp/blob/main/model.safetensors.index.json">weight map</a>: indexer projections, FP8 key cache, top-k of min(2,048, position), indexer present in all 62 layers.</li>
+      <li><a href="https://github.com/deepseek-ai/FlashMLA">FlashMLA README</a> and <a href="https://github.com/deepseek-ai/FlashMLA/blob/main/docs/20250929-hopper-fp8-sparse-deep-dive.md">FP8 sparse decoding deep dive</a>: 640 and 410 TFLOPS, 656-byte FP8 entries, key dim 576 and value dim 512, 9.36 GB cache per 128K request, dequantisation cycle counts, crossover.</li>
+      <li><a href="https://arxiv.org/abs/2412.19437">DeepSeek-V3 report</a>: 671 billion total and 37 billion active parameters. <a href="https://arxiv.org/abs/2405.04434">DeepSeek-V2 report</a>: multi-head latent attention.</li>
+      <li><a href="https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/">NVIDIA Hopper architecture post</a> and <a href="https://www.nvidia.com/en-us/data-center/h100/">H100 product page</a>: 80 GB HBM3, 3.35 TB/s, 50 MB L2, 256 KB per SM, 132 SMs. <a href="https://api-docs.deepseek.com/news/news250929">DeepSeek API news, 29 September 2025</a>: price cut of more than 50 percent.</li>
+    </ul>
+  </div>
+</section>
+</div>
+
+<script>
+(function(){
+  function rng(seed){ return function(){ seed=(seed*1664525+1013904223)>>>0; return seed/4294967296; }; }
+
+  /* hero strip */
+  var N=72, K=6, strip=document.getElementById('strip'), phase=document.getElementById('phase');
+  var r=rng(7), scores=[], cells=[];
+  for(var i=0;i<N-1;i++){ scores.push(0.06+r()*0.22); }
+  [5,19,33,47,58,66].forEach(function(ix,j){ scores[ix]=0.72+((j*37)%23)/80; });
+  for(var i=0;i<N;i++){ var d=document.createElement('div'); d.className='tok'+(i===N-1?' query':''); d.innerHTML='<i></i>'; strip.appendChild(d); cells.push(d); }
+  var top=scores.map(function(s,i){return [s,i];}).sort(function(a,b){return b[0]-a[0];}).slice(0,K).map(function(p){return p[1];});
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, timers=[];
+  function clear(){ timers.forEach(clearTimeout); timers=[]; }
+  function at(ms,fn){ timers.push(setTimeout(fn,ms)); }
+  function reset(){ for(var i=0;i<N-1;i++){ cells[i].className='tok'; cells[i].firstChild.style.transform=''; } }
+  function setPhase(n,t){ phase.innerHTML='<b>'+n+'/3</b>'+t; }
+  function run(){
+    clear(); reset();
+    if(reduce){
+      for(var i=0;i<N-1;i++){ cells[i].className='tok '+(top.indexOf(i)>=0?'chosen':'dropped'); }
+      setPhase(3,'Full attention reads only the amber tokens'); return;
+    }
+    setPhase(1,'The scout scores every past token, cheaply');
+    for(var i=0;i<N-1;i++){ (function(i){ at(200+i*16,function(){ cells[i].className='tok scored'; cells[i].firstChild.style.transform='scaleY('+scores[i].toFixed(2)+')'; }); })(i); }
+    at(200+N*16+900,function(){ setPhase(2,'The selector keeps the top '+K+' and drops the rest'); for(var i=0;i<N-1;i++){ cells[i].className='tok '+(top.indexOf(i)>=0?'chosen':'dropped'); } });
+    at(200+N*16+2700,function(){ setPhase(3,'Full attention reads only the amber tokens. The grey ones never load.'); });
+    at(200+N*16+6200,run);
+  }
+  document.getElementById('replay').addEventListener('click',run);
+  run();
+
+  /* chapter 2: one attention row (illustrative) */
+  var svg=document.getElementById('rowfig'), r2=rng(3), M=64, W=760, x0=20, bw=(W-40)/M, base=140, H=110, s='';
+  for(var i=0;i<M;i++){
+    var v=0.01+r2()*0.05; var spike=(i===9||i===27||i===50); if(spike){ v=[0.62,0.34,0.9][[9,27,50].indexOf(i)]; }
+    var h=Math.max(2,v*H);
+    s+='<rect x="'+(x0+i*bw+1).toFixed(1)+'" y="'+(base-h).toFixed(1)+'" width="'+(bw-2).toFixed(1)+'" height="'+h.toFixed(1)+'" rx="1.5" fill="'+(spike?'var(--spark)':'var(--dim)')+'"/>';
+  }
+  s+='<line x1="20" y1="140.5" x2="740" y2="140.5" stroke="var(--line)"/>';
+  s+='<text x="20" y="22" font-size="13" fill="var(--ink-2)">attention weight from one query, over 64 earlier tokens (illustrative)</text>';
+  s+='<text x="'+(x0+50*bw+bw/2).toFixed(1)+'" y="'+(base-0.9*H-8).toFixed(1)+'" font-size="12" text-anchor="middle" fill="var(--spark)" font-weight="700">the spikes are what matters</text>';
+  s+='<text x="380" y="163" font-size="12" text-anchor="middle" fill="var(--muted)">the weights in a row add up to 1, so a few big ones leave little for the rest</text>';
+  svg.innerHTML=s;
+
+  /* chapter 3: HBM cells */
+  var g=document.getElementById('hbmcells'), c='';
+  for(var row=0;row<4;row++){ for(var col=0;col<12;col++){ c+='<rect x="'+(40+col*26)+'" y="'+(96+row*24)+'" width="22" height="18" rx="2"/>'; } }
+  g.innerHTML=c;
+
+  /* chapter 8: drawers */
+  var dr=document.getElementById('drawers'), t='', D=24, dx=170, sp=23.5, open=[3,11,19];
+  for(var i=0;i<D;i++){ t+='<rect x="'+(dx+i*sp)+'" y="34" width="18" height="52" rx="3" fill="var(--heavy)" opacity=".85"/>'; }
+  for(var i=0;i<D;i++){ t+='<rect x="'+(dx+i*sp)+'" y="150" width="18" height="12" rx="3" fill="var(--scout)" opacity=".9"/>'; }
+  for(var i=0;i<D;i++){ var o=open.indexOf(i)>=0; t+='<rect x="'+(dx+i*sp)+'" y="248" width="18" height="12" rx="3" fill="'+(o?'var(--spark)':'var(--dim)')+'"/>'; }
+  dr.innerHTML=t;
+
+  /* chapter 7: slider */
+  var ctx=document.getElementById('ctx'), K2=2048, fmt=function(n){return n.toLocaleString('en-US');};
+  function upd(){ var L=4096*Math.pow(2,+ctx.value), p=K2/L*100;
+    document.getElementById('ctxval').textContent=fmt(L); document.getElementById('ctxval2').textContent=fmt(L);
+    document.getElementById('pct').textContent=(p>=10?p.toFixed(0):p.toFixed(1))+'%';
+    document.getElementById('skipped').textContent=fmt(L-K2);
+    document.getElementById('fill').style.width=p+'%'; }
+  ctx.addEventListener('input',upd); upd();
+
+  /* chapter 11: cost plot computed from config values */
+  (function(){
+    var Hh=128, dk=576, dv=512, HI=64, dI=128, k=2048;
+    var dense=function(L){return Hh*L*(dk+dv);}, idx=function(L){return HI*L*dI;}, sparse=Hh*k*(dk+dv);
+    var Lmin=4096, Lmax=131072, x0=70, x1=740, y0=300, y1=30;
+    var lx=function(L){return x0+(Math.log2(L)-12)/(17-12)*(x1-x0);};
+    var ymin=7.4, ymax=10.4, ly=function(v){return y0-(Math.log10(v)-ymin)/(ymax-ymin)*(y0-y1);};
+    var o='';
+    o+='<g stroke="var(--line)" stroke-width="1"><line x1="'+x0+'" y1="'+y0+'" x2="'+x1+'" y2="'+y0+'"/><line x1="'+x0+'" y1="'+y1+'" x2="'+x0+'" y2="'+y0+'"/>';
+    [8192,16384,32768,65536].forEach(function(L){ o+='<line stroke-dasharray="2 4" x1="'+lx(L)+'" y1="'+y1+'" x2="'+lx(L)+'" y2="'+y0+'"/>'; });
+    o+='</g>';
+    // y gridlines at 1e8, 1e9, 1e10
+    [1e8,1e9,1e10].forEach(function(v){ o+='<line stroke="var(--line)" stroke-dasharray="2 4" x1="'+x0+'" y1="'+ly(v).toFixed(1)+'" x2="'+x1+'" y2="'+ly(v).toFixed(1)+'"/><text x="'+(x0-6)+'" y="'+(ly(v)+4).toFixed(1)+'" font-size="11" text-anchor="end" class="mono" fill="var(--muted)">'+(v===1e8?'0.1 G':v===1e9?'1 G':'10 G')+'</text>'; });
+    o+='<g font-size="11" class="mono" fill="var(--muted)" text-anchor="middle">';
+    [4096,8192,16384,32768,65536,131072].forEach(function(L){ o+='<text x="'+lx(L)+'" y="318">'+(L/1024)+'k</text>'; });
+    o+='</g>';
+    o+='<text x="405" y="340" font-size="12" text-anchor="middle" fill="var(--ink-2)">context length L (log scale)</text>';
+    o+='<text x="18" y="165" font-size="12" fill="var(--ink-2)" transform="rotate(-90 18 165)" text-anchor="middle">multiply-adds per query token per layer (log)</text>';
+    var line=function(f,col){ return '<line x1="'+lx(Lmin).toFixed(1)+'" y1="'+ly(f(Lmin)).toFixed(1)+'" x2="'+lx(Lmax).toFixed(1)+'" y2="'+ly(f(Lmax)).toFixed(1)+'" stroke="'+col+'" stroke-width="3"/>'; };
+    o+=line(dense,'var(--heavy)')+line(idx,'var(--scout)')+line(function(){return sparse;},'var(--good)');
+    var Lc=sparse/(HI*dI);
+    o+='<circle cx="'+lx(Lc).toFixed(1)+'" cy="'+ly(sparse).toFixed(1)+'" r="5" fill="var(--surface)" stroke="currentColor" stroke-width="1.5"/>';
+    o+='<text x="'+(lx(Lc)-10).toFixed(1)+'" y="'+(ly(sparse)+28).toFixed(1)+'" font-size="11" text-anchor="end" fill="var(--ink-2)">indexer overtakes the sparse core</text>';
+    o+='<text x="'+(lx(Lc)-10).toFixed(1)+'" y="'+(ly(sparse)+42).toFixed(1)+'" font-size="11" text-anchor="end" fill="var(--ink-2)">at L = '+Lc.toLocaleString('en-US')+'</text>';
+    o+='<g font-size="12" font-weight="700">';
+    o+='<text x="'+(lx(16384)-10)+'" y="'+(ly(dense(16384))-14).toFixed(1)+'" fill="var(--heavy)">dense MLA · 128 × L × 1,088</text>';
+    o+='<text x="'+(lx(8192)+10)+'" y="'+(ly(idx(8192))+22).toFixed(1)+'" fill="var(--scout)">indexer · 64 × L × 128</text>';
+    o+='<text x="'+(lx(4096)+8)+'" y="'+(ly(sparse)-10).toFixed(1)+'" fill="var(--good)">sparse MLA · 128 × 2,048 × 1,088 (flat)</text>';
+    o+='</g>';
+    o+='<line x1="'+(x1+18)+'" y1="'+ly(dense(Lmax)).toFixed(1)+'" x2="'+(x1+18)+'" y2="'+ly(sparse).toFixed(1)+'" stroke="currentColor" stroke-width="1.5"/>';
+    o+='<text x="'+(x1+24)+'" y="'+((ly(dense(Lmax))+ly(sparse))/2+4).toFixed(1)+'" font-size="12" font-weight="700" class="mono">64x</text>';
+    document.getElementById('costfig').innerHTML=o;
+  })();
+})();
+</script>

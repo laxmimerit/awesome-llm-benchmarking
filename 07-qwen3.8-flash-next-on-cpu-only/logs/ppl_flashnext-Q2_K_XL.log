@@ -1,0 +1,16 @@
+CMD: D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-perplexity.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-Q2_K_XL\Qwen3.8-Flash-Next-UD-Q2_K_XL-00001-of-00003.gguf -f D:\Claude AI\AI Model Performance\qwen38-uncensored-vs-base\corpus\wikitext2-test.raw -c 2048 --chunks 40 -t 24 --no-warmup -ngl 99 -ncmoe 28 -ot per_layer_token_embd=CPU
+
+8.60 minutes
+[1]1.6183,[2]1.6219,[3]1.7458,[4]2.2422,[5]2.4503,[6]2.3328,[7]2.1899,[8]2.3044,[9]2.4815,[10]2.7014,[11]2.8529,[12]3.1127,[13]3.0461,[14]3.1891,[15]3.2904,[16]3.4701,[17]3.6052,[18]3.7087,[19]3.7568,[20]3.6216,[21]3.5180,[22]3.4361,[23]3.3522,[24]3.2953,[25]3.2698,[26]3.2305,[27]3.3792,[28]3.4870,[29]3.5251,[30]3.5542,[31]3.5689,[32]3.5543,[33]3.5783,[34]3.6161,[35]3.6511,[36]3.6991,[37]3.6946,[38]3.6964,[39]3.6884,[40]3.6721,
+
+
+0.00.797.278 W llama_model_loader: tensor overrides to CPU are used with mmap enabled - consider using --load-mode none for better performance
+0.24.059.306 I cmn          init: llama threadpool init, n_threads = 24
+0.24.059.480 I 
+0.24.059.512 I system_info: n_threads = 24 (n_threads_batch = 24) / 24 | CUDA : ARCHS = 1200 | USE_GRAPHS = 1 | BLACKWELL_NATIVE_FP4 = 1 | CPU : SSE3 = 1 | SSSE3 = 1 | AVX = 1 | AVX2 = 1 | F16C = 1 | FMA = 1 | LLAMAFILE = 1 | OPENMP = 1 | REPACK = 1 | 
+0.24.059.516 I perplexity: tokenizing the input ..
+0.24.345.494 I perplexity: tokenization took 285.971 ms
+0.24.346.081 I perplexity: calculating perplexity over 40 chunks, n_ctx=2048, batch_size=2048, n_seq=1
+0.37.246.138 I perplexity: 12.90 seconds per pass - ETA 4.17.495.471 I Final estimate: PPL = 3.6721 +/- 0.03867
+4.17.498.683 W ~llama_context:      CUDA0 compute buffer size of 633.5004 MiB, does not match expectation of 581.5004 MiB
+4.17.498.686 W ~llama_context:  CUDA_Host compute buffer size of  60.3789 MiB, does not match expectation of  12.0508 MiB

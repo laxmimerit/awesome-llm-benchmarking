@@ -1,0 +1,409 @@
+<title>Qwen 27B Teardown</title>
+<style>
+  :root {
+    --bg: #fcfcfb;
+    --ink: #0b0b0b;
+    --ink-2: #52514e;
+    --ink-3: #8a8880;
+    --rule: #e4e3de;
+    --card: #f4f4f1;
+    --accent: #0f7a56;
+    --q35: #2a78d6;
+    --q36: #eb6834;
+    --q38: #1baf7a;
+    --warn-bg: #faf3e3;
+    --warn-edge: #eda100;
+  }
+  :root:not([data-theme="light"]) { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1a1a19;
+      --ink: #ffffff;
+      --ink-2: #c3c2b7;
+      --ink-3: #8a8880;
+      --rule: #33332f;
+      --card: #232322;
+      --accent: #2fbf8a;
+      --q35: #3987e5;
+      --q36: #d95926;
+      --q38: #199e70;
+      --warn-bg: #2a2418;
+      --warn-edge: #c98500;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1a1a19;
+    --ink: #ffffff;
+    --ink-2: #c3c2b7;
+    --ink-3: #8a8880;
+    --rule: #33332f;
+    --card: #232322;
+    --accent: #2fbf8a;
+    --q35: #3987e5;
+    --q36: #d95926;
+    --q38: #199e70;
+    --warn-bg: #2a2418;
+    --warn-edge: #c98500;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.55;
+    margin: 0;
+    padding: 3rem 1.25rem 6rem;
+  }
+  main { max-width: 60rem; margin: 0 auto; }
+  .prose { max-width: 44rem; }
+  .eyebrow {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.08;
+    margin: .4rem 0 .6rem;
+    text-wrap: balance;
+    font-weight: 700;
+  }
+  .standfirst { font-size: 1.12rem; color: var(--ink-2); max-width: 44rem; }
+  h2 {
+    font-size: 1.45rem;
+    margin: 3rem 0 .8rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+    text-wrap: balance;
+  }
+  h2 .sn {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: .8rem;
+    color: var(--accent);
+    display: block;
+    letter-spacing: .1em;
+  }
+  p, li { color: var(--ink); }
+  .muted { color: var(--ink-2); }
+  code {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: .88em;
+    background: var(--card);
+    padding: .08em .35em;
+    border-radius: 3px;
+  }
+  .tablewrap { overflow-x: auto; margin: 1.2rem 0; }
+  table {
+    border-collapse: collapse;
+    font-size: .92rem;
+    min-width: 34rem;
+  }
+  th, td {
+    text-align: left;
+    padding: .45rem .9rem .45rem 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  th {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .chip {
+    display: inline-block;
+    width: .7em; height: .7em;
+    border-radius: 2px;
+    margin-right: .45em;
+    vertical-align: baseline;
+  }
+  .m35 { background: var(--q35); } .m36 { background: var(--q36); } .m38 { background: var(--q38); }
+  .big {
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+  }
+  .callout {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn-edge);
+    padding: .8rem 1rem;
+    margin: 1.4rem 0;
+    max-width: 44rem;
+  }
+  .callout p { margin: .3rem 0; }
+  figure { margin: 2rem 0; }
+  figcaption {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: .74rem;
+    color: var(--ink-2);
+    margin-top: .5rem;
+    max-width: 44rem;
+  }
+  .chart { width: 100%; height: auto; }
+  .statrow {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin: 1.6rem 0;
+  }
+  .stat {
+    background: var(--card);
+    padding: .9rem 1.1rem;
+    min-width: 11rem;
+    flex: 1 1 11rem;
+  }
+  .stat .v { font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .stat .l { font-size: .8rem; color: var(--ink-2); margin-top: .25rem; }
+  svg text {
+    font-family: Consolas, "Cascadia Mono", Menlo, monospace;
+    font-size: 11px;
+    fill: var(--ink-2);
+  }
+  svg text.val { fill: var(--ink); font-weight: 600; }
+  svg .grid { stroke: var(--rule); stroke-width: 1; }
+  svg .base { stroke: var(--ink-3); stroke-dasharray: 4 4; stroke-width: 1.5; }
+  a { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<main>
+  <p class="eyebrow">AI Model Performance Lab &middot; RTX 5090 &middot; Ollama 0.32.14 &middot; Q4_K_M &middot; 397 runs &middot; 2026-08-18/19</p>
+  <h1>Qwen 27B Teardown</h1>
+  <p class="standfirst">Qwen 3.5 vs 3.6 vs 3.8 at 27B, torn down to tensors and timed to the token.
+  Same architecture three times over; what actually improved is the thinking policy and the draft head.
+  Every accuracy claim uses brute-force-verified problems; every speed number carries its conditions;
+  every comparison ran forward and reverse.</p>
+
+  <div class="statrow">
+    <div class="stat"><div class="v">7&times;</div><div class="l">less thinking for equal accuracy, 3.8 vs 3.5, matched settings</div></div>
+    <div class="stat"><div class="v">0</div><div class="l">structural differences between 3.5 and 3.6 GGUFs (1,307 identical tensors)</div></div>
+    <div class="stat"><div class="v">0.09 &rarr; 0.36</div><div class="l">MTP draft acceptance on prose, 3.5 &rarr; 3.8 (same head, retrained)</div></div>
+    <div class="stat"><div class="v">88 &rarr; 79 tok/s</div><div class="l">decode from 16k to 80k context; identical decay for all three</div></div>
+  </div>
+
+  <h2><span class="sn">01</span>Verdict</h2>
+  <div class="prose">
+    <p>These three releases are the same machine. 3.5 and 3.6 are tensor-for-tensor identical in structure
+    (same 1,307 tensor names, shapes, dtypes; parameter counts equal to the digit: 27,781,427,952).
+    3.8 keeps the identical text backbone, splits its vision tower into a separate 461M projector, and ships
+    its multi-token-prediction head as an active 65th layer. Essentially everything that improved from
+    3.5 to 3.8 is post-training: the thinking policy, the draft head, and the output style. On this suite,
+    3.8 answers equally correctly roughly 6 to 9 times faster end to end.</p>
+  </div>
+
+  <h2><span class="sn">02</span>Architecture, proved not assumed</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th></th><th><span class="chip m35"></span>qwen3.5:27b</th><th><span class="chip m36"></span>qwen3.6:27b</th><th><span class="chip m38"></span>qwen3.8</th></tr>
+      <tr><td>Blocks</td><td>64</td><td>64</td><td>64 + 1 MTP (<code>nextn</code>)</td></tr>
+      <tr><td>Hybrid layout</td><td colspan="3">3 &times; Gated DeltaNet : 1 &times; full attention, 16 repeats (<code>full_attention_interval 4</code>)</td></tr>
+      <tr><td>Hidden / FFN</td><td colspan="3">5120 / 17408, identical</td></tr>
+      <tr><td>Attention</td><td colspan="3">24 Q heads, 4 KV heads, head dim 256, identical</td></tr>
+      <tr><td>DeltaNet SSM</td><td colspan="3">inner 6144, state 128, 48 heads, conv 4, identical</td></tr>
+      <tr><td>Vocab / context</td><td colspan="3">248,320 / 262,144, identical</td></tr>
+      <tr><td>MTP head</td><td>dormant <code>mtp.*</code></td><td>dormant <code>mtp.*</code></td><td>active <code>blk.64.nextn.*</code></td></tr>
+      <tr><td>Vision</td><td>baked in (F16)</td><td>baked in (F16)</td><td>separate 461M mmproj</td></tr>
+    </table>
+  </div>
+  <div class="prose">
+    <p>Parsed from the local Ollama blobs directly (no downloads). Runtime confirmation: with MTP off, all
+    three decode within 1.5% of each other and show identical speed decay as context grows. Identical
+    compute graph, measured two ways.</p>
+  </div>
+
+  <h2><span class="sn">03</span>How much they think</h2>
+  <figure>
+    <svg class="chart" viewBox="0 0 860 300" role="img" aria-label="Average thinking tokens per problem, base and hard tiers">
+      <text x="0" y="14">AVG OUTPUT TOKENS PER PROBLEM (THINKING MODE, MATCHED SETTINGS)</text>
+      <!-- base tier group -->
+      <text x="0" y="46">Base tier (8 problems, fwd+rev)</text>
+      <rect x="120" y="56"  width="393" height="18" rx="4" fill="var(--q35)"/>
+      <rect x="120" y="78"  width="292" height="18" rx="4" fill="var(--q36)"/>
+      <rect x="120" y="100" width="57"  height="18" rx="4" fill="var(--q38)"/>
+      <text class="val" x="521" y="70">7,157</text>
+      <text class="val" x="420" y="92">5,320</text>
+      <text class="val" x="185" y="114">1,038</text>
+      <text x="60" y="70">3.5</text><text x="60" y="92">3.6</text><text x="60" y="114">3.8</text>
+      <!-- hard tier group -->
+      <text x="0" y="156">Hard tier (4 problems, fwd+rev)</text>
+      <rect x="120" y="166" width="650" height="18" rx="4" fill="var(--q35)"/>
+      <rect x="120" y="188" width="666" height="18" rx="4" fill="var(--q36)"/>
+      <rect x="120" y="210" width="92"  height="18" rx="4" fill="var(--q38)"/>
+      <text class="val" x="776" y="180">13,011</text>
+      <text class="val" x="792" y="202">13,328*</text>
+      <text class="val" x="220" y="224">1,850</text>
+      <text x="60" y="180">3.5</text><text x="60" y="202">3.6</text><text x="60" y="224">3.8</text>
+      <text x="0" y="266">Accuracy at these costs: 3.5 = 24/24, 3.6 = 22/24, 3.8 = 24/24. (* includes one budget miss)</text>
+      <text x="0" y="284">Every miss in all 397 runs was a truncated overthinker, never a wrong deduction.</text>
+    </svg>
+    <figcaption>Fig 1. Same accuracy, wildly different token bills. Bars are mean output tokens
+    (thinking + answer), server-reported, MTP off, temp 1.0, top_p 0.95, top_k 20.</figcaption>
+  </figure>
+
+  <div class="tablewrap">
+    <table>
+      <tr><th>Direction of thinking</th><th class="num">3.5</th><th class="num">3.6</th><th class="num">3.8</th></tr>
+      <tr><td>Correct answer first appears at</td><td class="num">12% of trace</td><td class="num">16%</td><td class="num">49%</td></tr>
+      <tr><td>Rumination after finding it</td><td class="num">88%</td><td class="num">84%</td><td class="num">51%</td></tr>
+      <tr><td>Self-corrections per run ("wait", "actually")</td><td class="num">13.8</td><td class="num">10.0</td><td class="num">0.6</td></tr>
+      <tr><td>Verification markers per run</td><td class="num">5.9</td><td class="num">4.7</td><td class="num">1.0</td></tr>
+    </table>
+  </div>
+  <div class="prose">
+    <p>3.5 finds the right answer early and then spends seven times the discovery cost on loops of
+    re-checking. 3.6 is the same policy mildly trimmed. 3.8 is a different policy altogether: near-linear
+    derivation, one verification pass, commit. The 3.5 to 3.6 step and the 3.6 to 3.8 step are different
+    kinds of upgrade, and only the second one changes the model's character.</p>
+  </div>
+
+  <h2><span class="sn">04</span>The effort dial nobody is actually turning</h2>
+  <div class="prose">
+    <p>The community says qwen3.8 "wildly overthinks" at its default xhigh effort: 22,276 thinking tokens
+    for one SVG drawing in Simon Willison's LM Studio test, and a Hugging Face thread titled "This model
+    cannot stop thinking." This benchmark measured the opposite: 3.8 never exceeded 7k thinking characters.
+    Both observations are correct. The difference is the serving stack, and it is verifiable in source.</p>
+  </div>
+  <div class="callout">
+    <p><strong>Verified in Ollama v0.32.14 source</strong> (<code>model/renderers/qwen35.go</code>):
+    Ollama never sets the official template's <code>reasoning_effort</code> variable. It prepends a plain
+    English sentence to the system message. <code>think:"low"</code> injects "keep your thinking brief";
+    <code>"medium"</code> injects nothing; <code>"high"</code> and <code>"max"</code> inject a sentence
+    <em>saying</em> effort is xhigh; <code>think:true</code> maps to "medium", meaning nothing at all.</p>
+    <p>Measured effect (8 problems per level): low 1,020 tokens, medium 1,115, high 600, max 662, all
+    correct. The "xhigh" sentence makes thinking <em>shorter</em>, not longer. The trained deep-reasoning
+    regime is unreachable through Ollama, so every Ollama benchmark of this model, including this one,
+    describes the low-effort regime.</p>
+  </div>
+
+  <h2><span class="sn">05</span>Speed: one mechanism explains every number</h2>
+  <div class="prose">
+    <p>Raw decode is identical across versions (78.6 to 80.4 tok/s, MTP off, paired). What differs is the
+    multi-token-prediction draft head. Speculative decoding multiplies speed by a factor set by draft
+    acceptance, and acceptance is set by how predictable the output is: content type, temperature,
+    penalties, effort. The same model measures 59 to 205 tok/s depending on those conditions.</p>
+  </div>
+  <figure>
+    <svg class="chart" viewBox="0 0 860 400" role="img" aria-label="Decode speed versus draft acceptance, MTP on">
+      <text x="0" y="14">DECODE TOK/S vs DRAFT ACCEPTANCE (MTP ON, 32K CTX, PAIRED FWD+REV)</text>
+      <!-- axes: x acceptance 0..1 -> 70..830 ; y tok/s 40..220 -> 360..40 -->
+      <line class="grid" x1="70" y1="360" x2="830" y2="360"/>
+      <line class="grid" x1="70" y1="272" x2="830" y2="272"/>
+      <line class="grid" x1="70" y1="184" x2="830" y2="184"/>
+      <line class="grid" x1="70" y1="96"  x2="830" y2="96"/>
+      <text x="30" y="364">40</text><text x="30" y="276">90</text><text x="24" y="188">140</text><text x="24" y="100">190</text>
+      <text x="66" y="380">0.0</text><text x="218" y="380">0.2</text><text x="370" y="380">0.4</text><text x="522" y="380">0.6</text><text x="674" y="380">0.8</text><text x="822" y="380">1.0</text>
+      <!-- baseline no-MTP ~79 tok/s -> y = 360 - (79-40)*1.76 = 291.4 -->
+      <line class="base" x1="70" y1="291" x2="830" y2="291"/>
+      <text x="700" y="285">MTP off &asymp; 79 tok/s</text>
+      <!-- points: x = 70 + a*760, y = 360 - (t-40)*1.76 -->
+      <!-- 3.5: (0.09,59.5)=(138,326) (0.40,110.5)=(374,236) (0.68,157.7)=(587,153) -->
+      <circle cx="138" cy="326" r="7" fill="var(--q35)" stroke="var(--bg)" stroke-width="2"><title>3.5 essay: accept 0.09, 59.5 tok/s</title></circle>
+      <circle cx="374" cy="236" r="7" fill="var(--q35)" stroke="var(--bg)" stroke-width="2"><title>3.5 code: accept 0.40, 110.5 tok/s</title></circle>
+      <circle cx="587" cy="153" r="7" fill="var(--q35)" stroke="var(--bg)" stroke-width="2"><title>3.5 counting: accept 0.68, 157.7 tok/s</title></circle>
+      <!-- 3.6: (0.12,63.2)=(161,319) (0.53,132.9)=(473,197) (0.70,159.7)=(602,149) -->
+      <circle cx="161" cy="319" r="7" fill="var(--q36)" stroke="var(--bg)" stroke-width="2"><title>3.6 essay: accept 0.12, 63.2 tok/s</title></circle>
+      <circle cx="473" cy="197" r="7" fill="var(--q36)" stroke="var(--bg)" stroke-width="2"><title>3.6 code: accept 0.53, 132.9 tok/s</title></circle>
+      <circle cx="602" cy="149" r="7" fill="var(--q36)" stroke="var(--bg)" stroke-width="2"><title>3.6 counting: accept 0.70, 159.7 tok/s</title></circle>
+      <!-- 3.8: (0.27,87.6)=(275,276) (0.36,103.9)=(344,248) (0.37,99.2)=(351,256) (0.81,175.6)=(686,121) (0.88,187)=(739,101) (0.90,189.3)=(754,97) (1.00,204.8)=(830,70) -->
+      <circle cx="275" cy="276" r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 surreal fiction: accept 0.27, 87.6 tok/s</title></circle>
+      <circle cx="344" cy="248" r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 essay: accept 0.36, 103.9 tok/s</title></circle>
+      <circle cx="351" cy="256" r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 essay + presence penalty: accept 0.37, 99.2 tok/s</title></circle>
+      <circle cx="686" cy="121" r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 JSON: accept 0.81, 175.6 tok/s</title></circle>
+      <circle cx="739" cy="101" r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 code: accept 0.88, 187.0 tok/s</title></circle>
+      <circle cx="754" cy="97"  r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 code temp 0.2: accept 0.90, 189.3 tok/s</title></circle>
+      <circle cx="830" cy="70"  r="7" fill="var(--q38)" stroke="var(--bg)" stroke-width="2"><title>3.8 counting: accept 1.00, 204.8 tok/s</title></circle>
+      <!-- selective direct labels -->
+      <text class="val" x="150" y="342">essays drop below baseline</text>
+      <text class="val" x="640" y="66">counting: 205 tok/s</text>
+      <text class="val" x="680" y="145">code &amp; JSON</text>
+      <!-- legend -->
+      <circle cx="76" cy="34" r="6" fill="var(--q35)"/><text x="88" y="38">3.5</text>
+      <circle cx="126" cy="34" r="6" fill="var(--q36)"/><text x="138" y="38">3.6</text>
+      <circle cx="176" cy="34" r="6" fill="var(--q38)"/><text x="188" y="38">3.8</text>
+    </svg>
+    <figcaption>Fig 2. Every point is one model on one content type with MTP on (hover for exact values).
+    All models fall on one curve: speed is a function of acceptance. 3.8's head sits far right of its
+    siblings on every content type; 3.5/3.6 fall below the no-MTP baseline on prose.</figcaption>
+  </figure>
+  <div class="prose">
+    <p>This one curve reconciles every historical figure from this machine: <span class="big">171</span> tok/s
+    (Aug 14 report: MTP on, temp 0.2, code-heavy suite; reproduced here as 189 on code at temp 0.2),
+    <span class="big">125.5</span> (Aug 16: llama.cpp MTP n=2 ladder), <span class="big">96 to 104</span>
+    (essay prose, acceptance ~0.36), <span class="big">70 to 79</span> (MTP off, penalties and heat soak).
+    No contradictions; four operating points of one mechanism. A tok/s claim without content, sampling,
+    and MTP state attached is not a number, it is an anecdote.</p>
+  </div>
+
+  <h2><span class="sn">06</span>Long context: no cliff to 80k</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th>Fill (actual tokens)</th><th class="num">Accuracy (all 3)</th><th class="num">Prefill tok/s</th><th class="num">Decode tok/s</th></tr>
+      <tr><td>~16k</td><td class="num">12/12</td><td class="num">~3,340</td><td class="num">~70</td></tr>
+      <tr><td>~48k</td><td class="num">12/12</td><td class="num">~2,910</td><td class="num">~64</td></tr>
+      <tr><td>~80k</td><td class="num">12/12</td><td class="num">~2,320</td><td class="num">~59</td></tr>
+    </table>
+  </div>
+  <div class="prose">
+    <p>No quality degradation for any model to 80k tokens of relevant context on these tasks, and the decay
+    curves are identical across versions. 3.8 stays terse with a full window (1.7k to 3.9k thinking chars);
+    3.5 thinks 15k chars no matter how much it just read. 128k num_ctx fits the 32 GB card (30.4 GB used)
+    but is tight with desktop apps; 64k is comfortable. Prompt sizes are server-measured actuals; an
+    earlier ladder that estimated tokens from characters overshot the context boundary and was archived
+    and rerun with measured ratios.</p>
+  </div>
+
+  <h2><span class="sn">07</span>Qwen's own recommended settings can hurt</h2>
+  <div class="prose">
+    <p>Under each model's official card settings, thinking mode: 3.5 dropped from 16/16 to 14/16. All
+    failures were one mechanism: the card's <code>presence_penalty 1.5</code> punishes the naturally
+    repetitive structure of arithmetic verification, and thinking runs away to the token cap on the modular
+    arithmetic problem. It even dragged 3.6 down once. On Ollama, <code>presence_penalty 0</code> beat
+    3.5's own card, and stock <code>ollama run qwen3.5</code> inherits the bad value as its Modelfile
+    default. 3.8's card (penalty 0, <code>think:"max"</code>) held at 16/16 with fewer tokens.</p>
+  </div>
+
+  <h2><span class="sn">08</span>Attribution: architecture or post-training?</h2>
+  <div class="tablewrap">
+    <table>
+      <tr><th>Observed gain</th><th>Source</th><th>Evidence</th></tr>
+      <tr><td>7&times; cheaper thinking, equal accuracy</td><td>Post-training</td><td>identical graph; different policy; rumination metrics</td></tr>
+      <tr><td>Draft acceptance 0.09 &rarr; 0.36 (prose)</td><td>Post-training of MTP head</td><td>head present in all three, useful only in 3.8</td></tr>
+      <tr><td>+37% to +160% real decode speed</td><td>Packaging + head training</td><td>Ollama activates the now-useful head by default</td></tr>
+      <tr><td>Long-context robustness to 80k</td><td>Already in 3.5</td><td>12/12 for all three</td></tr>
+      <tr><td>Raw decode / prefill speed</td><td>Unchanged</td><td>within 1.5%; identical decay</td></tr>
+    </table>
+  </div>
+  <div class="prose">
+    <p>One honest caveat: through Ollama, the official xhigh deep-thinking regime is unreachable, so this
+    comparison characterizes the low-effort regime that Ollama users actually get. Whether template-driven
+    deep thinking buys accuracy on problems harder than this suite is the open question for the planned
+    vLLM follow-up, which is committed to the exact same Q4_K_M GGUF files or no test at all.</p>
+  </div>
+
+  <h2><span class="sn">09</span>What to actually run</h2>
+  <div class="prose">
+    <ul>
+      <li><strong>Default to qwen3.8.</strong> Same accuracy here, 6 to 9&times; faster in practice, 176 to 205 tok/s on structured output.</li>
+      <li>Leave 3.8's MTP on; it never lost. For 3.5/3.6, MTP only pays on code and structured output; it costs ~25% on prose.</li>
+      <li>Use <code>presence_penalty 0</code> in thinking mode for all three, including 3.5, despite its card.</li>
+      <li>Treat Ollama's <code>think</code> levels as weak nudges, not the model card's effort semantics.</li>
+      <li>64k context costs 8% decode and nothing in quality; 128k fits but is tight with desktop apps open.</li>
+    </ul>
+  </div>
+
+  <h2><span class="sn">10</span>Method</h2>
+  <div class="prose">
+    <p class="muted">397 runs. 8 base + 4 hard problems, every answer brute-force verified unique; graders are
+    string extractors on a mandated ANSWER line, never LLM judges; filler text screened for answer leakage.
+    Controls: forward + reverse model order per pass; discarded warmup after every load; VRAM fully unloaded
+    and verified empty between models; MTP pinned per run; fixed seeds; GPU temperature, power and throttle
+    state logged before every run; server-reported token timings. Order effect measured under 1% on decode.
+    Limits: accuracy cells are 2 samples at temp 1.0 (fine for 7&times; effects, not for 1-problem gaps);
+    one Ollama session, one machine, Q4_K_M only; ~6% cross-session drift on this rig, so all comparison
+    tables are same-session paired. Ollama 0.32.14 showed sporadic instant HTTP 500s on the first
+    large-prompt request after a model swap (runner IPC reset); all retried, no failed request was graded.
+    Raw data: results.jsonl; harness: bench.py, problems.py, analyze.py; metadata: gguf_meta.json.</p>
+  </div>
+</main>

@@ -1,0 +1,21 @@
+already recorded: 24 cells
+
+########## dsv4-gpu  (6 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\deepseek-v4-vs-flash-next-1bit\models\UD-IQ1_S\DeepSeek-V4-Flash-0731-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 20480 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 30
+   loaded in 28s
+   h2_lcm_triples         s1  PASS answer='70'                           132s  24.4 t/s out=3214
+   h2_subsets_nonconsecutive s1  fail answer=''                             624s  26.3 t/s out=16384  TRUNCATED
+   h2_digits_distinct_sum s1  PASS answer='3600'                         177s  26.4 t/s out=4683
+   h2_code_range_sums     s1  PASS subprocess test                        45s  25.6 t/s out=1149
+   h2_code_manacher       s1  PASS subprocess test                       247s  26.5 t/s out=6548
+   h2_code_integer_root   s1  PASS subprocess test                       349s  26.5 t/s out=9244
+
+########## flashnext-gpu  (6 cells)
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\models\UD-IQ1_S\Qwen3.8-Flash-Next-UD-IQ1_S-00001-of-00003.gguf --port 8098 -c 20480 --parallel 1 --jinja -t 24 --no-warmup -ngl 99 -ncmoe 20 -ot per_layer_token_embd=CPU
+   loaded in 25s
+   h2_lcm_triples         s1  PASS answer='70'                            72s  47.1 t/s out=3408
+   h2_subsets_nonconsecutive s1  fail answer=''                             346s  47.4 t/s out=16384  TRUNCATED
+   h2_digits_distinct_sum s1  fail answer=''                             345s  47.5 t/s out=16384  TRUNCATED
+   h2_code_range_sums     s1  PASS subprocess test                       220s  48.3 t/s out=10600
+   h2_code_manacher       s1  fail no code emitted                       345s  47.5 t/s out=16384  TRUNCATED
+   h2_code_integer_root   s1  fail no code emitted                       345s  47.5 t/s out=16384  TRUNCATED

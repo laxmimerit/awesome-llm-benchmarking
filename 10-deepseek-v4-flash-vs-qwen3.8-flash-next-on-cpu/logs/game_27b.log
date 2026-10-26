@@ -1,0 +1,10 @@
+
+##### qwen38-27b-Q4_K_M
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-unsloth-dynamic3\models\Qwen3.8-27B-UD-Q4_K_M.gguf --port 8096 -c 20480 --parallel 1 --jinja -t 24 --no-warmup -ngl 99
+loaded in 11s
+qwen38-27b-Q4_K_M    fail  no HTML block emitted                213s  76.8 t/s tok=16384 html=0  TRUNCATED
+
+##### qwen38-27b-IQ1_S
+D:\Claude AI\AI Model Performance\qwen38-flash-next-cpu\research\build-cuda\bin\llama-server.exe -m D:\Claude AI\AI Model Performance\qwen38-unsloth-dynamic3\models\Qwen3.8-27B-UD-IQ1_S.gguf --port 8096 -c 20480 --parallel 1 --jinja -t 24 --no-warmup -ngl 99
+loaded in 5s
+qwen38-27b-IQ1_S     fail  2/11 structural missing=importmap,    33s 121.2 t/s tok=4048 html=12962
