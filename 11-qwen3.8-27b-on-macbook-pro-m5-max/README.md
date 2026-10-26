@@ -2,6 +2,11 @@
 
 This project benchmarks **Qwen 3.8 27B** on Apple Silicon using a **MacBook Pro M5 Max (36GB Unified Memory)** and compares its decode throughput, Multi-Token Prediction (MTP) draft head scaling, and memory characteristics against the **NVIDIA RTX 5090** desktop reference rig.
 
+![Draft ladder on the M5 Max](figures/qwen38-mac-draft-ladder.png)
+
+*The same built-in draft head, on a laptop: 18.2 tok/s becomes 31.1 tok/s at a
+draft depth of 3.*
+
 ---
 
 ## Hardware & Runtime Specifications
@@ -29,6 +34,8 @@ cmn  common_param:   - CPU     : Apple M5 Max (36864 MiB, 36864 MiB free)
 - Q4_K_M model weights take **15.4 GB**, leaving **12.7 GB** for the KV cache, recurrent state, and scratch buffers.
 - Turning Flash Attention (`-fa 1`) on shrinks compute buffer requirements from **1,664 MB** down to **257 MB**, saving critical memory.
 
+![Metal memory with and without Flash Attention](figures/qwen38-mac-flash-attn-memory.png)
+
 ### 2. MTP Draft Depth Scaling (The Draft Ladder)
 Qwen 3.8 includes a built-in Multi-Token Prediction draft head (layer index 64). Testing draft depths from `n=0` to `n=4`:
 
@@ -44,12 +51,22 @@ Qwen 3.8 includes a built-in Multi-Token Prediction draft head (layer index 64).
 - **Cross-Platform Transfer**: Acceptance rate curves transfer almost identically across hardware architectures because acceptance depends on weight statistics and token predictability, not silicon bandwidth.
 - **Absolute Speed**: The RTX 5090 decodes ~4.3x faster due to dedicated high-bandwidth GDDR7 memory vs shared system LPDDR5.
 
+![Draft acceptance, M5 Max against RTX 5090](figures/qwen38-mac-accept-vs-5090.png)
+
+*Absolute speed is 4.3x apart and the acceptance curves sit on top of each
+other. Acceptance is a property of the weights, not of the silicon.*
+
 ### 3. The Laptop "Stall Rate" Phenomenon
 Across 3 repeats per configuration on the MacBook:
 - 2 out of 3 repeats completed cleanly at ~28–31 tok/s.
 - 1 out of 3 repeats stalled down to 0.3–0.7 tok/s due to unified memory pressure and macOS page faults.
 - On the RTX 5090 dedicated GPU, zero stalls occurred.
 - **Rule for Laptop Benchmarks**: Always report best-of-3 and stall frequency alongside the median.
+
+![Spread across repeats](figures/qwen38-mac-repeat-spread.png)
+
+*One repeat in three falls to under 1 tok/s. A median would hide it and a mean
+would turn it into a number that describes no actual run.*
 
 ---
 

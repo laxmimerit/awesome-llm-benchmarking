@@ -3,6 +3,10 @@
 Two very large MoE models, each at the smallest quantization its vendor ships,
 made to run on one desktop and then given problems that 30B models mostly fail.
 
+![Parameter map of the two models](figures/chart-param-map.png)
+
+*284B against 177B, each at the smallest quantization its vendor ships.*
+
 ## Rig
 
 - Intel Core Ultra 9 285K, 24 cores / 24 threads (8 P + 16 E), no SMT
@@ -37,6 +41,8 @@ Answer: no. Flash-Next UD-IQ1_S, CPU-only build, 3 reps
 | E-cores only | 16 | `3FC3FC` | 40.12 ±0.89 | 10.43 ±0.57 |
 | all 24, pinned | 24 | `FFFFFF` | 51.71 ±3.50 | 9.10 ±0.26 |
 
+![Throughput by core affinity](figures/chart-affinity.png)
+
 Two results worth keeping. E-cores are the *weaker* half for decode: 16 of them
 lose to 8 P-cores, which is what a bandwidth-bound kernel looks like when 8
 cores already generate enough outstanding memory requests to saturate DRAM. And
@@ -60,7 +66,7 @@ Both are Unsloth dynamic quants at each model's smallest available build.
 | build | UD-IQ1_S | UD-IQ1_S |
 | shards | 3 | 3 |
 | bytes | 72,546,461,344 | 82,539,237,792 |
-| size | 67.56 GiB | 76.87 GiB |
+| size | 67.56 GB | 76.87 GB |
 | params | 176,943,899,520 | ~284 B |
 | arch | `qwen4exp` | `deepseek4` |
 
@@ -87,6 +93,13 @@ Active expert params per token are 7.6 B before attention.
 `expert_dtype: fp4`, so the routed experts are **natively 4-bit**. UD-IQ1_S is
 therefore quantizing below native precision, which is a thing to measure rather
 than assume is free.
+
+![Expert grids](figures/chart-expert-grids.png)
+
+![Bits per parameter](figures/chart-bits-per-param.png)
+
+*1-bit is a label, not a measurement. What each vendor actually spends per
+parameter is the number that decides whether the model fits.*
 
 ## Toolchain: nothing new to build
 
@@ -119,6 +132,8 @@ Plus one **three.js game task**: a single self-contained HTML file implementing
 an endless lane runner. Auto-scoring is structural only (11 checks). Real
 quality is judged by opening the file, so each model's output is written to
 `games/{config}_s{seed}.html`.
+
+![The three.js game task](figures/chart-game.png)
 
 ## Method and its limits
 
@@ -181,6 +196,11 @@ Repetition analysis rules out degenerate looping: repeated 12-grams are 0.0%
 and 2.3% in the two truncated cells, and the 2.3% is re-quoting the prompt.
 This is unbounded deliberation, not a quantization loop.
 
+![Failure modes side by side](figures/chart-failure-modes.png)
+
+*Two models, the same 10/12, and nothing else in common. One is wrong, the
+other never stops.*
+
 ### Two audits, opposite outcomes
 
 Neither of these could be settled from a score:
@@ -202,16 +222,18 @@ before either article leans on it.
 
 | model | weights | pp512 t/s | tg128 t/s | stddev |
 |---|---:|---:|---:|---:|
-| Qwen3.8-Flash-Next | 67.56 GiB | 62.94 | 11.19 | 0.03 |
-| DeepSeek-V4-Flash | 76.87 GiB | 25.21 | 7.10 | 0.02 |
+| Qwen3.8-Flash-Next | 67.56 GB | 62.94 | 11.19 | 0.03 |
+| DeepSeek-V4-Flash | 76.87 GB | 25.21 | 7.10 | 0.02 |
 
 **A 284B model generates at 7.1 t/s on this desktop with no GPU at all.** The
 0.02 stddev matters as much as the mean: a page-thrashing run produces wild
-variance, so 76.87 GiB of weights genuinely fits inside 95.3 GiB of RAM
+variance, so 76.87 GB of weights genuinely fits inside 95.3 GB of RAM
 alongside the OS. That was the riskiest assumption in the plan and it held.
 
 GPU offload buys 3.5x for DeepSeek (7.10 to 24.7) and 4.2x for Flash-Next
 (11.19 to 47.4).
+
+![Generation speed, CPU only and with GPU offload](figures/chart-speed.png)
 
 ### GPU split calibration
 
@@ -235,6 +257,12 @@ A second silent cost: llama-server defaults to `n_slots = 4` and allocates KV
 for all four. On the GPU configs that VRAM comes out of the weight budget and
 pushes layers into spill. Adding `--parallel 1` took DeepSeek from 14.6 to
 23.5 t/s served, with no other change.
+
+![The spill cliff](figures/chart-spill-cliff.png)
+
+*Windows CUDA does not refuse to allocate past VRAM, it spills to host memory
+and keeps going. The cliff is where that starts costing more than the offload
+buys.*
 
 ## CPU vs GPU: same conclusions, different text
 
@@ -274,6 +302,8 @@ mixed across modes.
 `results/audit_verdicts.json` records, with verbatim quotes, which flagged
 cells were real failures and which were not. The delivered/derived split comes
 from there and not from the scores.
+
+![Final scoreboard](figures/chart-scoreboard.png)
 
 ## Honesty section
 

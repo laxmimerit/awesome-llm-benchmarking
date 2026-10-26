@@ -4,6 +4,8 @@ Can a 180B model that officially needs 4x GB300 be run on one desktop? This
 folder measures three answers: pure CPU, partial GPU offload, and what the
 quantization costs in output quality.
 
+![Does a 180B model fit on one desktop](figures/chart-fit.png)
+
 ## Rig
 
 - Intel Core Ultra 9 285K, 24 cores / 24 threads (8 P + 16 E), no SMT
@@ -51,20 +53,42 @@ The Qwen3.8-27B comparison models are read in place from
 ## The number that shapes everything
 
 In the **1-bit** build, `per_layer_token_embd` - the n-gram lookup table - is
-**26.82 GiB of the 67.55 GiB total (39.7%)** and is stored at **IQ4_NL, i.e. 4-bit**.
+**26.82 GB of the 67.55 GB total (39.7%)** and is stored at **IQ4_NL, i.e. 4-bit**.
 It is registered `GGML_OP_GET_ROWS`: pure gather, zero matmul. Unsloth's dynamic
 quant refuses to crush it, which is why no smaller build than 72.5 GB exists.
 
-| component | GiB | % | tensors |
+| component | GB | % | tensors |
 |---|---:|---:|---:|
 | MoE expert banks | 37.11 | 54.9 | 144 |
 | PLE n-gram table | 26.82 | 39.7 | 1 |
 | attention / QSA | 1.71 | 2.5 | 384 |
 | everything else | 1.91 | 2.8 | 695 |
 
-Only ~3.6 GiB is dense weight touched every token. That is what makes offload
+![Where the bytes actually go](figures/chart-composition.png)
+
+Only ~3.6 GB is dense weight touched every token. That is what makes offload
 work on a 32 GB card, and why `-ot per_layer_token_embd=CPU` is the right call:
 a zero-FLOP gather table should never take VRAM from expert banks.
+
+![The offload cliff](figures/chart-offload-cliff.png)
+
+*The cliff is the point of the whole exercise. Push one layer too many onto the
+card and throughput does not degrade gracefully, it falls off.*
+
+## Results
+
+![Speed across the offload ladder](figures/chart-ladder.png)
+
+![Decode speed against CPU thread count](figures/chart-cpu-threads.png)
+
+![Long context behaviour](figures/chart-longctx.png)
+
+![Perplexity by quantization](figures/chart-perplexity.png)
+
+![Problems solved by quantization](figures/chart-quality.png)
+
+*Perplexity and the 12-problem suite are two different questions. A quant can
+look fine on one and lose problems on the other, so both are reported.*
 
 ## Harness
 

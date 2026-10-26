@@ -13,6 +13,8 @@ the two traps this rig has taught us the hard way: Windows CUDA silently
 spilling past VRAM instead of failing, and a power-capped card that makes any
 cross-session speed comparison meaningless.
 
+![Decode throughput across both brackets](figures/chart-decode.png)
+
 ## Layout
 
 ```
@@ -47,3 +49,22 @@ cost. This set is built to break at least one model:
 
 No LLM judge is used anywhere. Truncation is recorded and re-tested at a larger
 budget rather than being scored as a wrong answer.
+
+## Charts
+
+Redrawn from `results/` by `figures/make_figures.py`.
+
+![KV cache per token](figures/chart-kv-per-token.png)
+
+![Usable context on a 32 GB card](figures/chart-usable-context.png)
+
+*Advertised context and usable context are different numbers. What fits on one
+32 GB card is the one that decides anything.*
+
+![Layer mix](figures/chart-layer-mix.png)
+
+![Token budget spent per answer](figures/chart-token-budget.png)
+
+*A model that answers correctly but spends several times the tokens getting
+there is a different proposition in production, which is why the budget is
+charted next to the accuracy rather than inside it.*

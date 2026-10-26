@@ -7,6 +7,11 @@ Gemma 4-31B, Muse Glimmer 30B, and Qwen 3.8 27B.
 See [PROTOCOL.md](PROTOCOL.md) for the rules fixed before any data was
 collected, and `research/` for the harness.
 
+![Decode throughput across the five models](figures/chart-decode.png)
+
+*Decode speed is where an MoE earns its keep: 35B of stored weights, a
+fraction of them touched per token.*
+
 ## Layout
 
 | path | what |
@@ -46,3 +51,35 @@ python research/run_all.py --phases speed --models ornith-9b ornith-35b-a3b
 8. **Agentic tool use** (`bench_agentic.py`) ten graded multi-step tasks
 9. **Long context** (`bench_longctx.py`) needle retrieval to 128k with the
    prefill and VRAM cost at each depth
+
+## Charts
+
+Every chart is redrawn from `results/` by `figures/make_figures.py`. Each one
+carries its own axis labels and units.
+
+### What the models cost to run
+
+![Active parameters per token](figures/chart-active-params.png)
+
+![KV cache per token](figures/chart-kv-cache.png)
+
+![Prefill throughput by prompt depth](figures/chart-prefill.png)
+
+### What they cost in time
+
+![Time to a finished answer](figures/chart-answer-time.png)
+
+![Speedup from the undocumented MTP head](figures/chart-mtp-speedup.png)
+
+![Aggregate throughput at 1, 2, 4 and 8 slots](figures/chart-concurrency.png)
+
+### Where long context breaks
+
+![Latency as context grows](figures/chart-longctx-latency.png)
+
+![The context cliff](figures/chart-context-cliff.png)
+
+*On Windows, CUDA does not fail when a model runs past VRAM, it silently
+spills to host memory. The cliff in decode rate is the only honest signal of
+where the real ceiling sits, which is why it is measured rather than inferred
+from what loads.*
