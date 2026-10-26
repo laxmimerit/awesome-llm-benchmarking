@@ -8,6 +8,10 @@ We measure four dimensions:
 3. **Speed & Perplexity**: Does it alter decode throughput or WikiText-2 perplexity?
 4. **Physical Weight Deltas**: Which specific layers and projection matrices were altered by the refusal-direction ablation vector?
 
+![Refusal behaviour, base against abliterated](figures/chart-refusal.png)
+
+*The headline is not that refusals drop to zero. It is what replaces them.*
+
 ---
 
 ## 1. General Capability (Auto-Graded)
@@ -25,6 +29,8 @@ Tested across 20 checkable math, coding, and instruction-following problems:
 
 **Finding**: Abliteration does **not** degrade underlying reasoning, math, or coding capabilities.
 
+![What abliteration costs in capability and speed](figures/chart-cost.png)
+
 ---
 
 ## 2. Refusal Behavior & The "Rumination" Problem
@@ -38,6 +44,14 @@ Models were evaluated across 15 standard harmful boundary queries and 15 benign 
 
 ### Why "Uncensored" Models Truncate
 While the base model promptly outputs a structured refusal (median 988 chars of thinking), the abliterated model removes the refusal trigger. Without the refusal guardrail, the reasoning module attempts to construct detailed unsafe answers, consuming massive thinking token budgets (median 4,468 chars) and frequently exceeding standard 1,536-token generation budgets.
+
+![Thinking budget spent before answering](figures/chart-rumination.png)
+
+![The truncation trap](figures/chart-truncation-trap.png)
+
+*This is the measurement trap worth knowing about. Score a run that hit the
+token ceiling as a refusal and the abliterated model looks more aligned than
+the base one, which is the opposite of what happened.*
 
 ---
 
@@ -54,6 +68,20 @@ By computing SVD rank-1 decomposition across weight differences, we isolate the 
 | Attention Q/K/V | 48 | 0.0020 | ~1.0% | Unaltered (only quantizer noise) |
 
 **Mathematical Insight**: Abliteration modifies almost exclusively the projection matrices that **write directly into the residual stream** (`ffn_down`, `attn_output`, `ssm_out`), zeroing out the activation component along the refusal direction vector.
+
+![Weight delta by tensor](figures/chart-weight-diff.png)
+
+![Delta by tensor family](figures/chart-family-alignment.png)
+
+![Delta by layer](figures/chart-layer-profile.png)
+
+![The refusal direction](figures/chart-direction.png)
+
+*Read together, these say the edit is narrow and deliberate: one direction,
+removed from the tensors that write to the residual stream, and almost nothing
+touched anywhere else.*
+
+![Architecture under test](figures/chart-architecture.png)
 
 ---
 

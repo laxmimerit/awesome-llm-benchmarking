@@ -2,6 +2,11 @@
 
 This project investigates **45 distinct `llama.cpp` runtime configurations** for **Qwen 3.8 27B** on an **NVIDIA RTX 5090 (32GB VRAM)**. We empirically measure the multi-token prediction (MTP) draft head ladder, KV cache quantization (`f16`, `q8_0`, `q4_0`), context size scaling, and reasoning effort flags to determine which tuning knobs actually improve inference speed and which are myths.
 
+![Decode speed across the MTP draft ladder](figures/chart-mtp-ladder.png)
+
+*The whole project in one chart: speculative decoding is worth 1.81x, but only
+up to a draft depth of 3, after which deeper drafts cost more than they save.*
+
 ---
 
 ## Hardware & Environment
@@ -39,6 +44,12 @@ This project investigates **45 distinct `llama.cpp` runtime configurations** for
 | **Draft $n=4$** | 119.5 | 1.62x | 59.2% | 3.56 | 19,098 | 730 | 100% |
 | **Draft $n=5$** | 108.8 | 1.48x | 52.0% | 3.90 | 19,246 | 684 | 100% |
 
+![Draft acceptance rate against draft depth](figures/chart-mtp-acceptance.png)
+
+*Acceptance falls steadily as the draft gets deeper, from 86.0% at n=1 to 52.0%
+at n=5. Peak throughput sits where accepted tokens per step stop outrunning the
+cost of the rejected ones.*
+
 ---
 
 ## KV Cache Quantization Comparison
@@ -52,6 +63,13 @@ Evaluating KV cache formats at 32K context:
 | **`q4_0` (Winner)** | **16,430 MiB** | **512 MiB** | **78.2 tok/s** | **133.4 tok/s** | 100% |
 
 > **Recommendation**: `--cache-type-k q4_0 --cache-type-v q4_0` provides 75% KV cache memory reduction with **zero loss in answer quality** while actually increasing single-token decode throughput.
+
+![KV cache VRAM by cache type](figures/chart-kv-vram.png)
+
+![Answer quality by cache type](figures/chart-kv-quality.png)
+
+*The memory saving is real and the quality cost, on this problem set, is not
+there to find. That is what makes `q4_0` the default worth changing.*
 
 ---
 
@@ -71,15 +89,27 @@ llama-server \
 
 ---
 
-## Visualizations
+## Context scaling
 
-Available in [`figures/`](figures/):
-- [`chart-mtp-ladder.png`](figures/chart-mtp-ladder.png): Decode speed across draft depth ladder.
-- [`chart-mtp-acceptance.png`](figures/chart-mtp-acceptance.png): Acceptance rates as draft depth increases.
-- [`chart-kv-vram.png`](figures/chart-kv-vram.png): VRAM consumption across `f16`, `q8_0`, and `q4_0`.
-- [`chart-kv-quality.png`](figures/chart-kv-quality.png): Problem accuracy across cache quantizations.
-- [`chart-reasoning-latency.png`](figures/chart-reasoning-latency.png): Time-to-first-token vs reasoning effort setting.
-- [`chart-ctx-speed.png`](figures/chart-ctx-speed.png): Prompt processing throughput across context sizes.
+![Prompt processing speed across context sizes](figures/chart-ctx-speed.png)
+
+![VRAM across context sizes](figures/chart-ctx-vram.png)
+
+![Full prompt latency across context sizes](figures/chart-ctx-fullprompt-latency.png)
+
+## Reasoning effort
+
+![Time to first token by reasoning effort](figures/chart-reasoning-latency.png)
+
+![Answer quality by reasoning effort](figures/chart-reasoning-quality.png)
+
+![Thinking tokens by reasoning effort](figures/chart-reasoning-tokens.png)
+
+![Decode speed while thinking](figures/chart-thinking-speed.png)
+
+![Runtime comparison](figures/chart-runtime.png)
+
+All twelve charts live in [`figures/`](figures/).
 
 ---
 
