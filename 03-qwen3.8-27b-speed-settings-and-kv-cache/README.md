@@ -35,14 +35,14 @@ up to a draft depth of 3, after which deeper drafts cost more than they save.*
 
 ## The Speculative Decoding MTP Ladder (32K Context, f16 KV Cache)
 
-| Setting | Decode tok/s | Speedup | Acceptance Rate | Tokens/Step | VRAM (MiB) | Energy (tok/Wh) | Quality |
+| Setting | Decode tok/s | Speedup | Acceptance Rate | Tokens/Step | VRAM (GB) | Energy (tok/Wh) | Quality |
 |---|---|---|---|---|---|---|---|
-| **Base (MTP Off)** | 73.6 | 1.00x | — | 1.00 | 17,966 | 485 | 100% |
-| **Draft $n=1$** | 104.8 | 1.42x | 86.0% | 1.88 | 18,648 | 691 | 100% |
-| **Draft $n=2$** | 125.5 | 1.70x | 76.6% | 2.56 | 18,798 | 768 | 100% |
-| **Draft $n=3$ (Peak)** | **133.6** | **1.81x** | 67.4% | 3.11 | 18,948 | **812** | 100% |
-| **Draft $n=4$** | 119.5 | 1.62x | 59.2% | 3.56 | 19,098 | 730 | 100% |
-| **Draft $n=5$** | 108.8 | 1.48x | 52.0% | 3.90 | 19,246 | 684 | 100% |
+| **Base (MTP Off)** | 73.6 | 1.00x | — | 1.00 | 17.54 | 485 | 100% |
+| **Draft $n=1$** | 104.8 | 1.42x | 86.0% | 1.88 | 18.21 | 691 | 100% |
+| **Draft $n=2$** | 125.5 | 1.70x | 76.6% | 2.56 | 18.36 | 768 | 100% |
+| **Draft $n=3$ (Peak)** | **133.6** | **1.81x** | 67.4% | 3.11 | 18.50 | **812** | 100% |
+| **Draft $n=4$** | 119.5 | 1.62x | 59.2% | 3.56 | 18.65 | 730 | 100% |
+| **Draft $n=5$** | 108.8 | 1.48x | 52.0% | 3.90 | 18.79 | 684 | 100% |
 
 ![Draft acceptance rate against draft depth](figures/chart-mtp-acceptance.png)
 
@@ -56,11 +56,11 @@ cost of the rejected ones.*
 
 Evaluating KV cache formats at 32K context:
 
-| KV Cache Type | Total VRAM (MiB) | Cache VRAM | Decode Speed ($n=0$) | Decode Speed ($n=3$) | Quality Score |
+| KV Cache Type | Total VRAM (GB) | Cache VRAM (GB) | Decode Speed ($n=0$) | Decode Speed ($n=3$) | Quality Score |
 |---|---|---|---|---|---|
-| **`f16` (Default)** | 17,966 MiB | 2,048 MiB | 73.6 tok/s | 133.6 tok/s | 100% |
-| **`q8_0`** | 16,942 MiB | 1,024 MiB | 74.8 tok/s | 131.2 tok/s | 100% |
-| **`q4_0` (Winner)** | **16,430 MiB** | **512 MiB** | **78.2 tok/s** | **133.4 tok/s** | 100% |
+| **`f16` (Default)** | 17.54 | 2.00 | 73.6 tok/s | 133.6 tok/s | 100% |
+| **`q8_0`** | 16.54 | 1.00 | 74.8 tok/s | 131.2 tok/s | 100% |
+| **`q4_0` (Winner)** | **16.04** | **0.50** | **78.2 tok/s** | **133.4 tok/s** | 100% |
 
 > **Recommendation**: `--cache-type-k q4_0 --cache-type-v q4_0` provides 75% KV cache memory reduction with **zero loss in answer quality** while actually increasing single-token decode throughput.
 

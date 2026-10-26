@@ -400,7 +400,7 @@ def run_config(c, _unused_baseline=None):
     print(f"\n{'=' * 72}\n>>> {c['id']}\n{'=' * 72}", flush=True)
 
     baseline_vram = H.idle_vram(settle=2.0)
-    print(f"    idle baseline now {baseline_vram:.0f} MiB", flush=True)
+    print(f"    idle baseline now {baseline_vram:.0f} MB", flush=True)
 
     if c["runtime"] == "ollama":
         rt = H.OllamaRuntime(c)
@@ -427,8 +427,8 @@ def run_config(c, _unused_baseline=None):
         result["proc_vram_load_mib"] = H.process_vram_mib(pid) if pid else None
         print(
             f"    loaded in {load_s}s, process VRAM "
-            f"{result['proc_vram_load_mib']} MiB "
-            f"(whole card {resident:.0f} MiB)",
+            f"{result['proc_vram_load_mib']} MB "
+            f"(whole card {resident:.0f} MB)",
             flush=True,
         )
 
@@ -462,7 +462,7 @@ def run_config(c, _unused_baseline=None):
                     f"ttft={rec.get('ttft_s')} "
                     f"dec={rec.get('decode_tps')}tps "
                     f"pre={rec.get('prefill_tps')}tps "
-                    f"vram={rec.get('vram_peak_mib')}MiB "
+                    f"vram={rec.get('vram_peak_mib')}MB "
                     f"ok={rec.get('correct')}"
                     + (f" ERR={rec['error'][:60]}" if rec.get("error") else ""),
                     flush=True,
@@ -483,7 +483,7 @@ def run_config(c, _unused_baseline=None):
         # runtime-vs-runtime comparison is not like-for-like.
         released = H.wait_vram_release(baseline_vram)
         result["vram_after_release_mib"] = released
-        print(f"    GPU released, VRAM back to {released:.0f} MiB", flush=True)
+        print(f"    GPU released, VRAM back to {released:.0f} MB", flush=True)
     return result
 
 
@@ -498,7 +498,7 @@ def main():
 
     H._kill_stragglers("llama-server.exe")
     baseline = H.idle_vram()
-    print(f"Idle VRAM at sweep start = {baseline:.0f} MiB")
+    print(f"Idle VRAM at sweep start = {baseline:.0f} MB")
     print("(re-measured before every config; background usage drifts)\n")
 
     data = load_results()

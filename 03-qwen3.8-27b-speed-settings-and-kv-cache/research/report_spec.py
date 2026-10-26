@@ -27,7 +27,7 @@ base = next((r["decode_tps"] for r in rows if r["spec"] == "none"), None)
 
 hdr = (
     f"{'setting':<16}{'decode tps':<12}{'vs off':<9}{'accept':<9}"
-    f"{'accepted len':<14}{'prefill tps':<13}{'VRAM MiB':<11}"
+    f"{'accepted len':<14}{'prefill tps':<13}{'VRAM MB':<11}"
     f"{'tok/Wh':<9}{'quality':<9}{'spread%':<8}"
 )
 print(hdr)

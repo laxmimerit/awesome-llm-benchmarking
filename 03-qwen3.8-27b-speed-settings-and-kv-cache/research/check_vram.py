@@ -6,7 +6,7 @@ import json
 
 d = json.load(open("results.json", encoding="utf-8"))
 base = d["_meta"]["baseline_vram_mib"]
-print(f"global baseline recorded once at start: {base} MiB\n")
+print(f"global baseline recorded once at start: {base} MB\n")
 
 for k, v in d.items():
     if k.startswith("_") or "config" not in v:

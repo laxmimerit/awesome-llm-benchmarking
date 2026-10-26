@@ -13,7 +13,7 @@ import workloads as W
 
 H._kill_stragglers("llama-server.exe")
 baseline = H.idle_vram()
-print(f"idle VRAM baseline = {baseline:.0f} MiB\n")
+print(f"idle VRAM baseline = {baseline:.0f} MB\n")
 
 for think in (True, False):
     c = bench.cfg(ctx=4096, kv="f16", spec="draft-mtp", n_max=2, think=think)
@@ -23,7 +23,7 @@ for think in (True, False):
     try:
         print(f"loaded in {rt.start()}s")
         resident = H.nvidia_query(["memory.used"])[0] - baseline
-        print(f"resident VRAM = {resident:.0f} MiB\n")
+        print(f"resident VRAM = {resident:.0f} MB\n")
 
         for task in (W.DECODE_WORKLOADS[0], W.QUALITY_WORKLOADS[0]):
             mark = len(rt.log_text())

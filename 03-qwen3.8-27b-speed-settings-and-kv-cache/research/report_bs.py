@@ -21,7 +21,7 @@ BASE = dict(spec="draft-mtp")
 
 print("=== backend sampling (32K, f16, thinking on) ===\n")
 print(f"{'draft n':<9}{'bsampling':<12}{'decode':<10}{'accept':<9}"
-      f"{'mean len':<10}{'tok/Wh':<9}{'vram MiB':<10}")
+      f"{'mean len':<10}{'tok/Wh':<9}{'vram MB':<10}")
 print("-" * 69)
 
 for n in (3, 4):

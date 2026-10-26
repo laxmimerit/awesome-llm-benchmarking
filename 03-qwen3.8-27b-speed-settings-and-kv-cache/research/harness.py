@@ -57,7 +57,7 @@ def nvidia_query(fields):
 
 
 def process_vram_mib(pid):
-    """Dedicated GPU memory held by one process, in MiB.
+    """Dedicated GPU memory held by one process, in MB.
 
     nvidia-smi cannot report per-process VRAM under Windows' WDDM driver
     model (it returns N/A), but the Windows performance counter can. This is
@@ -252,7 +252,7 @@ def wait_vram_release(baseline_mib=None, timeout=180):
     used = nvidia_query(["memory.used"])[0]
     if used >= MODEL_GONE_MIB:
         print(
-            f"    !! WARNING: {used:.0f} MiB still in use after {timeout}s - "
+            f"    !! WARNING: {used:.0f} MB still in use after {timeout}s - "
             "a model may still be resident; next config may be skewed",
             flush=True,
         )

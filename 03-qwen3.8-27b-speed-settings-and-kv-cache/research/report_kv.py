@@ -17,7 +17,7 @@ rows = [
 ]
 
 hdr = (
-    f"{'KV type':<10}{'spec':<12}{'decode tps':<12}{'VRAM MiB':<11}"
+    f"{'KV type':<10}{'spec':<12}{'decode tps':<12}{'VRAM MB':<11}"
     f"{'saved vs f16':<14}{'accept':<9}{'quality':<9}{'needles':<26}{'spread%':<8}"
 )
 print(hdr)

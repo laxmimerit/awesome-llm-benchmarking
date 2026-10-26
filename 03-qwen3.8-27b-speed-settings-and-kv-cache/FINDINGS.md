@@ -47,15 +47,15 @@ Everything below is measured against that.
 
 32K context, f16 KV cache, reasoning on, steady-state GPU.
 
-| setting | decode tok/s | vs off | accept rate | tokens/step | VRAM MiB | tok/Wh | quality |
+| setting | decode tok/s | vs off | accept rate | tokens/step | VRAM GB | tok/Wh | quality |
 |---|---|---|---|---|---|---|---|
-| MTP off | 73.6 | - | - | - | 17966 | 485 | 100% |
-| `n=1` | 104.8 | 1.42x | 0.860 | 1.88 | 18648 | 691 | 100% |
-| `n=2` | 125.5 | 1.70x | 0.766 | 2.56 | 18798 | 768 | 100% |
-| **`n=3`** | **133.6** | **1.81x** | 0.674 | 3.11 | 18948 | **812** | 100% |
-| `n=4` | 119.5 | 1.62x | 0.592 | 3.56 | 19098 | 730 | 100% |
-| `n=5` | 108.8 | 1.48x | 0.520 | 3.90 | 19246 | 684 | 100% |
-| `ngram-mod` | 76.8 | 1.04x | 0.535 | 26.92 | 17968 | 506 | 100% |
+| MTP off | 73.6 | - | - | - | 17.54 | 485 | 100% |
+| `n=1` | 104.8 | 1.42x | 0.860 | 1.88 | 18.21 | 691 | 100% |
+| `n=2` | 125.5 | 1.70x | 0.766 | 2.56 | 18.36 | 768 | 100% |
+| **`n=3`** | **133.6** | **1.81x** | 0.674 | 3.11 | 18.50 | **812** | 100% |
+| `n=4` | 119.5 | 1.62x | 0.592 | 3.56 | 18.65 | 730 | 100% |
+| `n=5` | 108.8 | 1.48x | 0.520 | 3.90 | 18.79 | 684 | 100% |
+| `ngram-mod` | 76.8 | 1.04x | 0.535 | 26.92 | 17.55 | 506 | 100% |
 
 **The mechanism, in one line:** as draft depth rises, per-token acceptance falls
 (0.86 -> 0.52) while accepted tokens per step rises (1.88 -> 3.90). The product of
@@ -67,8 +67,8 @@ the full model would have produced it anyway, so depth can cost speed, never
 accuracy. The claim that n=4 "starts emitting junk tokens" misdescribes what
 speculative decoding is.
 
-**MTP costs memory and prefill.** The draft context adds ~680 MiB at n=1, growing
-~150 MiB per level. Prompt processing drops ~5-8% (3036 -> ~2900 tok/s), consistent
+**MTP costs memory and prefill.** The draft context adds ~680 MB at n=1, growing
+~150 MB per level. Prompt processing drops ~5-8% (3036 -> ~2900 tok/s), consistent
 with the device-to-host embedding transfer the upstream repo mentions.
 
 **n-gram drafting is not worth enabling here**, and it is a benchmarking trap.
@@ -185,14 +185,14 @@ prompt-dependent.
 
 32K context, MTP n=2 where shown.
 
-| KV type | spec | decode tok/s | VRAM MiB | saved vs f16 | quality | needles d10/d50/d90 |
+| KV type | spec | decode tok/s | VRAM GB | saved vs f16 GB | quality | needles d10/d50/d90 |
 |---|---|---|---|---|---|---|
-| f16 | none | 73.6 | 17966 | - | 100% | all pass |
-| f16 | MTP n=2 | 125.5 | 18798 | - | 100% | all pass |
-| q8_0 | none | 77.1 | 17092 | 874 | 100% | all pass |
-| q8_0 | MTP n=2 | 128.3 | 17924 | 874 | 100% | all pass |
-| q4_0 | none | 77.1 | 16580 | 1386 | 100% | all pass |
-| **q4_0** | **MTP n=2** | **136.7** | **17412** | **1386** | **100%** | **all pass** |
+| f16 | none | 73.6 | 17.54 | - | 100% | all pass |
+| f16 | MTP n=2 | 125.5 | 18.36 | - | 100% | all pass |
+| q8_0 | none | 77.1 | 16.69 | 0.85 | 100% | all pass |
+| q8_0 | MTP n=2 | 128.3 | 17.50 | 0.85 | 100% | all pass |
+| q4_0 | none | 77.1 | 16.19 | 1.35 | 100% | all pass |
+| **q4_0** | **MTP n=2** | **136.7** | **17.00** | **1.35** | **100%** | **all pass** |
 
 **Quantising the cache makes it faster, not slower.** Decoding is memory-bandwidth
 bound, so a smaller KV cache means less data read per token. `q4_0` + `n=2`
@@ -201,7 +201,7 @@ sweep, while using 1.4 GB less memory.
 
 **No quality cost at any precision**, including needle retrieval at three depths.
 
-**`q8_0` does not halve the cache.** Measured, it is ~63% of f16 (43 vs 68 MiB per
+**`q8_0` does not halve the cache.** Measured, it is ~63% of f16 (43 vs 68 MB per
 1K tokens), not 50%.
 
 ---
@@ -239,7 +239,7 @@ session, never across.
 
 | | `-fa on` | `-fa off` |
 |---|---|---|
-| VRAM | **17966 MiB** | 20232 MiB |
+| VRAM | **17.54 GB** | 19.76 GB |
 | prefill | **3036 tok/s** | 2576 tok/s |
 | TTFT | **0.32 s** | 0.46 s |
 | decode | 73.6 | 73.2 |
@@ -350,7 +350,7 @@ llama-server -m Qwen3.8-27B-Q4_K_M.gguf \
 from a neighbouring config.
 
 Note the `n=2`. n=3 is the peak with an f16 cache, but **with q4_0 the two tie**
-(136.75 vs 136.72 tok/s) while n=3 costs an extra 150 MiB of draft context, so
+(136.75 vs 136.72 tok/s) while n=3 costs an extra 150 MB of draft context, so
 n=2 is strictly better here. The optimal draft depth depends on the KV cache
 type; do not carry n=3 over from section 2 by habit.
 

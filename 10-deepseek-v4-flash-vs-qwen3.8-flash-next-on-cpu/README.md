@@ -11,7 +11,7 @@ made to run on one desktop and then given problems that 30B models mostly fail.
 
 - Intel Core Ultra 9 285K, 24 cores / 24 threads (8 P + 16 E), no SMT
 - 95.3 GB RAM
-- RTX 5090, 32 GB VRAM (32,607 MiB), driver 610.88
+- RTX 5090, 32 GB VRAM (31.84 GB reported by nvidia-smi), driver 610.88
 - Windows 11 Pro 26200
 
 ### Core map (measured, not assumed)
@@ -248,7 +248,7 @@ edge, not a plateau (`results/ncmoe_ds.jsonl`):
 | 21 | 18.70 | 4.47 |
 
 Moving *more* layers onto the GPU makes it **4.5x slower**. Past `-ncmoe 30`
-the weights no longer fit VRAM (31,160 of 32,607 MiB in use at that setting)
+the weights no longer fit VRAM (30.43 of 31.84 GB in use at that setting)
 and CUDA spills over PCIe instead of failing, so those layers end up slower
 than if they had stayed on the CPU. On Windows "it loaded" proves nothing; the
 decode rate is the only signal.

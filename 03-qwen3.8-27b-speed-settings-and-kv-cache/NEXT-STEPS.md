@@ -77,7 +77,7 @@ defaults.
   `GPU Process Memory(pid_N_*)\Dedicated Usage` performance counter. Whole-card
   readings drift by gigabytes as the desktop composites.
 - **Ollama runs `llama-server` as a child**, so a PID lookup matching only
-  `ollama*` finds a process holding ~0.3 MiB.
+  `ollama*` finds a process holding ~0.3 MB.
 - **Reasoning arrives as `reasoning_content`, not `content`**, but only under
   `--jinja`. Without it, thinking is inline in `content`, and a harness that
   counts `reasoning_content` reports zero thinking for a model that is

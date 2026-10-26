@@ -213,27 +213,30 @@ def print_table(rs):
 
 
 def to_markdown(rs):
+    # (record key, column header, optional formatter)
+    # VRAM is recorded in MB and printed as GB, which is the same unit
+    # divided by 1024.
     cols = [
-        ("id", "config"),
-        ("decode_tps", "decode tok/s"),
-        ("accept_rate", "MTP accept"),
-        ("prefill_tps", "prefill tok/s"),
-        ("ttft_s", "TTFT s"),
-        ("vram_proc_mib", "model VRAM MiB"),
-        ("quality_pct", "quality %"),
-        ("tokens_per_wh", "tok/Wh"),
-        ("load_s", "load s"),
+        ("id", "config", None),
+        ("decode_tps", "decode tok/s", None),
+        ("accept_rate", "MTP accept", None),
+        ("prefill_tps", "prefill tok/s", None),
+        ("ttft_s", "TTFT s", None),
+        ("vram_proc_mib", "model VRAM GB", lambda v: f"{v / 1024:.2f}"),
+        ("quality_pct", "quality %", None),
+        ("tokens_per_wh", "tok/Wh", None),
+        ("load_s", "load s", None),
     ]
     lines = ["| " + " | ".join(c[1] for c in cols) + " |"]
     lines.append("|" + "|".join("---" for _ in cols) + "|")
     for r in rs:
         if "FAILED" in r:
             continue
-        lines.append(
-            "| " + " | ".join(
-                "" if r.get(k) is None else str(r.get(k)) for k, _ in cols
-            ) + " |"
-        )
+        cells = []
+        for key, _, fmt in cols:
+            v = r.get(key)
+            cells.append("" if v is None else (fmt(v) if fmt else str(v)))
+        lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines)
 
 
@@ -281,7 +284,7 @@ def main():
     bases = [r["baseline_mib"] for r in rs if r.get("baseline_mib")]
     if bases:
         print(f"idle VRAM baseline re-measured per config: "
-              f"{min(bases):.0f}-{max(bases):.0f} MiB observed "
+              f"{min(bases):.0f}-{max(bases):.0f} MB observed "
               f"(subtracted from each config's own figures)")
     print(f"{meta.get('repeats')} repeats, median reported\n")
     print_table(rs)
@@ -294,7 +297,7 @@ def main():
             f.write(f"- GPU: {meta.get('gpu')}\n")
             f.write(f"- llama.cpp build: {meta.get('llama_build')}\n")
             f.write(f"- Repeats: {meta.get('repeats')} (median reported)\n")
-            f.write(f"- Idle VRAM baseline: {meta.get('baseline_vram_mib')} MiB "
+            f.write(f"- Idle VRAM baseline: {meta.get('baseline_vram_mib', 0) / 1024:.2f} GB "
                     "(subtracted from all VRAM figures)\n\n")
             f.write(to_markdown(rs) + "\n")
         print(f"wrote {SUMMARY_MD}")

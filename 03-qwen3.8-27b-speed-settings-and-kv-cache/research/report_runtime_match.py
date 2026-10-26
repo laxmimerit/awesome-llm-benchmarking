@@ -49,7 +49,7 @@ for kv in ("f16", "q8_0"):
                 batch=None, **common)
 
     print(f"{'config':<22}{'decode':<10}{'prefill':<11}{'ttft':<9}"
-          f"{'vram MiB':<11}{'accept':<9}{'errors':<7}")
+          f"{'vram MB':<11}{'accept':<9}{'errors':<7}")
     print("-" * 79)
     for label, r in (("ollama (default)", ol),
                      ("llamacpp + ollama flags", match),
