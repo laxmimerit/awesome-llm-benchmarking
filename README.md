@@ -8,7 +8,7 @@
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-blue?style=flat-square)](https://creativecommons.org/licenses/by/4.0/)
 [![Projects](https://img.shields.io/badge/projects-14-blue?style=flat-square)](#the-projects)
 [![Last commit](https://img.shields.io/github/last-commit/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking/commits/main)
-[![Repo size](https://img.shields.io/github/repo-size/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking)
+[![Top language](https://img.shields.io/github/languages/top/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking)
 [![Stars](https://img.shields.io/github/stars/laxmimerit/awesome-llm-benchmarking?style=flat-square)](https://github.com/laxmimerit/awesome-llm-benchmarking/stargazers)
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
